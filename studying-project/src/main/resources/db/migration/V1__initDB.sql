@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS `mydb`.`book` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(45) NOT NULL,
   `description` VARCHAR(100) NOT NULL,
   `publishDate` DATE NOT NULL,
@@ -10,7 +10,7 @@ ENGINE = InnoDB;
 
 
 CREATE TABLE IF NOT EXISTS `mydb`.`author` (
-  `id` INT NOT NULL,
+`id` INT NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(45) NOT NULL,
   `bio` VARCHAR(100) NOT NULL,
   `birthDay` DATE NOT NULL,
@@ -18,14 +18,14 @@ CREATE TABLE IF NOT EXISTS `mydb`.`author` (
 ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `mydb`.`book_author` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT ,
   `bookId` INT NOT NULL,
   `authorId` INT NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `mydb`.`publisher` (
-  `id` INT NOT NULL,
+`id` INT NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
