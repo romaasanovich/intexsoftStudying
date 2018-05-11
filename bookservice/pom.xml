@@ -17,16 +17,40 @@
                     <target>8</target>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>properties-maven-plugin</artifactId>
+                <version>1.0-alpha-1</version>
+                <executions>
+                    <execution>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>read-project-properties</goal>
+                        </goals>
+                        <configuration>
+                            <files>
+                                <file>src/main/resources/db.properties</file>
+                            </files>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
             <plugin>
                 <groupId>org.flywaydb</groupId>
                 <artifactId>flyway-maven-plugin</artifactId>
                 <version>5.0.7</version>
                 <configuration>
-                    <user>rooty</user>
-                    <password>1qaz1qaz</password>
+                    <driver>${mysql.driverClassName}</driver>
+                    <user>${mysql.username}</user>
+                    <password>${mysql.password}</password>
                     <url>localhost</url>
                 </configuration>
             </plugin>
+
+
+
         </plugins>
     </build>
 
