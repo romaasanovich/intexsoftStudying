@@ -1,7 +1,7 @@
 package com.intexsoft.bookservice.entity;
 
 
-import com.intexsoft.bookservice.entity.aentity.AbsractEntity;
+import com.intexsoft.bookservice.entity.aentity.AbstractEntity;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -9,7 +9,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "author")
-public class Author extends AbsractEntity {
+public class Author extends AbstractEntity {
     @Column(name = "name", length = 45)
     private String name;
     @Column(name = "bio", length = 100)

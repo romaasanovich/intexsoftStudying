@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@RequestMapping("/api")
 public class BookController {
 
     @Autowired
@@ -25,4 +26,13 @@ public class BookController {
         Optional<Book> book = bookService.getBookByID(id);
         return book.get();
     }
+
+
+    @GetMapping(path = "/books/export")
+    public String exportBooks() {
+        bookService.exportToDb();
+        return "Success";
+    }
+
+
 }

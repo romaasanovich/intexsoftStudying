@@ -1,14 +1,14 @@
 package com.intexsoft.bookservice.entity;
 
 
-import com.intexsoft.bookservice.entity.aentity.AbsractEntity;
+import com.intexsoft.bookservice.entity.aentity.AbstractEntity;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Table(name = "book")
-public class Book extends AbsractEntity {
+public class Book extends AbstractEntity {
     @Column(name = "name",length = 45)
     private String name;
     @Column(name = "description",length = 1500)

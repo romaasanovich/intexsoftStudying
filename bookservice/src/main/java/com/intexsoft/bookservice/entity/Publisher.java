@@ -1,6 +1,6 @@
 package com.intexsoft.bookservice.entity;
 
-import com.intexsoft.bookservice.entity.aentity.AbsractEntity;
+import com.intexsoft.bookservice.entity.aentity.AbstractEntity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,7 +8,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "publisher")
-public class Publisher extends AbsractEntity {
+public class Publisher extends AbstractEntity {
     @Column(name = "name", length = 45)
     private String name;
 
