@@ -1,25 +1,21 @@
 package com.intexsoft.bookservice.service;
 
-import com.google.gson.internal.LinkedTreeMap;
 import com.intexsoft.bookservice.api.BookService;
 import com.intexsoft.bookservice.entity.Book;
 import com.intexsoft.bookservice.repository.BookRepository;
 import com.intexsoft.bookservice.utill.Converter;
-import com.intexsoft.bookservice.utill.Reader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.io.IOException;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 
-
 @Service
 public class BookServiceImpl implements BookService {
-    private static final String JSON_PATH = "/home/INTEXSOFT/roman.asanovich/intexsoftStudying/bookservice/src/main/resources/books.json";
 
     @Autowired
     private BookRepository bookRepository;
@@ -27,7 +23,8 @@ public class BookServiceImpl implements BookService {
     @Transactional()
     @Override
     public List<Book> getAllBooks() {
-        return  bookRepository.findAll();
+        List<Book> books = bookRepository.findAll();
+        return books;
     }
 
     @Transactional
@@ -36,20 +33,28 @@ public class BookServiceImpl implements BookService {
         return bookRepository.findById(id);
     }
 
+    @Transactional
+    @Override
+    public void add(Book book) {
+        bookRepository.save(book);
+    }
+
 
     @Transactional
     @Override
-    public void exportToDb(){
-        Reader reader = new Reader();
-        Converter converter = new Converter();
-        try {
-            Book[] books = converter.fromJsonToEntityList(reader.readFile(JSON_PATH));
-//            bookRepository.saveAll(books);
+    public void delete(Book book) {
+        bookRepository.delete(book);
 
-        }
-        catch (IOException ex){
-            ex.printStackTrace();
-        }
+    }
 
+    @Transactional
+    @Override
+    public void exportToDB(ArrayList<Book> books) {
+        for (Book book : books) {
+            if (bookRepository.findByUUID(book.getUuid()) == null) {
+                bookRepository.create(book.getUuid(), book.getName(), book.getDescription(), Converter.fromDateToString(book.getPublishDate()), book.getPublisher().getId().toString(), book.getPrice().toString());
+            }
+            bookRepository.update(book.getUuid(), book.getName(), book.getDescription(), Converter.fromDateToString(book.getPublishDate()), book.getPublisher().getId().toString(), book.getPrice().toString(), book.getId().toString());
+        }
     }
 }

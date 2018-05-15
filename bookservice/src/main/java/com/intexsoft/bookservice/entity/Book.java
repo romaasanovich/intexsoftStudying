@@ -4,6 +4,7 @@ package com.intexsoft.bookservice.entity;
 import com.intexsoft.bookservice.entity.aentity.AbstractEntity;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -13,6 +14,11 @@ public class Book extends AbstractEntity {
     private String name;
     @Column(name = "description",length = 1500)
     private String description;
+    @Column(name = "price")
+    private Double price;
+    @Column(name = "publishDate")
+    @Temporal(value = TemporalType.DATE)
+    private Date publishDate;
     @ManyToOne
     @JoinColumn(name = "publisherId")
     private Publisher publisher;
@@ -26,13 +32,14 @@ public class Book extends AbstractEntity {
 
     }
 
-    public Book(Integer id, String name, String description, Publisher publisher, List<Author> authors) {
-        super(id);
+    public Book(Integer id, String uuid, String name, String description, Publisher publisher, List<Author> authors) {
+        super(id, uuid);
         this.name = name;
         this.description = description;
         this.publisher = publisher;
         this.authors = authors;
     }
+
 
     public String getName() {
         return name;
@@ -64,5 +71,21 @@ public class Book extends AbstractEntity {
 
     public void setAuthors(List<Author> authors) {
         this.authors = authors;
+    }
+
+    public Date getPublishDate() {
+        return publishDate;
+    }
+
+    public void setPublishDate(Date publishDate) {
+        this.publishDate = publishDate;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
     }
 }

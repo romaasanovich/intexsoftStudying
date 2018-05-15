@@ -5,6 +5,7 @@ import com.intexsoft.bookservice.entity.aentity.AbstractEntity;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.UUID;
 
 
 @Entity
@@ -21,8 +22,8 @@ public class Author extends AbstractEntity {
     public Author() {
     }
 
-    public Author(Integer id, String name, String bio, Date birthDay) {
-        super(id);
+    public Author(Integer id, String uuid, String name, String bio, Date birthDay) {
+        super(id, uuid);
         this.name = name;
         this.bio = bio;
         this.birthDay = birthDay;

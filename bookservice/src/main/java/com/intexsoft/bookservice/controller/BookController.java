@@ -27,12 +27,4 @@ public class BookController {
         return book.get();
     }
 
-
-    @GetMapping(path = "/books/export")
-    public String exportBooks() {
-        bookService.exportToDb();
-        return "Success";
-    }
-
-
 }
