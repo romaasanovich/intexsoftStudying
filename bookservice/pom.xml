@@ -10,16 +10,21 @@
     <packaging>war</packaging>
 
     <properties>
-        <mysql.url>com.mysql.jdbc.Driver</mysql.url>
+        <mysql.url>jdbc:mysql://localhost/mydb?useSSL=false</mysql.url>
+        <mysql.driverClassName>com.mysql.jdbc.Driver</mysql.driverClassName>
         <mysql.username>rooty</mysql.username>
         <mysql.password>1qaz1qaz</mysql.password>
-        <mysql.driverClassName>jdbc:mysql://localhost/mydb?useSSL=false</mysql.driverClassName>
     </properties>
 
-
     <build>
-        <plugins>
+        <resources>
+            <resource>
+                <directory>src/main/resources/</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
 
+        <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
@@ -37,25 +42,6 @@
                 </configuration>
             </plugin>
 
-
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>properties-maven-plugin</artifactId>
-                <version>1.0-alpha-2</version>
-                <executions>
-                    <execution>
-                        <phase>generate-resources</phase>
-                        <goals>
-                            <goal>write-project-properties</goal>
-                        </goals>
-                        <configuration>
-                            <outputFile>db.properties</outputFile>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
-
             <plugin>
                 <groupId>org.flywaydb</groupId>
                 <artifactId>flyway-maven-plugin</artifactId>
@@ -70,6 +56,7 @@
 
 
         </plugins>
+
     </build>
 
 
