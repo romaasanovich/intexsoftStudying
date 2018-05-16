@@ -15,7 +15,7 @@ public interface BookService {
 
     void delete(Book book);
 
- //   Book getByUUID(String UUID);
+    Book getByUUID(String UUID);
 
     void exportToDB(List<BookJson> authors);
 

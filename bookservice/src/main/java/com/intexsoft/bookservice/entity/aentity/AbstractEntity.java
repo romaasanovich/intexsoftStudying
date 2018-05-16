@@ -11,15 +11,10 @@ public abstract class AbstractEntity implements Serializable {
     private Integer id;
 
 
-    @Column(name ="UUID",length = 45)
+    @Column(name ="UUID",length = 36)
     private String uuid;
 
     protected AbstractEntity() {
-    }
-
-    public AbstractEntity(Integer id,String uuid) {
-        this.id =id;
-        this.uuid=uuid;
     }
 
     public Integer getId() {

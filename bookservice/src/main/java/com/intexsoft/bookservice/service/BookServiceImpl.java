@@ -50,6 +50,11 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
+    public Book getByUUID(String UUID) {
+        return bookRepository.findUUID(UUID);
+    }
+
+    @Override
     public void exportToDB(List<BookJson> books) {
 
         for (BookJson bookJson : books) {
