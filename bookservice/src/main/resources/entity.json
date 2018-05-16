@@ -1,0 +1,55 @@
+{
+  "books": [
+    {
+      "uuid": "44470938-f5f6-4e90-aa8f-dc52804fca2d",
+      "name": "LordOfTheRings: The Fellowship of the Ring",
+      "description": "The Fellowship of the Ring is the first of three volumes of the epic[2] novel The Lord of the Rings by the English author J. R. R. Tolkien. It is followed by The Two Towers and The Return of the King. It takes place in the fictional universe of Middle-earth. It was originally published on 29 July 1954 in the United Kingdom. The volume consists of a prologue titled \"Concerning Hobbits, and other matters\" followed by Book I and Book II.",
+      "price": 35.2,
+      "publishDate": -486874800000,
+      "publisherUUID": "d22dfea8-8b5a-4404-8c8d-1791b4aeb288",
+      "authorsUUID": [
+        "58d3c044-c9f0-45bb-891f-2145e45a9f3b"
+      ]
+    },
+    {
+      "uuid": "8cb6e0c3-fb0d-4823-99b1-16c072f8178a",
+      "name": "LordOfTheRings: The Two Towers",
+      "description": "The Two Towers is the second volume of J. R. R. Tolkiens high fantasy novel The Lord of the Rings. It is preceded by The Fellowship of the Ring and followed by The Return of the King.",
+      "price": 40.5,
+      "publishDate": -477802800000,
+      "publisherUUID": "d22dfea8-8b5a-4404-8c8d-1791b4aeb288",
+      "authorsUUID": [
+        "58d3c044-c9f0-45bb-891f-2145e45a9f3b"
+      ]
+    },
+    {
+      "uuid": "64303062-6330-3264-2d38-3536362d3431",
+      "name": "LordOfTheRings: The Fellowship of the Ring",
+      "description": "The Return of the King is the third and final volume of J. R. R. Tolkiens The Lord of the Rings, following The Fellowship of the Ring and The Two Towers. The story begins in the kingdom of Gondor, which is soon to be attacked by the Dark Lord Sauron.",
+      "price": 48.5,
+      "publishDate": -448167600000,
+      "publisherUUID": "d22dfea8-8b5a-4404-8c8d-1791b4aeb288",
+      "authorsUUID": [
+        "58d3c044-c9f0-45bb-891f-2145e45a9f3b"
+      ]
+    }
+  ],
+  "authors": [
+    {
+      "uuid": "c6d1seb7-c5ef-4e62-b3ed-140384af83e3",
+      "name": "Joanne Rowling TESTss",
+      "bio": "Novelist short story writer screenwriter",
+      "birthDay": -139546800000
+    }
+  ],
+  "publishers": [
+    {
+      "uuid": "6e58eba7-bca7-4976-aa98-8f6ee1a3f928",
+      "name": "Bantam Spectra"
+    },
+    {
+      "uuid": "36306337-6325-6335-2d66-3532332d3463",
+      "name": "Some Publisher with ano"
+    }
+  ]
+}

@@ -6,17 +6,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.IOException;
+
 @RestController
 @RequestMapping("/api")
 public class ExportController {
 
     @Autowired
-    ExportService exportService;
+    private ExportService exportService;
 
     @GetMapping(path = "/export")
     public String exportBooks() {
-        exportService.exportToDb();
-        return "Success";
+        return exportService.exportToDb();
     }
-
 }

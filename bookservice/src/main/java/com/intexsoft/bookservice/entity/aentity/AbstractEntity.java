@@ -1,24 +1,8 @@
 package com.intexsoft.bookservice.entity.aentity;
 
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.intexsoft.bookservice.entity.Author;
-import com.intexsoft.bookservice.entity.Book;
-import com.intexsoft.bookservice.entity.Publisher;
-
 import javax.persistence.*;
 import java.io.Serializable;
 
-
-@JsonTypeInfo(
-        use = JsonTypeInfo.Id.NAME,
-        include = JsonTypeInfo.As.PROPERTY,
-        property = "type")
-@JsonSubTypes({
-        @JsonSubTypes.Type(value = Book.class, name = "book"),
-        @JsonSubTypes.Type(value = Author.class, name = "author"),
-        @JsonSubTypes.Type(value = Publisher.class, name = "publisher")
-})
 @MappedSuperclass
 public abstract class AbstractEntity implements Serializable {
     @Id

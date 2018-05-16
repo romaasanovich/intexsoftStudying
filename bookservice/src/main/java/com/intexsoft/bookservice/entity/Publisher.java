@@ -15,12 +15,6 @@ public class Publisher extends AbstractEntity {
     public Publisher() {
     }
 
-    public Publisher(Integer id, String uuid, String name) {
-        super(id, uuid);
-        this.name = name;
-    }
-
-
     public String getName() {
         return name;
     }

@@ -32,15 +32,6 @@ public class Book extends AbstractEntity {
 
     }
 
-    public Book(Integer id, String uuid, String name, String description, Publisher publisher, List<Author> authors) {
-        super(id, uuid);
-        this.name = name;
-        this.description = description;
-        this.publisher = publisher;
-        this.authors = authors;
-    }
-
-
     public String getName() {
         return name;
     }

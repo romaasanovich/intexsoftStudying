@@ -13,7 +13,7 @@ import java.util.Optional;
 public class BookController {
 
     @Autowired
-    BookService bookService;
+    private BookService bookService;
 
     @GetMapping(path = "/books")
     public List<Book> getBooks() {
