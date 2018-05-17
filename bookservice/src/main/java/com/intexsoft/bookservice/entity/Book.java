@@ -10,9 +10,9 @@ import java.util.List;
 @Entity
 @Table(name = "book")
 public class Book extends AbstractEntity {
-    @Column(name = "name",length = 45)
+    @Column(name = "name", length = 45)
     private String name;
-    @Column(name = "description",length = 1500)
+    @Column(name = "description", length = 1500)
     private String description;
     @Column(name = "price")
     private Double price;
@@ -22,10 +22,10 @@ public class Book extends AbstractEntity {
     @ManyToOne
     @JoinColumn(name = "publisherId")
     private Publisher publisher;
-    @ManyToMany(cascade = { CascadeType.ALL },fetch = FetchType.EAGER)
+    @ManyToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
     @JoinTable(name = "book_author",
-            joinColumns = { @JoinColumn(name = "bookId") },
-            inverseJoinColumns = { @JoinColumn(name = "authorId")})
+            joinColumns = {@JoinColumn(name = "bookId")},
+            inverseJoinColumns = {@JoinColumn(name = "authorId")})
     private List<Author> authors;
 
     public Book() {

@@ -1,22 +1,20 @@
 package com.intexsoft.bookservice.controller;
 
-import com.intexsoft.bookservice.api.ExportService;
+import com.intexsoft.bookservice.api.ImportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.io.IOException;
-
 @RestController
 @RequestMapping("/api")
-public class ExportController {
+public class ImportController {
 
     @Autowired
-    private ExportService exportService;
+    private ImportService importService;
 
-    @GetMapping(path = "/export")
-    public String exportBooks() {
-        return exportService.exportToDb();
+    @GetMapping(path = "/import")
+    public String importEntities() {
+        return importService.importToDb();
     }
 }

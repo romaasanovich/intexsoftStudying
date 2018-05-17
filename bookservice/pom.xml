@@ -14,6 +14,7 @@
         <mysql.driverClassName>com.mysql.jdbc.Driver</mysql.driverClassName>
         <mysql.username>rooty</mysql.username>
         <mysql.password>1qaz1qaz</mysql.password>
+        <type.import>xmlImpl</type.import>
     </properties>
 
     <build>
@@ -166,6 +167,26 @@
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
             <version>20160810</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/javax.xml/jaxb-api -->
+        <dependency>
+            <groupId>javax.xml</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.1</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.sun.xml.bind/jaxb-impl -->
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-impl</artifactId>
+            <version>2.3.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-core</artifactId>
+            <version>2.2.11</version>
         </dependency>
 
     </dependencies>

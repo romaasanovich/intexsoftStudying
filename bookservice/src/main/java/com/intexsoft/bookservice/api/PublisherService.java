@@ -1,7 +1,7 @@
 package com.intexsoft.bookservice.api;
 
 import com.intexsoft.bookservice.entity.Publisher;
-import com.intexsoft.bookservice.jsonentitiy.PublisherJson;
+import com.intexsoft.bookservice.importentitiy.ImportPublisher;
 
 import java.util.List;
 import java.util.Optional;
@@ -18,5 +18,5 @@ public interface PublisherService {
 
     Publisher getByUUID(String UUID);
 
-    void exportToDB(List<PublisherJson> publishers);
+    void importToDB(List<ImportPublisher> publishers);
 }

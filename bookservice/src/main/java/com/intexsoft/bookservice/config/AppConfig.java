@@ -2,7 +2,11 @@ package com.intexsoft.bookservice.config;
 
 import org.flywaydb.core.Flyway;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContextInitializer;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.*;
+import org.springframework.core.env.AbstractEnvironment;
+import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -14,6 +18,8 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.persistence.EntityManagerFactory;
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
 import javax.sql.DataSource;
 
 @Configuration
@@ -25,15 +31,14 @@ import javax.sql.DataSource;
 public class AppConfig {
 
     @Autowired
-    private Environment env;
+    private ConfigurableEnvironment env;
 
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean em
                 = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource());
-        em.setPackagesToScan(new String[]{"com.intexsoft.bookservice.entity"});
-
+        em.setPackagesToScan("com.intexsoft.bookservice.entity");
         JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);
         return em;
@@ -55,13 +60,12 @@ public class AppConfig {
     }
 
     @Bean(initMethod = "migrate")
-    Flyway flyway() {
+    public  Flyway flyway() {
         Flyway flyway = new Flyway();
         flyway.setBaselineOnMigrate(true);
         flyway.setLocations("db/migration");
         flyway.setDataSource(dataSource());
         return flyway;
     }
-
 
 }

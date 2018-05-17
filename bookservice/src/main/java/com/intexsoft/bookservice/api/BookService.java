@@ -1,7 +1,7 @@
 package com.intexsoft.bookservice.api;
 
 import com.intexsoft.bookservice.entity.Book;
-import com.intexsoft.bookservice.jsonentitiy.BookJson;
+import com.intexsoft.bookservice.importentitiy.ImportBook;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,6 +17,6 @@ public interface BookService {
 
     Book getByUUID(String UUID);
 
-    void exportToDB(List<BookJson> authors);
+    void importToDB(List<ImportBook> authors);
 
 }

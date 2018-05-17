@@ -11,7 +11,7 @@ public abstract class AbstractEntity implements Serializable {
     private Integer id;
 
 
-    @Column(name ="UUID",length = 36)
+    @Column(name = "UUID", length = 36)
     private String uuid;
 
     protected AbstractEntity() {

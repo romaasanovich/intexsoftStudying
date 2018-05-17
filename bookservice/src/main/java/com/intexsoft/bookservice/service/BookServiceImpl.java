@@ -5,7 +5,7 @@ import com.intexsoft.bookservice.api.BookService;
 import com.intexsoft.bookservice.api.PublisherService;
 import com.intexsoft.bookservice.entity.Author;
 import com.intexsoft.bookservice.entity.Book;
-import com.intexsoft.bookservice.jsonentitiy.BookJson;
+import com.intexsoft.bookservice.importentitiy.ImportBook;
 import com.intexsoft.bookservice.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -55,21 +55,21 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public void exportToDB(List<BookJson> books) {
+    public void importToDB(List<ImportBook> books) {
 
-        for (BookJson bookJson : books) {
-            String uuid =bookJson.getUuid();
+        for (ImportBook importBook : books) {
+            String uuid = importBook.getUuid();
             Book book = bookRepository.findUUID(uuid);
             if (book == null) {
                 book = new Book();
             }
-            book.setName(bookJson.getName());
-            book.setUuid(bookJson.getUuid());
-            book.setDescription(bookJson.getDescription());
-            book.setPrice(bookJson.getPrice());
-            book.setPublishDate(bookJson.getPublishDate());
-            book.setPublisher(publisherService.getByUUID(bookJson.getPublisherUUID()));
-            book.setAuthors(getAuthors(bookJson.getAuthorsUUID()));
+            book.setName(importBook.getName());
+            book.setUuid(importBook.getUuid());
+            book.setDescription(importBook.getDescription());
+            book.setPrice(importBook.getPrice());
+            book.setPublishDate(importBook.getPublishDate());
+            book.setPublisher(publisherService.getByUUID(importBook.getPublisherUUID()));
+            book.setAuthors(getAuthors(importBook.getAuthorsUUID()));
             bookRepository.save(book);
         }
     }

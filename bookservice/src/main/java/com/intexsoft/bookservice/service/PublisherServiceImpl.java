@@ -2,7 +2,7 @@ package com.intexsoft.bookservice.service;
 
 import com.intexsoft.bookservice.api.PublisherService;
 import com.intexsoft.bookservice.entity.Publisher;
-import com.intexsoft.bookservice.jsonentitiy.PublisherJson;
+import com.intexsoft.bookservice.importentitiy.ImportPublisher;
 import com.intexsoft.bookservice.repository.PublisherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,14 +43,14 @@ public class PublisherServiceImpl implements PublisherService {
     }
 
     @Override
-    public void exportToDB(List<PublisherJson> publishers) {
-        for (PublisherJson publisherJson : publishers) {
-            Publisher publisher = publisherRepository.findByUUID(publisherJson.getUuid());
+    public void importToDB(List<ImportPublisher> publishers) {
+        for (ImportPublisher importPublisher : publishers) {
+            Publisher publisher = publisherRepository.findByUUID(importPublisher.getUuid());
             if (publisher == null) {
                 publisher = new Publisher();
             }
-            publisher.setName(publisherJson.getName());
-            publisher.setUuid(publisherJson.getUuid());
+            publisher.setName(importPublisher.getName());
+            publisher.setUuid(importPublisher.getUuid());
             publisherRepository.save(publisher);
         }
     }

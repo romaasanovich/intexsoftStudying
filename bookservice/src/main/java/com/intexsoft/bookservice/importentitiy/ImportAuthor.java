@@ -1,13 +1,17 @@
-package com.intexsoft.bookservice.jsonentitiy;
+package com.intexsoft.bookservice.importentitiy;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
 
-public class AuthorJson {
-    private  String uuid;
+@XmlRootElement
+public class ImportAuthor {
+    private String uuid;
     private String name;
     private String bio;
     private Date birthDay;
 
+    @XmlElement
     public String getUuid() {
         return uuid;
     }
@@ -16,6 +20,7 @@ public class AuthorJson {
         this.uuid = uuid;
     }
 
+    @XmlElement
     public String getName() {
         return name;
     }
@@ -24,6 +29,7 @@ public class AuthorJson {
         this.name = name;
     }
 
+    @XmlElement
     public String getBio() {
         return bio;
     }
@@ -32,6 +38,7 @@ public class AuthorJson {
         this.bio = bio;
     }
 
+    @XmlElement
     public Date getBirthDay() {
         return birthDay;
     }
