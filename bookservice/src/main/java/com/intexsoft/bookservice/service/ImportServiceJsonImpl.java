@@ -11,17 +11,16 @@ import com.intexsoft.bookservice.importentitiy.repository.ImportEntityRepository
 import com.intexsoft.bookservice.utill.Converter;
 import com.intexsoft.bookservice.utill.PropertyWorker;
 import com.intexsoft.bookservice.utill.Reader;
+import com.intexsoft.bookservice.utill.TypeImport;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
-@Profile("jsonImpl")
 public class ImportServiceJsonImpl implements ImportService {
 
     @Autowired
@@ -34,9 +33,14 @@ public class ImportServiceJsonImpl implements ImportService {
     private static final String JSON_PATH_PROP = "jsonImport";
     private final Logger logger = LoggerFactory.getLogger(getClass().getSimpleName());
 
+    @Override
+    public TypeImport getType() {
+        return TypeImport.json;
+    }
+
     @Transactional
     @Override
-    public String importToDb() {
+    public void importToDb(){
         try {
             PropertyWorker pW = new PropertyWorker();
             Reader reader = new Reader();
@@ -48,10 +52,8 @@ public class ImportServiceJsonImpl implements ImportService {
             bookService.importToDB(books);
             publisherService.importToDB(publishers);
             authorService.importToDB(authors);
-            return "Success!!!";
         } catch (Exception ex) {
             logger.error("Error: ", ex);
-            return "Error!!!";
         }
     }
 
