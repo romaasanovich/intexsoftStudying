@@ -6,10 +6,10 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 public class MvcWebApplicationInitializer
         extends AbstractAnnotationConfigDispatcherServletInitializer {
 
-    // Load database configuration
+    // Load database  and security configuration
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class[]{AppConfig.class};
+        return new Class[]{AppConfig.class, WebSecurityConfig.class};
     }
 
     // Load spring web configuration

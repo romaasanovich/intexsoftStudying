@@ -9,6 +9,4 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @EnableWebMvc
 @ComponentScan(basePackages = {"com.intexsoft.bookservice.controller"})
 public class WebConfig implements WebMvcConfigurer {
-
-
 }

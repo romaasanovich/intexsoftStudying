@@ -26,42 +26,4 @@ public class Converter{
         return importEntityRepository;
     }
 
-//    public String fromXMLToEntityRep(List<Author> abstractEntities) throws JAXBException {
-//        ImportEntityRepository entityJsonRepository = new ImportEntityRepository();
-//        List<ImportAuthor> books = new ArrayList<>();
-//        for (Author author: abstractEntities) {
-////            ImportBook bookJson = new ImportBook();
-////            bookJson.setDescription(book.getDescription());
-////            bookJson.setUuid(book.getUuid());
-////            bookJson.setName(book.getName());
-////            bookJson.setPrice(book.getPrice());
-////            bookJson.setPublishDate(book.getPublishDate());
-////            bookJson.setPublisherUUID(book.getPublisher().getUuid());
-////            List<String> authorsUUID = new ArrayList<String>();
-////            for (Author author : book.getAuthors()) {
-////                authorsUUID.add(author.getUuid());
-////            }
-////            bookJson.setAuthorsUUID(authorsUUID);
-////            books.add(bookJson);
-////
-////            ImportPublisher publisherJson = new ImportPublisher();
-////            publisherJson.setUuid(publisher.getUuid());
-////            publisherJson.setName(publisher.getName());
-////            books.add(publisherJson);
-//            ImportAuthor authorJson = new ImportAuthor();
-//            authorJson.setUuid(author.getUuid());
-//            authorJson.setName(author.getName());
-//            authorJson.setBio(author.getBio());
-//            authorJson.setBirthDay(author.getBirthDay());
-//            books.add(authorJson);
-//
-//        }
-//        entityJsonRepository.setAuthors(books);
-//
-//        JAXBContext jaxbContext = JAXBContext.newInstance(ImportEntityRepository.class);
-//        Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
-//        jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-//        jaxbMarshaller.marshal(entityJsonRepository,System.out);
-//        return  "" ;
-//    }
 }
