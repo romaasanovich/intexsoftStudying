@@ -1,9 +1,8 @@
 package com.intexsoft.bookservice.config;
 
 import org.flywaydb.core.Flyway;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.*;
-import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
@@ -16,15 +15,21 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import javax.sql.DataSource;
 
 @Configuration
-@PropertySource("classpath:db.properties")
+@PropertySource("classpath:projectProperty.properties")
 @EnableJpaRepositories("com.intexsoft.bookservice.repository")
 @EnableTransactionManagement
 @ComponentScans(value = {@ComponentScan("com.intexsoft.bookservice.repository"),
         @ComponentScan("com.intexsoft.bookservice.service"), @ComponentScan("com.intexsoft.bookservice.api")})
 public class AppConfig {
+    @Value("mysql.driverClassName")
+    String driver;
+    @Value("mysql.url")
+    String url;
+    @Value("mysql.username")
+    String username;
+    @Value("mysql.password")
+    String password;
 
-    @Autowired
-    private ConfigurableEnvironment env;
 
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
@@ -40,10 +45,10 @@ public class AppConfig {
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName(env.getProperty("mysql.driverClassName"));
-        dataSource.setUrl(env.getProperty("mysql.url"));
-        dataSource.setUsername(env.getProperty("mysql.username"));
-        dataSource.setPassword(env.getProperty("mysql.password"));
+        dataSource.setDriverClassName(driver);
+        dataSource.setUrl(url);
+        dataSource.setUsername(username);
+        dataSource.setPassword(password);
         return dataSource;
     }
 

@@ -12,15 +12,16 @@ import com.intexsoft.bookservice.importentitiy.ImportBook;
 import com.intexsoft.bookservice.importentitiy.ImportPublisher;
 import com.intexsoft.bookservice.importentitiy.repository.ImportEntityRepository;
 import com.intexsoft.bookservice.utill.Converter;
-import com.intexsoft.bookservice.utill.PropertyWorker;
 import com.intexsoft.bookservice.utill.Reader;
 import com.intexsoft.bookservice.utill.TypeImport;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,6 +35,9 @@ public class ImportServiceJsonImpl implements ImportService {
     @Autowired
     BookService bookService;
 
+    @Value("jsonImport")
+    String jsonPath;
+
     private static final String JSON_PATH_PROP = "jsonImport";
     private final Logger logger = LoggerFactory.getLogger(getClass().getSimpleName());
 
@@ -45,19 +49,21 @@ public class ImportServiceJsonImpl implements ImportService {
     @Transactional
     @Override
     public void importToDb() {
+
+
+
         try {
-            PropertyWorker pW = new PropertyWorker();
             Reader reader = new Reader();
             Converter converter = new Converter();
-            ImportEntityRepository entityRep = converter.fromJsonToEntityRep(reader.readFile(pW.getProperty(JSON_PATH_PROP)));
+            ImportEntityRepository entityRep = converter.fromJsonToEntityRep(reader.readFile(jsonPath));
             List<ImportBook> books = entityRep.getBooks();
             List<ImportAuthor> authors = entityRep.getAuthors();
             List<ImportPublisher> publishers = entityRep.getPublishers();
             importPublishersToDB(publishers);
             importAuthorsToDB(authors);
             importBooksToDB(books);
-        } catch (Exception ex) {
-            logger.error("Error: ", ex);
+        } catch (IOException ex) {
+            logger.error("File not found: ", ex);
         }
     }
 

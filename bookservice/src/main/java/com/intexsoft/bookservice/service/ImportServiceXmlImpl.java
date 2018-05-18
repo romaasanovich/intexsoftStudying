@@ -12,15 +12,17 @@ import com.intexsoft.bookservice.importentitiy.ImportBook;
 import com.intexsoft.bookservice.importentitiy.ImportPublisher;
 import com.intexsoft.bookservice.importentitiy.repository.ImportEntityRepository;
 import com.intexsoft.bookservice.utill.Converter;
-import com.intexsoft.bookservice.utill.PropertyWorker;
 import com.intexsoft.bookservice.utill.Reader;
 import com.intexsoft.bookservice.utill.TypeImport;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import javax.xml.bind.JAXBException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,7 +35,10 @@ public class ImportServiceXmlImpl implements ImportService {
     AuthorService authorService;
     @Autowired
     BookService bookService;
-    private static final String XML_PATH_PROP = "xmlImport";
+
+    @Value("xmlImport")
+    private String xmlPath;
+
     private final Logger logger = LoggerFactory.getLogger(getClass().getSimpleName());
 
     @Override
@@ -45,19 +50,25 @@ public class ImportServiceXmlImpl implements ImportService {
     @Override
     public void importToDb() {
         try {
-            PropertyWorker pW = new PropertyWorker();
             Reader reader = new Reader();
             Converter converter = new Converter();
-            ImportEntityRepository entityRep = converter.fromXmlToEntityRep(reader.getFile(pW.getProperty(XML_PATH_PROP)));
+            ImportEntityRepository entityRep = converter.fromXmlToEntityRep(reader.getFile(xmlPath));
             List<ImportBook> books = entityRep.getBooks();
             List<ImportAuthor> authors = entityRep.getAuthors();
             List<ImportPublisher> publishers = entityRep.getPublishers();
             importPublishersToDB(publishers);
             importAuthorsToDB(authors);
             importBooksToDB(books);
-        } catch (Exception ex) {
-            logger.error("Error: ", ex);
         }
+        catch (NullPointerException ex){
+            logger.error("File not found: ", ex);
+        }
+        catch (IOException ex1) {
+            logger.error("File not found: ", ex1);
+        } catch (JAXBException er) {
+        logger.error("Wrong file structure: ", er);
+        }
+
     }
 
     private void importPublishersToDB(List<ImportPublisher> publishers) {
