@@ -20,10 +20,7 @@ public class BookServiceImpl implements BookService {
 
     @Autowired
     private BookRepository bookRepository;
-    @Autowired
-    private PublisherService publisherService;
-    @Autowired
-    private AuthorService authorService;
+
 
     @Override
     public List<Book> getAllBooks() {
@@ -52,9 +49,4 @@ public class BookServiceImpl implements BookService {
         return bookRepository.findUUID(UUID);
     }
 
-    @Override
-    public void importToDB(List<ImportBook> books) {
-
-
-    }
 }
