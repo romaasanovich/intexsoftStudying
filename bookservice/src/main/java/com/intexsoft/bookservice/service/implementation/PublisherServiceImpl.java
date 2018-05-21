@@ -1,6 +1,6 @@
-package com.intexsoft.bookservice.service;
+package com.intexsoft.bookservice.service.implementation;
 
-import com.intexsoft.bookservice.api.PublisherService;
+import com.intexsoft.bookservice.service.api.PublisherService;
 import com.intexsoft.bookservice.entity.Publisher;
 import com.intexsoft.bookservice.repository.PublisherRepository;
 import org.springframework.beans.factory.annotation.Autowired;

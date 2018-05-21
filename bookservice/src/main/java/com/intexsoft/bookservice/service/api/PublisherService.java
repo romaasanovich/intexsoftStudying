@@ -1,4 +1,4 @@
-package com.intexsoft.bookservice.api;
+package com.intexsoft.bookservice.service.api;
 
 import com.intexsoft.bookservice.entity.Publisher;
 

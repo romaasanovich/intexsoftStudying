@@ -1,16 +1,15 @@
-package com.intexsoft.bookservice.service;
+package com.intexsoft.bookservice.importer.importer;
 
-import com.intexsoft.bookservice.api.AuthorService;
-import com.intexsoft.bookservice.api.BookService;
-import com.intexsoft.bookservice.api.ImportService;
-import com.intexsoft.bookservice.api.PublisherService;
+import com.intexsoft.bookservice.service.api.AuthorService;
+import com.intexsoft.bookservice.service.api.BookService;
+import com.intexsoft.bookservice.service.api.PublisherService;
 import com.intexsoft.bookservice.entity.Author;
 import com.intexsoft.bookservice.entity.Book;
 import com.intexsoft.bookservice.entity.Publisher;
-import com.intexsoft.bookservice.importentitiy.ImportAuthor;
-import com.intexsoft.bookservice.importentitiy.ImportBook;
-import com.intexsoft.bookservice.importentitiy.ImportPublisher;
-import com.intexsoft.bookservice.importentitiy.repository.ImportEntityRepository;
+import com.intexsoft.bookservice.importer.entity.ImportAuthor;
+import com.intexsoft.bookservice.importer.entity.ImportBook;
+import com.intexsoft.bookservice.importer.entity.ImportPublisher;
+import com.intexsoft.bookservice.importer.entity.repository.ImportEntityRepository;
 import com.intexsoft.bookservice.utill.Converter;
 import com.intexsoft.bookservice.utill.Reader;
 import com.intexsoft.bookservice.utill.TypeImport;
@@ -27,7 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class ImportServiceXmlImpl implements ImportService {
+public class ImporterXmlImpl implements Importer {
 
     @Autowired
     PublisherService publisherService;
@@ -36,10 +35,13 @@ public class ImportServiceXmlImpl implements ImportService {
     @Autowired
     BookService bookService;
 
-    @Value("xmlImport")
+    @Value("${xmlImport}")
     private String xmlPath;
 
-    private final Logger logger = LoggerFactory.getLogger(getClass().getSimpleName());
+
+    private final Logger warnLogger = LoggerFactory.getLogger("warn");
+    private final Logger infoLogger = LoggerFactory.getLogger("info");
+
 
     @Override
     public TypeImport getType() {
@@ -56,17 +58,21 @@ public class ImportServiceXmlImpl implements ImportService {
             List<ImportBook> books = entityRep.getBooks();
             List<ImportAuthor> authors = entityRep.getAuthors();
             List<ImportPublisher> publishers = entityRep.getPublishers();
+            infoLogger.info("Xml is parse!!!");
             importPublishersToDB(publishers);
+            infoLogger.info("Publishers are import");
             importAuthorsToDB(authors);
+            infoLogger.info("Authors are import");
             importBooksToDB(books);
+            infoLogger.info("Books are import");
         }
         catch (NullPointerException ex){
-            logger.error("File not found: ", ex);
+            warnLogger.error("File not found: ", ex);
         }
         catch (IOException ex1) {
-            logger.error("File not found: ", ex1);
+            warnLogger.error("File not found: ", ex1);
         } catch (JAXBException er) {
-        logger.error("Wrong file structure: ", er);
+        warnLogger.error("Wrong XML structure: ", er);
         }
 
     }

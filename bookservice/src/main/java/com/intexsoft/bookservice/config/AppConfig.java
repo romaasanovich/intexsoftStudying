@@ -19,15 +19,15 @@ import javax.sql.DataSource;
 @EnableJpaRepositories("com.intexsoft.bookservice.repository")
 @EnableTransactionManagement
 @ComponentScans(value = {@ComponentScan("com.intexsoft.bookservice.repository"),
-        @ComponentScan("com.intexsoft.bookservice.service"), @ComponentScan("com.intexsoft.bookservice.api")})
+        @ComponentScan("com.intexsoft.bookservice.service"), @ComponentScan("com.intexsoft.bookservice.service.api"), @ComponentScan("com.intexsoft.bookservice.importer")})
 public class AppConfig {
-    @Value("mysql.driverClassName")
+    @Value("${mysql.driverClassName}")
     String driver;
-    @Value("mysql.url")
+    @Value("${mysql.url}")
     String url;
-    @Value("mysql.username")
+    @Value("${mysql.username}")
     String username;
-    @Value("mysql.password")
+    @Value("${mysql.password}")
     String password;
 
 

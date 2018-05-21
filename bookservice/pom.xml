@@ -23,12 +23,16 @@
     <profiles>
         <profile>
             <id>myProfile</id>
-            <activation>
-                <property>
-                    <name>env</name>
-                    <value>dev</value>
-                </property>
-            </activation>
+            <properties>
+                <mysql.url>jdbc:mysql://localhost/mydb?useSSL=false</mysql.url>
+                <mysql.driverClassName>com.mysql.jdbc.Driver</mysql.driverClassName>
+                <mysql.username>rooty</mysql.username>
+                <mysql.password>1qaz1qaz</mysql.password>
+                <spring.security.version>5.0.5.RELEASE</spring.security.version>
+                <springframework.version>5.0.2.RELEASE</springframework.version>
+                <com.sun.xml.bind.version>2.3.0</com.sun.xml.bind.version>
+                <org.slf4j.version>1.7.25</org.slf4j.version>
+            </properties>
         </profile>
     </profiles>
 

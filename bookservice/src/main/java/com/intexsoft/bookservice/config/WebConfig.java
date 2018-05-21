@@ -7,6 +7,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = {"com.intexsoft.bookservice.controller"})
+@ComponentScan(basePackages = {"com.intexsoft.bookservice.web.controller"})
 public class WebConfig implements WebMvcConfigurer {
 }

@@ -1,4 +1,4 @@
-package com.intexsoft.bookservice.service;
+package com.intexsoft.bookservice.service.implementation;
 
 import com.intexsoft.bookservice.entity.User;
 import com.intexsoft.bookservice.repository.UserRepository;
@@ -17,7 +17,7 @@ import javax.transaction.Transactional;
 @Transactional
 public class UserDetailServiceImpl implements UserDetailsService {
 
-    private final Logger logger = LoggerFactory.getLogger(getClass().getSimpleName());
+    private final Logger warnLogger = LoggerFactory.getLogger("warn");
 
 
     @Autowired
@@ -32,7 +32,7 @@ public class UserDetailServiceImpl implements UserDetailsService {
             userBuilder.password(user.getPassword());
             userBuilder.authorities(user.getRole());
         } else {
-            logger.error(String.valueOf(new UsernameNotFoundException("User not found.")));
+            warnLogger.error(String.valueOf(new UsernameNotFoundException("User not found.")));
             throw new UsernameNotFoundException("User not found.");
         }
         return userBuilder.build();

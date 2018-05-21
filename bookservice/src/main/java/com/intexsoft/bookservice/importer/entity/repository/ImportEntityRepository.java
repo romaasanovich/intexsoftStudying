@@ -1,8 +1,8 @@
-package com.intexsoft.bookservice.importentitiy.repository;
+package com.intexsoft.bookservice.importer.entity.repository;
 
-import com.intexsoft.bookservice.importentitiy.ImportAuthor;
-import com.intexsoft.bookservice.importentitiy.ImportBook;
-import com.intexsoft.bookservice.importentitiy.ImportPublisher;
+import com.intexsoft.bookservice.importer.entity.ImportAuthor;
+import com.intexsoft.bookservice.importer.entity.ImportBook;
+import com.intexsoft.bookservice.importer.entity.ImportPublisher;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;

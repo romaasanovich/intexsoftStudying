@@ -1,4 +1,22 @@
 {
+  "authors": [
+    {
+      "uuid": "c6d1seb7-c5ef-4e62-b3ed-140384af83e3",
+      "name": "Joanne Rowling TESTss",
+      "bio": "Novelist short story writer screenwriter",
+      "birthDay": -139546800000
+    }
+  ],
+  "publishers": [
+    {
+      "uuid": "6e58eba7-bca7-4976-aa98-8f6ee1a3f928",
+      "name": "Bantam Spectra"
+    },
+    {
+      "uuid": "36306337-6325-6335-2d66-3532332d3463",
+      "name": "Some Publisher with ano"
+    }
+  ],
   "books": [
     {
       "uuid": "44470938-f5f6-4e90-aa8f-dc52804fca2d",
@@ -32,24 +50,6 @@
       "authorsUUID": [
         "58d3c044-c9f0-45bb-891f-2145e45a9f3b"
       ]
-    }
-  ],
-  "authors": [
-    {
-      "uuid": "c6d1seb7-c5ef-4e62-b3ed-140384af83e3",
-      "name": "Joanne Rowling TESTss",
-      "bio": "Novelist short story writer screenwriter",
-      "birthDay": -139546800000
-    }
-  ],
-  "publishers": [
-    {
-      "uuid": "6e58eba7-bca7-4976-aa98-8f6ee1a3f928",
-      "name": "Bantam Spectra"
-    },
-    {
-      "uuid": "36306337-6325-6335-2d66-3532332d3463",
-      "name": "Some Publisher with ano"
     }
   ]
 }

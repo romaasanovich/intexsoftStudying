@@ -1,6 +1,6 @@
-package com.intexsoft.bookservice.controller;
+package com.intexsoft.bookservice.web.controller;
 
-import com.intexsoft.bookservice.api.BookService;
+import com.intexsoft.bookservice.service.api.BookService;
 import com.intexsoft.bookservice.entity.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

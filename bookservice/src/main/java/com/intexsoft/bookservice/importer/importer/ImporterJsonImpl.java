@@ -1,16 +1,15 @@
-package com.intexsoft.bookservice.service;
+package com.intexsoft.bookservice.importer.importer;
 
-import com.intexsoft.bookservice.api.AuthorService;
-import com.intexsoft.bookservice.api.BookService;
-import com.intexsoft.bookservice.api.ImportService;
-import com.intexsoft.bookservice.api.PublisherService;
 import com.intexsoft.bookservice.entity.Author;
 import com.intexsoft.bookservice.entity.Book;
 import com.intexsoft.bookservice.entity.Publisher;
-import com.intexsoft.bookservice.importentitiy.ImportAuthor;
-import com.intexsoft.bookservice.importentitiy.ImportBook;
-import com.intexsoft.bookservice.importentitiy.ImportPublisher;
-import com.intexsoft.bookservice.importentitiy.repository.ImportEntityRepository;
+import com.intexsoft.bookservice.importer.entity.ImportAuthor;
+import com.intexsoft.bookservice.importer.entity.ImportBook;
+import com.intexsoft.bookservice.importer.entity.ImportPublisher;
+import com.intexsoft.bookservice.importer.entity.repository.ImportEntityRepository;
+import com.intexsoft.bookservice.service.api.AuthorService;
+import com.intexsoft.bookservice.service.api.BookService;
+import com.intexsoft.bookservice.service.api.PublisherService;
 import com.intexsoft.bookservice.utill.Converter;
 import com.intexsoft.bookservice.utill.Reader;
 import com.intexsoft.bookservice.utill.TypeImport;
@@ -26,7 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class ImportServiceJsonImpl implements ImportService {
+public class ImporterJsonImpl implements Importer {
 
     @Autowired
     PublisherService publisherService;
@@ -35,11 +34,11 @@ public class ImportServiceJsonImpl implements ImportService {
     @Autowired
     BookService bookService;
 
-    @Value("jsonImport")
+    @Value("${jsonImport}")
     String jsonPath;
 
-    private static final String JSON_PATH_PROP = "jsonImport";
-    private final Logger logger = LoggerFactory.getLogger(getClass().getSimpleName());
+    private final Logger warnLogger = LoggerFactory.getLogger("warn");
+    private final Logger infoLogger = LoggerFactory.getLogger("info");
 
     @Override
     public TypeImport getType() {
@@ -49,21 +48,29 @@ public class ImportServiceJsonImpl implements ImportService {
     @Transactional
     @Override
     public void importToDb() {
-
-
-
         try {
-            Reader reader = new Reader();
+            String jsonLine ="";
+            try {
+                Reader reader = new Reader();
+                jsonLine = reader.readFile(jsonPath);
+            } catch (IOException ex) {
+                warnLogger.error("File not found: ", ex);
+            }
             Converter converter = new Converter();
-            ImportEntityRepository entityRep = converter.fromJsonToEntityRep(reader.readFile(jsonPath));
+            ImportEntityRepository entityRep = converter.fromJsonToEntityRep(jsonLine);
             List<ImportBook> books = entityRep.getBooks();
             List<ImportAuthor> authors = entityRep.getAuthors();
             List<ImportPublisher> publishers = entityRep.getPublishers();
-            importPublishersToDB(publishers);
+            infoLogger.info("Json is parse!!!");
             importAuthorsToDB(authors);
+            infoLogger.info("Authors are import");
+            importPublishersToDB(publishers);
+            infoLogger.info("Publishers are import");
             importBooksToDB(books);
+            infoLogger.info("Books are import");
         } catch (IOException ex) {
-            logger.error("File not found: ", ex);
+            warnLogger.error("Wrong Json Structure: ", ex);
+
         }
     }
 

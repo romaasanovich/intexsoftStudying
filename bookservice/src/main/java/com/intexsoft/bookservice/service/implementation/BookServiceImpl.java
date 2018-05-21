@@ -1,10 +1,10 @@
-package com.intexsoft.bookservice.service;
+package com.intexsoft.bookservice.service.implementation;
 
-import com.intexsoft.bookservice.api.AuthorService;
-import com.intexsoft.bookservice.api.BookService;
-import com.intexsoft.bookservice.api.PublisherService;
+import com.intexsoft.bookservice.service.api.AuthorService;
+import com.intexsoft.bookservice.service.api.BookService;
+import com.intexsoft.bookservice.service.api.PublisherService;
 import com.intexsoft.bookservice.entity.Book;
-import com.intexsoft.bookservice.importentitiy.ImportBook;
+import com.intexsoft.bookservice.importer.entity.ImportBook;
 import com.intexsoft.bookservice.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -3,7 +3,6 @@ package com.intexsoft.bookservice.utill;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.nio.file.Path;
 import java.util.Scanner;
 
 public class Reader {
@@ -19,7 +18,7 @@ public class Reader {
             return result;
         }
     }
-///TODO find other method
+
     public File getFile(String filePath)throws IOException {
         File file = new File(filePath);
         if(!file.createNewFile()){

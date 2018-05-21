@@ -1,7 +1,7 @@
-package com.intexsoft.bookservice.api;
+package com.intexsoft.bookservice.service.api;
 
 import com.intexsoft.bookservice.entity.Book;
-import com.intexsoft.bookservice.importentitiy.ImportBook;
+import com.intexsoft.bookservice.importer.entity.ImportBook;
 
 import java.util.List;
 import java.util.Optional;

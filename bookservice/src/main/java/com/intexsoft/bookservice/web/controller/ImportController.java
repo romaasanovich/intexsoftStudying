@@ -1,6 +1,6 @@
-package com.intexsoft.bookservice.controller;
+package com.intexsoft.bookservice.web.controller;
 
-import com.intexsoft.bookservice.api.ImportService;
+import com.intexsoft.bookservice.importer.importer.Importer;
 import com.intexsoft.bookservice.utill.TypeImport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,12 +17,12 @@ import java.util.List;
 public class ImportController {
 
     @Autowired
-    private List<ImportService> importers;
+    private List<Importer> importers;
 
     @GetMapping(path = "/import/{type}")
     public ResponseEntity importEntities(@PathVariable(name = "type") TypeImport typeImport)
     {
-        ImportService importService = importers.stream().filter((s)-> s.getType().equals(typeImport)).findFirst().get();
+        Importer importService = importers.stream().filter((s)-> s.getType().equals(typeImport)).findFirst().get();
         if(importService != null) {
             importService.importToDb();
             return new ResponseEntity(HttpStatus.OK);

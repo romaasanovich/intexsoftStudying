@@ -1,7 +1,7 @@
 package com.intexsoft.bookservice.utill;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.intexsoft.bookservice.importentitiy.repository.ImportEntityRepository;
+import com.intexsoft.bookservice.importer.entity.repository.ImportEntityRepository;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -18,12 +18,10 @@ public class Converter{
         return importEntityRepository;
     }
 
-
     public ImportEntityRepository fromXmlToEntityRep(File file) throws  JAXBException {
         JAXBContext jaxbContext = JAXBContext.newInstance(ImportEntityRepository.class);
         Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
         ImportEntityRepository importEntityRepository = (ImportEntityRepository) jaxbUnmarshaller.unmarshal(file);
         return importEntityRepository;
     }
-
 }

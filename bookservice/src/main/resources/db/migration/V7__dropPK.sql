@@ -1,9 +1,0 @@
-ALTER TABLE `mydb`.`author` 
-DROP PRIMARY KEY,
-ADD PRIMARY KEY (`id`);
-ALTER TABLE `mydb`.`book` 
-DROP PRIMARY KEY,
-ADD PRIMARY KEY (`id`);
-ALTER TABLE `mydb`.`publisher` 
-DROP PRIMARY KEY,
-ADD PRIMARY KEY (`id`);

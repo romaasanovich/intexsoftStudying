@@ -1,4 +1,4 @@
-package com.intexsoft.bookservice.importentitiy;
+package com.intexsoft.bookservice.importer.entity;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
