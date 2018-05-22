@@ -3,13 +3,14 @@ package com.intexsoft.bookservice.service.api;
 import com.intexsoft.bookservice.entity.Book;
 import com.intexsoft.bookservice.importer.entity.ImportBook;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface BookService {
 
-    @PreAuthorize("hasRole('ADMIN') OR hasRole('customer')")
+//    @PreAuthorize("hasRole('ADMIN') OR hasRole('customer')")
     List<Book> getAllBooks();
 
     @PreAuthorize("hasRole('ADMIN') OR hasRole('customer')")
