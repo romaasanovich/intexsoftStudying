@@ -5,6 +5,7 @@ import com.intexsoft.bookservice.service.api.PublisherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -14,17 +15,20 @@ public class PublisherController {
     @Autowired
     PublisherService publisherService;
 
-    @PostMapping(path = "/publisher/add", params = {"name"})
-    public void addPublisher(@RequestParam(value = "name") String  name) {
-        Publisher publisher = new Publisher();
+    @GetMapping(path = "/publishers")
+    public List<Publisher> getPublishers(){
+        return publisherService.getAllPublishers();
+    }
+
+    @PostMapping(path = "/publisher/add")
+    public void addPublisher(@RequestBody Publisher publisher) {
         publisher.setUuid(UUID.randomUUID().toString());
-        publisher.setName(name);
         publisherService.add(publisher);
     }
 
-    @DeleteMapping(path = "/publisher/del", params = {"id"})
-    public void addPublisher(@RequestParam(value = "id") Integer id) {
-        Publisher publisher =publisherService.getPublisherByID(id).get();
+    @DeleteMapping(path = "/publisher/del/{id}")
+    public void deletePublisher(@PathVariable(name = "id") Integer id) {
+        Publisher publisher = publisherService.getPublisherByID(id).get();
         publisherService.delete(publisher);
     }
 }

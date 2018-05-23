@@ -9,12 +9,20 @@ import {FormsModule} from '@angular/forms';
 import {BookService} from './book/book.service';
 import { LoginComponent } from './login/login.component';
 import {LoginService} from './login/login.service';
+import { PublisherComponent } from './publisher/publisher.component';
+import { AuthorComponent } from './author/author.component';
+import {PublisherService} from './publisher/publisher.service';
+import {AuthorService} from './author/author.service';
+import { AddPublisherComponent } from './add-publisher/add-publisher.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BookComponent,
-    LoginComponent
+    LoginComponent,
+    PublisherComponent,
+    AuthorComponent,
+    AddPublisherComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +30,7 @@ import {LoginService} from './login/login.service';
     HttpClientModule,
     FormsModule
   ],
-  providers: [BookService, LoginService],
+  providers: [BookService, LoginService, PublisherService, AuthorService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

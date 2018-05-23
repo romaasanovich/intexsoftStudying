@@ -13,6 +13,9 @@ export class BookService {
 
   constructor(private http: HttpClient) {}
 
+  // public addBook() {
+  //   return this.http.pos<Book[]>('http://localhost:8080/bookservice/api/books');
+  // }
 
 
   public getBooks() {
