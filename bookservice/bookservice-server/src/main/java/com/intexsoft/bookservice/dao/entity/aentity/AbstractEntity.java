@@ -1,4 +1,4 @@
-package com.intexsoft.bookservice.entity.aentity;
+package com.intexsoft.bookservice.dao.entity.aentity;
 
 import javax.persistence.*;
 import java.io.Serializable;

@@ -1,8 +1,8 @@
 package com.intexsoft.bookservice.importer.importer;
 
-import com.intexsoft.bookservice.entity.Author;
-import com.intexsoft.bookservice.entity.Book;
-import com.intexsoft.bookservice.entity.Publisher;
+import com.intexsoft.bookservice.dao.entity.Author;
+import com.intexsoft.bookservice.dao.entity.Book;
+import com.intexsoft.bookservice.dao.entity.Publisher;
 import com.intexsoft.bookservice.importer.entity.ImportAuthor;
 import com.intexsoft.bookservice.importer.entity.ImportBook;
 import com.intexsoft.bookservice.importer.entity.ImportPublisher;
@@ -12,7 +12,6 @@ import com.intexsoft.bookservice.service.api.BookService;
 import com.intexsoft.bookservice.service.api.PublisherService;
 import com.intexsoft.bookservice.utill.Converter;
 import com.intexsoft.bookservice.utill.Reader;
-import com.intexsoft.bookservice.utill.TypeImport;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

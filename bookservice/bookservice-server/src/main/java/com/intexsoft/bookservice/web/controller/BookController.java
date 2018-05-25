@@ -1,6 +1,6 @@
 package com.intexsoft.bookservice.web.controller;
 
-import com.intexsoft.bookservice.entity.Book;
+import com.intexsoft.bookservice.dao.entity.Book;
 import com.intexsoft.bookservice.service.api.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;

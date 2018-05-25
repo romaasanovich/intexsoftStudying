@@ -1,6 +1,6 @@
-package com.intexsoft.bookservice.entity;
+package com.intexsoft.bookservice.dao.entity;
 
-import com.intexsoft.bookservice.entity.aentity.AbstractEntity;
+import com.intexsoft.bookservice.dao.entity.aentity.AbstractEntity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

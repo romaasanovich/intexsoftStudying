@@ -1,7 +1,7 @@
 package com.intexsoft.bookservice.web.controller;
 
 import com.intexsoft.bookservice.importer.importer.Importer;
-import com.intexsoft.bookservice.utill.TypeImport;
+import com.intexsoft.bookservice.importer.importer.TypeImport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

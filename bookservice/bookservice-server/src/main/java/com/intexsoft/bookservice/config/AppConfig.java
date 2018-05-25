@@ -16,9 +16,9 @@ import javax.sql.DataSource;
 
 @Configuration
 @PropertySource("classpath:projectProperty.properties")
-@EnableJpaRepositories("com.intexsoft.bookservice.repository")
+@EnableJpaRepositories("com.intexsoft.bookservice.dao.repository")
 @EnableTransactionManagement
-@ComponentScans(value = {@ComponentScan("com.intexsoft.bookservice.repository"),
+@ComponentScans(value = {@ComponentScan("com.intexsoft.bookservice.dao.repository"),
         @ComponentScan("com.intexsoft.bookservice.service"), @ComponentScan("com.intexsoft.bookservice.service.api"), @ComponentScan("com.intexsoft.bookservice.importer")})
 public class AppConfig {
     @Value("${mysql.driverClassName}")
@@ -36,7 +36,7 @@ public class AppConfig {
         LocalContainerEntityManagerFactoryBean em
                 = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource());
-        em.setPackagesToScan("com.intexsoft.bookservice.entity");
+        em.setPackagesToScan("com.intexsoft.bookservice.dao.entity");
         JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);
         return em;

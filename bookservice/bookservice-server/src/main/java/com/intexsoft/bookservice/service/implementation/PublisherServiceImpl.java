@@ -1,7 +1,7 @@
 package com.intexsoft.bookservice.service.implementation;
 
-import com.intexsoft.bookservice.entity.Publisher;
-import com.intexsoft.bookservice.repository.PublisherRepository;
+import com.intexsoft.bookservice.dao.entity.Publisher;
+import com.intexsoft.bookservice.dao.repository.PublisherRepository;
 import com.intexsoft.bookservice.service.api.PublisherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

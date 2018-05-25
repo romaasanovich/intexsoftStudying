@@ -1,7 +1,7 @@
 package com.intexsoft.bookservice.service.implementation;
 
-import com.intexsoft.bookservice.entity.User;
-import com.intexsoft.bookservice.repository.UserRepository;
+import com.intexsoft.bookservice.dao.entity.User;
+import com.intexsoft.bookservice.dao.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
