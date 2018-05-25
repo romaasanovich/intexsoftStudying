@@ -36,9 +36,8 @@
 
 
     <modules>
-        <!--<module>bookservice-client</module>-->
-        <module>bookservice-server</module>
         <module>bookservice-client</module>
+        <module>bookservice-server</module>
     </modules>
 
 </project>
