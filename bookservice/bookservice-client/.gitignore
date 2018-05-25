@@ -1,9 +1,11 @@
 /target 
 /out
+/node
 /node_modules
 /dist
 /e2e
 .mvn/wrapper/maven-wrapper.jar 
+npm-debug.log
  
 
 ### IntelliJ IDEA ### 
