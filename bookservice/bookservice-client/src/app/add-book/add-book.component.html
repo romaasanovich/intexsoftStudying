@@ -1,0 +1,39 @@
+<div class="col-md-6">
+  <h2 class="text-center">Add Book</h2>
+  <form>
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" [(ngModel)]="book.name" placeholder="Name" name="Name" class="form-control" id="name">
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description:</label>
+      <input type="text" [(ngModel)]="book.description" placeholder="Description" name="Description" class="form-control" id="description">
+    </div>
+
+    <div class="form-group">
+      <label for="price">Price :</label>
+      <input type="price" [(ngModel)]="book.price" placeholder="Price" name="Price" class="form-control"  id = "price" >
+    </div>
+
+    <div class="form-group">
+      <label for="publishDate">Birth Day:</label>
+      <input type="date" [(ngModel)]="book.publishDate" placeholder="PublishDate" name="PublishDate" class="form-control"  id = "publishDate" >
+    </div>
+    <br>
+    <div class="form-group">
+      <label name ="publisher">Publisher:</label>
+      <select [(ngModel)]="book.publisher" name="publisher">
+        <option *ngFor="let item of publishers" [ngValue]="item">{{item.name}}</option>
+      </select>
+    </div>
+    <br>
+    <div class="form-group">
+      <label name ="author">Authors:</label>
+      <select multiple [(ngModel)]="book.authors" name="author">
+        <option *ngFor="let item of authors" [ngValue]="item">{{item.name}}</option>
+      </select>
+    </div>
+    <button class="btn btn-success" (click)="addBook()">Add</button>
+  </form>
+</div>

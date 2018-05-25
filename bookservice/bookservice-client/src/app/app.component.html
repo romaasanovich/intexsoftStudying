@@ -1,0 +1,19 @@
+<div class="container-fluid">
+  <div class="col-md-offset-1">
+    <h1>
+      Welcome to !
+    </h1>
+  </div>
+  <div>
+  <a routerLink="/login"> Login </a>
+  <a style="margin-left:15px" routerLink="/books"> List Books</a>
+  <a style="margin-left:15px" routerLink="/publishers"> List Publishers</a>
+  <a style="margin-left:15px" routerLink="/authors"> List Authors</a>
+  </div>
+  <br>
+  <a routerLink="/publisher">Add Publisher</a>
+  <a style="margin-left:15px" routerLink="/author">Add Author</a>
+  <a style="margin-left:15px" routerLink="/book">Add Book</a>
+  <br/>
+  <router-outlet></router-outlet>
+</div>
