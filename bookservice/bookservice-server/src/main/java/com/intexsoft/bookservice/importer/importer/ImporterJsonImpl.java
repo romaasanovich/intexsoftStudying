@@ -16,16 +16,19 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.locks.ReentrantLock;
 
 @Service
 public class ImporterJsonImpl implements Importer {
 
+    private ReentrantLock lock = new ReentrantLock();
     private final Logger logger = LoggerFactory.getLogger("log");
     @Autowired
     PublisherService publisherService;
@@ -41,9 +44,12 @@ public class ImporterJsonImpl implements Importer {
         return TypeImport.json;
     }
 
+
     @Transactional
     @Override
+    @Scheduled(cron = "0 0 3 * * ?")
     public void importToDb() {
+        lock.lock();
         try {
             String jsonLine = "";
             try {
@@ -67,6 +73,9 @@ public class ImporterJsonImpl implements Importer {
         } catch (IOException ex) {
             logger.error("Wrong Json Structure: ", ex);
 
+        }
+        finally {
+            lock.unlock();
         }
     }
 

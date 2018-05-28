@@ -16,6 +16,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -23,10 +24,12 @@ import javax.xml.bind.JAXBException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.locks.ReentrantLock;
 
 @Service
 public class ImporterXmlImpl implements Importer {
 
+    private ReentrantLock lock = new ReentrantLock();
     private final Logger logger = LoggerFactory.getLogger("log");
     @Autowired
     PublisherService publisherService;
@@ -44,7 +47,9 @@ public class ImporterXmlImpl implements Importer {
 
     @Transactional
     @Override
+    @Scheduled(cron = "0 0 3 * * ?")
     public void importToDb() {
+        lock.lock();
         try {
             Reader reader = new Reader();
             Converter converter = new Converter();
@@ -65,6 +70,8 @@ public class ImporterXmlImpl implements Importer {
             logger.error("File not found: ", ex1);
         } catch (JAXBException er) {
             logger.error("Wrong XML structure: ", er);
+        } finally {
+            lock.unlock();
         }
     }
 

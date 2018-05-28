@@ -16,6 +16,8 @@ import {AuthorService} from './author/author.service';
 import {AddPublisherComponent} from './add-publisher/add-publisher.component';
 import {AddAuthorComponent} from './add-author/add-author.component';
 import {AddBookComponent} from './add-book/add-book.component';
+import {ImportComponent} from './import/import.component';
+import {ImportService} from './import/import.service';
 
 @NgModule({
     declarations: [
@@ -26,7 +28,8 @@ import {AddBookComponent} from './add-book/add-book.component';
         AuthorComponent,
         AddPublisherComponent,
         AddAuthorComponent,
-        AddBookComponent
+        AddBookComponent,
+        ImportComponent
     ],
     imports: [
         BrowserModule,
@@ -34,7 +37,7 @@ import {AddBookComponent} from './add-book/add-book.component';
         HttpClientModule,
         FormsModule
     ],
-    providers: [BookService, LoginService, PublisherService, AuthorService],
+    providers: [BookService, LoginService, PublisherService, AuthorService, ImportService],
     bootstrap: [AppComponent]
 })
 export class AppModule {
