@@ -1,0 +1,136 @@
+<entities>
+    <publishers>
+        <publisher>
+            <name>Bantam Spectra</name>
+            <uuid>6e58eba7-bca7-4976-aa98-8f6ee1a3f928</uuid>
+        </publisher>
+        <publisher>
+            <name>Bloomsbury Publishing</name>
+            <uuid>8b5a0970-4b68-4fca-864c-0125a9958c6e</uuid>
+        </publisher>
+        <publisher>
+            <name>Allen &amp; Unwin</name>
+            <uuid>d22dfea8-8b5a-4404-8c8d-1791b4aeb288</uuid>
+        </publisher>
+        <publisher>
+            <name>Some Publisher with ano</name>
+            <uuid>36306337-6325-6335-2d66-3532332d3463</uuid>
+        </publisher>
+    </publishers>
+    <authors>
+        <author>
+            <bio>Novelist short story writer screenwriter</bio>
+            <birthDay>1965-07-31T00:00:00+03:00</birthDay>
+            <name>Joanne Rowling TEST</name>
+            <uuid>c6d1deb7-c5ef-4e62-b3ed-140384af83e3</uuid>
+        </author>
+        <author>
+            <bio>Novelist, film producer, television producer, screenwriter</bio>
+            <birthDay>1948-09-20T00:00:00+03:00</birthDay>
+            <name>George Raymond Martin</name>
+            <uuid>f8c839ea-b3ef-404a-b790-3c002e271d2e</uuid>
+        </author>
+        <author>
+            <bio>Author, academic, philologist, poet</bio>
+            <birthDay>1973-09-02T00:00:00+03:00</birthDay>
+            <name>JohnRonald Reuel Tolkien</name>
+            <uuid>58d3c044-c9f0-45bb-891f-2145e45a9f3b</uuid>
+        </author>
+        <author>
+            <bio>Novelist short story writer screenwriter</bio>
+            <birthDay>1965-07-31T00:00:00+03:00</birthDay>
+            <name>Joanne Rowling TESTss</name>
+            <uuid>c6d1seb7-c5ef-4e62-b3ed-140384af83e3</uuid>
+        </author>
+    </authors>
+    <books>
+        <book>
+            <authorsUUID>
+                <authorUUID>58d3c044-c9f0-45bb-891f-2145e45a9f3b</authorUUID>
+            </authorsUUID>
+            <description>The Fellowship of the Ring is the first of three volumes of the epic[2] novel The Lord of the
+                Rings by the English author J. R. R. Tolkien. It is followed by The Two Towers and The Return of the
+                King. It takes place in the fictional universe of Middle-earth. It was originally published on 29 July
+                1954 in the United Kingdom. The volume consists of a prologue titled "Concerning Hobbits, and other
+                matters" followed by Book I and Book II.
+            </description>
+            <name>LordOfTheRings: The Fellowship of the Ring</name>
+            <price>35.2</price>
+            <publishDate>1954-07-29T00:00:00+03:00</publishDate>
+            <publisherUUID>d22dfea8-8b5a-4404-8c8d-1791b4aeb288</publisherUUID>
+            <uuid>44470938-f5f6-4e90-aa8f-dc52804fca2d</uuid>
+        </book>
+        <book>
+            <authorsUUID>
+                <authorUUID>58d3c044-c9f0-45bb-891f-2145e45a9f3b</authorUUID>
+            </authorsUUID>
+            <description>The Two Towers is the second volume of J. R. R. Tolkiens high fantasy novel The Lord of the
+                Rings. It is preceded by The Fellowship of the Ring and followed by The Return of the King.
+            </description>
+            <name>LordOfTheRings: The Two Towers</name>
+            <price>40.5</price>
+            <publishDate>1954-11-11T00:00:00+03:00</publishDate>
+            <publisherUUID>d22dfea8-8b5a-4404-8c8d-1791b4aeb288</publisherUUID>
+            <uuid>8cb6e0c3-fb0d-4823-99b1-16c072f8178a</uuid>
+        </book>
+        <book>
+            <authorsUUID>
+                <authorUUID>58d3c044-c9f0-45bb-891f-2145e45a9f3b</authorUUID>
+            </authorsUUID>
+            <description>The Return of the King is the third and final volume of J. R. R. Tolkiens The Lord of the
+                Rings, following The Fellowship of the Ring and The Two Towers. The story begins in the kingdom of
+                Gondor, which is soon to be attacked by the Dark Lord Sauron.
+            </description>
+            <name>LordOfTheRings: The Fellowship of the Ring</name>
+            <price>48.5</price>
+            <publishDate>1955-10-20T00:00:00+03:00</publishDate>
+            <publisherUUID>d22dfea8-8b5a-4404-8c8d-1791b4aeb288</publisherUUID>
+            <uuid>64303062-6330-3264-2d38-3536362d3431</uuid>
+        </book>
+        <book>
+            <authorsUUID>
+                <authorUUID>c6d1deb7-c5ef-4e62-b3ed-140384af83e3</authorUUID>
+            </authorsUUID>
+            <description>A Game of Thrones is the first novel in A Song of Ice and Fire, a series of fantasy novels by
+                American author George R. R. Martin. It was first published on August 1, 1996. The novel won the 1997
+                Locus Award[2] and was nominated for both the 1997 Nebula Award[2] and the 1997 World Fantasy Award. The
+                novella Blood of the Dragon, comprising the Daenerys Targaryen chapters from the novel, won the 1997
+                Hugo Award for Best Novella. In January 2011 the novel became a New York Times bestseller and reached #1
+                on the list in July 2011
+            </description>
+            <name>A Game of Thrones</name>
+            <price>51.8</price>
+            <publishDate>1996-08-01T00:00:00+03:00</publishDate>
+            <publisherUUID>6e58eba7-bca7-4976-aa98-8f6ee1a3f928</publisherUUID>
+            <uuid>c9e457d0-9013-4166-8502-a3c4b6d9956a</uuid>
+        </book>
+        <book>
+            <authorsUUID>
+                <authorUUID>f8c839ea-b3ef-404a-b790-3c002e271d2e</authorUUID>
+            </authorsUUID>
+            <description>Harry Potter and the Philosopher`s Stone is a fantasy novel written by British author J. K.
+                Rowling. It is the first novel in the Harry Potter series and Rowling`s debut novel
+            </description>
+            <name>Harry Potter and the Philosopher`s Stone</name>
+            <price>30.8</price>
+            <publishDate>1997-06-26T00:00:00+03:00</publishDate>
+            <publisherUUID>8b5a0970-4b68-4fca-864c-0125a9958c6e</publisherUUID>
+            <uuid>33640514-c274-42eb-83ee-06d789afa6de</uuid>
+        </book>
+        <book>
+            <authorsUUID>
+                <authorUUID>f8c839ea-b3ef-404a-b790-3c002e271d2e</authorUUID>
+            </authorsUUID>
+            <description>Harry Potter and the Prisoner of Azkaban is a fantasy novel written by British author J. K.
+                Rowling and the third in the Harry Potter series. The book follows Harry Potter, a young wizard, in his
+                third year at Hogwarts School of Witchcraft and Wizardry.
+            </description>
+            <name>Harry Potter and the Prisoner of Azkaban</name>
+            <price>32.8</price>
+            <publishDate>1999-07-08T00:00:00+03:00</publishDate>
+            <publisherUUID>8b5a0970-4b68-4fca-864c-0125a9958c6e</publisherUUID>
+            <uuid>8247f363-020c-49bc-bd15-486c9d71a2cd</uuid>
+        </book>
+    </books>
+</entities>
+

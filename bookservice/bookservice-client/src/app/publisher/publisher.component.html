@@ -1,0 +1,21 @@
+<div class="col-md-6">
+    <h2> Publishers </h2>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let publ of publishers">
+            <td>{{publ.id}}</td>
+            <td>{{publ.name}}</td>
+            <td>
+                <button class="btn btn-danger" (click)="deletePublisher(publ)"> Delete Publisher</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,22 @@
+<div>
+    <h3>Login with Username and Password</h3>
+    <table>
+        <tr>
+            <td>UserModel:</td>
+            <td>
+                <input #username type='text' name='username' value=''>
+            </td>
+        </tr>
+        <tr>
+            <td>Password:</td>
+            <td>
+                <input #password type='password' name='password'/>
+            </td>
+        </tr>
+        <tr>
+            <td colspan='2'>
+                <button (click)="login(username.value,password.value)"> Login</button>
+            </td>
+        </tr>
+    </table>
+</div>
