@@ -17,7 +17,7 @@ import javax.transaction.Transactional;
 @Transactional
 public class UserDetailServiceImpl implements UserDetailsService {
 
-    private final Logger errorLogger = LoggerFactory.getLogger("error");
+    private final Logger logger = LoggerFactory.getLogger("log");
 
 
     @Autowired
@@ -32,7 +32,7 @@ public class UserDetailServiceImpl implements UserDetailsService {
             userBuilder.password(user.getPassword());
             userBuilder.authorities(user.getRole());
         } else {
-            errorLogger.error(String.valueOf(new UsernameNotFoundException("User not found.")));
+            logger.error(String.valueOf(new UsernameNotFoundException("User not found.")));
             throw new UsernameNotFoundException("User not found.");
         }
         return userBuilder.build();

@@ -2,32 +2,32 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {Author} from '../entity/author.model';
 import {AuthorService} from './author.service';
-import {Publisher} from '../entity/publisher.model';
 
 @Component({
-  selector: 'app-author',
-  templateUrl: './author.component.html',
-  styleUrls: ['./author.component.css']
+    selector: 'app-author',
+    templateUrl: './author.component.html',
+    styleUrls: ['./author.component.css']
 })
 export class AuthorComponent implements OnInit {
 
-  authors: Author[];
+    authors: Author[];
 
-  constructor(private router: Router, private authorService: AuthorService) {
+    constructor(private router: Router, private authorService: AuthorService) {
 
-  }
+    }
 
-  ngOnInit() {
-    this.authorService.getAuthors()
-      .subscribe(data => {
-        this.authors = data;
-      });
+    ngOnInit() {
+        this.authorService.getAuthors()
+            .subscribe(data => {
+                this.authors = data;
+            });
 
-  }
-  deleteAuthor(author: Author): void {
-      this.authorService.deleteAuthor(author)
-      .subscribe( data => {
-        this.authors = this.authors.filter(u => u !== author);
-      });
-  }
+    }
+
+    deleteAuthor(author: Author): void {
+        this.authorService.deleteAuthor(author)
+            .subscribe(data => {
+                this.authors = this.authors.filter(u => u !== author);
+            });
+    }
 }

@@ -27,8 +27,7 @@ import java.util.List;
 @Service
 public class ImporterXmlImpl implements Importer {
 
-    private final Logger errorLogger = LoggerFactory.getLogger("error");
-    private final Logger infoLogger = LoggerFactory.getLogger("info");
+    private final Logger logger = LoggerFactory.getLogger("log");
     @Autowired
     PublisherService publisherService;
     @Autowired
@@ -53,19 +52,19 @@ public class ImporterXmlImpl implements Importer {
             List<ImportBook> books = entityRep.getBooks();
             List<ImportAuthor> authors = entityRep.getAuthors();
             List<ImportPublisher> publishers = entityRep.getPublishers();
-            infoLogger.info("Xml is parse!!!");
+            logger.info("Xml is parse!!!");
             importPublishersToDB(publishers);
-            infoLogger.info("Publishers are import");
+            logger.info("Publishers are import");
             importAuthorsToDB(authors);
-            infoLogger.info("Authors are import");
+            logger.info("Authors are import");
             importBooksToDB(books);
-            infoLogger.info("Books are import");
+            logger.info("Books are import");
         } catch (NullPointerException ex) {
-            errorLogger.error("File not found: ", ex);
+            logger.error("File not found: ", ex);
         } catch (IOException ex1) {
-            errorLogger.error("File not found: ", ex1);
+            logger.error("File not found: ", ex1);
         } catch (JAXBException er) {
-            errorLogger.error("Wrong XML structure: ", er);
+            logger.error("Wrong XML structure: ", er);
         }
     }
 

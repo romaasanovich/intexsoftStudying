@@ -1,26 +1,28 @@
 <div class="col-md-6">
-  <h2> Books </h2>
-  <table class="table table-striped">
-    <thead>
-    <tr>
-      <th>Id</th>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Price</th>
-      <th>Publisher</th>
-      <th >Publish Date</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let book of books">
-      <td>{{book.id}}</td>
-      <td>{{book.name}}</td>
-      <td>{{book.description}}</td>
-      <td>{{book.price}}</td>
-      <td>{{book.publisher.name}}</td>
-      <td>{{book.publishDate}}</td>
-      <td><button class="btn btn-danger" (click)="deleteBook(book)"> Delete Book </button></td>
-    </tr>
-    </tbody>
-  </table>
+    <h2> Books </h2>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Publisher</th>
+            <th>Publish Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let book of books">
+            <td>{{book.id}}</td>
+            <td>{{book.name}}</td>
+            <td>{{book.description}}</td>
+            <td>{{book.price}}</td>
+            <td>{{book.publisher.name}}</td>
+            <td>{{book.publishDate}}</td>
+            <td>
+                <button class="btn btn-danger" (click)="deleteBook(book)"> Delete Book</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 </div>

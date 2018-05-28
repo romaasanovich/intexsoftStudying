@@ -1,14 +1,16 @@
-label{
-  display: inline-block;
-  float: left;
-  clear: left;
-  width: 75px;
-  text-align: left;
+label {
+    display: inline-block;
+    float: left;
+    clear: left;
+    width: 75px;
+    text-align: left;
 }
+
 input {
-  display: inline-block;
-  float: left;
+    display: inline-block;
+    float: left;
 }
+
 .form-group {
-  line-height: 1.5;
+    line-height: 1.5;
 }

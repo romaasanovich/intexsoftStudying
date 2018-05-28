@@ -26,8 +26,7 @@ import java.util.List;
 @Service
 public class ImporterJsonImpl implements Importer {
 
-    private final Logger errorLogger = LoggerFactory.getLogger("error");
-    private final Logger infoLogger = LoggerFactory.getLogger("info");
+    private final Logger logger = LoggerFactory.getLogger("log");
     @Autowired
     PublisherService publisherService;
     @Autowired
@@ -51,22 +50,22 @@ public class ImporterJsonImpl implements Importer {
                 Reader reader = new Reader();
                 jsonLine = reader.readFile(jsonPath);
             } catch (IOException ex) {
-                errorLogger.error("File not found: ", ex);
+                logger.error("File not found: ", ex);
             }
             Converter converter = new Converter();
             ImportEntityRepository entityRep = converter.fromJsonToEntityRep(jsonLine);
             List<ImportBook> books = entityRep.getBooks();
             List<ImportAuthor> authors = entityRep.getAuthors();
             List<ImportPublisher> publishers = entityRep.getPublishers();
-            infoLogger.info("Json is parse!!!");
+            logger.info("Json is parse!!!");
             importAuthorsToDB(authors);
-            infoLogger.info("Authors are import");
+            logger.info("Authors are import");
             importPublishersToDB(publishers);
-            infoLogger.info("Publishers are import");
+            logger.info("Publishers are import");
             importBooksToDB(books);
-            infoLogger.info("Books are import");
+            logger.info("Books are import");
         } catch (IOException ex) {
-            errorLogger.error("Wrong Json Structure: ", ex);
+            logger.error("Wrong Json Structure: ", ex);
 
         }
     }

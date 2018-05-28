@@ -1,11 +1,11 @@
-label{
-  display: inline-block;
-  float: left;
-  clear: left;
-  width: 100px;
-  text-align: left;
+label {
+    display: inline-block;
+    float: left;
+    clear: left;
+    width: 100px;
+    text-align: left;
 }
 
 .form-group {
-  line-height: 1.5;
+    line-height: 1.5;
 }
