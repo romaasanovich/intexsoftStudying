@@ -801,7 +801,7 @@ var Publisher = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "label {\n    display: inline-block;\n    float: left;\n    clear: left;\n    width: 100px;\n    text-align: left;\n}\n\n.form-group {\n    line-height: 1.5;\n}\n"
+module.exports = "label {\n    display: inline-block;\n    float: left;\n    clear: left;\n    width: 100px;\n    text-align: left;\n}\n\n.form-group {\n    line-height: 2;\n}\n"
 
 /***/ }),
 
@@ -899,7 +899,7 @@ var ImportService = /** @class */ (function () {
         this.http = http;
     }
     ImportService.prototype.import = function (type) {
-        return this.http.get('http://localhost:8080/bookservice/api/import' + '/' + type);
+        return this.http.post('http://localhost:8080/bookservice/api/import' + '/' + type, type);
     };
     ImportService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])(),

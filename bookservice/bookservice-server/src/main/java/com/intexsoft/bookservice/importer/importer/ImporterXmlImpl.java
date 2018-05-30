@@ -29,7 +29,6 @@ import java.util.concurrent.locks.ReentrantLock;
 @Service
 public class ImporterXmlImpl implements Importer {
 
-    private ReentrantLock lock = new ReentrantLock();
     private final Logger logger = LoggerFactory.getLogger("log");
     @Autowired
     PublisherService publisherService;
@@ -47,9 +46,7 @@ public class ImporterXmlImpl implements Importer {
 
     @Transactional
     @Override
-    @Scheduled(cron = "0 0 3 * * ?")
     public void importToDb() {
-        lock.lock();
         try {
             Reader reader = new Reader();
             Converter converter = new Converter();
@@ -70,10 +67,9 @@ public class ImporterXmlImpl implements Importer {
             logger.error("File not found: ", ex1);
         } catch (JAXBException er) {
             logger.error("Wrong XML structure: ", er);
-        } finally {
-            lock.unlock();
         }
     }
+
 
     private void importPublishersToDB(List<ImportPublisher> publishers) {
         for (ImportPublisher importPublisher : publishers) {

@@ -12,6 +12,6 @@ export class ImportService {
     }
 
     public import(type: string) {
-        return this.http.get('http://localhost:8080/bookservice/api/import' + '/' + type);
+        return this.http.post('http://localhost:8080/bookservice/api/import' + '/' + type, type);
     }
 }
