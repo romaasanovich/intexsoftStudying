@@ -27,7 +27,6 @@ import java.util.concurrent.locks.ReentrantLock;
 @Service
 public class ImporterJsonImpl implements Importer {
 
-    private ReentrantLock lock = new ReentrantLock();
     private final Logger logger = LoggerFactory.getLogger("log");
     @Autowired
     PublisherService publisherService;
