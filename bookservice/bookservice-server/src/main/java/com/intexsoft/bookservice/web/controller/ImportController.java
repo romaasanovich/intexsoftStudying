@@ -26,7 +26,7 @@ public class ImportController {
     @Autowired
     private List<Importer> importers;
 
-    @Scheduled(cron = "0 0 3 * * ?")
+
     @PostMapping(path = "/import/{type}")
     public ResponseEntity importEntities(@PathVariable(name = "type") TypeImport typeImport) throws InterruptedException {
         if (!lock.isHeldByCurrentThread()) {
