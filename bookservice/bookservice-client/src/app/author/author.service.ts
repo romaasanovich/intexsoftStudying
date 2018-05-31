@@ -23,6 +23,6 @@ export class AuthorService {
     }
 
     public deleteAuthor(author: Author) {
-        return this.http.delete('http://localhost:8080/bookservice/api/author' + '/' + author.id.toString());
+        return this.http.delete(`http://localhost:8080/bookservice/api/author/${author.id.toString()}`);
     }
 }
