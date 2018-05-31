@@ -601,7 +601,7 @@ var AuthorService = /** @class */ (function () {
         return this.http.post('http://localhost:8080/bookservice/api/author', author);
     };
     AuthorService.prototype.deleteAuthor = function (author) {
-        return this.http.delete('http://localhost:8080/bookservice/api/author' + '/' + author.id.toString());
+        return this.http.delete("http://localhost:8080/bookservice/api/author/" + author.id.toString());
     };
     AuthorService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])(),
@@ -721,7 +721,7 @@ var BookService = /** @class */ (function () {
         return this.http.post('http://localhost:8080/bookservice/api/book', book);
     };
     BookService.prototype.deleteBook = function (book) {
-        return this.http.delete('http://localhost:8080/bookservice/api/book' + '/' + book.id.toString());
+        return this.http.delete("http://localhost:8080/bookservice/api/book/" + book.id.toString());
     };
     BookService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])(),
@@ -899,7 +899,7 @@ var ImportService = /** @class */ (function () {
         this.http = http;
     }
     ImportService.prototype.import = function (type) {
-        return this.http.post('http://localhost:8080/bookservice/api/import' + '/' + type, type);
+        return this.http.post("http://localhost:8080/bookservice/api/import/" + type, type);
     };
     ImportService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])(),

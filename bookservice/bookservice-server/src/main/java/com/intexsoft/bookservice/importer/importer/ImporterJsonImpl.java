@@ -22,7 +22,6 @@ import javax.transaction.Transactional;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.locks.ReentrantLock;
 
 @Service
 public class ImporterJsonImpl implements Importer {
@@ -34,7 +33,7 @@ public class ImporterJsonImpl implements Importer {
     AuthorService authorService;
     @Autowired
     BookService bookService;
-    @Value("${jsonImport}")
+    @Value("classpath:importFiles/entity.json")
     String jsonPath;
 
     @Override
@@ -45,7 +44,7 @@ public class ImporterJsonImpl implements Importer {
 
     @Transactional
     @Override
-    public void importToDb() {
+    public boolean importToDb() {
         try {
             String jsonLine = "";
             try {
@@ -66,9 +65,10 @@ public class ImporterJsonImpl implements Importer {
             logger.info("Publishers are import");
             importBooksToDB(books);
             logger.info("Books are import");
+            return true;
         } catch (IOException ex) {
             logger.error("Wrong Json Structure: ", ex);
-
+            return false;
         }
     }
 

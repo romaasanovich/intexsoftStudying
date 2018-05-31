@@ -34,7 +34,7 @@ public class ImporterXmlImpl implements Importer {
     AuthorService authorService;
     @Autowired
     BookService bookService;
-    @Value("${xmlImport}")
+    @Value("classpath:importFiles/entity.xml")
     private String xmlPath;
 
     @Override
@@ -44,7 +44,7 @@ public class ImporterXmlImpl implements Importer {
 
     @Transactional
     @Override
-    public void importToDb() {
+    public boolean importToDb() {
         try {
             Reader reader = new Reader();
             Converter converter = new Converter();
@@ -59,12 +59,16 @@ public class ImporterXmlImpl implements Importer {
             logger.info("Authors are import");
             importBooksToDB(books);
             logger.info("Books are import");
+            return true;
         } catch (NullPointerException ex) {
             logger.error("File not found: ", ex);
+            return false;
         } catch (IOException ex1) {
             logger.error("File not found: ", ex1);
+            return false;
         } catch (JAXBException er) {
             logger.error("Wrong XML structure: ", er);
+            return false;
         }
     }
 

@@ -7,5 +7,5 @@ public interface Importer {
     TypeImport getType();
 
     @PreAuthorize("hasRole('ADMIN')")
-    void importToDb();
+    boolean importToDb();
 }

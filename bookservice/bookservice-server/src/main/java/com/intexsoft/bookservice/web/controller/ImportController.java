@@ -22,6 +22,7 @@ public class ImportController {
 
     private final Logger logger = LoggerFactory.getLogger("log");
     private ReentrantLock lock = new ReentrantLock();
+
     @Autowired
     private List<Importer> importers;
 
@@ -33,7 +34,7 @@ public class ImportController {
                 logger.info("Thread lock the lock");
                 try {
                     logger.info("Start import to db");
-                    Thread.sleep(3000);
+                    Thread.sleep(1000);
                     Importer importService = importers.stream().filter((s) -> s.getType().equals(typeImport)).findFirst().orElse(null);
                     if (importService != null) {
                         logger.info("Import running");
