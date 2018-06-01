@@ -1,3 +1,4 @@
+import com.google.code.tempusfugit.concurrency.ConcurrentTestRunner;
 import com.intexsoft.bookservice.importer.importer.Importer;
 import com.intexsoft.bookservice.importer.importer.ImporterJsonImpl;
 import com.intexsoft.bookservice.importer.importer.ImporterXmlImpl;
@@ -11,23 +12,23 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.powermock.api.mockito.mockpolicies.Slf4jMockPolicy;
 import org.powermock.core.classloader.annotations.MockPolicy;
-import org.powermock.modules.junit4.PowerMockRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.locks.ReentrantLock;
 
 import static org.mockito.Mockito.*;
-import static org.powermock.api.mockito.PowerMockito.mockStatic;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@RunWith(PowerMockRunner.class)
+@RunWith(ConcurrentTestRunner.class)
 @MockPolicy(Slf4jMockPolicy.class)
 public class ImportControllerTest {
 
     private MockMvc mockMvc;
+    private static  final ReentrantLock reentrantLock = new ReentrantLock();
 
     @Mock
     private ImporterJsonImpl importerJson;
@@ -41,11 +42,11 @@ public class ImportControllerTest {
     @Before
     public void init() {
         MockitoAnnotations.initMocks(this);
-        List<Importer> importers = Arrays.asList(importerXml, importerJson);
         when(importerJson.getType()).thenReturn(TypeImport.json);
         when(importerXml.getType()).thenReturn(TypeImport.xml);
+        List<Importer> importers = Arrays.asList(importerXml, importerJson);
         importController.setImporters(importers);
-        mockStatic(Importer.class);
+        importController.setLock(reentrantLock);
         mockMvc = MockMvcBuilders
                 .standaloneSetup(importController)
                 .build();
@@ -65,14 +66,15 @@ public class ImportControllerTest {
     }
 
     @Test
-    public void callImport_xml_true() {
+    public void callImport_xml_true() throws InterruptedException {
+        Thread.sleep(2500);
         when(importerXml.importToDb()).thenReturn(true);
         try {
             mockMvc.perform(post("/api/import/xml"))
-                    .andExpect(status().isOk());
+                    .andExpect(status().is4xxClientError());
         } catch (Exception e) {
             e.printStackTrace();
         }
-        verify(importerXml, times(1)).importToDb();
+        verify(importerXml, times(0)).importToDb();
     }
 }

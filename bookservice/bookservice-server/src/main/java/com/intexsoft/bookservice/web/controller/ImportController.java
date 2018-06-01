@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 @RestController
 @RequestMapping("/api")
+@PreAuthorize("hasRole('ADMIN')")
 public class ImportController {
 
     private final Logger logger = LoggerFactory.getLogger("log");
@@ -34,7 +36,7 @@ public class ImportController {
                 logger.info("Thread lock the lock");
                 try {
                     logger.info("Start import to db");
-                    Thread.sleep(1000);
+                    Thread.sleep(5000);
                     Importer importService = importers.stream().filter((s) -> s.getType().equals(typeImport)).findFirst().get();
                     logger.info("Import running");
                     Boolean isImport = importService.importToDb();
@@ -64,5 +66,9 @@ public class ImportController {
 
     public void setImporters(List<Importer> importers) {
         this.importers = importers;
+    }
+
+    public void setLock(ReentrantLock lock){
+        this.lock = lock;
     }
 }
