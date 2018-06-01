@@ -34,7 +34,7 @@ public class ImporterXmlImpl implements Importer {
     AuthorService authorService;
     @Autowired
     BookService bookService;
-    @Value("classpath:importFiles/entity.xml")
+    @Value("${xmlImportPath}")
     private String xmlPath;
 
     @Override

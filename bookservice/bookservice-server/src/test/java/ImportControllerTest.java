@@ -52,7 +52,6 @@ public class ImportControllerTest {
 
     }
 
-
     @Test
     public void callImport_json_true() {
         when(importerJson.importToDb()).thenReturn(true);
@@ -62,7 +61,18 @@ public class ImportControllerTest {
         } catch (Exception e) {
             e.printStackTrace();
         }
-//        verify(importerJson, times(2)).importToDb();
-//        verifyNoMoreInteractions(importerJson);
+        verify(importerJson, times(1)).importToDb();
+    }
+
+    @Test
+    public void callImport_xml_true() {
+        when(importerXml.importToDb()).thenReturn(true);
+        try {
+            mockMvc.perform(post("/api/import/xml"))
+                    .andExpect(status().isOk());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        verify(importerXml, times(1)).importToDb();
     }
 }

@@ -7,13 +7,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.concurrent.locks.ReentrantLock;
 
 @RestController
@@ -35,15 +35,19 @@ public class ImportController {
                 try {
                     logger.info("Start import to db");
                     Thread.sleep(1000);
-                    Importer importService = importers.stream().filter((s) -> s.getType().equals(typeImport)).findFirst().orElse(null);
-                    if (importService != null) {
-                        logger.info("Import running");
-                        importService.importToDb();
+                    Importer importService = importers.stream().filter((s) -> s.getType().equals(typeImport)).findFirst().get();
+                    logger.info("Import running");
+                    Boolean isImport = importService.importToDb();
+                    if (isImport.equals(true)) {
                         logger.info("Import is OK");
                         return new ResponseEntity(HttpStatus.OK);
                     } else {
+                        logger.info("Import is have an error");
                         return new ResponseEntity(HttpStatus.BAD_REQUEST);
                     }
+                } catch (NoSuchElementException ex) {
+                    logger.error("Importer not found");
+                    return new ResponseEntity(HttpStatus.BAD_REQUEST);
                 } finally {
                     logger.info("Lock is unlocked");
                     lock.unlock();

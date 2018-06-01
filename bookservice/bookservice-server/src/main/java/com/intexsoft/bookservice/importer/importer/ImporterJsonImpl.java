@@ -33,7 +33,7 @@ public class ImporterJsonImpl implements Importer {
     AuthorService authorService;
     @Autowired
     BookService bookService;
-    @Value("classpath:importFiles/entity.json")
+    @Value("${jsonImportPath}")
     String jsonPath;
 
     @Override
@@ -52,6 +52,7 @@ public class ImporterJsonImpl implements Importer {
                 jsonLine = reader.readFile(jsonPath);
             } catch (IOException ex) {
                 logger.error("File not found: ", ex);
+                return false;
             }
             Converter converter = new Converter();
             ImportEntityRepository entityRep = converter.fromJsonToEntityRep(jsonLine);
