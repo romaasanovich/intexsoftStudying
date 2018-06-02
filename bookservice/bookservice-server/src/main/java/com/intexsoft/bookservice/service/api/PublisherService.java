@@ -10,14 +10,12 @@ public interface PublisherService {
 
     List<Publisher> getAllPublishers();
 
-    @PreAuthorize("hasRole('ADMIN') OR hasRole('CUSTOMER')")
     Optional<Publisher> getPublisherByID(Integer id);
 
     void add(Publisher publisher);
 
     void delete(Publisher publisher);
 
-    @PreAuthorize("hasRole('ADMIN')")
     Publisher getByUUID(String UUID);
 
 }

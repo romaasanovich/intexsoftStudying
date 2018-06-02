@@ -16,7 +16,6 @@ public interface BookService {
 
     void delete(Book book);
 
-    @PreAuthorize("hasRole('ADMIN')")
     Book getByUUID(String UUID);
 
 }

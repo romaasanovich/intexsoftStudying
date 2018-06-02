@@ -14,10 +14,8 @@ public interface AuthorService {
 
     void delete(Author author);
 
-    @PreAuthorize("hasRole('ADMIN') OR hasRole('CUSTOMER')")
     Optional<Author> getAuthorByID(Integer id);
 
-    @PreAuthorize("hasRole('ADMIN')")
     Author getByUUID(String UUID);
 
 }

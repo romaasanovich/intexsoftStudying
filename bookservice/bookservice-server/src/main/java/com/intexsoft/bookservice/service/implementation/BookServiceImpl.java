@@ -31,7 +31,6 @@ public class BookServiceImpl implements BookService {
         return bookRepository.findById(id);
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
     @Override
     public void add(Book book) {
         bookRepository.save(book);
