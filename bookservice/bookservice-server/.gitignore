@@ -2,7 +2,7 @@
 /out
 /node_modules
 .mvn/wrapper/maven-wrapper.jar 
- 
+/src/main/webapp/*   
 
 ### IntelliJ IDEA ### 
 .idea 

@@ -2,8 +2,8 @@
 /out
 /node_modules
 .mvn/wrapper/maven-wrapper.jar 
+/bookservice-server/src/main/webapp/*
  
-
 ### IntelliJ IDEA ### 
 .idea 
 *.iws 

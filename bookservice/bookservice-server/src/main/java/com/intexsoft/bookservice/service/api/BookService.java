@@ -1,7 +1,6 @@
 package com.intexsoft.bookservice.service.api;
 
 import com.intexsoft.bookservice.dao.entity.Book;
-import org.springframework.security.access.prepost.PreAuthorize;
 
 import java.util.List;
 import java.util.Optional;

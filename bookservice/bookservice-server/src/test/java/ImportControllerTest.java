@@ -1,4 +1,6 @@
 import com.google.code.tempusfugit.concurrency.ConcurrentTestRunner;
+import com.intexsoft.bookservice.importer.executor.ImportExecutor;
+import com.intexsoft.bookservice.importer.executor.ImportExecutorImpl;
 import com.intexsoft.bookservice.importer.importer.Importer;
 import com.intexsoft.bookservice.importer.importer.ImporterJsonImpl;
 import com.intexsoft.bookservice.importer.importer.ImporterXmlImpl;
@@ -27,8 +29,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @MockPolicy(Slf4jMockPolicy.class)
 public class ImportControllerTest {
 
+    private static ReentrantLock reentrantLock = new ReentrantLock();
+    private final ImportExecutor importExecutor = new ImportExecutorImpl();
     private MockMvc mockMvc;
-    private static  final ReentrantLock reentrantLock = new ReentrantLock();
 
     @Mock
     private ImporterJsonImpl importerJson;
@@ -45,8 +48,8 @@ public class ImportControllerTest {
         when(importerJson.getType()).thenReturn(TypeImport.json);
         when(importerXml.getType()).thenReturn(TypeImport.xml);
         List<Importer> importers = Arrays.asList(importerXml, importerJson);
+        importExecutor.setLock(reentrantLock);
         importController.setImporters(importers);
-        importController.setLock(reentrantLock);
         mockMvc = MockMvcBuilders
                 .standaloneSetup(importController)
                 .build();

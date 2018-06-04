@@ -4,7 +4,6 @@ import com.intexsoft.bookservice.dao.entity.Book;
 import com.intexsoft.bookservice.dao.repository.BookRepository;
 import com.intexsoft.bookservice.service.api.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
