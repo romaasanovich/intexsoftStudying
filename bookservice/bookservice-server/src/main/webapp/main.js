@@ -41,7 +41,7 @@ module.exports = "label {\n    display: inline-block;\n    float: left;\n    cle
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"col-md-6\">\n    <h2 class=\"text-center\">Add Author</h2>\n    <form>\n        <div class=\"form-group\">\n            <label for=\"name\">Name:</label>\n            <input type=\"text\" [(ngModel)]=\"author.name\" placeholder=\"Name\" name=\"Name\" class=\"form-control\" id=\"name\">\n        </div>\n\n        <div class=\"form-group\">\n            <label for=\"bio\">Bio:</label>\n            <input type=\"text\" [(ngModel)]=\"author.bio\" placeholder=\"Bio\" name=\"Bio\" class=\"form-control\" id=\"bio\">\n        </div>\n\n        <div class=\"form-group\">\n            <label for=\"birthDay\">Birth Day:</label>\n            <input type=\"date\" [(ngModel)]=\"birthDay\" placeholder=\"BirthDay\" name=\"BirthDay\" class=\"form-control\"\n                   id=\"birthDay\">\n        </div>\n\n        <button class=\"btn btn-success\" (click)=\"addAuthor()\">Add</button>\n    </form>\n</div>\n"
+module.exports = "<div class=\"col-md-6\">\n    <h2 class=\"text-center\">Add Author</h2>\n\n    <div>\n        <mat-form-field class=\"example-form-field\">\n            <input matInput type=\"text\" placeholder=\"Name\" [(ngModel)]=\"author.name\"/>\n            <button mat-button *ngIf=\"value\" matSuffix mat-icon-button aria-label=\"Clear\" (click)=\"value=''\">\n                <mat-icon>close</mat-icon>\n            </button>\n        </mat-form-field>\n    </div>\n    <div>\n        <mat-form-field class=\"example-form-field\">\n            <input matInput type=\"text\" placeholder=\"Bio\" [(ngModel)]=\"author.bio\"/>\n            <button mat-button *ngIf=\"value\" matSuffix mat-icon-button aria-label=\"Clear\" (click)=\"value=''\">\n                <mat-icon>close</mat-icon>\n            </button>\n        </mat-form-field>\n    </div>\n    <div>\n        <mat-form-field>\n            <input matInput [matDatepicker]=\"picker\" placeholder=\"Birth Day\" [(ngModel)]=\"author.birthDay\">\n            <mat-datepicker-toggle matSuffix [for]=\"picker\"></mat-datepicker-toggle>\n            <mat-datepicker #picker></mat-datepicker>\n        </mat-form-field>\n    </div>\n    <div>\n        <button mat-raised-button (click)=\"addAuthor()\" color=\"primary\">Add Author</button>\n    </div>\n\n</div>\n"
 
 /***/ }),
 
@@ -77,10 +77,8 @@ var AddAuthorComponent = /** @class */ (function () {
         this.router = router;
         this.authorService = authorService;
         this.author = new _entity_author_model__WEBPACK_IMPORTED_MODULE_2__["Author"]();
-        this.birthDay = new Date().toISOString().substring(0, 10);
     }
     AddAuthorComponent.prototype.addAuthor = function () {
-        this.author.birthDay = this.birthDay;
         this.authorService.addAuthor(this.author).subscribe(function (data) {
             alert('Author created successfully.');
         });
@@ -118,7 +116,7 @@ module.exports = "label {\n    display: inline-block;\n    float: left;\n    cle
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"col-md-6\">\n    <h2 class=\"text-center\">Add Book</h2>\n    <form>\n        <div class=\"form-group\">\n            <label for=\"name\">Name:</label>\n            <input type=\"text\" [(ngModel)]=\"book.name\" placeholder=\"Name\" name=\"Name\" class=\"form-control\" id=\"name\">\n        </div>\n\n        <div class=\"form-group\">\n            <label for=\"description\">Description:</label>\n            <input type=\"text\" [(ngModel)]=\"book.description\" placeholder=\"Description\" name=\"Description\"\n                   class=\"form-control\" id=\"description\">\n        </div>\n\n        <div class=\"form-group\">\n            <label for=\"price\">Price :</label>\n            <input type=\"price\" [(ngModel)]=\"book.price\" placeholder=\"Price\" name=\"Price\" class=\"form-control\"\n                   id=\"price\">\n        </div>\n\n        <div class=\"form-group\">\n            <label for=\"publishDate\">Birth Day:</label>\n            <input type=\"date\" [(ngModel)]=\"book.publishDate\" placeholder=\"PublishDate\" name=\"PublishDate\"\n                   class=\"form-control\" id=\"publishDate\">\n        </div>\n        <br>\n        <div class=\"form-group\">\n            <label name=\"publisher\">Publisher:</label>\n            <select [(ngModel)]=\"book.publisher\" name=\"publisher\">\n                <option *ngFor=\"let item of publishers\" [ngValue]=\"item\">{{item.name}}</option>\n            </select>\n        </div>\n        <br>\n        <div class=\"form-group\">\n            <label name=\"author\">Authors:</label>\n            <select multiple [(ngModel)]=\"book.authors\" name=\"author\">\n                <option *ngFor=\"let item of authors\" [ngValue]=\"item\">{{item.name}}</option>\n            </select>\n        </div>\n        <button class=\"btn btn-success\" (click)=\"addBook()\">Add</button>\n    </form>\n</div>\n"
+module.exports = "<div class=\"col-md-6\">\n    <h2 class=\"text-center\">Add Author</h2>\n\n    <div>\n        <mat-form-field class=\"example-form-field\">\n            <input matInput type=\"text\" placeholder=\"Name\" [(ngModel)]=\"book.name\"/>\n            <button mat-button *ngIf=\"value\" matSuffix mat-icon-button aria-label=\"Clear\" (click)=\"value=''\">\n                <mat-icon>close</mat-icon>\n            </button>\n        </mat-form-field>\n    </div>\n    <div>\n        <mat-form-field class=\"example-form-field\">\n            <input matInput type=\"text\" placeholder=\"Description\" [(ngModel)]=\"book.description\"/>\n            <button mat-button *ngIf=\"value\" matSuffix mat-icon-button aria-label=\"Clear\" (click)=\"value=''\">\n                <mat-icon>close</mat-icon>\n            </button>\n        </mat-form-field>\n    </div>\n    <div>\n        <mat-form-field class=\"example-form-field\">\n            <input matInput type=\"text\" placeholder=\"Price\" [(ngModel)]=\"book.price\"/>\n            <button mat-button *ngIf=\"value\" matSuffix mat-icon-button aria-label=\"Clear\" (click)=\"value=''\">\n                <mat-icon>close</mat-icon>\n            </button>\n        </mat-form-field>\n    </div>\n    <div>\n        <mat-form-field>\n            <input matInput [matDatepicker]=\"picker\" placeholder=\"Publish Date\" [(ngModel)]=\"book.publishDate\">\n            <mat-datepicker-toggle matSuffix [for]=\"picker\"></mat-datepicker-toggle>\n            <mat-datepicker #picker></mat-datepicker>\n        </mat-form-field>\n    </div>\n    <div>\n        <mat-form-field>\n            <mat-select placeholder=\"Select Publisher\" [(ngModel)]=\"book.publisher\" name=\"publisher\" >\n                <mat-option *ngFor=\"let publisher of publishers\" [value]=\"publisher\">\n                    {{ publisher.name }}\n                </mat-option>\n            </mat-select>\n        </mat-form-field>\n    </div>\n    <div>\n        <mat-form-field>\n            <mat-select placeholder=\"Select Authors\"  multiple>\n                <mat-option *ngFor=\"let author of authors\" [value]=\"book.authors\">{{author.name}}</mat-option>\n            </mat-select>\n        </mat-form-field>\n    </div>\n    <div>\n        <button mat-raised-button (click)=\"addBook()\" color=\"primary\">Add Book</button>\n    </div>\n\n</div>\n\n"
 
 /***/ }),
 
@@ -138,6 +136,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _book_book_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../book/book.service */ "./src/app/book/book.service.ts");
 /* harmony import */ var _author_author_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../author/author.service */ "./src/app/author/author.service.ts");
 /* harmony import */ var _publisher_publisher_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../publisher/publisher.service */ "./src/app/publisher/publisher.service.ts");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -153,6 +152,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var AddBookComponent = /** @class */ (function () {
     function AddBookComponent(router, bookService, authorService, publService) {
         this.router = router;
@@ -160,7 +160,7 @@ var AddBookComponent = /** @class */ (function () {
         this.authorService = authorService;
         this.publService = publService;
         this.book = new _entity_book_model__WEBPACK_IMPORTED_MODULE_2__["Book"]();
-        this.publishDate = new Date().toISOString().substring(0, 10);
+        this.authorsList = new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"]();
     }
     AddBookComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -174,7 +174,6 @@ var AddBookComponent = /** @class */ (function () {
         });
     };
     AddBookComponent.prototype.addBook = function () {
-        this.book.publishDate = this.publishDate;
         this.bookService.addBook(this.book)
             .subscribe(function (data) {
             alert('Book created successfully.');
@@ -203,7 +202,7 @@ var AddBookComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "label {\n    display: inline-block;\n    float: left;\n    clear: left;\n    width: 75px;\n    text-align: left;\n}\n\ninput {\n    display: inline-block;\n    float: left;\n}\n\n.form-group {\n    line-height: 1.5;\n}\n"
+module.exports = "button {\n    margin-left: 15px;\n}"
 
 /***/ }),
 
@@ -214,7 +213,7 @@ module.exports = "label {\n    display: inline-block;\n    float: left;\n    cle
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"col-md-6\">\n    <h2 class=\"text-center\">Add Publisher</h2>\n    <form>\n\n        <div class=\"form-group\">\n            <label for=\"name\">Name:</label>\n            <input type=\"text\" [(ngModel)]=\"publisher.name\" placeholder=\"Name\" name=\"Name\" class=\"form-control\"\n                   id=\"name\">\n        </div>\n        <button class=\"btn btn-success\" (click)=\"addPublisher()\">Add</button>\n    </form>\n</div>\n"
+module.exports = "<div class=\"col-md-6\">\n    <h2 class=\"text-center\">Add Publisher</h2>\n    <div>\n        <mat-form-field class=\"example-form-field\">\n            <input matInput type=\"text\" placeholder=\"Name\" [(ngModel)]=\"publisher.name\"/>\n            <button mat-button *ngIf=\"value\" matSuffix mat-icon-button aria-label=\"Clear\" (click)=\"value=''\">\n                <mat-icon>close</mat-icon>\n            </button>\n        </mat-form-field>\n        <button mat-raised-button (click)=\"addPublisher()\" color=\"primary\">Add Publisher</button>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -345,7 +344,7 @@ var AppRoutingModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = ".example-button-row {\n    display: flex;\n    align-items: center;\n    justify-content: space-around;\n}\n\na {\n    margin: 10px;\n}\n"
 
 /***/ }),
 
@@ -356,7 +355,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container-fluid\">\n    <div class=\"col-md-offset-1\">\n        <h1>\n            Welcome to !\n        </h1>\n    </div>\n    <div>\n        <a routerLink=\"/books\"> List Books</a>\n        <a style=\"margin-left:15px\" routerLink=\"/publishers\"> List Publishers</a>\n        <a style=\"margin-left:15px\" routerLink=\"/authors\"> List Authors</a>\n        <a style=\"margin-left:15px\" routerLink=\"/import\"> Import</a>\n    </div>\n    <br>\n    <a routerLink=\"/publisher\">Add Publisher</a>\n    <a style=\"margin-left:15px\" routerLink=\"/author\">Add Author</a>\n    <a style=\"margin-left:15px\" routerLink=\"/book\">Add Book</a>\n    <br/>\n    <router-outlet></router-outlet>\n</div>\n"
+module.exports = "<div class=\"container-fluid\">\n    <div class=\"col-md-offset-1\">\n        <h1 align=\"center\" colour=\"primary\">\n            Welcome to Book-service !\n        </h1>\n    </div>\n    <div>\n        <a mat-raised-button routerLink=\"/books\" color=\"primary\">Show Books</a>\n        <a mat-raised-button routerLink=\"/publishers\" color=\"primary\">Show Publishers</a>\n        <a mat-raised-button routerLink=\"/authors\" color=\"primary\">Show Authors</a>\n        <a mat-raised-button routerLink=\"/import\" color=\"primary\">Import</a>\n    </div>\n    <div>\n        <a mat-raised-button routerLink=\"/publisher\" color=\"primary\">Add Publisher</a>\n        <a mat-raised-button routerLink=\"/author\" color=\"primary\">Add Author</a>\n        <a mat-raised-button routerLink=\"/book\" color=\"primary\">Add Book</a>\n    </div>\n    <router-outlet></router-outlet>\n</div>\n"
 
 /***/ }),
 
@@ -412,25 +411,37 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _book_book_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./book/book.component */ "./src/app/book/book.component.ts");
 /* harmony import */ var _app_routing_app_routing_module__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./app-routing/app-routing.module */ "./src/app/app-routing/app-routing.module.ts");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
-/* harmony import */ var _book_book_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./book/book.service */ "./src/app/book/book.service.ts");
-/* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./login/login.component */ "./src/app/login/login.component.ts");
-/* harmony import */ var _login_login_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./login/login.service */ "./src/app/login/login.service.ts");
-/* harmony import */ var _publisher_publisher_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./publisher/publisher.component */ "./src/app/publisher/publisher.component.ts");
-/* harmony import */ var _author_author_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./author/author.component */ "./src/app/author/author.component.ts");
-/* harmony import */ var _publisher_publisher_service__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./publisher/publisher.service */ "./src/app/publisher/publisher.service.ts");
-/* harmony import */ var _author_author_service__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./author/author.service */ "./src/app/author/author.service.ts");
-/* harmony import */ var _add_publisher_add_publisher_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./add-publisher/add-publisher.component */ "./src/app/add-publisher/add-publisher.component.ts");
-/* harmony import */ var _add_author_add_author_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./add-author/add-author.component */ "./src/app/add-author/add-author.component.ts");
-/* harmony import */ var _add_book_add_book_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./add-book/add-book.component */ "./src/app/add-book/add-book.component.ts");
-/* harmony import */ var _import_import_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./import/import.component */ "./src/app/import/import.component.ts");
-/* harmony import */ var _import_import_service__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./import/import.service */ "./src/app/import/import.service.ts");
+/* harmony import */ var _book_book_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./book/book.service */ "./src/app/book/book.service.ts");
+/* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./login/login.component */ "./src/app/login/login.component.ts");
+/* harmony import */ var _login_login_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./login/login.service */ "./src/app/login/login.service.ts");
+/* harmony import */ var _publisher_publisher_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./publisher/publisher.component */ "./src/app/publisher/publisher.component.ts");
+/* harmony import */ var _author_author_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./author/author.component */ "./src/app/author/author.component.ts");
+/* harmony import */ var _publisher_publisher_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./publisher/publisher.service */ "./src/app/publisher/publisher.service.ts");
+/* harmony import */ var _author_author_service__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./author/author.service */ "./src/app/author/author.service.ts");
+/* harmony import */ var _add_publisher_add_publisher_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./add-publisher/add-publisher.component */ "./src/app/add-publisher/add-publisher.component.ts");
+/* harmony import */ var _add_author_add_author_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./add-author/add-author.component */ "./src/app/add-author/add-author.component.ts");
+/* harmony import */ var _add_book_add_book_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./add-book/add-book.component */ "./src/app/add-book/add-book.component.ts");
+/* harmony import */ var _import_import_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./import/import.component */ "./src/app/import/import.component.ts");
+/* harmony import */ var _import_import_service__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./import/import.service */ "./src/app/import/import.service.ts");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _angular_material_button__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @angular/material/button */ "./node_modules/@angular/material/esm5/button.es5.js");
+/* harmony import */ var _angular_material_input__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! @angular/material/input */ "./node_modules/@angular/material/esm5/input.es5.js");
+/* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
+/* harmony import */ var _angular_material_datepicker__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! @angular/material/datepicker */ "./node_modules/@angular/material/esm5/datepicker.es5.js");
+/* harmony import */ var _angular_material_select__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! @angular/material/select */ "./node_modules/@angular/material/esm5/select.es5.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
+
+
+
+
 
 
 
@@ -458,21 +469,29 @@ var AppModule = /** @class */ (function () {
             declarations: [
                 _app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"],
                 _book_book_component__WEBPACK_IMPORTED_MODULE_3__["BookComponent"],
-                _login_login_component__WEBPACK_IMPORTED_MODULE_8__["LoginComponent"],
-                _publisher_publisher_component__WEBPACK_IMPORTED_MODULE_10__["PublisherComponent"],
-                _author_author_component__WEBPACK_IMPORTED_MODULE_11__["AuthorComponent"],
-                _add_publisher_add_publisher_component__WEBPACK_IMPORTED_MODULE_14__["AddPublisherComponent"],
-                _add_author_add_author_component__WEBPACK_IMPORTED_MODULE_15__["AddAuthorComponent"],
-                _add_book_add_book_component__WEBPACK_IMPORTED_MODULE_16__["AddBookComponent"],
-                _import_import_component__WEBPACK_IMPORTED_MODULE_17__["ImportComponent"]
+                _login_login_component__WEBPACK_IMPORTED_MODULE_7__["LoginComponent"],
+                _publisher_publisher_component__WEBPACK_IMPORTED_MODULE_9__["PublisherComponent"],
+                _author_author_component__WEBPACK_IMPORTED_MODULE_10__["AuthorComponent"],
+                _add_publisher_add_publisher_component__WEBPACK_IMPORTED_MODULE_13__["AddPublisherComponent"],
+                _add_author_add_author_component__WEBPACK_IMPORTED_MODULE_14__["AddAuthorComponent"],
+                _add_book_add_book_component__WEBPACK_IMPORTED_MODULE_15__["AddBookComponent"],
+                _import_import_component__WEBPACK_IMPORTED_MODULE_16__["ImportComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
                 _app_routing_app_routing_module__WEBPACK_IMPORTED_MODULE_4__["AppRoutingModule"],
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClientModule"],
-                _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormsModule"]
+                _angular_forms__WEBPACK_IMPORTED_MODULE_24__["FormsModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_18__["MatTableModule"],
+                _angular_material_button__WEBPACK_IMPORTED_MODULE_19__["MatButtonModule"],
+                _angular_material_input__WEBPACK_IMPORTED_MODULE_20__["MatInputModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_18__["MatIconModule"],
+                _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_21__["BrowserAnimationsModule"],
+                _angular_material_datepicker__WEBPACK_IMPORTED_MODULE_22__["MatDatepickerModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_18__["MatNativeDateModule"],
+                _angular_material_select__WEBPACK_IMPORTED_MODULE_23__["MatSelectModule"]
             ],
-            providers: [_book_book_service__WEBPACK_IMPORTED_MODULE_7__["BookService"], _login_login_service__WEBPACK_IMPORTED_MODULE_9__["LoginService"], _publisher_publisher_service__WEBPACK_IMPORTED_MODULE_12__["PublisherService"], _author_author_service__WEBPACK_IMPORTED_MODULE_13__["AuthorService"], _import_import_service__WEBPACK_IMPORTED_MODULE_18__["ImportService"]],
+            providers: [_book_book_service__WEBPACK_IMPORTED_MODULE_6__["BookService"], _login_login_service__WEBPACK_IMPORTED_MODULE_8__["LoginService"], _publisher_publisher_service__WEBPACK_IMPORTED_MODULE_11__["PublisherService"], _author_author_service__WEBPACK_IMPORTED_MODULE_12__["AuthorService"], _import_import_service__WEBPACK_IMPORTED_MODULE_17__["ImportService"]],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"]]
         })
     ], AppModule);
@@ -490,7 +509,7 @@ var AppModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "table {\n    width: 100%;\n}\n\n.mat-form-field {\n    font-size: 14px;\n    width: 100%;\n}\n"
 
 /***/ }),
 
@@ -501,7 +520,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"col-md-6\">\n    <h2> Authors </h2>\n\n    <table class=\"table table-striped\">\n        <thead>\n        <tr>\n            <th>Id</th>\n            <th>Name</th>\n            <th>Bio</th>\n            <th>BirthDay</th>\n        </tr>\n        </thead>\n        <tbody>\n        <tr *ngFor=\"let author of authors\">\n            <td>{{author.id}}</td>\n            <td>{{author.name}}</td>\n            <td>{{author.bio}}</td>\n            <td>{{author.birthDay}}</td>\n            <td>\n                <button class=\"btn btn-danger\" (click)=\"deleteAuthor(author)\"> Delete Author</button>\n            </td>\n        </tr>\n        </tbody>\n    </table>\n</div>\n"
+module.exports = "<div>\n\n    <table mat-table [dataSource]=\"authors\" class=\"mat-elevation-z8\">\n\n        <ng-container matColumnDef=\"id\">\n            <th mat-header-cell *matHeaderCellDef> Id</th>\n            <td mat-cell *matCellDef=\"let element\"> {{element.id}}</td>\n        </ng-container>\n\n        <ng-container matColumnDef=\"name\">\n            <th mat-header-cell *matHeaderCellDef> Name</th>\n            <td mat-cell *matCellDef=\"let element\"> {{element.name}}</td>\n        </ng-container>\n\n        <ng-container matColumnDef=\"bio\">\n            <th mat-header-cell *matHeaderCellDef> Biography</th>\n            <td mat-cell *matCellDef=\"let element\"> {{element.bio}}</td>\n        </ng-container>\n\n        <ng-container matColumnDef=\"birthDay\">\n            <th mat-header-cell *matHeaderCellDef> Birth Day</th>\n            <td mat-cell *matCellDef=\"let element\"> {{element.birthDay}}</td>\n        </ng-container>\n\n        <ng-container matColumnDef=\"delete\">\n            <th mat-header-cell *matHeaderCellDef></th>\n            <td mat-cell *matCellDef=\"let element\">\n                <button mat-raised-button (click)=\"deleteAuthor(element)\" color=\"warn\">Delete</button>\n            </td>\n        </ng-container>\n\n        <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\n        <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\n    </table>\n</div>"
 
 /***/ }),
 
@@ -534,6 +553,7 @@ var AuthorComponent = /** @class */ (function () {
     function AuthorComponent(router, authorService) {
         this.router = router;
         this.authorService = authorService;
+        this.displayedColumns = ['id', 'name', 'bio', 'birthDay', 'delete'];
     }
     AuthorComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -621,7 +641,7 @@ var AuthorService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"col-md-6\">\n    <h2> Books </h2>\n    <table class=\"table table-striped\">\n        <thead>\n        <tr>\n            <th>Id</th>\n            <th>Name</th>\n            <th>Description</th>\n            <th>Price</th>\n            <th>Publisher</th>\n            <th>Publish Date</th>\n        </tr>\n        </thead>\n        <tbody>\n        <tr *ngFor=\"let book of books\">\n            <td>{{book.id}}</td>\n            <td>{{book.name}}</td>\n            <td>{{book.description}}</td>\n            <td>{{book.price}}</td>\n            <td>{{book.publisher.name}}</td>\n            <td>{{book.publishDate}}</td>\n            <td>\n                <button class=\"btn btn-danger\" (click)=\"deleteBook(book)\"> Delete Book</button>\n            </td>\n        </tr>\n        </tbody>\n    </table>\n</div>\n"
+module.exports = "<div>\n\n    <table mat-table [dataSource]=\"books\" class=\"mat-elevation-z8\">\n\n        <ng-container matColumnDef=\"id\">\n            <th mat-header-cell *matHeaderCellDef> Id</th>\n            <td mat-cell *matCellDef=\"let element\"> {{element.id}}</td>\n        </ng-container>\n\n        <ng-container matColumnDef=\"name\">\n            <th mat-header-cell *matHeaderCellDef> Name</th>\n            <td mat-cell *matCellDef=\"let element\"> {{element.name}}</td>\n        </ng-container>\n\n        <ng-container matColumnDef=\"description\">\n            <th mat-header-cell *matHeaderCellDef> Description</th>\n            <td mat-cell *matCellDef=\"let element\"> {{element.description}}</td>\n        </ng-container>\n\n        <ng-container matColumnDef=\"price\">\n            <th mat-header-cell *matHeaderCellDef> Price</th>\n            <td mat-cell *matCellDef=\"let element\"> {{element.price}}</td>\n        </ng-container>\n\n        <ng-container matColumnDef=\"publisher\">\n            <th mat-header-cell *matHeaderCellDef> Publisher</th>\n            <td mat-cell *matCellDef=\"let element\"> {{element.publisher.name}}</td>\n        </ng-container>\n\n        <ng-container matColumnDef=\"publishDate\">\n            <th mat-header-cell *matHeaderCellDef> Publisher</th>\n            <td mat-cell *matCellDef=\"let element\"> {{element.publishDateh}}</td>\n        </ng-container>\n\n        <ng-container matColumnDef=\"delete\">\n            <th mat-header-cell *matHeaderCellDef></th>\n            <td mat-cell *matCellDef=\"let element\">\n                <button mat-raised-button (click)=\"deleteBook(element)\" color=\"warn\">Delete</button>\n            </td>\n        </ng-container>\n\n        <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\n        <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\n    </table>\n</div>\n"
 
 /***/ }),
 
@@ -654,6 +674,7 @@ var BookComponent = /** @class */ (function () {
     function BookComponent(router, bookService) {
         this.router = router;
         this.bookService = bookService;
+        this.displayedColumns = ['id', 'name', 'description', 'price', 'publisher', 'publishDate', 'delete'];
     }
     BookComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -801,7 +822,7 @@ var Publisher = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "label {\n    display: inline-block;\n    float: left;\n    clear: left;\n    width: 100px;\n    text-align: left;\n}\n\n.form-group {\n    line-height: 2;\n}\n"
+module.exports = "label {\n    display: inline-block;\n    float: left;\n    clear: left;\n    width: 100px;\n    text-align: left;\n}\n\n.form-group {\n    line-height: 2;\n}\n\nbutton {\n    margin-left: 10px;\n}\n\n"
 
 /***/ }),
 
@@ -812,7 +833,7 @@ module.exports = "label {\n    display: inline-block;\n    float: left;\n    cle
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"col-md-6\">\n  <h2 class=\"text-center\">Add Book</h2>\n  <form>\n\n    <div class=\"form-group\">\n      <label name=\"import\">Type Import:</label>\n      <select [(ngModel)]=\"selImport\" name=\"import\">\n        <option *ngFor=\"let item of typeImport\" [ngValue]=\"item\">{{item}}</option>\n      </select>\n    </div>\n    <button class=\"btn btn-success\" (click)=\"import()\">Import</button>\n  </form>\n</div>\n"
+module.exports = "<div>\n    <div>\n        <mat-form-field>\n            <mat-select placeholder=\"Select type of import\"  [(ngModel)]=\"selImport\" name=\"typeImport\">\n                <mat-option *ngFor=\"let element of typeImport\" [value]=\"element\">\n                    {{ element }}\n                </mat-option>\n            </mat-select>\n        </mat-form-field>\n        <button mat-raised-button (click)=\"import()\" color=\"primary\">Import</button>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -1045,7 +1066,7 @@ var LoginService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "table {\n    width: 100%;\n}\n\n.mat-form-field {\n    font-size: 14px;\n    width: 100%;\n}"
 
 /***/ }),
 
@@ -1056,7 +1077,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"col-md-6\">\n    <h2> Publishers </h2>\n\n    <table class=\"table table-striped\">\n        <thead>\n        <tr>\n            <th>Id</th>\n            <th>Name</th>\n        </tr>\n        </thead>\n        <tbody>\n        <tr *ngFor=\"let publ of publishers\">\n            <td>{{publ.id}}</td>\n            <td>{{publ.name}}</td>\n            <td>\n                <button class=\"btn btn-danger\" (click)=\"deletePublisher(publ)\"> Delete Publisher</button>\n            </td>\n        </tr>\n        </tbody>\n    </table>\n</div>\n"
+module.exports = "<div>\n\n    <table mat-table [dataSource]=\"publishers\" class=\"mat-elevation-z8\">\n\n        <ng-container matColumnDef=\"id\">\n            <th mat-header-cell *matHeaderCellDef> Id</th>\n            <td mat-cell *matCellDef=\"let element\"> {{element.id}}</td>\n        </ng-container>\n\n        <ng-container matColumnDef=\"name\">\n            <th mat-header-cell *matHeaderCellDef> Name</th>\n            <td mat-cell *matCellDef=\"let element\"> {{element.name}}</td>\n        </ng-container>\n\n        <ng-container matColumnDef=\"delete\">\n            <th mat-header-cell *matHeaderCellDef></th>\n            <td mat-cell *matCellDef=\"let element\">\n                <button mat-raised-button (click)=\"deletePublisher(element)\" color=\"warn\">Delete</button>\n            </td>\n        </ng-container>\n\n\n        <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\n        <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\n    </table>\n</div>"
 
 /***/ }),
 
@@ -1089,6 +1110,7 @@ var PublisherComponent = /** @class */ (function () {
     function PublisherComponent(router, publisherService) {
         this.router = router;
         this.publisherService = publisherService;
+        this.displayedColumns = ['id', 'name', 'delete'];
     }
     PublisherComponent.prototype.ngOnInit = function () {
         var _this = this;

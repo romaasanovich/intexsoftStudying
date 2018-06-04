@@ -7,6 +7,7 @@ import {AuthorService} from '../author/author.service';
 import {PublisherService} from '../publisher/publisher.service';
 import {Publisher} from '../entity/publisher.model';
 import {Author} from '../entity/author.model';
+import {FormControl} from '@angular/forms';
 
 @Component({
     selector: 'app-add-book',
@@ -15,15 +16,13 @@ import {Author} from '../entity/author.model';
 })
 export class AddBookComponent implements OnInit {
 
-    publishDate;
     book: Book = new Book();
-
     publishers: Publisher[];
     authors: Author[];
+    authorsList = new FormControl();
 
     constructor(private router: Router, private bookService: BookService, private  authorService: AuthorService,
                 private  publService: PublisherService) {
-        this.publishDate = new Date().toISOString().substring(0, 10);
     }
 
 
@@ -39,7 +38,6 @@ export class AddBookComponent implements OnInit {
     }
 
     addBook(): void {
-        this.book.publishDate = this.publishDate;
         this.bookService.addBook(this.book)
             .subscribe(data => {
                 alert('Book created successfully.');

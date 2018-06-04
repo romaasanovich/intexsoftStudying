@@ -1,12 +1,12 @@
 <div class="col-md-6">
     <h2 class="text-center">Add Publisher</h2>
-    <form>
-
-        <div class="form-group">
-            <label for="name">Name:</label>
-            <input type="text" [(ngModel)]="publisher.name" placeholder="Name" name="Name" class="form-control"
-                   id="name">
-        </div>
-        <button class="btn btn-success" (click)="addPublisher()">Add</button>
-    </form>
+    <div>
+        <mat-form-field class="example-form-field">
+            <input matInput type="text" placeholder="Name" [(ngModel)]="publisher.name"/>
+            <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+        <button mat-raised-button (click)="addPublisher()" color="primary">Add Publisher</button>
+    </div>
 </div>

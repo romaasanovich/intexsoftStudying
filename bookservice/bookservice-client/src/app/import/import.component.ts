@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
-import {Router} from "@angular/router";
-import {ImportService} from "./import.service";
+import {Router} from '@angular/router';
+import {ImportService} from './import.service';
 
 @Component({
     selector: 'app-import',

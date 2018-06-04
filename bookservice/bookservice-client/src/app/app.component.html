@@ -1,19 +1,19 @@
 <div class="container-fluid">
     <div class="col-md-offset-1">
-        <h1>
+        <h1 align="center" colour="primary">
             Welcome to Book-service !
         </h1>
     </div>
     <div>
-        <a routerLink="/books"> List Books</a>
-        <a style="margin-left:15px" routerLink="/publishers"> List Publishers</a>
-        <a style="margin-left:15px" routerLink="/authors"> List Authors</a>
-        <a style="margin-left:15px" routerLink="/import"> Import</a>
+        <a mat-raised-button routerLink="/books" color="primary">Show Books</a>
+        <a mat-raised-button routerLink="/publishers" color="primary">Show Publishers</a>
+        <a mat-raised-button routerLink="/authors" color="primary">Show Authors</a>
+        <a mat-raised-button routerLink="/import" color="primary">Import</a>
     </div>
-    <br>
-    <a routerLink="/publisher">Add Publisher</a>
-    <a style="margin-left:15px" routerLink="/author">Add Author</a>
-    <a style="margin-left:15px" routerLink="/book">Add Book</a>
-    <br/>
+    <div>
+        <a mat-raised-button routerLink="/publisher" color="primary">Add Publisher</a>
+        <a mat-raised-button routerLink="/author" color="primary">Add Author</a>
+        <a mat-raised-button routerLink="/book" color="primary">Add Book</a>
+    </div>
     <router-outlet></router-outlet>
 </div>

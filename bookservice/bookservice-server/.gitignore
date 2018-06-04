@@ -1,8 +1,7 @@
 /target 
 /out
 /node_modules
-.mvn/wrapper/maven-wrapper.jar 
-/src/main/webapp/*   
+.mvn/wrapper/maven-wrapper.jar
 
 ### IntelliJ IDEA ### 
 .idea 

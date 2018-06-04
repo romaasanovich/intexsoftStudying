@@ -7,7 +7,7 @@ import {AuthorComponent} from '../author/author.component';
 import {AddPublisherComponent} from '../add-publisher/add-publisher.component';
 import {AddAuthorComponent} from '../add-author/add-author.component';
 import {AddBookComponent} from '../add-book/add-book.component';
-import {ImportComponent} from "../import/import.component";
+import {ImportComponent} from '../import/import.component';
 
 
 const routes: Routes = [

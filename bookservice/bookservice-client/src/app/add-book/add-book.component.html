@@ -1,42 +1,56 @@
 <div class="col-md-6">
-    <h2 class="text-center">Add Book</h2>
-    <form>
-        <div class="form-group">
-            <label for="name">Name:</label>
-            <input type="text" [(ngModel)]="book.name" placeholder="Name" name="Name" class="form-control" id="name">
-        </div>
+    <h2 class="text-center">Add Author</h2>
 
-        <div class="form-group">
-            <label for="description">Description:</label>
-            <input type="text" [(ngModel)]="book.description" placeholder="Description" name="Description"
-                   class="form-control" id="description">
-        </div>
+    <div>
+        <mat-form-field class="example-form-field">
+            <input matInput type="text" placeholder="Name" [(ngModel)]="book.name"/>
+            <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field class="example-form-field">
+            <input matInput type="text" placeholder="Description" [(ngModel)]="book.description"/>
+            <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field class="example-form-field">
+            <input matInput type="text" placeholder="Price" [(ngModel)]="book.price"/>
+            <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field>
+            <input matInput [matDatepicker]="picker" placeholder="Publish Date" [(ngModel)]="book.publishDate">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field>
+            <mat-select placeholder="Select Publisher" [(ngModel)]="book.publisher" name="publisher" >
+                <mat-option *ngFor="let publisher of publishers" [value]="publisher">
+                    {{ publisher.name }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field>
+            <mat-select placeholder="Select Authors"  multiple>
+                <mat-option *ngFor="let author of authors" [value]="book.authors">{{author.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div>
+        <button mat-raised-button (click)="addBook()" color="primary">Add Book</button>
+    </div>
 
-        <div class="form-group">
-            <label for="price">Price :</label>
-            <input type="price" [(ngModel)]="book.price" placeholder="Price" name="Price" class="form-control"
-                   id="price">
-        </div>
-
-        <div class="form-group">
-            <label for="publishDate">Birth Day:</label>
-            <input type="date" [(ngModel)]="book.publishDate" placeholder="PublishDate" name="PublishDate"
-                   class="form-control" id="publishDate">
-        </div>
-        <br>
-        <div class="form-group">
-            <label name="publisher">Publisher:</label>
-            <select [(ngModel)]="book.publisher" name="publisher">
-                <option *ngFor="let item of publishers" [ngValue]="item">{{item.name}}</option>
-            </select>
-        </div>
-        <br>
-        <div class="form-group">
-            <label name="author">Authors:</label>
-            <select multiple [(ngModel)]="book.authors" name="author">
-                <option *ngFor="let item of authors" [ngValue]="item">{{item.name}}</option>
-            </select>
-        </div>
-        <button class="btn btn-success" (click)="addBook()">Add</button>
-    </form>
 </div>
+

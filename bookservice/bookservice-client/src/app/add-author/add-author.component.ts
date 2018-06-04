@@ -14,11 +14,9 @@ export class AddAuthorComponent {
     author: Author = new Author();
 
     constructor(private router: Router, private authorService: AuthorService) {
-        this.birthDay = new Date().toISOString().substring(0, 10);
     }
 
     addAuthor(): void {
-        this.author.birthDay = this.birthDay;
         this.authorService.addAuthor(this.author).subscribe(data => {
             alert('Author created successfully.');
         });

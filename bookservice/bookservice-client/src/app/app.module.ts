@@ -5,7 +5,6 @@ import {AppComponent} from './app.component';
 import {BookComponent} from './book/book.component';
 import {AppRoutingModule} from './app-routing/app-routing.module';
 import {HttpClientModule} from '@angular/common/http';
-import {FormsModule} from '@angular/forms';
 import {BookService} from './book/book.service';
 import {LoginComponent} from './login/login.component';
 import {LoginService} from './login/login.service';
@@ -18,6 +17,14 @@ import {AddAuthorComponent} from './add-author/add-author.component';
 import {AddBookComponent} from './add-book/add-book.component';
 import {ImportComponent} from './import/import.component';
 import {ImportService} from './import/import.service';
+import {MatIconModule, MatNativeDateModule, MatTableModule} from '@angular/material';
+import {MatButtonModule} from '@angular/material/button';
+import {MatInputModule} from '@angular/material/input';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatSelectModule} from '@angular/material/select';
+import {FormsModule} from '@angular/forms';
+
 
 @NgModule({
     declarations: [
@@ -35,7 +42,15 @@ import {ImportService} from './import/import.service';
         BrowserModule,
         AppRoutingModule,
         HttpClientModule,
-        FormsModule
+        FormsModule,
+        MatTableModule,
+        MatButtonModule,
+        MatInputModule,
+        MatIconModule,
+        BrowserAnimationsModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatSelectModule
     ],
     providers: [BookService, LoginService, PublisherService, AuthorService, ImportService],
     bootstrap: [AppComponent]

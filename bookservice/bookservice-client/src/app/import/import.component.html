@@ -1,13 +1,12 @@
-<div class="col-md-6">
-  <h2 class="text-center">Add Book</h2>
-  <form>
-
-    <div class="form-group">
-      <label name="import">Type Import:</label>
-      <select [(ngModel)]="selImport" name="import">
-        <option *ngFor="let item of typeImport" [ngValue]="item">{{item}}</option>
-      </select>
+<div>
+    <div>
+        <mat-form-field>
+            <mat-select placeholder="Select type of import"  [(ngModel)]="selImport" name="typeImport">
+                <mat-option *ngFor="let element of typeImport" [value]="element">
+                    {{ element }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <button mat-raised-button (click)="import()" color="primary">Import</button>
     </div>
-    <button class="btn btn-success" (click)="import()">Import</button>
-  </form>
 </div>

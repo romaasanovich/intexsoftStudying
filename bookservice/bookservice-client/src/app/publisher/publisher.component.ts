@@ -11,6 +11,8 @@ import {PublisherService} from './publisher.service';
 export class PublisherComponent implements OnInit {
 
     publishers: Publisher[];
+    displayedColumns = ['id', 'name', 'delete'];
+
 
     constructor(private router: Router, private publisherService: PublisherService) {
 
