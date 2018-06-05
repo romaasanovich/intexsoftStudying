@@ -1,12 +1,14 @@
 package com.intexsoft.bookservice.dao.entity;
 
-import com.intexsoft.bookservice.dao.entity.aentity.AbstractEntity;
-
 import javax.persistence.*;
 
 @Entity
 @Table(name = "review")
-public class Review extends AbstractEntity {
+public class Review {
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     @Column(name = "review", length = 350)
     private String review;
     @Column(name = "rate")
@@ -51,5 +53,13 @@ public class Review extends AbstractEntity {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }

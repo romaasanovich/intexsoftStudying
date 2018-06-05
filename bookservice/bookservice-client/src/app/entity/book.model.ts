@@ -9,4 +9,5 @@ export class Book {
     publishDate: Date;
     publisher: Publisher;
     authors: Author[];
+    rate: number;
 }

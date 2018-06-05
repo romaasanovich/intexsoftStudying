@@ -23,7 +23,7 @@ public class ImportExecutorImpl implements ImportExecutor {
                 try {
                     logger.info("Start import to db");
                     Thread.sleep(5000);
-                    logger.info("Import runningx");
+                    logger.info("Import running");
                     Boolean isImport = importService.importToDb();
                     if (isImport.equals(true)) {
                         logger.info("Import is OK");

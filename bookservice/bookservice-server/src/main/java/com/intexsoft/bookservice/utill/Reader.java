@@ -23,6 +23,8 @@ public class Reader {
         File file = new File(filePath);
         if (!file.createNewFile()) {
             return file;
-        } else return null;
+        } else {
+            return null;
+        }
     }
 }

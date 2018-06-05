@@ -26,4 +26,8 @@ export class BookService {
     public deleteBook(book: Book) {
         return this.http.delete(`http://localhost:8080/bookservice/api/book/${book.id.toString()}`);
     }
+
+    public getById(id: string) {
+        return this.http.get<Book>(`http://localhost:8080/bookservice/api/books/${id}`);
+    }
 }

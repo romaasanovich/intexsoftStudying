@@ -1,8 +1,8 @@
 /target 
 /out
 /node_modules
-.mvn/wrapper/maven-wrapper.jar 
- 
+.mvn/wrapper/maven-wrapper.jar
+
 ### IntelliJ IDEA ### 
 .idea 
 *.iws 

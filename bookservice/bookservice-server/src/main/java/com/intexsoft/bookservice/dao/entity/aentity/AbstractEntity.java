@@ -9,10 +9,9 @@ public abstract class AbstractEntity implements Serializable {
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
-
     @Column(name = "UUID", length = 36)
     private String uuid;
+
 
     protected AbstractEntity() {
     }

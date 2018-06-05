@@ -1,0 +1,33 @@
+<div>
+    <table mat-table [dataSource]="reviews" class="mat-elevation-z8">
+
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef> Id</th>
+            <td mat-cell *matCellDef="let element"> {{element.id}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="user">
+            <th mat-header-cell *matHeaderCellDef> User</th>
+            <td mat-cell *matCellDef="let element"> {{element.user.username}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="review">
+            <th mat-header-cell *matHeaderCellDef> Review</th>
+            <td mat-cell *matCellDef="let element"> {{element.review}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="rate">
+            <th mat-header-cell *matHeaderCellDef> Rate</th>
+            <td mat-cell *matCellDef="let element"> {{element.rate}}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <div>
+        <a mat-raised-button (click)="goToAddReview()" color="primary">Add Review</a>
+    </div>
+
+
+</div>

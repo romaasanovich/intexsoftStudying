@@ -17,8 +17,9 @@ export class ImportComponent {
 
     import(): void {
         this.importService.import(this.selImport)
-            .subscribe(data => {
-                alert('Import is OK.');
-            });
+            .subscribe(
+                data => {alert('Import is OK.'); },
+                    error => {alert('Import is already running!!!'); }
+            );
     }
 }

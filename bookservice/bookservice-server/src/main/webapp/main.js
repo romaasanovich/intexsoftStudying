@@ -290,12 +290,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _add_author_add_author_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../add-author/add-author.component */ "./src/app/add-author/add-author.component.ts");
 /* harmony import */ var _add_book_add_book_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../add-book/add-book.component */ "./src/app/add-book/add-book.component.ts");
 /* harmony import */ var _import_import_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../import/import.component */ "./src/app/import/import.component.ts");
+/* harmony import */ var _book_review_book_review_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../book-review/book-review.component */ "./src/app/book-review/book-review.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -314,7 +316,8 @@ var routes = [
     { path: 'publisher', component: _add_publisher_add_publisher_component__WEBPACK_IMPORTED_MODULE_6__["AddPublisherComponent"] },
     { path: 'author', component: _add_author_add_author_component__WEBPACK_IMPORTED_MODULE_7__["AddAuthorComponent"] },
     { path: 'book', component: _add_book_add_book_component__WEBPACK_IMPORTED_MODULE_8__["AddBookComponent"] },
-    { path: 'import', component: _import_import_component__WEBPACK_IMPORTED_MODULE_9__["ImportComponent"] }
+    { path: 'import', component: _import_import_component__WEBPACK_IMPORTED_MODULE_9__["ImportComponent"] },
+    { path: 'reviews', component: _book_review_book_review_component__WEBPACK_IMPORTED_MODULE_10__["BookReviewComponent"] }
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
@@ -430,12 +433,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_material_datepicker__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! @angular/material/datepicker */ "./node_modules/@angular/material/esm5/datepicker.es5.js");
 /* harmony import */ var _angular_material_select__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! @angular/material/select */ "./node_modules/@angular/material/esm5/select.es5.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _book_review_book_review_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./book-review/book-review.component */ "./src/app/book-review/book-review.component.ts");
+/* harmony import */ var _book_review_book_review_service__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./book-review/book-review.service */ "./src/app/book-review/book-review.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -475,7 +482,8 @@ var AppModule = /** @class */ (function () {
                 _add_publisher_add_publisher_component__WEBPACK_IMPORTED_MODULE_13__["AddPublisherComponent"],
                 _add_author_add_author_component__WEBPACK_IMPORTED_MODULE_14__["AddAuthorComponent"],
                 _add_book_add_book_component__WEBPACK_IMPORTED_MODULE_15__["AddBookComponent"],
-                _import_import_component__WEBPACK_IMPORTED_MODULE_16__["ImportComponent"]
+                _import_import_component__WEBPACK_IMPORTED_MODULE_16__["ImportComponent"],
+                _book_review_book_review_component__WEBPACK_IMPORTED_MODULE_25__["BookReviewComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -491,7 +499,7 @@ var AppModule = /** @class */ (function () {
                 _angular_material__WEBPACK_IMPORTED_MODULE_18__["MatNativeDateModule"],
                 _angular_material_select__WEBPACK_IMPORTED_MODULE_23__["MatSelectModule"]
             ],
-            providers: [_book_book_service__WEBPACK_IMPORTED_MODULE_6__["BookService"], _login_login_service__WEBPACK_IMPORTED_MODULE_8__["LoginService"], _publisher_publisher_service__WEBPACK_IMPORTED_MODULE_11__["PublisherService"], _author_author_service__WEBPACK_IMPORTED_MODULE_12__["AuthorService"], _import_import_service__WEBPACK_IMPORTED_MODULE_17__["ImportService"]],
+            providers: [_book_book_service__WEBPACK_IMPORTED_MODULE_6__["BookService"], _login_login_service__WEBPACK_IMPORTED_MODULE_8__["LoginService"], _publisher_publisher_service__WEBPACK_IMPORTED_MODULE_11__["PublisherService"], _author_author_service__WEBPACK_IMPORTED_MODULE_12__["AuthorService"], _import_import_service__WEBPACK_IMPORTED_MODULE_17__["ImportService"], _book_review_book_review_service__WEBPACK_IMPORTED_MODULE_26__["BookReviewService"]],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"]]
         })
     ], AppModule);
@@ -634,6 +642,160 @@ var AuthorService = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/book-review/book-review.component.css":
+/*!*******************************************************!*\
+  !*** ./src/app/book-review/book-review.component.css ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/book-review/book-review.component.html":
+/*!********************************************************!*\
+  !*** ./src/app/book-review/book-review.component.html ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div>\n    <table mat-table [dataSource]=\"reviews\" class=\"mat-elevation-z8\">\n\n        <ng-container matColumnDef=\"id\">\n            <th mat-header-cell *matHeaderCellDef> Id</th>\n            <td mat-cell *matCellDef=\"let element\"> {{element.id}}</td>\n        </ng-container>\n\n        <ng-container matColumnDef=\"user\">\n            <th mat-header-cell *matHeaderCellDef> User</th>\n            <td mat-cell *matCellDef=\"let element\"> {{element.user.username}}</td>\n        </ng-container>\n\n        <ng-container matColumnDef=\"review\">\n            <th mat-header-cell *matHeaderCellDef> Review</th>\n            <td mat-cell *matCellDef=\"let element\"> {{element.review}}</td>\n        </ng-container>\n\n        <ng-container matColumnDef=\"rate\">\n            <th mat-header-cell *matHeaderCellDef> Rate</th>\n            <td mat-cell *matCellDef=\"let element\"> {{element.rate}}</td>\n        </ng-container>\n\n        <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\n        <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\n\n\n    </table>\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/book-review/book-review.component.ts":
+/*!******************************************************!*\
+  !*** ./src/app/book-review/book-review.component.ts ***!
+  \******************************************************/
+/*! exports provided: BookReviewComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BookReviewComponent", function() { return BookReviewComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _book_book_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../book/book.service */ "./src/app/book/book.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _book_review_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./book-review.service */ "./src/app/book-review/book-review.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var BookReviewComponent = /** @class */ (function () {
+    function BookReviewComponent(router, bookService, bookreviewService, route) {
+        this.router = router;
+        this.bookService = bookService;
+        this.bookreviewService = bookreviewService;
+        this.route = route;
+        this.displayedColumns = ['id', 'user', 'review', 'rate'];
+    }
+    BookReviewComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.route.queryParams.subscribe(function (params) {
+            _this.selBookId = params.order;
+        });
+        this.bookService.getById(this.selBookId).subscribe(function (data) {
+            _this.selBook = data;
+        });
+        this.bookreviewService.getBookReviews(this.selBook)
+            .subscribe(function (data) {
+            _this.reviews = data;
+        });
+    };
+    BookReviewComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-book-review',
+            template: __webpack_require__(/*! ./book-review.component.html */ "./src/app/book-review/book-review.component.html"),
+            styles: [__webpack_require__(/*! ./book-review.component.css */ "./src/app/book-review/book-review.component.css")]
+        }),
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _book_book_service__WEBPACK_IMPORTED_MODULE_1__["BookService"], _book_review_service__WEBPACK_IMPORTED_MODULE_3__["BookReviewService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"]])
+    ], BookReviewComponent);
+    return BookReviewComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/book-review/book-review.service.ts":
+/*!****************************************************!*\
+  !*** ./src/app/book-review/book-review.service.ts ***!
+  \****************************************************/
+/*! exports provided: BookReviewService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BookReviewService", function() { return BookReviewService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var httpOptions = {
+    headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({ 'Content-Type': 'application/json' })
+};
+var BookReviewService = /** @class */ (function () {
+    function BookReviewService(http) {
+        this.http = http;
+        this.sumRates = 0.0;
+        this.reviews = [];
+    }
+    BookReviewService.prototype.getBookReviews = function (id) {
+        return this.http.get("http://localhost:8080/bookservice/api/review/book/" + id);
+    };
+    BookReviewService.prototype.addReview = function (review) {
+        return this.http.post("http://localhost:8080/bookservice/api/review/", review);
+    };
+    BookReviewService.prototype.delReview = function (review) {
+        return this.http.delete("http://localhost:8080/bookservice/api/review/" + review.id.toString());
+    };
+    BookReviewService.prototype.getRate = function (bookId) {
+        var _this = this;
+        this.getBookReviews(bookId).subscribe(function (data) {
+            _this.reviews = data;
+        });
+        if (this.reviews.length !== 0) {
+            this.reviews.forEach(function (item) {
+                _this.sumRates += item.rate;
+            });
+        }
+        if (this.sumRates === 0.0) {
+            return 0.0;
+        }
+        else {
+            return (this.sumRates / this.reviews.length);
+        }
+    };
+    BookReviewService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])(),
+        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
+    ], BookReviewService);
+    return BookReviewService;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/book/book.component.html":
 /*!******************************************!*\
   !*** ./src/app/book/book.component.html ***!
@@ -641,7 +803,7 @@ var AuthorService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n\n    <table mat-table [dataSource]=\"books\" class=\"mat-elevation-z8\">\n\n        <ng-container matColumnDef=\"id\">\n            <th mat-header-cell *matHeaderCellDef> Id</th>\n            <td mat-cell *matCellDef=\"let element\"> {{element.id}}</td>\n        </ng-container>\n\n        <ng-container matColumnDef=\"name\">\n            <th mat-header-cell *matHeaderCellDef> Name</th>\n            <td mat-cell *matCellDef=\"let element\"> {{element.name}}</td>\n        </ng-container>\n\n        <ng-container matColumnDef=\"description\">\n            <th mat-header-cell *matHeaderCellDef> Description</th>\n            <td mat-cell *matCellDef=\"let element\"> {{element.description}}</td>\n        </ng-container>\n\n        <ng-container matColumnDef=\"price\">\n            <th mat-header-cell *matHeaderCellDef> Price</th>\n            <td mat-cell *matCellDef=\"let element\"> {{element.price}}</td>\n        </ng-container>\n\n        <ng-container matColumnDef=\"publisher\">\n            <th mat-header-cell *matHeaderCellDef> Publisher</th>\n            <td mat-cell *matCellDef=\"let element\"> {{element.publisher.name}}</td>\n        </ng-container>\n\n        <ng-container matColumnDef=\"publishDate\">\n            <th mat-header-cell *matHeaderCellDef> Publisher</th>\n            <td mat-cell *matCellDef=\"let element\"> {{element.publishDateh}}</td>\n        </ng-container>\n\n        <ng-container matColumnDef=\"delete\">\n            <th mat-header-cell *matHeaderCellDef></th>\n            <td mat-cell *matCellDef=\"let element\">\n                <button mat-raised-button (click)=\"deleteBook(element)\" color=\"warn\">Delete</button>\n            </td>\n        </ng-container>\n\n        <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\n        <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\n    </table>\n</div>\n"
+module.exports = "<div>\n\n    <table mat-table [dataSource]=\"books\" class=\"mat-elevation-z8\">\n\n        <ng-container matColumnDef=\"id\">\n            <th mat-header-cell *matHeaderCellDef> Id</th>\n            <td mat-cell *matCellDef=\"let element\"> {{element.id}}</td>\n        </ng-container>\n\n        <ng-container matColumnDef=\"name\">\n            <th mat-header-cell *matHeaderCellDef> Name</th>\n            <td mat-cell *matCellDef=\"let element\"> {{element.name}}</td>\n        </ng-container>\n\n        <ng-container matColumnDef=\"description\">\n            <th mat-header-cell *matHeaderCellDef> Description</th>\n            <td mat-cell *matCellDef=\"let element\"> {{element.description}}</td>\n        </ng-container>\n\n        <ng-container matColumnDef=\"price\">\n            <th mat-header-cell *matHeaderCellDef> Price</th>\n            <td mat-cell *matCellDef=\"let element\"> {{element.price}}</td>\n        </ng-container>\n\n        <ng-container matColumnDef=\"publisher\">\n            <th mat-header-cell *matHeaderCellDef> Publisher</th>\n            <td mat-cell *matCellDef=\"let element\"> {{element.publisher.name}}</td>\n        </ng-container>\n\n        <ng-container matColumnDef=\"publishDate\">\n            <th mat-header-cell *matHeaderCellDef> Publisher</th>\n            <td mat-cell *matCellDef=\"let element\"> {{element.publishDateh}}</td>\n        </ng-container>\n\n        <ng-container matColumnDef=\"delete\">\n            <th mat-header-cell *matHeaderCellDef></th>\n            <td mat-cell *matCellDef=\"let element\">\n                <button mat-raised-button (click)=\"deleteBook(element)\" color=\"warn\">Delete</button>\n            </td>\n        </ng-container>\n\n        <ng-container matColumnDef=\"rate\">\n            <th mat-header-cell *matHeaderCellDef></th>\n            <td mat-cell *matCellDef=\"let element\">\n                <button mat-raised-button (click)=\"goToReview(element.id)\" color=\"primary\">{{element.rate}}</button>\n            </td>\n        </ng-container>\n\n        <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\n        <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\n\n\n    </table>\n</div>\n"
 
 /***/ }),
 
@@ -658,6 +820,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _book_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./book.service */ "./src/app/book/book.service.ts");
+/* harmony import */ var _book_review_book_review_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../book-review/book-review.service */ "./src/app/book-review/book-review.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -670,17 +833,21 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var BookComponent = /** @class */ (function () {
-    function BookComponent(router, bookService) {
+    function BookComponent(router, bookService, bookReview) {
         this.router = router;
         this.bookService = bookService;
-        this.displayedColumns = ['id', 'name', 'description', 'price', 'publisher', 'publishDate', 'delete'];
+        this.bookReview = bookReview;
+        this.books = [];
+        this.displayedColumns = ['id', 'name' /*,'description'*/, 'price', 'publisher', 'delete', 'rate'];
     }
     BookComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.bookService.getBooks()
             .subscribe(function (data) {
             _this.books = data;
+            _this.getRate(_this.books);
         });
     };
     BookComponent.prototype.deleteBook = function (book) {
@@ -690,13 +857,25 @@ var BookComponent = /** @class */ (function () {
             _this.books = _this.books.filter(function (u) { return u !== book; });
         });
     };
+    BookComponent.prototype.getRate = function (books) {
+        var _this = this;
+        books.forEach(function (book) {
+            book.rate = _this.bookReview.getRate(book.id);
+        });
+        return books;
+    };
+    BookComponent.prototype.goToReview = function (id) {
+        this.router.navigate(['/reviews'], {
+            queryParams: { bookId: id }
+        });
+    };
     BookComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-book',
             template: __webpack_require__(/*! ./book.component.html */ "./src/app/book/book.component.html"),
             styles: []
         }),
-        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _book_service__WEBPACK_IMPORTED_MODULE_2__["BookService"]])
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _book_service__WEBPACK_IMPORTED_MODULE_2__["BookService"], _book_review_book_review_service__WEBPACK_IMPORTED_MODULE_3__["BookReviewService"]])
     ], BookComponent);
     return BookComponent;
 }());
@@ -743,6 +922,9 @@ var BookService = /** @class */ (function () {
     };
     BookService.prototype.deleteBook = function (book) {
         return this.http.delete("http://localhost:8080/bookservice/api/book/" + book.id.toString());
+    };
+    BookService.prototype.getById = function (id) {
+        return this.http.get("http://localhost:8080/bookservice/api/books/" + id);
     };
     BookService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])(),
@@ -870,9 +1052,7 @@ var ImportComponent = /** @class */ (function () {
     }
     ImportComponent.prototype.import = function () {
         this.importService.import(this.selImport)
-            .subscribe(function (data) {
-            alert('Import is OK.');
-        });
+            .subscribe(function (data) { alert('Import is OK.'); }, function (error) { alert('Import is already running!!!'); });
     };
     ImportComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({

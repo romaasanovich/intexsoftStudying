@@ -8,6 +8,8 @@ import {AddPublisherComponent} from '../add-publisher/add-publisher.component';
 import {AddAuthorComponent} from '../add-author/add-author.component';
 import {AddBookComponent} from '../add-book/add-book.component';
 import {ImportComponent} from '../import/import.component';
+import {BookReviewComponent} from '../book-review/book-review.component';
+import {AddReviewComponent} from '../add-review/add-review.component';
 
 
 const routes: Routes = [
@@ -18,7 +20,9 @@ const routes: Routes = [
     {path: 'publisher', component: AddPublisherComponent},
     {path: 'author', component: AddAuthorComponent},
     {path: 'book', component: AddBookComponent},
-    {path: 'import', component: ImportComponent}
+    {path: 'import', component: ImportComponent},
+    {path: 'reviews', component: BookReviewComponent},
+    {path: 'add-review', component: AddReviewComponent}
 ];
 
 @NgModule({

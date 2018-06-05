@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -17,13 +18,13 @@ public class ReviewController {
     private Review review;
 
     @PreAuthorize("hasRole('ADMIN') OR hasRole('CUSTOMER')")
-    @PostMapping(path = "/review/user/{userId}")
+    @GetMapping(path = "/review/user/{userId}")
     public List<Review> getUserReviews(@PathVariable(name = "userId") Integer userId) {
         return reviewService.getUserReview(userId);
     }
 
     @PreAuthorize("hasRole('ADMIN') OR hasRole('CUSTOMER')")
-    @PostMapping(path = "/review/book/{bookId}")
+    @GetMapping(path = "/review/book/{bookId}")
     public List<Review> getBookReviews(@PathVariable(name = "bookId") Integer bookId) {
         return reviewService.getBookReview(bookId);
     }
@@ -31,11 +32,12 @@ public class ReviewController {
     @PreAuthorize("hasRole('ADMIN') OR hasRole('CUSTOMER')")
     @PostMapping(path = "/review")
     public void addReview(@RequestBody Review review) {
+        review.setUser();
         reviewService.add(review);
     }
 
     @PreAuthorize("hasRole('ADMIN') OR hasRole('CUSTOMER')")
-    @PostMapping(path = "/review/{id}")
+    @DeleteMapping(path = "/review/{id}")
     public void deleteReview(@PathVariable(name = "id") Integer id) {
         review = reviewService.getReviewByID(id).orElse(null);
         reviewService.delete(review);

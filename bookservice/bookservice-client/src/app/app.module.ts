@@ -24,6 +24,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatSelectModule} from '@angular/material/select';
 import {FormsModule} from '@angular/forms';
+import { BookReviewComponent } from './book-review/book-review.component';
+import {BookReviewService} from './book-review/book-review.service';
+import { AddReviewComponent } from './add-review/add-review.component';
 
 
 @NgModule({
@@ -36,7 +39,9 @@ import {FormsModule} from '@angular/forms';
         AddPublisherComponent,
         AddAuthorComponent,
         AddBookComponent,
-        ImportComponent
+        ImportComponent,
+        BookReviewComponent,
+        AddReviewComponent
     ],
     imports: [
         BrowserModule,
@@ -52,7 +57,7 @@ import {FormsModule} from '@angular/forms';
         MatNativeDateModule,
         MatSelectModule
     ],
-    providers: [BookService, LoginService, PublisherService, AuthorService, ImportService],
+    providers: [BookService, LoginService, PublisherService, AuthorService, ImportService, BookReviewService],
     bootstrap: [AppComponent]
 })
 export class AppModule {
