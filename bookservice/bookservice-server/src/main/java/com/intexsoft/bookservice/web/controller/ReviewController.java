@@ -23,7 +23,7 @@ public class ReviewController {
     }
 
     @PreAuthorize("hasRole('ADMIN') OR hasRole('CUSTOMER')")
-    @GetMapping(path = "/review/book/{bookId}")
+    @GetMapping(path = "/review/{bookId}")
     public List<Review> getBookReviews(@PathVariable(name = "bookId") Integer bookId) {
         return reviewService.getBookReview(bookId);
     }

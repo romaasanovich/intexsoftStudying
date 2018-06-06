@@ -1,6 +1,5 @@
 import com.intexsoft.bookservice.dao.entity.Publisher;
 import com.intexsoft.bookservice.service.api.PublisherService;
-import com.intexsoft.bookservice.service.implementation.PublisherServiceImpl;
 import com.intexsoft.bookservice.web.controller.PublisherController;
 import org.junit.Before;
 import org.junit.Test;
@@ -17,11 +16,9 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.hasSize;
-import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -44,58 +41,25 @@ public class AuthorControllerTest {
                 .build();
     }
 
-
     @Test
     public void getPubl_Controller() throws Exception {
-        List<Publisher> publishers = Arrays.asList(new Publisher("sss"),
-                new Publisher("qqweqwe"), new Publisher("test"));
+        List<Publisher> publishers = Arrays.asList(new Publisher(),
+                new Publisher(), new Publisher());
+        publishers.get(0).setName("publisher1");
+        publishers.get(1).setName("publisher2");
+        publishers.get(2).setName("publisher3");
 
         when(publisherService.getAllPublishers()).thenReturn(publishers);
         mockMvc.perform(get("/api/publishers"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
                 .andExpect(jsonPath("$", hasSize(3)))
-                .andExpect(jsonPath("$[0].name", is("sss")))
-                .andExpect(jsonPath("$[1].name", is("qqweqwe")))
-                .andExpect(jsonPath("$[2].name", is("test")));
+                .andExpect(jsonPath("$[0].name", is("publisher1")))
+                .andExpect(jsonPath("$[1].name", is("publisher2")))
+                .andExpect(jsonPath("$[2].name", is("publisher3")));
         verify(publisherService, times(1)).getAllPublishers();
         verifyNoMoreInteractions(publisherService);
 
     }
 
-
-    @Test
-    public void getPublishers_count_2() {
-
-        List<Publisher> publishers = Arrays.asList(new Publisher("sss"),
-                new Publisher("qqweqwe"));
-
-        when(publisherService.getAllPublishers()).thenReturn(publishers);
-
-        int count = publisherService.getAllPublishers().size();
-
-        assertThat(count, is(2));
-    }
-
-
-    @Test
-    public void getPublisher_byId2_nameTest() {
-
-        List<Publisher> publishers = Arrays.asList(new Publisher("sss"),
-                new Publisher("qqweqwe"), new Publisher("test"));
-
-        publishers.get(0).setId(0);
-        publishers.get(1).setId(1);
-        publishers.get(2).setId(2);
-
-        Optional<Publisher> optPubl = Optional.of(publishers.get(2));
-
-        PublisherService publisherService = mock(PublisherServiceImpl.class);
-
-        when(publisherService.getPublisherByID(2)).thenReturn(optPubl);
-
-        String name = publisherService.getPublisherByID(2).get().getName();
-
-        assertThat(name, is("test"));
-    }
 }

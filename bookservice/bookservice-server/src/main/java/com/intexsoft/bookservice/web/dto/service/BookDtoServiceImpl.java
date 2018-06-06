@@ -8,6 +8,7 @@ import com.intexsoft.bookservice.web.dto.entity.BookDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,7 +47,9 @@ public class BookDtoServiceImpl implements BookDtoService {
         for (Review review : reviews) {
             sumRate += review.getRate();
         }
-        return (sumRate != 0) ? (sumRate / reviews.size()) : 0.0;
+        Double rate = (sumRate != 0) ? (sumRate / reviews.size()) : 0.0;
+        return Double.valueOf(new DecimalFormat("#.##").format(rate));
+
     }
 
     private List<String> getListAuthors(List<Author> authors) {
