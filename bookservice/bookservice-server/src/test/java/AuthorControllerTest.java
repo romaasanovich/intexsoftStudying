@@ -28,7 +28,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @RunWith(PowerMockRunner.class)
 @MockPolicy(Slf4jMockPolicy.class)
-public class AuthorServiceTest {
+public class AuthorControllerTest {
 
     private MockMvc mockMvc;
     @Mock
