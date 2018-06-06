@@ -6,8 +6,6 @@ import {BookComponent} from './book/book.component';
 import {AppRoutingModule} from './app-routing/app-routing.module';
 import {HttpClientModule} from '@angular/common/http';
 import {BookService} from './book/book.service';
-import {LoginComponent} from './login/login.component';
-import {LoginService} from './login/login.service';
 import {PublisherComponent} from './publisher/publisher.component';
 import {AuthorComponent} from './author/author.component';
 import {PublisherService} from './publisher/publisher.service';
@@ -33,7 +31,6 @@ import {AddReviewComponent} from './add-review/add-review.component';
     declarations: [
         AppComponent,
         BookComponent,
-        LoginComponent,
         PublisherComponent,
         AuthorComponent,
         AddPublisherComponent,
@@ -57,7 +54,7 @@ import {AddReviewComponent} from './add-review/add-review.component';
         MatNativeDateModule,
         MatSelectModule
     ],
-    providers: [BookService, LoginService, PublisherService, AuthorService, ImportService, BookReviewService],
+    providers: [BookService, PublisherService, AuthorService, ImportService, BookReviewService],
     bootstrap: [AppComponent]
 })
 export class AppModule {
