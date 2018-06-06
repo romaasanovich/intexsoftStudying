@@ -19,7 +19,6 @@ public class UserDetailServiceImpl implements UserDetailsService {
 
     private final Logger logger = LoggerFactory.getLogger("log");
 
-
     @Autowired
     UserRepository userRepository;
 

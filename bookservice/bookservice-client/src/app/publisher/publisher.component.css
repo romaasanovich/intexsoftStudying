@@ -1,8 +1,12 @@
 table {
-    width: 100%;
+    width: auto;
 }
 
-.mat-form-field {
-    font-size: 14px;
-    width: 100%;
+.mat-header-cell {
+    padding-left: 15px;
+}
+
+.mat-cell {
+    padding-left: 15px;
+    padding-right: 15px;
 }

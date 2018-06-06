@@ -1,10 +1,9 @@
-import {Component, Injectable, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 
 import {Book} from '../entity/book.model';
 import {BookService} from './book.service';
 import {BookReviewService} from '../book-review/book-review.service';
-import {Observable} from 'rxjs';
 
 @Component({
     selector: 'app-book',

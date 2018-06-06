@@ -1,7 +1,8 @@
 <div>
+    <h2 class="text-center">Import</h2>
     <div>
         <mat-form-field>
-            <mat-select placeholder="Select type of import"  [(ngModel)]="selImport" name="typeImport">
+            <mat-select placeholder="Select type of import" [(ngModel)]="selImport" name="typeImport">
                 <mat-option *ngFor="let element of typeImport" [value]="element">
                     {{ element }}
                 </mat-option>

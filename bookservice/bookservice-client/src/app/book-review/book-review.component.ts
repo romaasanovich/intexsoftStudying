@@ -14,17 +14,17 @@ export class BookReviewComponent implements OnInit {
     reviews: Review[];
     selBookId: string;
     selBook: Book;
-    displayedColumns = ['id', 'user', 'review', 'rate'];
+    displayedColumns = ['user', 'review', 'rate'];
 
 
-    constructor(private router: Router, private bookService: BookService, private bookreviewService: BookReviewService, private route: ActivatedRoute) {
+    constructor(private router: Router, private bookService: BookService, private bookReviewService: BookReviewService, private route: ActivatedRoute) {
     }
 
     ngOnInit() {
         this.selBookId = this.route.snapshot.queryParams.bookId;
         this.bookService.getById(this.selBookId).subscribe(data => {
             this.selBook = data;
-            this.bookreviewService.getBookReviews(data.id)
+            this.bookReviewService.getBookReviews(data.id)
                 .subscribe(reviews => {
                     this.reviews = reviews;
                 });
@@ -32,6 +32,8 @@ export class BookReviewComponent implements OnInit {
     }
 
     goToAddReview() {
-        this.router.navigate(['/add-review']);
+        this.router.navigate(['/add-review'], {
+            queryParams: {bookId: this.selBookId}
+        });
     }
 }

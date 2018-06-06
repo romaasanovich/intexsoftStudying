@@ -1,12 +1,12 @@
 table {
-    width: 75%;
+    width: auto;
 }
 
-th{
-    allign: center;
+.mat-header-cell {
+    padding-left: 15px;
 }
 
-td {
-    margin-top: 15px;
-    margin-bottom: 15px;
+.mat-cell {
+    padding-left: 15px;
+    padding-right: 15px;
 }

@@ -17,8 +17,7 @@ public class BookServiceImpl implements BookService {
 
     @Autowired
     private BookRepository bookRepository;
-
-
+    
     @Override
     public List<Book> getAllBooks() {
         List<Book> books = bookRepository.findAll();

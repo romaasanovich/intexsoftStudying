@@ -1,0 +1,12 @@
+table {
+    width: auto;
+}
+
+.mat-header-cell {
+    padding-left: 15px;
+}
+
+.mat-cell {
+    padding-left: 15px;
+    padding-right: 15px;
+}

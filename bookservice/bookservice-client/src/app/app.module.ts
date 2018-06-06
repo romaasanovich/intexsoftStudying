@@ -24,9 +24,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatSelectModule} from '@angular/material/select';
 import {FormsModule} from '@angular/forms';
-import { BookReviewComponent } from './book-review/book-review.component';
+import {BookReviewComponent} from './book-review/book-review.component';
 import {BookReviewService} from './book-review/book-review.service';
-import { AddReviewComponent } from './add-review/add-review.component';
+import {AddReviewComponent} from './add-review/add-review.component';
 
 
 @NgModule({

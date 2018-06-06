@@ -30,7 +30,7 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "label {\n    display: inline-block;\n    float: left;\n    clear: left;\n    width: 75px;\n    text-align: left;\n}\n\ninput {\n    display: inline-block;\n    float: left;\n}\n\n.form-group {\n    line-height: 1.5;\n}\n"
+module.exports = "    label {\n    display: inline-block;\n    float: left;\n    clear: left;\n    width: 75px;\n    text-align: left;\n}\n\ninput {\n    display: inline-block;\n    float: left;\n}\n\n.form-group {\n    line-height: 1.5;\n}\n"
 
 /***/ }),
 
@@ -270,6 +270,85 @@ var AddPublisherComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/add-review/add-review.component.css":
+/*!*****************************************************!*\
+  !*** ./src/app/add-review/add-review.component.css ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/add-review/add-review.component.html":
+/*!******************************************************!*\
+  !*** ./src/app/add-review/add-review.component.html ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"col-md-6\">\n  <h2 class=\"text-center\">Add Author</h2>\n\n  <div>\n    <mat-form-field class=\"example-form-field\">\n      <input matInput type=\"text\" placeholder=\"Review\" [(ngModel)]=\"review.review\"/>\n      <button mat-button *ngIf=\"value\" matSuffix mat-icon-button aria-label=\"Clear\" (click)=\"value=''\">\n        <mat-icon>close</mat-icon>\n      </button>\n    </mat-form-field>\n  </div>\n  <div>\n    <mat-form-field>\n      <mat-select placeholder=\"Select Rate\" [(ngModel)]=\"review.rate\" >\n        <mat-option *ngFor=\"let item of rates\" [value]=\"item\">\n          {{ item }}\n        </mat-option>\n      </mat-select>\n    </mat-form-field>\n  </div>\n   <div>\n    <button mat-raised-button (click)=\"addReview()\" color=\"primary\">Add Review</button>\n  </div>\n\n</div>\n\n"
+
+/***/ }),
+
+/***/ "./src/app/add-review/add-review.component.ts":
+/*!****************************************************!*\
+  !*** ./src/app/add-review/add-review.component.ts ***!
+  \****************************************************/
+/*! exports provided: AddReviewComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AddReviewComponent", function() { return AddReviewComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _book_review_book_review_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../book-review/book-review.service */ "./src/app/book-review/book-review.service.ts");
+/* harmony import */ var _entity_review_model__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../entity/review.model */ "./src/app/entity/review.model.ts");
+/* harmony import */ var _entity_book_model__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../entity/book.model */ "./src/app/entity/book.model.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var AddReviewComponent = /** @class */ (function () {
+    function AddReviewComponent(router, bookRevService, route) {
+        this.router = router;
+        this.bookRevService = bookRevService;
+        this.route = route;
+        this.rates = [1, 2, 3, 4, 5];
+        this.review = new _entity_review_model__WEBPACK_IMPORTED_MODULE_3__["Review"]();
+        this.review.book = new _entity_book_model__WEBPACK_IMPORTED_MODULE_4__["Book"]();
+    }
+    AddReviewComponent.prototype.addReview = function () {
+        this.review.book.id = this.route.snapshot.queryParams.bookId;
+        this.bookRevService.addReview(this.review).subscribe(function (data) { return alert('Review is added successfully!!!'); });
+    };
+    AddReviewComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-add-review',
+            template: __webpack_require__(/*! ./add-review.component.html */ "./src/app/add-review/add-review.component.html"),
+            styles: [__webpack_require__(/*! ./add-review.component.css */ "./src/app/add-review/add-review.component.css")]
+        }),
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _book_review_book_review_service__WEBPACK_IMPORTED_MODULE_2__["BookReviewService"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"]])
+    ], AddReviewComponent);
+    return AddReviewComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/app-routing/app-routing.module.ts":
 /*!***************************************************!*\
   !*** ./src/app/app-routing/app-routing.module.ts ***!
@@ -291,12 +370,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _add_book_add_book_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../add-book/add-book.component */ "./src/app/add-book/add-book.component.ts");
 /* harmony import */ var _import_import_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../import/import.component */ "./src/app/import/import.component.ts");
 /* harmony import */ var _book_review_book_review_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../book-review/book-review.component */ "./src/app/book-review/book-review.component.ts");
+/* harmony import */ var _add_review_add_review_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../add-review/add-review.component */ "./src/app/add-review/add-review.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -317,7 +398,8 @@ var routes = [
     { path: 'author', component: _add_author_add_author_component__WEBPACK_IMPORTED_MODULE_7__["AddAuthorComponent"] },
     { path: 'book', component: _add_book_add_book_component__WEBPACK_IMPORTED_MODULE_8__["AddBookComponent"] },
     { path: 'import', component: _import_import_component__WEBPACK_IMPORTED_MODULE_9__["ImportComponent"] },
-    { path: 'reviews', component: _book_review_book_review_component__WEBPACK_IMPORTED_MODULE_10__["BookReviewComponent"] }
+    { path: 'reviews', component: _book_review_book_review_component__WEBPACK_IMPORTED_MODULE_10__["BookReviewComponent"] },
+    { path: 'add-review', component: _add_review_add_review_component__WEBPACK_IMPORTED_MODULE_11__["AddReviewComponent"] }
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
@@ -435,12 +517,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 /* harmony import */ var _book_review_book_review_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./book-review/book-review.component */ "./src/app/book-review/book-review.component.ts");
 /* harmony import */ var _book_review_book_review_service__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./book-review/book-review.service */ "./src/app/book-review/book-review.service.ts");
+/* harmony import */ var _add_review_add_review_component__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./add-review/add-review.component */ "./src/app/add-review/add-review.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -483,7 +567,8 @@ var AppModule = /** @class */ (function () {
                 _add_author_add_author_component__WEBPACK_IMPORTED_MODULE_14__["AddAuthorComponent"],
                 _add_book_add_book_component__WEBPACK_IMPORTED_MODULE_15__["AddBookComponent"],
                 _import_import_component__WEBPACK_IMPORTED_MODULE_16__["ImportComponent"],
-                _book_review_book_review_component__WEBPACK_IMPORTED_MODULE_25__["BookReviewComponent"]
+                _book_review_book_review_component__WEBPACK_IMPORTED_MODULE_25__["BookReviewComponent"],
+                _add_review_add_review_component__WEBPACK_IMPORTED_MODULE_27__["AddReviewComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -517,7 +602,7 @@ var AppModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "table {\n    width: 100%;\n}\n\n.mat-form-field {\n    font-size: 14px;\n    width: 100%;\n}\n"
+module.exports = "table {\n    width: auto;\n}\n\n.mat-header-cell{\n    padding-left: 15px;\n}\n\n.mat-cell{\n    padding-left: 15px;\n    padding-right: 15px;\n}"
 
 /***/ }),
 
@@ -528,7 +613,7 @@ module.exports = "table {\n    width: 100%;\n}\n\n.mat-form-field {\n    font-si
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n\n    <table mat-table [dataSource]=\"authors\" class=\"mat-elevation-z8\">\n\n        <ng-container matColumnDef=\"id\">\n            <th mat-header-cell *matHeaderCellDef> Id</th>\n            <td mat-cell *matCellDef=\"let element\"> {{element.id}}</td>\n        </ng-container>\n\n        <ng-container matColumnDef=\"name\">\n            <th mat-header-cell *matHeaderCellDef> Name</th>\n            <td mat-cell *matCellDef=\"let element\"> {{element.name}}</td>\n        </ng-container>\n\n        <ng-container matColumnDef=\"bio\">\n            <th mat-header-cell *matHeaderCellDef> Biography</th>\n            <td mat-cell *matCellDef=\"let element\"> {{element.bio}}</td>\n        </ng-container>\n\n        <ng-container matColumnDef=\"birthDay\">\n            <th mat-header-cell *matHeaderCellDef> Birth Day</th>\n            <td mat-cell *matCellDef=\"let element\"> {{element.birthDay}}</td>\n        </ng-container>\n\n        <ng-container matColumnDef=\"delete\">\n            <th mat-header-cell *matHeaderCellDef></th>\n            <td mat-cell *matCellDef=\"let element\">\n                <button mat-raised-button (click)=\"deleteAuthor(element)\" color=\"warn\">Delete</button>\n            </td>\n        </ng-container>\n\n        <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\n        <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\n    </table>\n</div>"
+module.exports = "<div>\n    <table mat-table [dataSource]=\"authors\" class=\"mat-elevation-z8\">\n\n        <ng-container matColumnDef=\"id\">\n            <th mat-header-cell *matHeaderCellDef> Id</th>\n            <td mat-cell *matCellDef=\"let element\"> {{element.id}}</td>\n        </ng-container>\n\n        <ng-container matColumnDef=\"name\">\n            <th mat-header-cell *matHeaderCellDef> Name</th>\n            <td mat-cell *matCellDef=\"let element\"> {{element.name}}</td>\n        </ng-container>\n\n        <ng-container matColumnDef=\"bio\">\n            <th mat-header-cell *matHeaderCellDef> Biography</th>\n            <td mat-cell *matCellDef=\"let element\"> {{element.bio}}</td>\n        </ng-container>\n\n        <ng-container matColumnDef=\"birthDay\">\n            <th mat-header-cell *matHeaderCellDef> Birth Day</th>\n            <td mat-cell *matCellDef=\"let element\"> {{element.birthDay}}</td>\n        </ng-container>\n\n        <ng-container matColumnDef=\"delete\">\n            <th mat-header-cell *matHeaderCellDef></th>\n            <td mat-cell *matCellDef=\"let element\">\n                <button mat-raised-button (click)=\"deleteAuthor(element)\" color=\"warn\">Delete</button>\n            </td>\n        </ng-container>\n\n        <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\n        <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\n    </table>\n</div>"
 
 /***/ }),
 
@@ -561,7 +646,7 @@ var AuthorComponent = /** @class */ (function () {
     function AuthorComponent(router, authorService) {
         this.router = router;
         this.authorService = authorService;
-        this.displayedColumns = ['id', 'name', 'bio', 'birthDay', 'delete'];
+        this.displayedColumns = ['id', 'name', 'bio', 'delete'];
     }
     AuthorComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -649,7 +734,7 @@ var AuthorService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "table {\n    width: auto;\n}\n\n.mat-header-cell{\n    padding-left: 15px;\n}\n\n.mat-cell{\n    padding-left: 15px;\n    padding-right: 15px;\n}"
 
 /***/ }),
 
@@ -660,7 +745,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n    <table mat-table [dataSource]=\"reviews\" class=\"mat-elevation-z8\">\n\n        <ng-container matColumnDef=\"id\">\n            <th mat-header-cell *matHeaderCellDef> Id</th>\n            <td mat-cell *matCellDef=\"let element\"> {{element.id}}</td>\n        </ng-container>\n\n        <ng-container matColumnDef=\"user\">\n            <th mat-header-cell *matHeaderCellDef> User</th>\n            <td mat-cell *matCellDef=\"let element\"> {{element.user.username}}</td>\n        </ng-container>\n\n        <ng-container matColumnDef=\"review\">\n            <th mat-header-cell *matHeaderCellDef> Review</th>\n            <td mat-cell *matCellDef=\"let element\"> {{element.review}}</td>\n        </ng-container>\n\n        <ng-container matColumnDef=\"rate\">\n            <th mat-header-cell *matHeaderCellDef> Rate</th>\n            <td mat-cell *matCellDef=\"let element\"> {{element.rate}}</td>\n        </ng-container>\n\n        <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\n        <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\n\n\n    </table>\n</div>\n"
+module.exports = "<div>\n    <h2>All reviews</h2>\n    <div>\n        <table mat-table [dataSource]=\"reviews\" class=\"mat-elevation-z8\">\n\n            <ng-container matColumnDef=\"id\">\n                <th mat-header-cell *matHeaderCellDef> Id</th>\n                <td mat-cell *matCellDef=\"let element\"> {{element.id}}</td>\n            </ng-container>\n\n            <ng-container matColumnDef=\"user\">\n                <th mat-header-cell *matHeaderCellDef> User</th>\n                <td mat-cell *matCellDef=\"let element\"> {{element.user.username}}</td>\n            </ng-container>\n\n            <ng-container matColumnDef=\"review\">\n                <th mat-header-cell *matHeaderCellDef> Review</th>\n                <td mat-cell *matCellDef=\"let element\"> {{element.review}}</td>\n            </ng-container>\n\n            <ng-container matColumnDef=\"rate\">\n                <th mat-header-cell *matHeaderCellDef> Rate</th>\n                <td mat-cell *matCellDef=\"let element\"> {{element.rate}}</td>\n            </ng-container>\n\n            <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\n            <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\n        </table>\n    </div>\n    <div>\n        <br>\n        <a mat-raised-button (click)=\"goToAddReview()\" color=\"primary\">Add Review</a>\n    </div>\n</div>\n"
 
 /***/ }),
 
@@ -692,24 +777,27 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 var BookReviewComponent = /** @class */ (function () {
-    function BookReviewComponent(router, bookService, bookreviewService, route) {
+    function BookReviewComponent(router, bookService, bookReviewService, route) {
         this.router = router;
         this.bookService = bookService;
-        this.bookreviewService = bookreviewService;
+        this.bookReviewService = bookReviewService;
         this.route = route;
-        this.displayedColumns = ['id', 'user', 'review', 'rate'];
+        this.displayedColumns = ['user', 'review', 'rate'];
     }
     BookReviewComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.route.queryParams.subscribe(function (params) {
-            _this.selBookId = params.order;
-        });
+        this.selBookId = this.route.snapshot.queryParams.bookId;
         this.bookService.getById(this.selBookId).subscribe(function (data) {
             _this.selBook = data;
+            _this.bookReviewService.getBookReviews(data.id)
+                .subscribe(function (reviews) {
+                _this.reviews = reviews;
+            });
         });
-        this.bookreviewService.getBookReviews(this.selBook)
-            .subscribe(function (data) {
-            _this.reviews = data;
+    };
+    BookReviewComponent.prototype.goToAddReview = function () {
+        this.router.navigate(['/add-review'], {
+            queryParams: { bookId: this.selBookId }
         });
     };
     BookReviewComponent = __decorate([
@@ -756,8 +844,6 @@ var httpOptions = {
 var BookReviewService = /** @class */ (function () {
     function BookReviewService(http) {
         this.http = http;
-        this.sumRates = 0.0;
-        this.reviews = [];
     }
     BookReviewService.prototype.getBookReviews = function (id) {
         return this.http.get("http://localhost:8080/bookservice/api/review/book/" + id);
@@ -768,22 +854,23 @@ var BookReviewService = /** @class */ (function () {
     BookReviewService.prototype.delReview = function (review) {
         return this.http.delete("http://localhost:8080/bookservice/api/review/" + review.id.toString());
     };
-    BookReviewService.prototype.getRate = function (bookId) {
-        var _this = this;
-        this.getBookReviews(bookId).subscribe(function (data) {
-            _this.reviews = data;
+    BookReviewService.prototype.getRate = function (book) {
+        var sumRates = 0;
+        var rate = 0.0;
+        this.getBookReviews(book.id).subscribe(function (reviews) {
+            if (reviews.length !== 0) {
+                reviews.forEach(function (item) {
+                    sumRates += item.rate;
+                });
+            }
+            if (sumRates === 0.0) {
+                rate = 0.0;
+            }
+            else {
+                rate = (sumRates / reviews.length);
+            }
+            book.rate = rate;
         });
-        if (this.reviews.length !== 0) {
-            this.reviews.forEach(function (item) {
-                _this.sumRates += item.rate;
-            });
-        }
-        if (this.sumRates === 0.0) {
-            return 0.0;
-        }
-        else {
-            return (this.sumRates / this.reviews.length);
-        }
     };
     BookReviewService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])(),
@@ -803,7 +890,7 @@ var BookReviewService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n\n    <table mat-table [dataSource]=\"books\" class=\"mat-elevation-z8\">\n\n        <ng-container matColumnDef=\"id\">\n            <th mat-header-cell *matHeaderCellDef> Id</th>\n            <td mat-cell *matCellDef=\"let element\"> {{element.id}}</td>\n        </ng-container>\n\n        <ng-container matColumnDef=\"name\">\n            <th mat-header-cell *matHeaderCellDef> Name</th>\n            <td mat-cell *matCellDef=\"let element\"> {{element.name}}</td>\n        </ng-container>\n\n        <ng-container matColumnDef=\"description\">\n            <th mat-header-cell *matHeaderCellDef> Description</th>\n            <td mat-cell *matCellDef=\"let element\"> {{element.description}}</td>\n        </ng-container>\n\n        <ng-container matColumnDef=\"price\">\n            <th mat-header-cell *matHeaderCellDef> Price</th>\n            <td mat-cell *matCellDef=\"let element\"> {{element.price}}</td>\n        </ng-container>\n\n        <ng-container matColumnDef=\"publisher\">\n            <th mat-header-cell *matHeaderCellDef> Publisher</th>\n            <td mat-cell *matCellDef=\"let element\"> {{element.publisher.name}}</td>\n        </ng-container>\n\n        <ng-container matColumnDef=\"publishDate\">\n            <th mat-header-cell *matHeaderCellDef> Publisher</th>\n            <td mat-cell *matCellDef=\"let element\"> {{element.publishDateh}}</td>\n        </ng-container>\n\n        <ng-container matColumnDef=\"delete\">\n            <th mat-header-cell *matHeaderCellDef></th>\n            <td mat-cell *matCellDef=\"let element\">\n                <button mat-raised-button (click)=\"deleteBook(element)\" color=\"warn\">Delete</button>\n            </td>\n        </ng-container>\n\n        <ng-container matColumnDef=\"rate\">\n            <th mat-header-cell *matHeaderCellDef></th>\n            <td mat-cell *matCellDef=\"let element\">\n                <button mat-raised-button (click)=\"goToReview(element.id)\" color=\"primary\">{{element.rate}}</button>\n            </td>\n        </ng-container>\n\n        <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\n        <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\n\n\n    </table>\n</div>\n"
+module.exports = "<div>\n    <table mat-table [dataSource]=\"books\" class=\"mat-elevation-z8\">\n\n        <ng-container matColumnDef=\"id\">\n            <th mat-header-cell *matHeaderCellDef> Id</th>\n            <td mat-cell *matCellDef=\"let element\"> {{element.id}}</td>\n        </ng-container>\n\n        <ng-container matColumnDef=\"name\">\n            <th mat-header-cell *matHeaderCellDef> Name</th>\n            <td mat-cell *matCellDef=\"let element\"> {{element.name}}</td>\n        </ng-container>\n\n        <ng-container matColumnDef=\"description\">\n            <th mat-header-cell *matHeaderCellDef> Description</th>\n            <td mat-cell *matCellDef=\"let element\"> {{element.description}}</td>\n        </ng-container>\n\n        <ng-container matColumnDef=\"price\">\n            <th mat-header-cell *matHeaderCellDef> Price</th>\n            <td mat-cell *matCellDef=\"let element\"> {{element.price}}</td>\n        </ng-container>\n\n        <ng-container matColumnDef=\"publisher\">\n            <th mat-header-cell *matHeaderCellDef> Publisher</th>\n            <td mat-cell *matCellDef=\"let element\"> {{element.publisher.name}}</td>\n        </ng-container>\n\n        <ng-container matColumnDef=\"publishDate\">\n            <th mat-header-cell *matHeaderCellDef> Publisher Date</th>\n            <td mat-cell *matCellDef=\"let element\"> {{element.publishDate}}</td>\n        </ng-container>\n\n        <ng-container matColumnDef=\"delete\">\n            <th mat-header-cell *matHeaderCellDef></th>\n            <td mat-cell *matCellDef=\"let element\">\n                <button mat-raised-button (click)=\"deleteBook(element)\" color=\"warn\">Delete</button>\n            </td>\n        </ng-container>\n\n        <ng-container matColumnDef=\"rate\">\n            <th mat-header-cell *matHeaderCellDef> Rate</th>\n            <td mat-cell *matCellDef=\"let element\">\n                <button mat-raised-button (click)=\"goToReview(element.id)\" color=\"primary\">{{element.rate}}</button>\n            </td>\n        </ng-container>\n\n        <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\n        <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\n\n    </table>\n</div>\n"
 
 /***/ }),
 
@@ -860,9 +947,8 @@ var BookComponent = /** @class */ (function () {
     BookComponent.prototype.getRate = function (books) {
         var _this = this;
         books.forEach(function (book) {
-            book.rate = _this.bookReview.getRate(book.id);
+            _this.bookReview.getRate(book);
         });
-        return books;
     };
     BookComponent.prototype.goToReview = function (id) {
         this.router.navigate(['/reviews'], {
@@ -997,6 +1083,26 @@ var Publisher = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/entity/review.model.ts":
+/*!****************************************!*\
+  !*** ./src/app/entity/review.model.ts ***!
+  \****************************************/
+/*! exports provided: Review */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Review", function() { return Review; });
+var Review = /** @class */ (function () {
+    function Review() {
+    }
+    return Review;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/import/import.component.css":
 /*!*********************************************!*\
   !*** ./src/app/import/import.component.css ***!
@@ -1015,7 +1121,7 @@ module.exports = "label {\n    display: inline-block;\n    float: left;\n    cle
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n    <div>\n        <mat-form-field>\n            <mat-select placeholder=\"Select type of import\"  [(ngModel)]=\"selImport\" name=\"typeImport\">\n                <mat-option *ngFor=\"let element of typeImport\" [value]=\"element\">\n                    {{ element }}\n                </mat-option>\n            </mat-select>\n        </mat-form-field>\n        <button mat-raised-button (click)=\"import()\" color=\"primary\">Import</button>\n    </div>\n</div>"
+module.exports = "<div>\n    <h2 class=\"text-center\">Import</h2>\n    <div>\n        <mat-form-field>\n            <mat-select placeholder=\"Select type of import\"  [(ngModel)]=\"selImport\" name=\"typeImport\">\n                <mat-option *ngFor=\"let element of typeImport\" [value]=\"element\">\n                    {{ element }}\n                </mat-option>\n            </mat-select>\n        </mat-form-field>\n        <button mat-raised-button (click)=\"import()\" color=\"primary\">Import</button>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -1246,7 +1352,7 @@ var LoginService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "table {\n    width: 100%;\n}\n\n.mat-form-field {\n    font-size: 14px;\n    width: 100%;\n}"
+module.exports = "table {\n    width: auto;\n}\n\n.mat-header-cell{\n    padding-left: 15px;\n}\n\n.mat-cell{\n    padding-left: 15px;\n    padding-right: 15px;\n}"
 
 /***/ }),
 

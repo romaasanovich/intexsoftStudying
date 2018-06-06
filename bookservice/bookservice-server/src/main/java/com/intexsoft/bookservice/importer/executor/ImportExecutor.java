@@ -8,5 +8,6 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public interface ImportExecutor {
     ResponseEntity importEntities(TypeImport typeImport, Importer importService) throws InterruptedException;
+
     void setLock(ReentrantLock lock);
 }

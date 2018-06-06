@@ -1,26 +1,26 @@
 <div class="col-md-6">
-  <h2 class="text-center">Add Author</h2>
+    <h2 class="text-center">Add Author</h2>
 
-  <div>
-    <mat-form-field class="example-form-field">
-      <input matInput type="text" placeholder="Review" [(ngModel)]="review.review"/>
-      <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
-        <mat-icon>close</mat-icon>
-      </button>
-    </mat-form-field>
-  </div>
-  <div>
-    <mat-form-field>
-      <mat-select placeholder="Select Rate" [(ngModel)]="review.rate" >
-        <mat-option *ngFor="let item of rates" [value]="item">
-          {{ item }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-  </div>
-   <div>
-    <button mat-raised-button (click)="addReview()" color="primary">Add Review</button>
-  </div>
+    <div>
+        <mat-form-field class="example-form-field">
+            <input matInput type="text" placeholder="Review" [(ngModel)]="review.review"/>
+            <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field>
+            <mat-select placeholder="Select Rate" [(ngModel)]="review.rate">
+                <mat-option *ngFor="let item of rates" [value]="item">
+                    {{ item }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div>
+        <button mat-raised-button (click)="addReview()" color="primary">Add Review</button>
+    </div>
 
 </div>
 
