@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {AppSettings} from '../../../app.settings';
 
 const httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -12,6 +13,6 @@ export class ImportService {
     }
 
     public import(type: string) {
-        return this.http.post(`http://localhost:8080/bookservice/api/import/${type}`, type);
+        return this.http.post(`${AppSettings.URL}/import/${type}`, type);
     }
 }

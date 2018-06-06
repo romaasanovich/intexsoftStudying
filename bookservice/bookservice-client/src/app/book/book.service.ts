@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 import {Book} from '../entity/book.model';
+import {AppSettings} from '../../../app.settings';
 
 
 const httpOptions = {
@@ -15,19 +16,19 @@ export class BookService {
     }
 
     public getBooks() {
-        return this.http.get<Book[]>('http://localhost:8080/bookservice/api/books');
+        return this.http.get<Book[]>(`${AppSettings.URL}/books`);
     }
 
 
     public addBook(book: Book) {
-        return this.http.post<Book>('http://localhost:8080/bookservice/api/book', book);
+        return this.http.post<Book>(`${AppSettings.URL}/book`, book);
     }
 
     public deleteBook(book: Book) {
-        return this.http.delete(`http://localhost:8080/bookservice/api/book/${book.id.toString()}`);
+        return this.http.delete(`${AppSettings.URL}/book/${book.id.toString()}`);
     }
 
     public getById(id: string) {
-        return this.http.get<Book>(`http://localhost:8080/bookservice/api/books/${id}`);
+        return this.http.get<Book>(`${AppSettings.URL}/books/${id}`);
     }
 }

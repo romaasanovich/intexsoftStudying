@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 import {Author} from '../entity/author.model';
+import {AppSettings} from '../../../app.settings';
 
 
 const httpOptions = {
@@ -15,14 +16,14 @@ export class AuthorService {
     }
 
     public getAuthors() {
-        return this.http.get<Author[]>('http://localhost:8080/bookservice/api/authors');
+        return this.http.get<Author[]>(`${AppSettings.URL}/authors`);
     }
 
     public addAuthor(author) {
-        return this.http.post('http://localhost:8080/bookservice/api/author', author);
+        return this.http.post(`${AppSettings.URL}/author`, author);
     }
 
     public deleteAuthor(author: Author) {
-        return this.http.delete(`http://localhost:8080/bookservice/api/author/${author.id.toString()}`);
+        return this.http.delete(`${AppSettings.URL}/author/${author.id.toString()}`);
     }
 }

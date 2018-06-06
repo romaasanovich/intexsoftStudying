@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Review} from '../entity/review.model';
+import {AppSettings} from '../../../app.settings';
 
 
 const httpOptions = {
@@ -14,14 +15,14 @@ export class BookReviewService {
     }
 
     public getBookReviews(id) {
-        return this.http.get<Review[]>(`http://localhost:8080/bookservice/api/review/book/${id}`);
+        return this.http.get<Review[]>(`${AppSettings.URL}/review/${id}`);
     }
 
     public addReview(review: Review) {
-        return this.http.post(`http://localhost:8080/bookservice/api/review/`, review);
+        return this.http.post(`${AppSettings.URL}/review/`, review);
     }
 
     public delReview(review: Review) {
-        return this.http.delete(`http://localhost:8080/bookservice/api/review/${review.id.toString()}`);
+        return this.http.delete(`${AppSettings.URL}/review/${review.id.toString()}`);
     }
 }

@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 import {Publisher} from '../entity/publisher.model';
+import {AppSettings} from '../../../app.settings';
 
 
 const httpOptions = {
@@ -16,15 +17,15 @@ export class PublisherService {
 
 
     public addPubl(publisher) {
-        return this.http.post('http://localhost:8080/bookservice/api/publisher', publisher);
+        return this.http.post(`${AppSettings.URL}/publisher`, publisher);
     }
 
     public getPublishers() {
-        return this.http.get<Publisher[]>('http://localhost:8080/bookservice/api/publishers');
+        return this.http.get<Publisher[]>(`${AppSettings.URL}/publishers`);
     }
 
     public deletePublisher(publisher: Publisher) {
-        return this.http.delete('http://localhost:8080/bookservice/api/publisher' + '/' + publisher.id.toString());
+        return this.http.delete(`${AppSettings.URL}/publisher/${publisher.id.toString()}`);
     }
 
 }
