@@ -21,10 +21,10 @@ public class Reader {
 
     public File getFile(String filePath) throws IOException {
         File file = new File(filePath);
-        if (!file.createNewFile()) {
+        if(file.exists() && !file.isDirectory()) {
             return file;
         } else {
-            return null;
+            throw new IOException();
         }
     }
 }
