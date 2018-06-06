@@ -11,7 +11,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 
 public class ImportScheduler {
 
-    private final Logger logger = LoggerFactory.getLogger("log");
+    private static final Logger logger = LoggerFactory.getLogger("log");
 
     @Autowired
     ImporterJsonImpl importerJson;

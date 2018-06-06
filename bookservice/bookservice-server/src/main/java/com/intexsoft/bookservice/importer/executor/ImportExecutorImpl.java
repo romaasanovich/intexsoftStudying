@@ -12,8 +12,8 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class ImportExecutorImpl implements ImportExecutor {
 
+    private static final Logger logger = LoggerFactory.getLogger("log");
     private static ReentrantLock lock = new ReentrantLock();
-    private final Logger logger = LoggerFactory.getLogger("log");
 
     @Override
     public ResponseEntity importEntities(TypeImport typeImport, Importer importService) throws InterruptedException {

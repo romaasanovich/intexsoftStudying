@@ -17,7 +17,7 @@ import javax.transaction.Transactional;
 @Transactional
 public class UserDetailServiceImpl implements UserDetailsService {
 
-    private final Logger logger = LoggerFactory.getLogger("log");
+    private static final Logger logger = LoggerFactory.getLogger("log");
 
     @Autowired
     UserRepository userRepository;

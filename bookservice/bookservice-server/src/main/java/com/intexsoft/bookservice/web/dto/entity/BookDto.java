@@ -1,9 +1,5 @@
 package com.intexsoft.bookservice.web.dto.entity;
 
-import com.intexsoft.bookservice.dao.entity.Author;
-import com.intexsoft.bookservice.dao.entity.Publisher;
-
-import java.util.Date;
 import java.util.List;
 
 public class BookDto {

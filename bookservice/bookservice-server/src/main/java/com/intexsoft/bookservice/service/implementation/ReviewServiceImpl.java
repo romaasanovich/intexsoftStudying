@@ -3,7 +3,6 @@ package com.intexsoft.bookservice.service.implementation;
 import com.intexsoft.bookservice.dao.entity.Review;
 import com.intexsoft.bookservice.dao.entity.User;
 import com.intexsoft.bookservice.dao.repository.ReviewRepository;
-import com.intexsoft.bookservice.service.api.BookService;
 import com.intexsoft.bookservice.service.api.ReviewService;
 import com.intexsoft.bookservice.service.api.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
