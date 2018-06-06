@@ -22,13 +22,10 @@ export class BookReviewComponent implements OnInit {
 
     ngOnInit() {
         this.selBookId = this.route.snapshot.queryParams.bookId;
-        this.bookService.getById(this.selBookId).subscribe(data => {
-            this.selBook = data;
-            this.bookReviewService.getBookReviews(data.id)
+            this.bookReviewService.getBookReviews(this.selBookId)
                 .subscribe(reviews => {
                     this.reviews = reviews;
                 });
-        });
     }
 
     goToAddReview() {

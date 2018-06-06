@@ -30,7 +30,7 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "    label {\n    display: inline-block;\n    float: left;\n    clear: left;\n    width: 75px;\n    text-align: left;\n}\n\ninput {\n    display: inline-block;\n    float: left;\n}\n\n.form-group {\n    line-height: 1.5;\n}\n"
+module.exports = "label {\n    display: inline-block;\n    float: left;\n    clear: left;\n    width: 75px;\n    text-align: left;\n}\n\ninput {\n    display: inline-block;\n    float: left;\n}\n\n.form-group {\n    line-height: 1.5;\n}\n"
 
 /***/ }),
 
@@ -116,7 +116,7 @@ module.exports = "label {\n    display: inline-block;\n    float: left;\n    cle
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"col-md-6\">\n    <h2 class=\"text-center\">Add Author</h2>\n\n    <div>\n        <mat-form-field class=\"example-form-field\">\n            <input matInput type=\"text\" placeholder=\"Name\" [(ngModel)]=\"book.name\"/>\n            <button mat-button *ngIf=\"value\" matSuffix mat-icon-button aria-label=\"Clear\" (click)=\"value=''\">\n                <mat-icon>close</mat-icon>\n            </button>\n        </mat-form-field>\n    </div>\n    <div>\n        <mat-form-field class=\"example-form-field\">\n            <input matInput type=\"text\" placeholder=\"Description\" [(ngModel)]=\"book.description\"/>\n            <button mat-button *ngIf=\"value\" matSuffix mat-icon-button aria-label=\"Clear\" (click)=\"value=''\">\n                <mat-icon>close</mat-icon>\n            </button>\n        </mat-form-field>\n    </div>\n    <div>\n        <mat-form-field class=\"example-form-field\">\n            <input matInput type=\"text\" placeholder=\"Price\" [(ngModel)]=\"book.price\"/>\n            <button mat-button *ngIf=\"value\" matSuffix mat-icon-button aria-label=\"Clear\" (click)=\"value=''\">\n                <mat-icon>close</mat-icon>\n            </button>\n        </mat-form-field>\n    </div>\n    <div>\n        <mat-form-field>\n            <input matInput [matDatepicker]=\"picker\" placeholder=\"Publish Date\" [(ngModel)]=\"book.publishDate\">\n            <mat-datepicker-toggle matSuffix [for]=\"picker\"></mat-datepicker-toggle>\n            <mat-datepicker #picker></mat-datepicker>\n        </mat-form-field>\n    </div>\n    <div>\n        <mat-form-field>\n            <mat-select placeholder=\"Select Publisher\" [(ngModel)]=\"book.publisher\" name=\"publisher\" >\n                <mat-option *ngFor=\"let publisher of publishers\" [value]=\"publisher\">\n                    {{ publisher.name }}\n                </mat-option>\n            </mat-select>\n        </mat-form-field>\n    </div>\n    <div>\n        <mat-form-field>\n            <mat-select placeholder=\"Select Authors\"  multiple>\n                <mat-option *ngFor=\"let author of authors\" [value]=\"book.authors\">{{author.name}}</mat-option>\n            </mat-select>\n        </mat-form-field>\n    </div>\n    <div>\n        <button mat-raised-button (click)=\"addBook()\" color=\"primary\">Add Book</button>\n    </div>\n\n</div>\n\n"
+module.exports = "<div class=\"col-md-6\">\n    <h2 class=\"text-center\">Add Book</h2>\n\n    <div>\n        <mat-form-field class=\"example-form-field\">\n            <input matInput type=\"text\" placeholder=\"Name\" [(ngModel)]=\"book.name\"/>\n            <button mat-button *ngIf=\"value\" matSuffix mat-icon-button aria-label=\"Clear\" (click)=\"value=''\">\n                <mat-icon>close</mat-icon>\n            </button>\n        </mat-form-field>\n    </div>\n    <div>\n        <mat-form-field class=\"example-form-field\">\n            <input matInput type=\"text\" placeholder=\"Description\" [(ngModel)]=\"book.description\"/>\n            <button mat-button *ngIf=\"value\" matSuffix mat-icon-button aria-label=\"Clear\" (click)=\"value=''\">\n                <mat-icon>close</mat-icon>\n            </button>\n        </mat-form-field>\n    </div>\n    <div>\n        <mat-form-field class=\"example-form-field\">\n            <input matInput type=\"text\" placeholder=\"Price\" [(ngModel)]=\"book.price\"/>\n            <button mat-button *ngIf=\"value\" matSuffix mat-icon-button aria-label=\"Clear\" (click)=\"value=''\">\n                <mat-icon>close</mat-icon>\n            </button>\n        </mat-form-field>\n    </div>\n    <div>\n        <mat-form-field>\n            <input matInput [matDatepicker]=\"picker\" placeholder=\"Publish Date\" [(ngModel)]=\"book.publishDate\">\n            <mat-datepicker-toggle matSuffix [for]=\"picker\"></mat-datepicker-toggle>\n            <mat-datepicker #picker></mat-datepicker>\n        </mat-form-field>\n    </div>\n    <div>\n        <mat-form-field>\n            <mat-select placeholder=\"Select Publisher\" [(ngModel)]=\"book.publisher\" name=\"publisher\">\n                <mat-option *ngFor=\"let publisher of publishers\" [value]=\"publisher\">\n                    {{ publisher.name }}\n                </mat-option>\n            </mat-select>\n        </mat-form-field>\n    </div>\n    <div>\n        <mat-form-field>\n            <mat-select placeholder=\"Select Authors\" multiple>\n                <mat-option *ngFor=\"let author of authors\" [value]=\"book.authors\">{{author.name}}</mat-option>\n            </mat-select>\n        </mat-form-field>\n    </div>\n    <div>\n        <button mat-raised-button (click)=\"addBook()\" color=\"primary\">Add Book</button>\n    </div>\n\n</div>\n\n"
 
 /***/ }),
 
@@ -288,7 +288,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"col-md-6\">\n  <h2 class=\"text-center\">Add Author</h2>\n\n  <div>\n    <mat-form-field class=\"example-form-field\">\n      <input matInput type=\"text\" placeholder=\"Review\" [(ngModel)]=\"review.review\"/>\n      <button mat-button *ngIf=\"value\" matSuffix mat-icon-button aria-label=\"Clear\" (click)=\"value=''\">\n        <mat-icon>close</mat-icon>\n      </button>\n    </mat-form-field>\n  </div>\n  <div>\n    <mat-form-field>\n      <mat-select placeholder=\"Select Rate\" [(ngModel)]=\"review.rate\" >\n        <mat-option *ngFor=\"let item of rates\" [value]=\"item\">\n          {{ item }}\n        </mat-option>\n      </mat-select>\n    </mat-form-field>\n  </div>\n   <div>\n    <button mat-raised-button (click)=\"addReview()\" color=\"primary\">Add Review</button>\n  </div>\n\n</div>\n\n"
+module.exports = "<div class=\"col-md-6\">\n    <h2 class=\"text-center\">Add Review</h2>\n\n    <div>\n        <mat-form-field class=\"example-form-field\">\n            <input matInput type=\"text\" placeholder=\"Review\" [(ngModel)]=\"review.review\"/>\n            <button mat-button *ngIf=\"value\" matSuffix mat-icon-button aria-label=\"Clear\" (click)=\"value=''\">\n                <mat-icon>close</mat-icon>\n            </button>\n        </mat-form-field>\n    </div>\n    <div>\n        <mat-form-field>\n            <mat-select placeholder=\"Select Rate\" [(ngModel)]=\"review.rate\">\n                <mat-option *ngFor=\"let item of rates\" [value]=\"item\">\n                    {{ item }}\n                </mat-option>\n            </mat-select>\n        </mat-form-field>\n    </div>\n    <div>\n        <button mat-raised-button (click)=\"addReview()\" color=\"primary\">Add Review</button>\n    </div>\n\n</div>\n\n"
 
 /***/ }),
 
@@ -602,7 +602,7 @@ var AppModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "table {\n    width: auto;\n}\n\n.mat-header-cell{\n    padding-left: 15px;\n}\n\n.mat-cell{\n    padding-left: 15px;\n    padding-right: 15px;\n}"
+module.exports = "table {\n    width: auto;\n}\n\n.mat-header-cell {\n    padding-left: 15px;\n}\n\n.mat-cell {\n    padding-left: 15px;\n    padding-right: 15px;\n}"
 
 /***/ }),
 
@@ -734,7 +734,7 @@ var AuthorService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "table {\n    width: auto;\n}\n\n.mat-header-cell{\n    padding-left: 15px;\n}\n\n.mat-cell{\n    padding-left: 15px;\n    padding-right: 15px;\n}"
+module.exports = "table {\n    width: auto;\n}\n\n.mat-header-cell {\n    padding-left: 15px;\n}\n\n.mat-cell {\n    padding-left: 15px;\n    padding-right: 15px;\n}"
 
 /***/ }),
 
@@ -787,12 +787,9 @@ var BookReviewComponent = /** @class */ (function () {
     BookReviewComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.selBookId = this.route.snapshot.queryParams.bookId;
-        this.bookService.getById(this.selBookId).subscribe(function (data) {
-            _this.selBook = data;
-            _this.bookReviewService.getBookReviews(data.id)
-                .subscribe(function (reviews) {
-                _this.reviews = reviews;
-            });
+        this.bookReviewService.getBookReviews(this.selBookId)
+            .subscribe(function (reviews) {
+            _this.reviews = reviews;
         });
     };
     BookReviewComponent.prototype.goToAddReview = function () {
@@ -854,24 +851,6 @@ var BookReviewService = /** @class */ (function () {
     BookReviewService.prototype.delReview = function (review) {
         return this.http.delete("http://localhost:8080/bookservice/api/review/" + review.id.toString());
     };
-    BookReviewService.prototype.getRate = function (book) {
-        var sumRates = 0;
-        var rate = 0.0;
-        this.getBookReviews(book.id).subscribe(function (reviews) {
-            if (reviews.length !== 0) {
-                reviews.forEach(function (item) {
-                    sumRates += item.rate;
-                });
-            }
-            if (sumRates === 0.0) {
-                rate = 0.0;
-            }
-            else {
-                rate = (sumRates / reviews.length);
-            }
-            book.rate = rate;
-        });
-    };
     BookReviewService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])(),
         __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
@@ -883,6 +862,17 @@ var BookReviewService = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/book/book.component.css":
+/*!*****************************************!*\
+  !*** ./src/app/book/book.component.css ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "table {\n    width: auto;\n}\n\n.mat-header-cell {\n    padding-left: 15px;\n}\n\n.mat-cell {\n    padding-left: 15px;\n    padding-right: 15px;\n}"
+
+/***/ }),
+
 /***/ "./src/app/book/book.component.html":
 /*!******************************************!*\
   !*** ./src/app/book/book.component.html ***!
@@ -890,7 +880,7 @@ var BookReviewService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n    <table mat-table [dataSource]=\"books\" class=\"mat-elevation-z8\">\n\n        <ng-container matColumnDef=\"id\">\n            <th mat-header-cell *matHeaderCellDef> Id</th>\n            <td mat-cell *matCellDef=\"let element\"> {{element.id}}</td>\n        </ng-container>\n\n        <ng-container matColumnDef=\"name\">\n            <th mat-header-cell *matHeaderCellDef> Name</th>\n            <td mat-cell *matCellDef=\"let element\"> {{element.name}}</td>\n        </ng-container>\n\n        <ng-container matColumnDef=\"description\">\n            <th mat-header-cell *matHeaderCellDef> Description</th>\n            <td mat-cell *matCellDef=\"let element\"> {{element.description}}</td>\n        </ng-container>\n\n        <ng-container matColumnDef=\"price\">\n            <th mat-header-cell *matHeaderCellDef> Price</th>\n            <td mat-cell *matCellDef=\"let element\"> {{element.price}}</td>\n        </ng-container>\n\n        <ng-container matColumnDef=\"publisher\">\n            <th mat-header-cell *matHeaderCellDef> Publisher</th>\n            <td mat-cell *matCellDef=\"let element\"> {{element.publisher.name}}</td>\n        </ng-container>\n\n        <ng-container matColumnDef=\"publishDate\">\n            <th mat-header-cell *matHeaderCellDef> Publisher Date</th>\n            <td mat-cell *matCellDef=\"let element\"> {{element.publishDate}}</td>\n        </ng-container>\n\n        <ng-container matColumnDef=\"delete\">\n            <th mat-header-cell *matHeaderCellDef></th>\n            <td mat-cell *matCellDef=\"let element\">\n                <button mat-raised-button (click)=\"deleteBook(element)\" color=\"warn\">Delete</button>\n            </td>\n        </ng-container>\n\n        <ng-container matColumnDef=\"rate\">\n            <th mat-header-cell *matHeaderCellDef> Rate</th>\n            <td mat-cell *matCellDef=\"let element\">\n                <button mat-raised-button (click)=\"goToReview(element.id)\" color=\"primary\">{{element.rate}}</button>\n            </td>\n        </ng-container>\n\n        <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\n        <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\n\n    </table>\n</div>\n"
+module.exports = "<div>\n    <table mat-table [dataSource]=\"books\" class=\"mat-elevation-z8\">\n\n        <ng-container matColumnDef=\"id\">\n            <th mat-header-cell *matHeaderCellDef> Id</th>\n            <td mat-cell *matCellDef=\"let element\"> {{element.id}}</td>\n        </ng-container>\n\n        <ng-container matColumnDef=\"name\">\n            <th mat-header-cell *matHeaderCellDef> Name</th>\n            <td mat-cell *matCellDef=\"let element\"> {{element.name}}</td>\n        </ng-container>\n\n        <ng-container matColumnDef=\"description\">\n            <th mat-header-cell *matHeaderCellDef> Description</th>\n            <td mat-cell *matCellDef=\"let element\"> {{element.description}}</td>\n        </ng-container>\n\n        <ng-container matColumnDef=\"price\">\n            <th mat-header-cell *matHeaderCellDef> Price</th>\n            <td mat-cell *matCellDef=\"let element\"> {{element.price}}</td>\n        </ng-container>\n\n        <ng-container matColumnDef=\"authors\">\n            <th mat-header-cell *matHeaderCellDef> Authors</th>\n            <td mat-cell *matCellDef=\"let element\"> {{element.authors.toString()}}</td>\n        </ng-container>\n\n        <ng-container matColumnDef=\"publisher\">\n            <th mat-header-cell *matHeaderCellDef> Publisher</th>\n            <td mat-cell *matCellDef=\"let element\"> {{element.publisher}}</td>\n        </ng-container>\n\n        <ng-container matColumnDef=\"publishDate\">\n            <th mat-header-cell *matHeaderCellDef> Publisher Date</th>\n            <td mat-cell *matCellDef=\"let element\"> {{element.publishDate}}</td>\n        </ng-container>\n\n        <ng-container matColumnDef=\"rate\">\n            <th mat-header-cell *matHeaderCellDef> Rate</th>\n            <td mat-cell *matCellDef=\"let element\">\n                <button mat-raised-button (click)=\"goToReview(element.id)\" color=\"primary\">{{element.rate}}</button>\n            </td>\n        </ng-container>\n\n        <ng-container matColumnDef=\"delete\">\n            <th mat-header-cell *matHeaderCellDef></th>\n            <td mat-cell *matCellDef=\"let element\">\n                <button mat-raised-button (click)=\"deleteBook(element)\" color=\"warn\">Delete</button>\n            </td>\n        </ng-container>\n\n\n\n        <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\n        <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\n\n    </table>\n</div>\n"
 
 /***/ }),
 
@@ -927,14 +917,13 @@ var BookComponent = /** @class */ (function () {
         this.bookService = bookService;
         this.bookReview = bookReview;
         this.books = [];
-        this.displayedColumns = ['id', 'name' /*,'description'*/, 'price', 'publisher', 'delete', 'rate'];
+        this.displayedColumns = ['id', 'name', 'description', 'price', 'publisher', 'authors', 'rate', 'delete'];
     }
     BookComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.bookService.getBooks()
             .subscribe(function (data) {
             _this.books = data;
-            _this.getRate(_this.books);
         });
     };
     BookComponent.prototype.deleteBook = function (book) {
@@ -942,12 +931,6 @@ var BookComponent = /** @class */ (function () {
         this.bookService.deleteBook(book)
             .subscribe(function (data) {
             _this.books = _this.books.filter(function (u) { return u !== book; });
-        });
-    };
-    BookComponent.prototype.getRate = function (books) {
-        var _this = this;
-        books.forEach(function (book) {
-            _this.bookReview.getRate(book);
         });
     };
     BookComponent.prototype.goToReview = function (id) {
@@ -959,7 +942,7 @@ var BookComponent = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-book',
             template: __webpack_require__(/*! ./book.component.html */ "./src/app/book/book.component.html"),
-            styles: []
+            styles: [__webpack_require__(/*! ./book.component.css */ "./src/app/book/book.component.css")]
         }),
         __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _book_service__WEBPACK_IMPORTED_MODULE_2__["BookService"], _book_review_book_review_service__WEBPACK_IMPORTED_MODULE_3__["BookReviewService"]])
     ], BookComponent);
@@ -1121,7 +1104,7 @@ module.exports = "label {\n    display: inline-block;\n    float: left;\n    cle
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n    <h2 class=\"text-center\">Import</h2>\n    <div>\n        <mat-form-field>\n            <mat-select placeholder=\"Select type of import\"  [(ngModel)]=\"selImport\" name=\"typeImport\">\n                <mat-option *ngFor=\"let element of typeImport\" [value]=\"element\">\n                    {{ element }}\n                </mat-option>\n            </mat-select>\n        </mat-form-field>\n        <button mat-raised-button (click)=\"import()\" color=\"primary\">Import</button>\n    </div>\n</div>"
+module.exports = "<div>\n    <h2 class=\"text-center\">Import</h2>\n    <div>\n        <mat-form-field>\n            <mat-select placeholder=\"Select type of import\" [(ngModel)]=\"selImport\" name=\"typeImport\">\n                <mat-option *ngFor=\"let element of typeImport\" [value]=\"element\">\n                    {{ element }}\n                </mat-option>\n            </mat-select>\n        </mat-form-field>\n        <button mat-raised-button (click)=\"import()\" color=\"primary\">Import</button>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -1158,7 +1141,11 @@ var ImportComponent = /** @class */ (function () {
     }
     ImportComponent.prototype.import = function () {
         this.importService.import(this.selImport)
-            .subscribe(function (data) { alert('Import is OK.'); }, function (error) { alert('Import is already running!!!'); });
+            .subscribe(function (data) {
+            alert('Import is OK.');
+        }, function (error) {
+            alert('Import is already running!!!');
+        });
     };
     ImportComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -1352,7 +1339,7 @@ var LoginService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "table {\n    width: auto;\n}\n\n.mat-header-cell{\n    padding-left: 15px;\n}\n\n.mat-cell{\n    padding-left: 15px;\n    padding-right: 15px;\n}"
+module.exports = "table {\n    width: auto;\n}\n\n.mat-header-cell {\n    padding-left: 15px;\n}\n\n.mat-cell {\n    padding-left: 15px;\n    padding-right: 15px;\n}"
 
 /***/ }),
 

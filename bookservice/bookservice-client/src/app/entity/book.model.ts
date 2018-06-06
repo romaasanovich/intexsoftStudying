@@ -7,7 +7,7 @@ export class Book {
     description: string;
     price: number;
     publishDate: Date;
-    publisher: Publisher;
-    authors: Author[];
+    publisher: string;
+    authors: string[];
     rate: number;
 }

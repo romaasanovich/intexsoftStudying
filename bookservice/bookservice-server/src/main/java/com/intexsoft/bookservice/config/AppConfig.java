@@ -21,7 +21,7 @@ import javax.sql.DataSource;
 @EnableJpaRepositories("com.intexsoft.bookservice.dao.repository")
 @EnableTransactionManagement
 @ComponentScans(value = {@ComponentScan("com.intexsoft.bookservice.dao.repository"),
-        @ComponentScan("com.intexsoft.bookservice.service"), @ComponentScan("com.intexsoft.bookservice.service.api"), @ComponentScan("com.intexsoft.bookservice.importer")})
+        @ComponentScan("com.intexsoft.bookservice.service"), @ComponentScan("com.intexsoft.bookservice.service.api"), @ComponentScan("com.intexsoft.bookservice.importer"), @ComponentScan("com.intexsoft.bookservice.web.dto")})
 public class AppConfig {
     @Value("${mysql.driverClassName}")
     String driver;

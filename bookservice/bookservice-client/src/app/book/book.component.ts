@@ -8,12 +8,12 @@ import {BookReviewService} from '../book-review/book-review.service';
 @Component({
     selector: 'app-book',
     templateUrl: './book.component.html',
-    styles: []
+    styleUrls: ['./book.component.css']
 })
 export class BookComponent implements OnInit {
 
     books: Book[] = [];
-    displayedColumns = ['id', 'name'/*,'description'*/, 'price', 'publisher', 'delete', 'rate'];
+    displayedColumns = ['id', 'name', 'description', 'price', 'publisher', 'authors', 'rate', 'delete'];
 
 
     constructor(private router: Router, private bookService: BookService, private bookReview: BookReviewService) {
@@ -24,7 +24,6 @@ export class BookComponent implements OnInit {
         this.bookService.getBooks()
             .subscribe(data => {
                 this.books = data;
-                this.getRate(this.books);
             });
     }
 
@@ -33,12 +32,6 @@ export class BookComponent implements OnInit {
             .subscribe(data => {
                 this.books = this.books.filter(u => u !== book);
             });
-    }
-
-    public getRate(books: Book[]) {
-        books.forEach(book => {
-            this.bookReview.getRate(book);
-        });
     }
 
     goToReview(id) {
