@@ -94,7 +94,7 @@
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>${basedir}/src/main/webapp/</outputDirectory>
+                            <outputDirectory>${basedir}/target/bookservice-server-1.0-SNAPSHOT/</outputDirectory>
                             <resources>
                                 <resource>
                                     <directory>../bookservice-client/dist/angular</directory>
