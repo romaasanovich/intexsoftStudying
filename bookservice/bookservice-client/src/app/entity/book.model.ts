@@ -1,6 +1,3 @@
-import {Publisher} from './publisher.model';
-import {Author} from './author.model';
-
 export class Book {
     id: number;
     name: string;
