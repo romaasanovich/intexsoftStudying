@@ -13,6 +13,7 @@ import org.powermock.modules.junit4.PowerMockRunner;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import utills.Converter;
 
 import java.util.Arrays;
 import java.util.List;
@@ -42,7 +43,7 @@ public class AuthorControllerTest {
     }
 
     @Test
-    public void getPubl_Controller() throws Exception {
+    public void getPublishers_Controller() throws Exception {
         List<Publisher> publishers = Arrays.asList(new Publisher(),
                 new Publisher(), new Publisher());
         publishers.get(0).setName("publisher1");
@@ -50,16 +51,11 @@ public class AuthorControllerTest {
         publishers.get(2).setName("publisher3");
 
         when(publisherService.getAllPublishers()).thenReturn(publishers);
-        mockMvc.perform(get("/api/publishers"))
-                .andExpect(status().isOk())
-                .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-                .andExpect(jsonPath("$", hasSize(3)))
-                .andExpect(jsonPath("$[0].name", is("publisher1")))
-                .andExpect(jsonPath("$[1].name", is("publisher2")))
-                .andExpect(jsonPath("$[2].name", is("publisher3")));
+        mockMvc.perform(get("/api/publishers")
+                .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE).content(new Converter().fromListToJson(publishers)))
+                .andExpect(status().isOk());
         verify(publisherService, times(1)).getAllPublishers();
         verifyNoMoreInteractions(publisherService);
-
     }
 
 }
