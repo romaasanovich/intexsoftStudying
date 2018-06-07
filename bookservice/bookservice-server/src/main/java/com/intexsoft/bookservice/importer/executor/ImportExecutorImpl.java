@@ -27,7 +27,7 @@ public class ImportExecutorImpl implements ImportExecutor {
             logger.info("Thread locked the lock");
             try {
                 logger.info("Start import to db");
-                Thread.sleep(5000);
+                Thread.sleep(2500);
                 logger.info("Import is running");
                 Importer importService = importers.stream().filter((s) -> s.getType().equals(typeImport)).findFirst().get();
                 Boolean isImport = importService.importToDb();

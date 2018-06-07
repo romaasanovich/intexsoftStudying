@@ -32,4 +32,8 @@ public class ImportController {
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
     }
+
+    public void setImportExecutor(ImportExecutor importExecutor) {
+        this.importExecutor = importExecutor;
+    }
 }
