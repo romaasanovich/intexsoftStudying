@@ -1,4 +1,4 @@
-package com.intexsoft.bookservice.importer.importer;
+package com.intexsoft.bookservice.importer.importer.entityimporter;
 
 import com.intexsoft.bookservice.dao.entity.Author;
 import com.intexsoft.bookservice.dao.entity.Book;
@@ -11,21 +11,23 @@ import com.intexsoft.bookservice.service.api.AuthorService;
 import com.intexsoft.bookservice.service.api.BookService;
 import com.intexsoft.bookservice.service.api.PublisherService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class EntityImporter {
+@Component
+public class EntityImporterImpl implements EntityImporter {
     @Autowired
-    PublisherService publisherService;
-
-    @Autowired
-    BookService bookService;
+    private PublisherService publisherService;
 
     @Autowired
-    AuthorService authorService;
+    private BookService bookService;
 
+    @Autowired
+    private AuthorService authorService;
 
+    @Override
     public void importEntities(ImportEntityRepository entityRepository) {
         List<ImportBook> books = entityRepository.getBooks();
         List<ImportAuthor> authors = entityRepository.getAuthors();

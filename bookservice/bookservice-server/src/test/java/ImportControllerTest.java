@@ -49,7 +49,7 @@ public class ImportControllerTest {
         when(importerXml.getType()).thenReturn(TypeImport.xml);
         List<Importer> importers = Arrays.asList(importerXml, importerJson);
         importExecutor.setLock(reentrantLock);
-        importController.setImporters(importers);
+        importExecutor.setImporters(importers);
         mockMvc = MockMvcBuilders
                 .standaloneSetup(importController)
                 .build();

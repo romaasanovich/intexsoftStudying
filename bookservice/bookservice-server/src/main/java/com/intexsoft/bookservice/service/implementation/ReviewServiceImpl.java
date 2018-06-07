@@ -19,10 +19,10 @@ import java.util.Optional;
 public class ReviewServiceImpl implements ReviewService {
 
     @Autowired
-    ReviewRepository reviewRepository;
+    private ReviewRepository reviewRepository;
 
     @Autowired
-    UserService userService;
+    private UserService userService;
 
     @Override
     public List<Review> getAllReview() {

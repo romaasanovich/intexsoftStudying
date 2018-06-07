@@ -1,9 +1,7 @@
 package com.intexsoft.bookservice.importer.importer;
 
 import com.intexsoft.bookservice.importer.entity.repository.ImportEntityRepository;
-import com.intexsoft.bookservice.service.api.AuthorService;
-import com.intexsoft.bookservice.service.api.BookService;
-import com.intexsoft.bookservice.service.api.PublisherService;
+import com.intexsoft.bookservice.importer.importer.entityimporter.EntityImporter;
 import com.intexsoft.bookservice.utill.Converter;
 import com.intexsoft.bookservice.utill.Reader;
 import org.slf4j.Logger;
@@ -20,13 +18,10 @@ public class ImporterJsonImpl implements Importer {
 
     private static final Logger logger = LoggerFactory.getLogger("log");
     @Autowired
-    PublisherService publisherService;
-    @Autowired
-    AuthorService authorService;
-    @Autowired
-    BookService bookService;
+    private EntityImporter entityImporter;
+
     @Value("${jsonImportPath}")
-    String jsonPath;
+    private String jsonPath;
 
     @Override
     public TypeImport getType() {
@@ -48,6 +43,7 @@ public class ImporterJsonImpl implements Importer {
             }
             Converter converter = new Converter();
             ImportEntityRepository entityRep = converter.fromJsonToEntityRep(jsonLine);
+            entityImporter.importEntities(entityRep);
             return true;
         } catch (IOException ex) {
             logger.error("Wrong Json Structure: ", ex);

@@ -1,10 +1,12 @@
 package com.intexsoft.bookservice.importer.importer;
 
 import com.intexsoft.bookservice.importer.entity.repository.ImportEntityRepository;
+import com.intexsoft.bookservice.importer.importer.entityimporter.EntityImporter;
 import com.intexsoft.bookservice.utill.Converter;
 import com.intexsoft.bookservice.utill.Reader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,8 @@ import java.io.IOException;
 public class ImporterXmlImpl implements Importer {
 
     private static final Logger logger = LoggerFactory.getLogger("log");
+    @Autowired
+    private EntityImporter entityImporter;
 
     @Value("${xmlImportPath}")
     private String xmlPath;
@@ -31,7 +35,6 @@ public class ImporterXmlImpl implements Importer {
         try {
             Reader reader = new Reader();
             Converter converter = new Converter();
-            EntityImporter entityImporter = new EntityImporter();
             ImportEntityRepository entityRepository = converter.fromXmlToEntityRep(reader.getFile(xmlPath));
             entityImporter.importEntities(entityRepository);
             return true;

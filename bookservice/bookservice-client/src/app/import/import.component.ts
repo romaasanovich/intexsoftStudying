@@ -21,8 +21,13 @@ export class ImportComponent {
                 data => {
                     alert('Import is OK.');
                 },
-                error => {
-                    alert('Import is already running!!!');
+                (error: Response) => {
+                    if (error.status === 404) {
+                        alert('Import is already running!!!');
+                    }
+                    if (error.status === 500) {
+                        alert('Import is have an error!!!');
+                    }
                 }
             );
     }

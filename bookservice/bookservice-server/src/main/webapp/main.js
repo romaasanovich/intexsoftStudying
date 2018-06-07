@@ -1163,7 +1163,12 @@ var ImportComponent = /** @class */ (function () {
             .subscribe(function (data) {
             alert('Import is OK.');
         }, function (error) {
-            alert('Import is already running!!!');
+            if (error.status === 404) {
+                alert('Import is already running!!!');
+            }
+            if (error.status === 500) {
+                alert('Import is have an error!!!');
+            }
         });
     };
     ImportComponent = __decorate([

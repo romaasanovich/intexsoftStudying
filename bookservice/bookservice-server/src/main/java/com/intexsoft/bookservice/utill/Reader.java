@@ -9,19 +9,19 @@ public class Reader {
 
 
     public String readFile(String path) throws IOException {
-        String result = "";
         try (FileReader fileReader = new FileReader(path)) {
             Scanner scan = new Scanner(fileReader);
+            StringBuilder stringBuilder = new StringBuilder();
             while (scan.hasNextLine()) {
-                result += scan.nextLine();
+                stringBuilder.append(scan.nextLine());
             }
-            return result;
+            return stringBuilder.toString();
         }
     }
 
     public File getFile(String filePath) throws IOException {
         File file = new File(filePath);
-        if(file.exists() && !file.isDirectory()) {
+        if (file.exists() && !file.isDirectory()) {
             return file;
         } else {
             throw new IOException();

@@ -16,7 +16,7 @@ import java.util.List;
 public class BookDtoServiceImpl implements BookDtoService {
 
     @Autowired
-    ReviewService reviewService;
+    private ReviewService reviewService;
 
     @Override
     public List<BookDto> getListBookDto(List<Book> books) {
