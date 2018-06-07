@@ -17,7 +17,6 @@ public class ImportExecutorImpl implements ImportExecutor {
 
     @Override
     public ResponseEntity importEntities(TypeImport typeImport, Importer importService) throws InterruptedException {
-        if (!lock.isHeldByCurrentThread()) {
             if (lock.tryLock()) {
                 logger.info("Thread lock the lock");
                 try {
@@ -43,10 +42,6 @@ public class ImportExecutorImpl implements ImportExecutor {
                 logger.info("Thread is used lock now");
                 return new ResponseEntity(HttpStatus.BAD_REQUEST);
             }
-        } else {
-            logger.info("Thread locked another thread");
-            return new ResponseEntity(HttpStatus.BAD_REQUEST);
-        }
     }
 
     @Override
