@@ -2,6 +2,8 @@ package com.intexsoft.bookservice.web.controller;
 
 import com.intexsoft.bookservice.dao.entity.Publisher;
 import com.intexsoft.bookservice.service.api.PublisherService;
+import com.intexsoft.bookservice.web.dto.entity.PublisherDto;
+import com.intexsoft.bookservice.web.dto.service.api.PublisherDtoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -14,12 +16,15 @@ import java.util.UUID;
 public class PublisherController {
 
     @Autowired
-    PublisherService publisherService;
+    private PublisherService publisherService;
+
+    @Autowired
+    private PublisherDtoService publisherDtoService;
 
     @PreAuthorize("hasRole('ADMIN') OR hasRole('CUSTOMER')")
     @GetMapping(path = "/publishers")
-    public List<Publisher> getPublishers() {
-        return publisherService.getAllPublishers();
+    public List<PublisherDto> getPublishers() {
+        return publisherDtoService.getListPublishersDto(publisherService.getAllPublishers());
     }
 
     @PreAuthorize("hasRole('ADMIN')")

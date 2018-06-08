@@ -1,4 +1,4 @@
-package com.intexsoft.bookservice.web.dto.service;
+package com.intexsoft.bookservice.web.dto.service.api;
 
 import com.intexsoft.bookservice.dao.entity.Book;
 import com.intexsoft.bookservice.web.dto.entity.BookDto;
@@ -6,5 +6,7 @@ import com.intexsoft.bookservice.web.dto.entity.BookDto;
 import java.util.List;
 
 public interface BookDtoService {
-    List<BookDto> getListBookDto(List<Book> books);
+    List<BookDto> getListBooksDto(List<Book> books);
+
+    BookDto toDto(Book book);
 }

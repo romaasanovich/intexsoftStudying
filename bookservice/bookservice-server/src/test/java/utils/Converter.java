@@ -1,18 +1,16 @@
-package utills;
+package utils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.intexsoft.bookservice.dao.entity.Publisher;
-import com.intexsoft.bookservice.dao.entity.aentity.AbstractEntity;
+import com.intexsoft.bookservice.web.dto.entity.PublisherDto;
 
 import java.util.List;
 
 public class Converter {
 
-
-    public  String fromListToJson(List<Publisher> entities){
+    public static String fromListToJson(List<PublisherDto> entities) {
         ObjectMapper mapper = new ObjectMapper();
-        String jsonLine ="";
+        String jsonLine = "";
         try {
             jsonLine = mapper.writeValueAsString(entities);
         } catch (JsonProcessingException e) {

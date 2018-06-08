@@ -1,6 +1,7 @@
-import com.intexsoft.bookservice.dao.entity.Publisher;
 import com.intexsoft.bookservice.service.api.PublisherService;
 import com.intexsoft.bookservice.web.controller.PublisherController;
+import com.intexsoft.bookservice.web.dto.entity.PublisherDto;
+import com.intexsoft.bookservice.web.dto.service.api.PublisherDtoService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,7 +14,7 @@ import org.powermock.modules.junit4.PowerMockRunner;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import utills.Converter;
+import utils.Converter;
 
 import java.util.Arrays;
 import java.util.List;
@@ -24,13 +25,17 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @RunWith(PowerMockRunner.class)
 @MockPolicy(Slf4jMockPolicy.class)
-public class AuthorControllerTest {
+public class PublisherControllerTest {
 
     private MockMvc mockMvc;
     @Mock
-    PublisherService publisherService;
+    private PublisherDtoService publisherDtoService;
+
+    @Mock
+    private PublisherService publisherService;
+
     @InjectMocks
-    PublisherController publisherController;
+    private PublisherController publisherController;
 
     @Before
     public void init() {
@@ -42,18 +47,18 @@ public class AuthorControllerTest {
 
     @Test
     public void getPublishers_Controller() throws Exception {
-        List<Publisher> publishers = Arrays.asList(new Publisher(),
-                new Publisher(), new Publisher());
+        List<PublisherDto> publishers = Arrays.asList(new PublisherDto(),
+                new PublisherDto(), new PublisherDto());
         publishers.get(0).setName("publisher1");
         publishers.get(1).setName("publisher2");
         publishers.get(2).setName("publisher3");
-
-        when(publisherService.getAllPublishers()).thenReturn(publishers);
+        when(publisherService.getAllPublishers()).thenReturn(null);
+        when(publisherDtoService.getListPublishersDto(null)).thenReturn(publishers);
         mockMvc.perform(get("/api/publishers")
-                .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE).content(new Converter().fromListToJson(publishers)))
+                .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE).content(Converter.fromListToJson(publishers)))
                 .andExpect(status().isOk());
-        verify(publisherService, times(1)).getAllPublishers();
-        verifyNoMoreInteractions(publisherService);
+        verify(publisherDtoService, times(1)).getListPublishersDto(null);
+        verifyNoMoreInteractions(publisherDtoService);
     }
 
 }

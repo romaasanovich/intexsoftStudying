@@ -1,9 +1,15 @@
 package com.intexsoft.bookservice.web.controller;
 
 import com.intexsoft.bookservice.dao.entity.Review;
+import com.intexsoft.bookservice.dao.entity.User;
 import com.intexsoft.bookservice.service.api.ReviewService;
+import com.intexsoft.bookservice.service.api.UserService;
+import com.intexsoft.bookservice.web.dto.entity.ReviewDto;
+import com.intexsoft.bookservice.web.dto.service.api.ReviewDtoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,31 +19,40 @@ import java.util.List;
 public class ReviewController {
 
     @Autowired
-    ReviewService reviewService;
-    private Review review;
+    private ReviewService reviewService;
+
+    @Autowired
+    private UserService userService;
+
+    @Autowired
+    private ReviewDtoService reviewDtoService;
 
     @PreAuthorize("hasRole('ADMIN') OR hasRole('CUSTOMER')")
     @GetMapping(path = "/review/user/{userId}")
-    public List<Review> getUserReviews(@PathVariable(name = "userId") Integer userId) {
-        return reviewService.getUserReview(userId);
+    public List<ReviewDto> getUserReviews(@PathVariable(name = "userId") Integer userId) {
+        return reviewDtoService.getListReviewsDto(reviewService.getUserReview(userId));
     }
 
     @PreAuthorize("hasRole('ADMIN') OR hasRole('CUSTOMER')")
     @GetMapping(path = "/review/{bookId}")
-    public List<Review> getBookReviews(@PathVariable(name = "bookId") Integer bookId) {
-        return reviewService.getBookReview(bookId);
+    public List<ReviewDto> getBookReviews(@PathVariable(name = "bookId") Integer bookId) {
+        return reviewDtoService.getListReviewsDto(reviewService.getBookReview(bookId));
     }
 
     @PreAuthorize("hasRole('ADMIN') OR hasRole('CUSTOMER')")
     @PostMapping(path = "/review")
     public void addReview(@RequestBody Review review) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentPrincipalName = authentication.getName();
+        User user = userService.getByUsername(currentPrincipalName);
+        review.setUser(user);
         reviewService.add(review);
     }
 
     @PreAuthorize("hasRole('ADMIN') OR hasRole('CUSTOMER')")
     @DeleteMapping(path = "/review/{id}")
     public void deleteReview(@PathVariable(name = "id") Integer id) {
-        review = reviewService.getReviewByID(id).orElse(null);
+        Review review = reviewService.getReviewByID(id).orElse(null);
         reviewService.delete(review);
     }
 }

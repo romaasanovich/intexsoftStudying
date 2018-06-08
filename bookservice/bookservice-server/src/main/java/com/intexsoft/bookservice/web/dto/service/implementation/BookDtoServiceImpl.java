@@ -1,10 +1,11 @@
-package com.intexsoft.bookservice.web.dto.service;
+package com.intexsoft.bookservice.web.dto.service.implementation;
 
 import com.intexsoft.bookservice.dao.entity.Author;
 import com.intexsoft.bookservice.dao.entity.Book;
 import com.intexsoft.bookservice.dao.entity.Review;
 import com.intexsoft.bookservice.service.api.ReviewService;
 import com.intexsoft.bookservice.web.dto.entity.BookDto;
+import com.intexsoft.bookservice.web.dto.service.api.BookDtoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -19,7 +20,7 @@ public class BookDtoServiceImpl implements BookDtoService {
     private ReviewService reviewService;
 
     @Override
-    public List<BookDto> getListBookDto(List<Book> books) {
+    public List<BookDto> getListBooksDto(List<Book> books) {
         List<BookDto> booksDto = new ArrayList<>();
         for (Book book : books) {
             booksDto.add(toDto(book));
@@ -27,8 +28,8 @@ public class BookDtoServiceImpl implements BookDtoService {
         return booksDto;
     }
 
-
-    private BookDto toDto(Book book) {
+    @Override
+    public BookDto toDto(Book book) {
         BookDto bookDto = new BookDto();
         bookDto.setId(book.getId());
         bookDto.setDescription(book.getDescription());
@@ -48,8 +49,7 @@ public class BookDtoServiceImpl implements BookDtoService {
             sumRate += review.getRate();
         }
         Double rate = (sumRate != 0) ? (sumRate / reviews.size()) : 0.0;
-        return Double.valueOf(new DecimalFormat("#.##").format(rate));
-
+        return Double.valueOf(new DecimalFormat("#.#").format(rate));
     }
 
     private List<String> getListAuthors(List<Author> authors) {

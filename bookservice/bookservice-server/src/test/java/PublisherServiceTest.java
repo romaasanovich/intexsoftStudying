@@ -10,15 +10,14 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class AuthorServiceTest {
+public class PublisherServiceTest {
 
     @Mock
-    PublisherService publisherService;
+    private PublisherService publisherService;
 
     @Before
     public void init() {
@@ -37,7 +36,7 @@ public class AuthorServiceTest {
 
         int count = publisherService.getAllPublishers().size();
 
-        assertThat(count, is(2));
+        assertEquals(count, 2);
     }
 
 
@@ -55,13 +54,9 @@ public class AuthorServiceTest {
         publishers.get(2).setId(2);
 
         Optional<Publisher> publisher = Optional.of(publishers.get(2));
-
-        PublisherService publisherService = mock(PublisherServiceImpl.class);
-
         when(publisherService.getPublisherByID(2)).thenReturn(publisher);
-
         String name = publisherService.getPublisherByID(2).get().getName();
-
-        assertThat(name, is("publisher3"));
+        
+        assertEquals(name, "publisher3");
     }
 }

@@ -6,5 +6,5 @@ export class Review {
     rate: number;
     review: string;
     book: Book;
-    user: User;
+    username: string;
 }
