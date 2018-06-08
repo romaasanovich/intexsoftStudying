@@ -30,9 +30,9 @@ public class ReviewServiceImpl implements ReviewService {
 
     @Override
     public void add(Review review) {
-        Book bookReview  = bookService.getBookByID(review.getBook().getId()).get();
-        bookReview.setRate(getRate(bookReview));
         reviewRepository.save(review);
+        Book bookReview = bookService.getBookByID(review.getBook().getId()).get();
+        bookReview.setRate(getRate(bookReview));
     }
 
     @Override
