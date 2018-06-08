@@ -1,6 +1,5 @@
 import com.intexsoft.bookservice.dao.entity.Publisher;
 import com.intexsoft.bookservice.service.api.PublisherService;
-import com.intexsoft.bookservice.service.implementation.PublisherServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -11,7 +10,6 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 public class PublisherServiceTest {
@@ -56,7 +54,7 @@ public class PublisherServiceTest {
         Optional<Publisher> publisher = Optional.of(publishers.get(2));
         when(publisherService.getPublisherByID(2)).thenReturn(publisher);
         String name = publisherService.getPublisherByID(2).get().getName();
-        
+
         assertEquals(name, "publisher3");
     }
 }

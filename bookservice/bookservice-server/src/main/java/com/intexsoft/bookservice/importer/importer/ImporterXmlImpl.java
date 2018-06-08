@@ -2,8 +2,8 @@ package com.intexsoft.bookservice.importer.importer;
 
 import com.intexsoft.bookservice.importer.entity.repository.ImportEntityRepository;
 import com.intexsoft.bookservice.importer.importer.entityimporter.EntityImporter;
-import com.intexsoft.bookservice.utill.Converter;
-import com.intexsoft.bookservice.utill.Reader;
+import com.intexsoft.bookservice.util.Converter;
+import com.intexsoft.bookservice.util.Reader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,8 +34,7 @@ public class ImporterXmlImpl implements Importer {
     public boolean importToDb() {
         try {
             Reader reader = new Reader();
-            Converter converter = new Converter();
-            ImportEntityRepository entityRepository = converter.fromXmlToEntityRep(reader.getFile(xmlPath));
+            ImportEntityRepository entityRepository = Converter.fromXmlToEntityRep(reader.getFile(xmlPath));
             entityImporter.importEntities(entityRepository);
             return true;
         } catch (IOException ex) {
