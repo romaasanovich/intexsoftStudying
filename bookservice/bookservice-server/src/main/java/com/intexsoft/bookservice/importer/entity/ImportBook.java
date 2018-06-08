@@ -3,6 +3,7 @@ package com.intexsoft.bookservice.importer.entity;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -12,7 +13,7 @@ public class ImportBook {
     private String uuid;
     private String name;
     private String description;
-    private Double price;
+    private BigDecimal price;
     private Date publishDate;
     private String publisherUUID;
     private List<String> authorsUUID;
@@ -45,11 +46,11 @@ public class ImportBook {
     }
 
     @XmlElement
-    public Double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 

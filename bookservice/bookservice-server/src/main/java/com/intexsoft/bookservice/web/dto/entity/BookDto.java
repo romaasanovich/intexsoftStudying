@@ -1,12 +1,13 @@
 package com.intexsoft.bookservice.web.dto.entity;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public class BookDto {
     private Integer id;
     private String name;
     private String description;
-    private Double price;
+    private BigDecimal price;
     private String publisher;
     private List<String> authors;
     private Double rate;
@@ -35,11 +36,11 @@ public class BookDto {
         this.description = description;
     }
 
-    public Double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 

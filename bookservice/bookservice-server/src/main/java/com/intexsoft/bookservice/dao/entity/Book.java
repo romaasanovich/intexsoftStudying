@@ -4,6 +4,8 @@ package com.intexsoft.bookservice.dao.entity;
 import com.intexsoft.bookservice.dao.entity.aentity.AbstractEntity;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -15,7 +17,7 @@ public class Book extends AbstractEntity {
     @Column(name = "description", length = 1500)
     private String description;
     @Column(name = "price")
-    private Double price;
+    private BigDecimal price;
     @Column(name = "rate")
     private double rate;
     @Column(name = "publishDate")
@@ -82,11 +84,11 @@ public class Book extends AbstractEntity {
         this.publishDate = publishDate;
     }
 
-    public Double getPrice() {
-        return price;
+    public BigDecimal getPrice() {
+        return new BigDecimal(new DecimalFormat("#.##").format(price));
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 }
