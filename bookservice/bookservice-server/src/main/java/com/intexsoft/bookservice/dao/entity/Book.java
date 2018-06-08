@@ -16,6 +16,8 @@ public class Book extends AbstractEntity {
     private String description;
     @Column(name = "price")
     private Double price;
+    @Column(name = "rate")
+    private double rate;
     @Column(name = "publishDate")
     @Temporal(value = TemporalType.DATE)
     private Date publishDate;
@@ -46,6 +48,14 @@ public class Book extends AbstractEntity {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public double getRate() {
+        return rate;
+    }
+
+    public void setRate(double rate) {
+        this.rate = rate;
     }
 
     public Publisher getPublisher() {

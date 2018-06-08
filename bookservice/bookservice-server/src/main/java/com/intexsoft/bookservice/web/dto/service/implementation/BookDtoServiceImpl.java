@@ -35,22 +35,13 @@ public class BookDtoServiceImpl implements BookDtoService {
         bookDto.setDescription(book.getDescription());
         bookDto.setName(book.getName());
         bookDto.setPrice(book.getPrice());
-        bookDto.setRate(getRate(book));
+        bookDto.setRate(book.getRate());
         bookDto.setPublisher(book.getPublisher().getName());
         bookDto.setAuthors(getListAuthors(book.getAuthors()));
         return bookDto;
     }
 
 
-    private Double getRate(Book book) {
-        List<Review> reviews = reviewService.getBookReview(book.getId());
-        Double sumRate = 0.0;
-        for (Review review : reviews) {
-            sumRate += review.getRate();
-        }
-        Double rate = (sumRate != 0) ? (sumRate / reviews.size()) : 0.0;
-        return Double.valueOf(new DecimalFormat("#.#").format(rate));
-    }
 
     private List<String> getListAuthors(List<Author> authors) {
         List<String> authorsName = new ArrayList<>();
