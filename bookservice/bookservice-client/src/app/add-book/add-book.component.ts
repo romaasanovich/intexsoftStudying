@@ -19,7 +19,8 @@ export class AddBookComponent implements OnInit {
     book: Book = new Book();
     publishers: Publisher[];
     authors: Author[];
-    authorsList = new FormControl();
+    selDate: Date;
+
 
     constructor(private router: Router, private bookService: BookService, private  authorService: AuthorService,
                 private  publService: PublisherService) {
@@ -38,6 +39,7 @@ export class AddBookComponent implements OnInit {
     }
 
     addBook(): void {
+        this.book.publishDate = this.selDate.toLocaleDateString();
         this.bookService.addBook(this.book)
             .subscribe(data => {
                 alert('Book created successfully.');

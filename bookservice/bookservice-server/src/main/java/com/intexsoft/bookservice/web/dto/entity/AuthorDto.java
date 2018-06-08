@@ -1,12 +1,20 @@
 package com.intexsoft.bookservice.web.dto.entity;
 
-import java.util.Date;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.intexsoft.bookservice.utils.converter.localdate.LocalDateDeserializer;
+import com.intexsoft.bookservice.utils.converter.localdate.LocalDateSerializer;
+
+import java.time.LocalDate;
 
 public class AuthorDto {
     private Integer id;
     private String name;
     private String bio;
-    private Date birthDay;
+
+    @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    private LocalDate birthDay;
 
     public Integer getId() {
         return id;
@@ -32,11 +40,11 @@ public class AuthorDto {
         this.bio = bio;
     }
 
-    public Date getBirthDay() {
+    public LocalDate getBirthDay() {
         return birthDay;
     }
 
-    public void setBirthDay(Date birthDay) {
+    public void setBirthDay(LocalDate birthDay) {
         this.birthDay = birthDay;
     }
 }

@@ -1,4 +1,4 @@
-package com.intexsoft.bookservice.util;
+package com.intexsoft.bookservice.importer.utils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.intexsoft.bookservice.importer.entity.repository.ImportEntityRepository;

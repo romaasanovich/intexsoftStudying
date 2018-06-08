@@ -13,7 +13,7 @@ import {BookReviewService} from '../book-review/book-review.service';
 export class BookComponent implements OnInit {
 
     books: Book[] = [];
-    displayedColumns = ['id', 'name', 'description', 'price', 'publisher', 'authors', 'rate', 'delete'];
+    displayedColumns = ['id', 'name', 'description', 'price', 'publisher', 'publishDate', 'authors', 'rate', 'delete'];
 
 
     constructor(private router: Router, private bookService: BookService, private bookReview: BookReviewService) {

@@ -1,12 +1,16 @@
 package com.intexsoft.bookservice.dao.entity;
 
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.intexsoft.bookservice.dao.entity.aentity.AbstractEntity;
+import com.intexsoft.bookservice.utils.converter.localdate.LocalDateDeserializer;
+import com.intexsoft.bookservice.utils.converter.localdate.LocalDateSerializer;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -20,9 +24,10 @@ public class Book extends AbstractEntity {
     private BigDecimal price;
     @Column(name = "rate")
     private double rate;
+    @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonDeserialize(using = LocalDateDeserializer.class)
     @Column(name = "publishDate")
-    @Temporal(value = TemporalType.DATE)
-    private Date publishDate;
+    private LocalDate publishDate;
     @ManyToOne
     @JoinColumn(name = "publisherId")
     private Publisher publisher;
@@ -76,11 +81,11 @@ public class Book extends AbstractEntity {
         this.authors = authors;
     }
 
-    public Date getPublishDate() {
+    public LocalDate getPublishDate() {
         return publishDate;
     }
 
-    public void setPublishDate(Date publishDate) {
+    public void setPublishDate(LocalDate publishDate) {
         this.publishDate = publishDate;
     }
 

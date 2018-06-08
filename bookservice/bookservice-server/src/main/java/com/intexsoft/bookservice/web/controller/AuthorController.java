@@ -4,7 +4,7 @@ package com.intexsoft.bookservice.web.controller;
 import com.intexsoft.bookservice.dao.entity.Author;
 import com.intexsoft.bookservice.service.api.AuthorService;
 import com.intexsoft.bookservice.web.dto.entity.AuthorDto;
-import com.intexsoft.bookservice.web.dto.service.api.AuthorDtoService;
+import com.intexsoft.bookservice.web.dto.mapper.AuthorDtoMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -20,12 +20,12 @@ public class AuthorController {
     private AuthorService authorService;
 
     @Autowired
-    private AuthorDtoService authorDtoService;
+    private AuthorDtoMapper authorDtoMapper;
 
     @PreAuthorize("hasRole('ADMIN') OR hasRole('CUSTOMER')")
     @GetMapping(path = "/authors")
     List<AuthorDto> getAuthors() {
-        return authorDtoService.getListAuthorsDto(authorService.getAllAuthors());
+        return authorDtoMapper.toDtoList(authorService.getAllAuthors());
     }
 
     @PreAuthorize("hasRole('ADMIN')")

@@ -1,6 +1,12 @@
 package com.intexsoft.bookservice.web.dto.entity;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.intexsoft.bookservice.utils.converter.localdate.LocalDateDeserializer;
+import com.intexsoft.bookservice.utils.converter.localdate.LocalDateSerializer;
+
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.List;
 
 public class BookDto {
@@ -11,6 +17,9 @@ public class BookDto {
     private String publisher;
     private List<String> authors;
     private Double rate;
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
+    private LocalDate publishDate;
 
     public Integer getId() {
         return id;
@@ -66,5 +75,13 @@ public class BookDto {
 
     public void setPublisher(String publisher) {
         this.publisher = publisher;
+    }
+
+    public LocalDate getPublishDate() {
+        return publishDate;
+    }
+
+    public void setPublishDate(LocalDate publishDate) {
+        this.publishDate = publishDate;
     }
 }

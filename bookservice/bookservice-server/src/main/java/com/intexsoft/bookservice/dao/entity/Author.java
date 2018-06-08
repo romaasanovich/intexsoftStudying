@@ -1,10 +1,16 @@
 package com.intexsoft.bookservice.dao.entity;
 
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.intexsoft.bookservice.dao.entity.aentity.AbstractEntity;
+import com.intexsoft.bookservice.utils.converter.localdate.LocalDateDeserializer;
+import com.intexsoft.bookservice.utils.converter.localdate.LocalDateSerializer;
 
-import javax.persistence.*;
-import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import java.time.LocalDate;
 
 
 @Entity
@@ -14,9 +20,10 @@ public class Author extends AbstractEntity {
     private String name;
     @Column(name = "bio", length = 100)
     private String bio;
+    @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonDeserialize(using = LocalDateDeserializer.class)
     @Column(name = "birthDay")
-    @Temporal(value = TemporalType.DATE)
-    private Date birthDay;
+    private LocalDate birthDay;
 
     public Author() {
     }
@@ -37,11 +44,11 @@ public class Author extends AbstractEntity {
         this.bio = bio;
     }
 
-    public Date getBirthDay() {
+    public LocalDate getBirthDay() {
         return birthDay;
     }
 
-    public void setBirthDay(Date birthDay) {
+    public void setBirthDay(LocalDate birthDay) {
         this.birthDay = birthDay;
     }
 }

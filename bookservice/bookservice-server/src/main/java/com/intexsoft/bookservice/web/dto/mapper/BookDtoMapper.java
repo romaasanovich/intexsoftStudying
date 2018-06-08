@@ -1,32 +1,15 @@
-package com.intexsoft.bookservice.web.dto.service.implementation;
+package com.intexsoft.bookservice.web.dto.mapper;
 
 import com.intexsoft.bookservice.dao.entity.Author;
 import com.intexsoft.bookservice.dao.entity.Book;
-import com.intexsoft.bookservice.dao.entity.Review;
-import com.intexsoft.bookservice.service.api.ReviewService;
 import com.intexsoft.bookservice.web.dto.entity.BookDto;
-import com.intexsoft.bookservice.web.dto.service.api.BookDtoService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class BookDtoServiceImpl implements BookDtoService {
-
-    @Autowired
-    private ReviewService reviewService;
-
-    @Override
-    public List<BookDto> getListBooksDto(List<Book> books) {
-        List<BookDto> booksDto = new ArrayList<>();
-        for (Book book : books) {
-            booksDto.add(toDto(book));
-        }
-        return booksDto;
-    }
+public class BookDtoMapper extends AbstractDtoMapper<Book, BookDto> {
 
     @Override
     public BookDto toDto(Book book) {
@@ -36,12 +19,11 @@ public class BookDtoServiceImpl implements BookDtoService {
         bookDto.setName(book.getName());
         bookDto.setPrice(book.getPrice());
         bookDto.setRate(book.getRate());
+        bookDto.setPublishDate(book.getPublishDate());
         bookDto.setPublisher(book.getPublisher().getName());
         bookDto.setAuthors(getListAuthors(book.getAuthors()));
         return bookDto;
     }
-
-
 
     private List<String> getListAuthors(List<Author> authors) {
         List<String> authorsName = new ArrayList<>();

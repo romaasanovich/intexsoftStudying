@@ -2,14 +2,14 @@ package com.intexsoft.bookservice.importer.entity;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-import java.util.Date;
+import java.time.LocalDate;
 
 @XmlRootElement
 public class ImportAuthor {
     private String uuid;
     private String name;
     private String bio;
-    private Date birthDay;
+    private LocalDate birthDay;
 
     @XmlElement
     public String getUuid() {
@@ -39,11 +39,11 @@ public class ImportAuthor {
     }
 
     @XmlElement
-    public Date getBirthDay() {
+    public LocalDate getBirthDay() {
         return birthDay;
     }
 
-    public void setBirthDay(Date birthDay) {
+    public void setBirthDay(LocalDate birthDay) {
         this.birthDay = birthDay;
     }
 }

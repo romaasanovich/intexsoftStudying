@@ -1,4 +1,4 @@
-package com.intexsoft.bookservice.util;
+package com.intexsoft.bookservice.importer.utils;
 
 import java.io.File;
 import java.io.FileReader;

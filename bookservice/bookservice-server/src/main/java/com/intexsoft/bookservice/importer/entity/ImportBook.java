@@ -4,7 +4,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -14,7 +14,7 @@ public class ImportBook {
     private String name;
     private String description;
     private BigDecimal price;
-    private Date publishDate;
+    private LocalDate publishDate;
     private String publisherUUID;
     private List<String> authorsUUID;
 
@@ -55,11 +55,11 @@ public class ImportBook {
     }
 
     @XmlElement
-    public Date getPublishDate() {
+    public LocalDate getPublishDate() {
         return publishDate;
     }
 
-    public void setPublishDate(Date publishDate) {
+    public void setPublishDate(LocalDate publishDate) {
         this.publishDate = publishDate;
     }
 

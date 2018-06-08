@@ -3,7 +3,7 @@ export class Book {
     name: string;
     description: string;
     price: number;
-    publishDate: Date;
+    publishDate: string;
     publisher: string;
     authors: string[];
     rate: number;

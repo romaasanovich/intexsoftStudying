@@ -12,11 +12,13 @@ export class AddAuthorComponent {
 
     birthDay;
     author: Author = new Author();
+    selDate: Date;
 
     constructor(private router: Router, private authorService: AuthorService) {
     }
 
     addAuthor(): void {
+        this.author.birthDay = this.selDate.toLocaleDateString();
         this.authorService.addAuthor(this.author).subscribe(data => {
             alert('Author created successfully.');
         });

@@ -5,7 +5,7 @@ import com.intexsoft.bookservice.dao.entity.User;
 import com.intexsoft.bookservice.service.api.ReviewService;
 import com.intexsoft.bookservice.service.api.UserService;
 import com.intexsoft.bookservice.web.dto.entity.ReviewDto;
-import com.intexsoft.bookservice.web.dto.service.api.ReviewDtoService;
+import com.intexsoft.bookservice.web.dto.mapper.ReviewDtoMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
@@ -25,18 +25,18 @@ public class ReviewController {
     private UserService userService;
 
     @Autowired
-    private ReviewDtoService reviewDtoService;
+    private ReviewDtoMapper reviewDtoMapper;
 
     @PreAuthorize("hasRole('ADMIN') OR hasRole('CUSTOMER')")
     @GetMapping(path = "/review/user/{userId}")
     public List<ReviewDto> getUserReviews(@PathVariable(name = "userId") Integer userId) {
-        return reviewDtoService.getListReviewsDto(reviewService.getUserReview(userId));
+        return reviewDtoMapper.toDtoList(reviewService.getUserReview(userId));
     }
 
     @PreAuthorize("hasRole('ADMIN') OR hasRole('CUSTOMER')")
     @GetMapping(path = "/review/{bookId}")
     public List<ReviewDto> getBookReviews(@PathVariable(name = "bookId") Integer bookId) {
-        return reviewDtoService.getListReviewsDto(reviewService.getBookReview(bookId));
+        return reviewDtoMapper.toDtoList(reviewService.getBookReview(bookId));
     }
 
     @PreAuthorize("hasRole('ADMIN') OR hasRole('CUSTOMER')")
