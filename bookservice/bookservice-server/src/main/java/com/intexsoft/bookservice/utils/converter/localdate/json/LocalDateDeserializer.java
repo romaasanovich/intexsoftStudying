@@ -1,4 +1,4 @@
-package com.intexsoft.bookservice.utils.converter.localdate;
+package com.intexsoft.bookservice.utils.converter.localdate.json;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;

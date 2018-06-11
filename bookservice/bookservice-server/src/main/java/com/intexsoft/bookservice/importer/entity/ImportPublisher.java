@@ -5,7 +5,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class ImportPublisher {
-
     private String uuid;
     private String name;
 

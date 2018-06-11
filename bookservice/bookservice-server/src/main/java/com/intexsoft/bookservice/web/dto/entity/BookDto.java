@@ -2,8 +2,8 @@ package com.intexsoft.bookservice.web.dto.entity;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.intexsoft.bookservice.utils.converter.localdate.LocalDateDeserializer;
-import com.intexsoft.bookservice.utils.converter.localdate.LocalDateSerializer;
+import com.intexsoft.bookservice.utils.converter.localdate.json.LocalDateDeserializer;
+import com.intexsoft.bookservice.utils.converter.localdate.json.LocalDateSerializer;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

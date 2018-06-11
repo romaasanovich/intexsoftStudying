@@ -2,8 +2,8 @@ package com.intexsoft.bookservice.web.dto.entity;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.intexsoft.bookservice.utils.converter.localdate.LocalDateDeserializer;
-import com.intexsoft.bookservice.utils.converter.localdate.LocalDateSerializer;
+import com.intexsoft.bookservice.utils.converter.localdate.json.LocalDateDeserializer;
+import com.intexsoft.bookservice.utils.converter.localdate.json.LocalDateSerializer;
 
 import java.time.LocalDate;
 
@@ -11,7 +11,6 @@ public class AuthorDto {
     private Integer id;
     private String name;
     private String bio;
-
     @JsonSerialize(using = LocalDateSerializer.class)
     @JsonDeserialize(using = LocalDateDeserializer.class)
     private LocalDate birthDay;

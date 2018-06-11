@@ -1,8 +1,15 @@
 package com.intexsoft.bookservice.importer.entity;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.intexsoft.bookservice.utils.converter.localdate.json.LocalDateDeserializer;
+import com.intexsoft.bookservice.utils.converter.localdate.json.LocalDateSerializer;
+import com.intexsoft.bookservice.utils.converter.localdate.xml.LocalDateAdapter;
+
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
@@ -14,9 +21,11 @@ public class ImportBook {
     private String name;
     private String description;
     private BigDecimal price;
-    private LocalDate publishDate;
     private String publisherUUID;
     private List<String> authorsUUID;
+    @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    private LocalDate publishDate;
 
     @XmlElement
     public String getUuid() {
@@ -55,6 +64,7 @@ public class ImportBook {
     }
 
     @XmlElement
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
     public LocalDate getPublishDate() {
         return publishDate;
     }

@@ -4,8 +4,8 @@ package com.intexsoft.bookservice.dao.entity;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.intexsoft.bookservice.dao.entity.aentity.AbstractEntity;
-import com.intexsoft.bookservice.utils.converter.localdate.LocalDateDeserializer;
-import com.intexsoft.bookservice.utils.converter.localdate.LocalDateSerializer;
+import com.intexsoft.bookservice.utils.converter.localdate.json.LocalDateDeserializer;
+import com.intexsoft.bookservice.utils.converter.localdate.json.LocalDateSerializer;
 
 import javax.persistence.*;
 import java.math.BigDecimal;

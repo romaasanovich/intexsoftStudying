@@ -1,7 +1,14 @@
 package com.intexsoft.bookservice.importer.entity;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.intexsoft.bookservice.utils.converter.localdate.json.LocalDateDeserializer;
+import com.intexsoft.bookservice.utils.converter.localdate.json.LocalDateSerializer;
+import com.intexsoft.bookservice.utils.converter.localdate.xml.LocalDateAdapter;
+
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.time.LocalDate;
 
 @XmlRootElement
@@ -9,6 +16,8 @@ public class ImportAuthor {
     private String uuid;
     private String name;
     private String bio;
+    @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonDeserialize(using = LocalDateDeserializer.class)
     private LocalDate birthDay;
 
     @XmlElement
@@ -39,6 +48,7 @@ public class ImportAuthor {
     }
 
     @XmlElement
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
     public LocalDate getBirthDay() {
         return birthDay;
     }

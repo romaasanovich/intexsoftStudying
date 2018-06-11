@@ -20,25 +20,25 @@
     <authors>
         <author>
             <bio>Novelist short story writer screenwriter</bio>
-            <birthDay>1965-07-31T00:00:00+03:00</birthDay>
+            <birthDay>1965-07-31</birthDay>
             <name>Joanne Rowling TEST</name>
             <uuid>c6d1deb7-c5ef-4e62-b3ed-140384af83e3</uuid>
         </author>
         <author>
             <bio>Novelist, film producer, television producer, screenwriter</bio>
-            <birthDay>1948-09-20T00:00:00+03:00</birthDay>
+            <birthDay>1948-09-20</birthDay>
             <name>George Raymond Martin</name>
             <uuid>f8c839ea-b3ef-404a-b790-3c002e271d2e</uuid>
         </author>
         <author>
             <bio>Author, academic, philologist, poet</bio>
-            <birthDay>1973-09-02T00:00:00+03:00</birthDay>
+            <birthDay>1973-09-02</birthDay>
             <name>JohnRonald Reuel Tolkien</name>
             <uuid>58d3c044-c9f0-45bb-891f-2145e45a9f3b</uuid>
         </author>
         <author>
             <bio>Novelist short story writer screenwriter</bio>
-            <birthDay>1965-07-31T00:00:00+03:00</birthDay>
+            <birthDay>1965-07-31</birthDay>
             <name>Joanne Rowling TESTss</name>
             <uuid>c6d1seb7-c5ef-4e62-b3ed-140384af83e3</uuid>
         </author>
@@ -56,7 +56,7 @@
             </description>
             <name>LordOfTheRings: The Fellowship of the Ring</name>
             <price>35.2</price>
-            <publishDate>1954-07-29T00:00:00+03:00</publishDate>
+            <publishDate>1954-07-29</publishDate>
             <publisherUUID>d22dfea8-8b5a-4404-8c8d-1791b4aeb288</publisherUUID>
             <uuid>44470938-f5f6-4e90-aa8f-dc52804fca2d</uuid>
         </book>
@@ -69,7 +69,7 @@
             </description>
             <name>LordOfTheRings: The Two Towers</name>
             <price>40.5</price>
-            <publishDate>1954-11-11T00:00:00+03:00</publishDate>
+            <publishDate>1954-11-11</publishDate>
             <publisherUUID>d22dfea8-8b5a-4404-8c8d-1791b4aeb288</publisherUUID>
             <uuid>8cb6e0c3-fb0d-4823-99b1-16c072f8178a</uuid>
         </book>
@@ -83,7 +83,7 @@
             </description>
             <name>LordOfTheRings: The Fellowship of the Ring</name>
             <price>48.5</price>
-            <publishDate>1955-10-20T00:00:00+03:00</publishDate>
+            <publishDate>1955-10-20</publishDate>
             <publisherUUID>d22dfea8-8b5a-4404-8c8d-1791b4aeb288</publisherUUID>
             <uuid>64303062-6330-3264-2d38-3536362d3431</uuid>
         </book>
@@ -100,7 +100,7 @@
             </description>
             <name>A Game of Thrones</name>
             <price>51.8</price>
-            <publishDate>1996-08-01T00:00:00+03:00</publishDate>
+            <publishDate>1996-08-01</publishDate>
             <publisherUUID>6e58eba7-bca7-4976-aa98-8f6ee1a3f928</publisherUUID>
             <uuid>c9e457d0-9013-4166-8502-a3c4b6d9956a</uuid>
         </book>
@@ -113,7 +113,7 @@
             </description>
             <name>Harry Potter and the Philosopher`s Stone</name>
             <price>30.8</price>
-            <publishDate>1997-06-26T00:00:00+03:00</publishDate>
+            <publishDate>1997-06-26</publishDate>
             <publisherUUID>8b5a0970-4b68-4fca-864c-0125a9958c6e</publisherUUID>
             <uuid>33640514-c274-42eb-83ee-06d789afa6de</uuid>
         </book>
@@ -127,7 +127,7 @@
             </description>
             <name>Harry Potter and the Prisoner of Azkaban</name>
             <price>32.8</price>
-            <publishDate>1999-07-08T00:00:00+03:00</publishDate>
+            <publishDate>1999-07-08</publishDate>
             <publisherUUID>8b5a0970-4b68-4fca-864c-0125a9958c6e</publisherUUID>
             <uuid>8247f363-020c-49bc-bd15-486c9d71a2cd</uuid>
         </book>
