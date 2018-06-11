@@ -42,9 +42,9 @@ public class EntityImporterImpl implements EntityImporter {
             Publisher publisher = publisherService.getByUUID(importPublisher.getUuid());
             if (publisher == null) {
                 publisher = new Publisher();
+                publisher.setUuid(importPublisher.getUuid());
             }
             publisher.setName(importPublisher.getName());
-            publisher.setUuid(importPublisher.getUuid());
             publisherService.add(publisher);
         }
     }
@@ -54,11 +54,11 @@ public class EntityImporterImpl implements EntityImporter {
             Author author = authorService.getByUUID(importAuthor.getUuid());
             if (author == null) {
                 author = new Author();
+                author.setUuid(importAuthor.getUuid());
             }
             author.setName(importAuthor.getName());
             author.setBio(importAuthor.getBio());
             author.setBirthDay(importAuthor.getBirthDay());
-            author.setUuid(importAuthor.getUuid());
             authorService.add(author);
         }
     }
@@ -70,16 +70,21 @@ public class EntityImporterImpl implements EntityImporter {
             Book book = bookService.getByUUID(uuid);
             if (book == null) {
                 book = new Book();
+                book.setUuid(importBook.getUuid());
             }
             book.setName(importBook.getName());
-            book.setUuid(importBook.getUuid());
             book.setDescription(importBook.getDescription());
             book.setPrice(importBook.getPrice());
             book.setPublishDate(importBook.getPublishDate());
             book.setPublisher(publisherService.getByUUID(importBook.getPublisherUUID()));
             book.setAuthors(getAuthors(importBook.getAuthorsUUID()));
-            if (book.getAuthors().get(0) == null || book.getPublisher() == null) {
+            if (book.getPublisher() == null) {
                 break;
+            }
+            for (Author author : book.getAuthors()) {
+                if (author == null) {
+                    break;
+                }
             }
             bookService.add(book);
         }
