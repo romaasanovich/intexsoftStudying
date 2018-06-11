@@ -1,7 +1,7 @@
 import com.intexsoft.bookservice.service.api.PublisherService;
 import com.intexsoft.bookservice.web.controller.PublisherController;
 import com.intexsoft.bookservice.web.dto.entity.PublisherDto;
-import com.intexsoft.bookservice.web.dto.service.api.PublisherDtoService;
+import com.intexsoft.bookservice.web.dto.mapper.PublisherDtoMapper;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,7 +29,7 @@ public class PublisherControllerTest {
 
     private MockMvc mockMvc;
     @Mock
-    private PublisherDtoService publisherDtoService;
+    private PublisherDtoMapper publisherDtoMapper;
 
     @Mock
     private PublisherService publisherService;
@@ -53,12 +53,12 @@ public class PublisherControllerTest {
         publishers.get(1).setName("publisher2");
         publishers.get(2).setName("publisher3");
         when(publisherService.getAllPublishers()).thenReturn(null);
-        when(publisherDtoService.getListPublishersDto(null)).thenReturn(publishers);
+        when(publisherDtoMapper.toDtoList(null)).thenReturn(publishers);
         mockMvc.perform(get("/api/publishers")
                 .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE).content(Converter.fromListToJson(publishers)))
                 .andExpect(status().isOk());
-        verify(publisherDtoService, times(1)).getListPublishersDto(null);
-        verifyNoMoreInteractions(publisherDtoService);
+        verify(publisherDtoMapper, times(1)).toDtoList(null);
+        verifyNoMoreInteractions(publisherDtoMapper);
     }
 
 }
