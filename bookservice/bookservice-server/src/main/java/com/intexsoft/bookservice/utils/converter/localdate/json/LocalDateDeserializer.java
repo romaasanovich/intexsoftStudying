@@ -11,10 +11,8 @@ import java.time.format.DateTimeFormatter;
 
 public class LocalDateDeserializer extends StdDeserializer<LocalDate> {
 
-    private SimpleDateFormat formatter
-            = new SimpleDateFormat("M/d/yyyy");
-    DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(formatter.toPattern());
-
+    private SimpleDateFormat formatter = new SimpleDateFormat("M/d/yyyy");
+    private DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(formatter.toPattern());
 
     protected LocalDateDeserializer() {
         super(LocalDate.class);

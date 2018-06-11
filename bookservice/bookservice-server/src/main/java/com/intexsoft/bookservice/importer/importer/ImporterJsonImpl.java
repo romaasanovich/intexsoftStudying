@@ -10,8 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
 import java.io.IOException;
 
 @Service
@@ -34,7 +34,7 @@ public class ImporterJsonImpl implements Importer {
     @Override
     public boolean importToDb() {
         try {
-            String jsonLine = "";
+            String jsonLine;
             try {
                 Reader reader = new Reader();
                 jsonLine = reader.readFile(file.getFile());

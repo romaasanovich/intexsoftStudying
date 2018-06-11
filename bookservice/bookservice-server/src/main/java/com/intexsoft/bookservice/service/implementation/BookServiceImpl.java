@@ -7,8 +7,8 @@ import com.intexsoft.bookservice.service.api.BookService;
 import com.intexsoft.bookservice.service.api.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,8 +25,7 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public List<Book> getAllBooks() {
-        List<Book> books = bookRepository.findAll();
-        return books;
+        return bookRepository.findAll();
     }
 
     @Override
@@ -45,7 +44,6 @@ public class BookServiceImpl implements BookService {
             reviewService.delete(review);
         }
         bookRepository.delete(book);
-
     }
 
     @Override

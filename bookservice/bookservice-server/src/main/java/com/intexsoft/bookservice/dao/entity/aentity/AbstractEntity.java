@@ -3,6 +3,7 @@ package com.intexsoft.bookservice.dao.entity.aentity;
 import javax.persistence.*;
 import java.io.Serializable;
 
+
 @MappedSuperclass
 public abstract class AbstractEntity implements Serializable {
     @Id

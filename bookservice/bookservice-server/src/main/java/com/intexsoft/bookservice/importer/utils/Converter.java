@@ -14,14 +14,12 @@ public class Converter {
 
     public static ImportEntityRepository fromJsonToEntityRep(String jsonLine) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
-        ImportEntityRepository importEntityRepository = mapper.readValue(jsonLine, ImportEntityRepository.class);
-        return importEntityRepository;
+        return mapper.readValue(jsonLine, ImportEntityRepository.class);
     }
 
     public static ImportEntityRepository fromXmlToEntityRep(File file) throws JAXBException {
         JAXBContext jaxbContext = JAXBContext.newInstance(ImportEntityRepository.class);
         Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-        ImportEntityRepository importEntityRepository = (ImportEntityRepository) jaxbUnmarshaller.unmarshal(file);
-        return importEntityRepository;
+        return (ImportEntityRepository) jaxbUnmarshaller.unmarshal(file);
     }
 }
