@@ -30,8 +30,13 @@ export class BookComponent implements OnInit {
     deleteBook(book: Book): void {
         this.bookService.deleteBook(book)
             .subscribe(data => {
-                this.books = this.books.filter(u => u !== book);
-            });
+                    this.books = this.books.filter(u => u !== book);
+                },
+                (error: Response) => {
+                    if (error.status === 403) {
+                        alert('You have no permissions !!!');
+                    }
+                });
     }
 
     goToReview(id) {

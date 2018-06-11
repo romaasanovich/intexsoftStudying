@@ -7,7 +7,6 @@ import {AuthorService} from '../author/author.service';
 import {PublisherService} from '../publisher/publisher.service';
 import {Publisher} from '../entity/publisher.model';
 import {Author} from '../entity/author.model';
-import {FormControl} from '@angular/forms';
 
 @Component({
     selector: 'app-add-book',
@@ -42,7 +41,12 @@ export class AddBookComponent implements OnInit {
         this.book.publishDate = this.selDate.toLocaleDateString();
         this.bookService.addBook(this.book)
             .subscribe(data => {
-                alert('Book created successfully.');
-            });
+                    alert('Book created successfully.');
+                },
+                (error: Response) => {
+                    if (error.status === 403) {
+                        alert('You have no permissions !!!');
+                    }
+                });
     }
 }

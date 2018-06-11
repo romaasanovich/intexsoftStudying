@@ -20,7 +20,12 @@ export class AddAuthorComponent {
     addAuthor(): void {
         this.author.birthDay = this.selDate.toLocaleDateString();
         this.authorService.addAuthor(this.author).subscribe(data => {
-            alert('Author created successfully.');
-        });
+                alert('Author created successfully.');
+            },
+            (error: Response) => {
+                if (error.status === 403) {
+                    alert('You have no permissions !!!');
+                }
+            });
     }
 }

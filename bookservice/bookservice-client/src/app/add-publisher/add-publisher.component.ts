@@ -18,8 +18,13 @@ export class AddPublisherComponent {
 
     addPublisher(): void {
         this.publisherService.addPubl(this.publisher).subscribe(data => {
-            alert('Publisher created successfully.');
-        });
+                alert('Publisher created successfully.');
+            },
+            (error: Response) => {
+                if (error.status === 403) {
+                    alert('You have no permissions !!!');
+                }
+            });
     }
 
 

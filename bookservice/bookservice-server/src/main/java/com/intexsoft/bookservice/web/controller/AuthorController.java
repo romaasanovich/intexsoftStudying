@@ -1,6 +1,5 @@
 package com.intexsoft.bookservice.web.controller;
 
-
 import com.intexsoft.bookservice.dao.entity.Author;
 import com.intexsoft.bookservice.service.api.AuthorService;
 import com.intexsoft.bookservice.web.dto.entity.AuthorDto;
@@ -41,5 +40,4 @@ public class AuthorController {
         Author author = authorService.getAuthorByID(id).get();
         authorService.delete(author);
     }
-
 }

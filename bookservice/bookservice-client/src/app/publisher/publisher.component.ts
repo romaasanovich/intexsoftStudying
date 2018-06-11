@@ -28,7 +28,12 @@ export class PublisherComponent implements OnInit {
     deletePublisher(publisher: Publisher): void {
         this.publisherService.deletePublisher(publisher)
             .subscribe(data => {
-                this.publishers = this.publishers.filter(u => u !== publisher);
-            });
+                    this.publishers = this.publishers.filter(u => u !== publisher);
+                },
+                (error: Response) => {
+                    if (error.status === 403) {
+                        alert('You have no permissions !!!');
+                    }
+                });
     }
 }

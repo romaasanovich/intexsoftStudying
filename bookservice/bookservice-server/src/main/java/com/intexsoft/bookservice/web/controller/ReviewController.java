@@ -49,7 +49,7 @@ public class ReviewController {
         reviewService.add(review);
     }
 
-    @PreAuthorize("hasRole('ADMIN') OR hasRole('CUSTOMER')")
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping(path = "/review/{id}")
     public void deleteReview(@PathVariable(name = "id") Integer id) {
         Review review = reviewService.getReviewByID(id).orElse(null);

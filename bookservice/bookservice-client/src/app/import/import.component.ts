@@ -28,7 +28,9 @@ export class ImportComponent {
                     if (error.status === 500) {
                         alert('Import is have an error!!!');
                     }
-                }
-            );
+                    if (error.status === 403) {
+                        alert('You have no permissions !!!');
+                    }
+                });
     }
 }

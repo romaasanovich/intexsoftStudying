@@ -28,7 +28,12 @@ export class AuthorComponent implements OnInit {
     deleteAuthor(author: Author): void {
         this.authorService.deleteAuthor(author)
             .subscribe(data => {
-                this.authors = this.authors.filter(u => u !== author);
-            });
+                    this.authors = this.authors.filter(u => u !== author);
+                },
+                (error: Response) => {
+                    if (error.status === 403) {
+                        alert('You have no permissions !!!');
+                    }
+                });
     }
 }
