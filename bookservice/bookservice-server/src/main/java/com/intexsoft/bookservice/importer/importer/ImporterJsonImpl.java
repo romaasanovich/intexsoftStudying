@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -20,8 +21,8 @@ public class ImporterJsonImpl implements Importer {
     @Autowired
     private EntityImporter entityImporter;
 
-    @Value("${jsonImportPath}")
-    private String jsonPath;
+    @Value("classpath:${jsonImportPath}")
+    private Resource file;
 
     @Override
     public TypeImport getType() {
@@ -36,7 +37,7 @@ public class ImporterJsonImpl implements Importer {
             String jsonLine = "";
             try {
                 Reader reader = new Reader();
-                jsonLine = reader.readFile(jsonPath);
+                jsonLine = reader.readFile(file.getFile());
             } catch (IOException ex) {
                 logger.error("File not found: ", ex);
                 return false;

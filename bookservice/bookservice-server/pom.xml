@@ -40,10 +40,10 @@
                 <mysql.username>rooty</mysql.username>
                 <mysql.password>1qaz1qaz</mysql.password>
                 <jsonImportPath>
-                    /home/INTEXSOFT/roman.asanovich/intexsoftStudying/bookservice/bookservice-server/src/main/resources/importFiles/entity.json
+                    importFiles/entity.json
                 </jsonImportPath>
                 <xmlImportPath>
-                    /home/INTEXSOFT/roman.asanovich/intexsoftStudying/bookservice/bookservice-server/src/main/resources/importFiles/entity.xml
+                    importFiles/entity.xml
                 </xmlImportPath>
             </properties>
         </profile>

@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -21,8 +22,8 @@ public class ImporterXmlImpl implements Importer {
     @Autowired
     private EntityImporter entityImporter;
 
-    @Value("${xmlImportPath}")
-    private String xmlPath;
+    @Value("classpath:${xmlImportPath}")
+    private Resource file;
 
     @Override
     public TypeImport getType() {
@@ -33,8 +34,7 @@ public class ImporterXmlImpl implements Importer {
     @Override
     public boolean importToDb() {
         try {
-            Reader reader = new Reader();
-            ImportEntityRepository entityRepository = Converter.fromXmlToEntityRep(reader.getFile(xmlPath));
+            ImportEntityRepository entityRepository = Converter.fromXmlToEntityRep(file.getFile());
             entityImporter.importEntities(entityRepository);
             return true;
         } catch (IOException ex) {
