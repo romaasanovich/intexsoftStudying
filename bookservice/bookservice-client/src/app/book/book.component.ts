@@ -4,16 +4,19 @@ import {Router} from '@angular/router';
 import {Book} from '../entity/book.model';
 import {BookService} from './book.service';
 import {BookReviewService} from '../book-review/book-review.service';
+import {AppSettings} from '../../../app.settings';
 
 @Component({
     selector: 'app-book',
     templateUrl: './book.component.html',
     styleUrls: ['./book.component.css']
 })
+
 export class BookComponent implements OnInit {
 
     books: Book[] = [];
-    displayedColumns = ['id', 'name', 'description', 'price', 'publisher', 'publishDate', 'authors', 'rate', 'delete'];
+    displayedColumns = ['image', 'name', 'price', 'publisher', 'publishDate', 'authors', 'rate', 'delete'];
+    URL = AppSettings.URL;
 
 
     constructor(private router: Router, private bookService: BookService, private bookReview: BookReviewService) {

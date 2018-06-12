@@ -7,7 +7,6 @@ import com.intexsoft.bookservice.dao.entity.aentity.AbstractEntity;
 import com.intexsoft.bookservice.utils.converter.localdate.json.LocalDateDeserializer;
 import com.intexsoft.bookservice.utils.converter.localdate.json.LocalDateSerializer;
 
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;

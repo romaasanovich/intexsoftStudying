@@ -6,6 +6,8 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.intexsoft.bookservice.dao.entity.aentity.AbstractEntity;
 import com.intexsoft.bookservice.utils.converter.localdate.json.LocalDateDeserializer;
 import com.intexsoft.bookservice.utils.converter.localdate.json.LocalDateSerializer;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -36,6 +38,11 @@ public class Book extends AbstractEntity {
             joinColumns = {@JoinColumn(name = "bookId")},
             inverseJoinColumns = {@JoinColumn(name = "authorId")})
     private List<Author> authors;
+    @ElementCollection
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @CollectionTable(name = "image", joinColumns = @JoinColumn(name = "bookId"))
+    @Column(name = "imagePath")
+    private List<String> imagesPath;
 
     public Book() {
 
@@ -95,5 +102,13 @@ public class Book extends AbstractEntity {
 
     public void setPrice(BigDecimal price) {
         this.price = price;
+    }
+
+    public List<String> getImagesPath() {
+        return imagesPath;
+    }
+
+    public void setImagesPath(List<String> imagesPath) {
+        this.imagesPath = imagesPath;
     }
 }
