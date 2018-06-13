@@ -7,17 +7,30 @@ import com.intexsoft.bookservice.importer.entity.ImportAuthor;
 import com.intexsoft.bookservice.importer.entity.ImportBook;
 import com.intexsoft.bookservice.importer.entity.ImportPublisher;
 import com.intexsoft.bookservice.importer.entity.repository.ImportEntityRepository;
+import com.intexsoft.bookservice.importer.utils.ImageWorker;
 import com.intexsoft.bookservice.service.api.AuthorService;
 import com.intexsoft.bookservice.service.api.BookService;
 import com.intexsoft.bookservice.service.api.PublisherService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import org.springframework.util.FileSystemUtils;
 
+import java.io.IOException;
+import java.nio.file.FileSystems;
 import java.util.ArrayList;
 import java.util.List;
 
 @Component
 public class EntityImporterImpl implements EntityImporter {
+
+    private static final Logger logger = LoggerFactory.getLogger("log");
+
+    @Value("${resources.path}")
+    private String resourcePath;
+
     @Autowired
     private PublisherService publisherService;
 
@@ -26,6 +39,9 @@ public class EntityImporterImpl implements EntityImporter {
 
     @Autowired
     private AuthorService authorService;
+
+    @Autowired
+    private ImageWorker imageWorker;
 
     @Override
     public void importEntities(ImportEntityRepository entityRepository) {
@@ -65,6 +81,7 @@ public class EntityImporterImpl implements EntityImporter {
 
 
     private void importBooksToDB(List<ImportBook> books) {
+        imageWorker.unzipImages();
         for (ImportBook importBook : books) {
             String uuid = importBook.getUuid();
             Book book = bookService.getByUUID(uuid);
@@ -86,7 +103,13 @@ public class EntityImporterImpl implements EntityImporter {
                     break;
                 }
             }
+            imageWorker.processImages(book, importBook.getImagesName());
             bookService.add(book);
+        }
+        try {
+            FileSystemUtils.deleteRecursively(FileSystems.getDefault().getPath(resourcePath + "tempImages"));
+        } catch (IOException e) {
+            logger.error("Wrong path: ", e);
         }
     }
 
@@ -97,6 +120,5 @@ public class EntityImporterImpl implements EntityImporter {
         }
         return authors;
     }
-
 
 }

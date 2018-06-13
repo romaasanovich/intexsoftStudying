@@ -4,6 +4,7 @@ import com.intexsoft.bookservice.service.api.ImageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.MediaType;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -13,6 +14,7 @@ public class ImageController {
     @Autowired
     private ImageService imageService;
 
+    @PreAuthorize("hasRole('ADMIN') OR hasRole('CUSTOMER')")
     @ResponseBody
     @GetMapping(path = "/image/book/{bookId}", produces = MediaType.IMAGE_JPEG_VALUE)
     public Resource getBookImage(@PathVariable Integer bookId) {

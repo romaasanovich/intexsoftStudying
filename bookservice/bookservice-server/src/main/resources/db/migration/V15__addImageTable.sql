@@ -1,5 +1,5 @@
-CREATE TABLE image (
-  id INT NOT NULL,
+CREATE TABLE bookImage (
+  id INT NOT NULL AUTO_INCREMENT,
   bookId INT NOT NULL,
   imagePath VARCHAR(100) NOT NULL,
   PRIMARY KEY (id),

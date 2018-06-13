@@ -1,4 +1,4 @@
-package com.intexsoft.bookservice.web.dto.entity;
+package com.intexsoft.bookservice.web.dto.entity.book;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
-public class BookDto {
+public class BookDetailsDto {
     private Integer id;
     private String name;
     private String description;

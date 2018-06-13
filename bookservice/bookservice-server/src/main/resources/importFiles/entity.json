@@ -2,9 +2,15 @@
   "authors": [
     {
       "uuid": "c6d1seb7-c5ef-4e62-b3ed-140384af83e3",
-      "name": "Joanne Rowling TESTss",
+      "name": "Joanne Rowling",
       "bio": "Novelist short story writer screenwriter",
       "birthDay": "7/31/1965"
+    },
+    {
+      "uuid": "c6d1seb7-c5eq-4e62-b3ed-140384af83e3",
+      "name": "Dmitry Glukhovsky",
+      "bio": "Novelist short story writer screenwriter",
+      "birthDay": "7/31/1979"
     }
   ],
   "publishers": [
@@ -27,6 +33,9 @@
       "publisherUUID": "d22dfea8-8b5a-4404-8c8d-1791b4aeb288",
       "authorsUUID": [
         "58d3c044-c9f0-45bb-891f-2145e45a9f3b"
+      ],
+      "imagesName": [
+        "images/books/LoTR/lord-of-the-rings-the-fellowship-of-the-king.jpg"
       ]
     },
     {
@@ -38,17 +47,23 @@
       "publisherUUID": "d22dfea8-8b5a-4404-8c8d-1791b4aeb288",
       "authorsUUID": [
         "58d3c044-c9f0-45bb-891f-2145e45a9f3b"
+      ],
+      "imagesName": [
+        "images/books/LoTR/Lord-of-the-rings-the-two-towers.jpg"
       ]
     },
     {
-      "uuid": "64303062-6330-3264-2d38-3536362d3431",
-      "name": "LordOfTheRings: The Fellowship of the Ring",
-      "description": "The Return of the King is the third and final volume of J. R. R. Tolkiens The Lord of the Rings, following The Fellowship of the Ring and The Two Towers. The story begins in the kingdom of Gondor, which is soon to be attacked by the Dark Lord Sauron.",
-      "price": 48.5,
-      "publishDate": "10/20/1955",
+      "uuid": "64303062-6330-3264-2c38-3536362d3431",
+      "name": "Metro 2033",
+      "description": "In 2013, a nuclear war occurred, forcing a large amount of Moscow's surviving population to relocate to underground metro stations in search of refuge. Eventually, communities settled within the underground train stations and developed into independent states over time. Factions emerged, ranging from the independent peacekeepers the `Rangers of the Order`, to the communist `Red Line` faction and the fascist `Fourth Reich`, to the more powerful factions such as `Polis`, which contained the greatest military power and the most knowledge of the past, and the `Hanza` regime, which controlled the main ring of metro stations by its sheer economic power. As these groups began to evolve, the Red Line and the Fourth Reich quickly entered a state of war, as both sought to destroy the other. As the war raged, the stations who refused to join either side were either demolished by the factions, merged into the Hanza regime, raided by criminal bandits, or formed their own independent states. Other stations were outright destroyed by animals, mutated by the nuclear fallout. While most of the stations were controlled by the 3 main factions",
+      "price": 55.5,
+      "publishDate": "10/20/2012",
       "publisherUUID": "d22dfea8-8b5a-4404-8c8d-1791b4aeb288",
       "authorsUUID": [
-        "58d3c044-c9f0-45bb-891f-2145e45a9f3b"
+        "c6d1seb7-c5eq-4e62-b3ed-140384af83e3"
+      ],
+      "imagesName": [
+        "images/books/Metro/metro_2033.jpg"
       ]
     }
   ]

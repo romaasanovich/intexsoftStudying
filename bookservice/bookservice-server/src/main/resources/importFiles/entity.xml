@@ -12,16 +12,12 @@
             <name>Allen &amp; Unwin</name>
             <uuid>d22dfea8-8b5a-4404-8c8d-1791b4aeb288</uuid>
         </publisher>
-        <publisher>
-            <name>Some Publisher with ano</name>
-            <uuid>36306337-6325-6335-2d66-3532332d3463</uuid>
-        </publisher>
     </publishers>
     <authors>
         <author>
             <bio>Novelist short story writer screenwriter</bio>
             <birthDay>1965-07-31</birthDay>
-            <name>Joanne Rowling TEST</name>
+            <name>Joanne Rowling</name>
             <uuid>c6d1deb7-c5ef-4e62-b3ed-140384af83e3</uuid>
         </author>
         <author>
@@ -32,15 +28,15 @@
         </author>
         <author>
             <bio>Author, academic, philologist, poet</bio>
-            <birthDay>1973-09-02</birthDay>
+            <birthDay>1979-07-31</birthDay>
             <name>JohnRonald Reuel Tolkien</name>
             <uuid>58d3c044-c9f0-45bb-891f-2145e45a9f3b</uuid>
         </author>
         <author>
             <bio>Novelist short story writer screenwriter</bio>
-            <birthDay>1965-07-31</birthDay>
-            <name>Joanne Rowling TESTss</name>
-            <uuid>c6d1seb7-c5ef-4e62-b3ed-140384af83e3</uuid>
+            <birthDay>1973-09-02</birthDay>
+            <name>Dmitry Glukhovsky</name>
+            <uuid>c6d1seb7-c5eq-4e62-b3ed-140384af83e3</uuid>
         </author>
     </authors>
     <books>
@@ -59,6 +55,9 @@
             <publishDate>1954-07-29</publishDate>
             <publisherUUID>d22dfea8-8b5a-4404-8c8d-1791b4aeb288</publisherUUID>
             <uuid>44470938-f5f6-4e90-aa8f-dc52804fca2d</uuid>
+            <imagesName>
+                <imageName>images/books/LoTR/lord-of-the-rings-the-fellowship-of-the-king.jpg</imageName>
+            </imagesName>
         </book>
         <book>
             <authorsUUID>
@@ -72,6 +71,9 @@
             <publishDate>1954-11-11</publishDate>
             <publisherUUID>d22dfea8-8b5a-4404-8c8d-1791b4aeb288</publisherUUID>
             <uuid>8cb6e0c3-fb0d-4823-99b1-16c072f8178a</uuid>
+            <imagesName>
+                <imageName>images/books/LoTR/Lord-of-the-rings-the-two-towers.jpg</imageName>
+            </imagesName>
         </book>
         <book>
             <authorsUUID>
@@ -81,15 +83,18 @@
                 Rings, following The Fellowship of the Ring and The Two Towers. The story begins in the kingdom of
                 Gondor, which is soon to be attacked by the Dark Lord Sauron.
             </description>
-            <name>LordOfTheRings: The Fellowship of the Ring</name>
+            <name>LordOfTheRings: The Return of the King</name>
             <price>48.5</price>
             <publishDate>1955-10-20</publishDate>
             <publisherUUID>d22dfea8-8b5a-4404-8c8d-1791b4aeb288</publisherUUID>
             <uuid>64303062-6330-3264-2d38-3536362d3431</uuid>
+            <imagesName>
+                <imageName>images/books/LoTR/return-the-king.jpg</imageName>
+            </imagesName>
         </book>
         <book>
             <authorsUUID>
-                <authorUUID>c6d1deb7-c5ef-4e62-b3ed-140384af83e3</authorUUID>
+                <authorUUID>f8c839ea-b3ef-404a-b790-3c002e271d2e</authorUUID>
             </authorsUUID>
             <description>A Game of Thrones is the first novel in A Song of Ice and Fire, a series of fantasy novels by
                 American author George R. R. Martin. It was first published on August 1, 1996. The novel won the 1997
@@ -103,6 +108,9 @@
             <publishDate>1996-08-01</publishDate>
             <publisherUUID>6e58eba7-bca7-4976-aa98-8f6ee1a3f928</publisherUUID>
             <uuid>c9e457d0-9013-4166-8502-a3c4b6d9956a</uuid>
+            <imagesName>
+                <imageName>images/books/GoT/a-game-of-thrones.jpg</imageName>
+            </imagesName>
         </book>
         <book>
             <authorsUUID>
@@ -116,6 +124,9 @@
             <publishDate>1997-06-26</publishDate>
             <publisherUUID>8b5a0970-4b68-4fca-864c-0125a9958c6e</publisherUUID>
             <uuid>33640514-c274-42eb-83ee-06d789afa6de</uuid>
+            <imagesName>
+                <imageName>images/books/HP/HP-philosopher-stone.jpg</imageName>
+            </imagesName>
         </book>
         <book>
             <authorsUUID>
@@ -130,7 +141,35 @@
             <publishDate>1999-07-08</publishDate>
             <publisherUUID>8b5a0970-4b68-4fca-864c-0125a9958c6e</publisherUUID>
             <uuid>8247f363-020c-49bc-bd15-486c9d71a2cd</uuid>
+            <imagesName>
+                <imageName>images/books/HP/HP-prisoner-of-azkaban.jpg</imageName>
+            </imagesName>
+        </book>
+        <book>
+            <authorsUUID>
+                <authorUUID>c6d1seb7-c5eq-4e62-b3ed-140384af83e3</authorUUID>
+            </authorsUUID>
+            <description>In 2013, a nuclear war occurred, forcing a large amount of Moscow's surviving population to
+                relocate to underground metro stations in search of refuge. Eventually, communities settled within the
+                underground train stations and developed into independent states over time. Factions emerged, ranging
+                from the independent peacekeepers the `Rangers of the Order`, to the communist `Red Line` faction and
+                the fascist `Fourth Reich`, to the more powerful factions such as `Polis`, which contained the greatest
+                military power and the most knowledge of the past, and the `Hanza` regime, which controlled the main
+                ring of metro stations by its sheer economic power. As these groups began to evolve, the Red Line and
+                the Fourth Reich quickly entered a state of war, as both sought to destroy the other. As the war raged,
+                the stations who refused to join either side were either demolished by the factions, merged into the
+                Hanza regime, raided by criminal bandits, or formed their own independent states. Other stations were
+                outright destroyed by animals, mutated by the nuclear fallout. While most of the stations were
+                controlled by the 3 main factions
+            </description>
+            <name>Metro 2033</name>
+            <price>55.5</price>
+            <publishDate>2012-10-20</publishDate>
+            <publisherUUID>d22dfea8-8b5a-4404-8c8d-1791b4aeb288</publisherUUID>
+            <uuid>64303062-6330-3264-2c38-3536362d3431</uuid>
+            <imagesName>
+                <imageName>images/books/Metro/metro_2033.jpg</imageName>
+            </imagesName>
         </book>
     </books>
 </entities>
-

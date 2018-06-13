@@ -1,19 +1,20 @@
-package com.intexsoft.bookservice.web.dto.mapper;
+package com.intexsoft.bookservice.web.dto.mapper.book;
 
 import com.intexsoft.bookservice.dao.entity.Author;
 import com.intexsoft.bookservice.dao.entity.Book;
-import com.intexsoft.bookservice.web.dto.entity.BookDto;
+import com.intexsoft.bookservice.web.dto.entity.book.BookDetailsDto;
+import com.intexsoft.bookservice.web.dto.mapper.AbstractDtoMapper;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class BookDtoMapper extends AbstractDtoMapper<Book, BookDto> {
+public class BookDetailsDtoMapper extends AbstractDtoMapper<Book, BookDetailsDto> {
 
     @Override
-    public BookDto toDto(Book book) {
-        BookDto bookDto = new BookDto();
+    public BookDetailsDto toDto(Book book) {
+        BookDetailsDto bookDto = new BookDetailsDto();
         bookDto.setId(book.getId());
         bookDto.setDescription(book.getDescription());
         bookDto.setName(book.getName());

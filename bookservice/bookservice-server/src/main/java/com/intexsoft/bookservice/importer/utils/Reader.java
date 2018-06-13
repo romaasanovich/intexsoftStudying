@@ -7,7 +7,6 @@ import java.util.Scanner;
 
 public class Reader {
 
-
     public String readFile(File file) throws IOException {
         try (FileReader fileReader = new FileReader(file)) {
             Scanner scan = new Scanner(fileReader);

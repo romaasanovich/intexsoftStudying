@@ -23,6 +23,7 @@ public class ImportBook {
     private BigDecimal price;
     private String publisherUUID;
     private List<String> authorsUUID;
+    private List<String> imagesName;
     @JsonSerialize(using = LocalDateSerializer.class)
     @JsonDeserialize(using = LocalDateDeserializer.class)
     private LocalDate publishDate;
@@ -90,5 +91,15 @@ public class ImportBook {
 
     public void setAuthorsUUID(List<String> authorsUUID) {
         this.authorsUUID = authorsUUID;
+    }
+
+    @XmlElementWrapper(name = "imagesName")
+    @XmlElement(name = "imageName")
+    public List<String> getImagesName() {
+        return imagesName;
+    }
+
+    public void setImagesName(List<String> imagesName) {
+        this.imagesName = imagesName;
     }
 }
