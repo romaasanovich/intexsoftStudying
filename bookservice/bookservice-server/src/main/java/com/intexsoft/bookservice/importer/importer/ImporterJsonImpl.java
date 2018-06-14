@@ -29,7 +29,6 @@ public class ImporterJsonImpl implements Importer {
         return TypeImport.json;
     }
 
-
     @Transactional
     @Override
     public boolean importToDb() {
@@ -47,6 +46,8 @@ public class ImporterJsonImpl implements Importer {
             return true;
         } catch (IOException ex) {
             logger.error("Wrong Json Structure: ", ex);
+            return false;
+        } catch (Exception ex) {
             return false;
         }
     }

@@ -42,6 +42,8 @@ public class ImporterXmlImpl implements Importer {
         } catch (JAXBException er) {
             logger.error("Wrong XML structure: ", er);
             return false;
+        } catch (Exception ex) {
+            return false;
         }
     }
 }

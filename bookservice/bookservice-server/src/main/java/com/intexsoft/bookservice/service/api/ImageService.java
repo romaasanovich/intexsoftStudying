@@ -1,9 +1,23 @@
 package com.intexsoft.bookservice.service.api;
 
+import com.intexsoft.bookservice.dao.entity.Book;
+import com.intexsoft.bookservice.dao.entity.BookImage;
 import org.springframework.core.io.Resource;
+
+import java.nio.file.Path;
+import java.util.List;
 
 public interface ImageService {
 
-    Resource getBookImage(Integer bookId);
+    void updateImage(String sourcePath, BookImage bookImage);
 
+    void addImage(Book book, String importPath, String typeImage);
+
+    BookImage getBookCover(Book book);
+
+    List<BookImage> getBookPages(Book book);
+
+    Resource getCover(Integer bookId);
+
+    Path generateImagePath(BookImage bookPage);
 }

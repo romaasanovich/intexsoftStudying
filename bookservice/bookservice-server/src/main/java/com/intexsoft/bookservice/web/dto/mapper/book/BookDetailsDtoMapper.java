@@ -22,11 +22,11 @@ public class BookDetailsDtoMapper extends AbstractDtoMapper<Book, BookDetailsDto
         bookDto.setRate(book.getRate());
         bookDto.setPublishDate(book.getPublishDate());
         bookDto.setPublisher(book.getPublisher().getName());
-        bookDto.setAuthors(getListAuthors(book.getAuthors()));
+        bookDto.setAuthors(getAuthors(book.getAuthors()));
         return bookDto;
     }
 
-    private List<String> getListAuthors(List<Author> authors) {
+    private List<String> getAuthors(List<Author> authors) {
         List<String> authorsName = new ArrayList<>();
         for (Author author : authors) {
             authorsName.add(author.getName());

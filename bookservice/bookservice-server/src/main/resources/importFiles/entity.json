@@ -34,8 +34,8 @@
       "authorsUUID": [
         "58d3c044-c9f0-45bb-891f-2145e45a9f3b"
       ],
-      "imagesName": [
-        "images/books/LoTR/lord-of-the-rings-the-fellowship-of-the-king.jpg"
+      "coverPath": "images/books/LoTR/lord-of-the-rings-the-fellowship-of-the-king.jpg",
+      "pagesPath": [
       ]
     },
     {
@@ -48,8 +48,8 @@
       "authorsUUID": [
         "58d3c044-c9f0-45bb-891f-2145e45a9f3b"
       ],
-      "imagesName": [
-        "images/books/LoTR/Lord-of-the-rings-the-two-towers.jpg"
+      "coverPath": "images/books/LoTR/Lord-of-the-rings-the-two-towers.jpg",
+      "pagesPath": [
       ]
     },
     {
@@ -62,8 +62,8 @@
       "authorsUUID": [
         "c6d1seb7-c5eq-4e62-b3ed-140384af83e3"
       ],
-      "imagesName": [
-        "images/books/Metro/metro_2033.jpg"
+      "coverPath": "images/books/Metro/metro_2033.jpg",
+      "pagesPath": [
       ]
     }
   ]

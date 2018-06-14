@@ -9,8 +9,10 @@ public class BookImage {
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(name = "imagePath")
-    private String imagePath;
+    @Column(name = "imageName")
+    private String imageName;
+    @Column(name = "typeImage")
+    private String typeImage;
     @ManyToOne
     @JoinColumn(name = "bookId")
     private Book book;
@@ -18,12 +20,20 @@ public class BookImage {
     public BookImage() {
     }
 
-    public String getImagePath() {
-        return imagePath;
+    public Integer getId() {
+        return id;
     }
 
-    public void setImagePath(String imagePath) {
-        this.imagePath = imagePath;
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getImageName() {
+        return imageName;
+    }
+
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
     }
 
     public Book getBook() {
@@ -32,5 +42,13 @@ public class BookImage {
 
     public void setBook(Book book) {
         this.book = book;
+    }
+
+    public String getTypeImage() {
+        return typeImage;
+    }
+
+    public void setTypeImage(String typeImage) {
+        this.typeImage = typeImage;
     }
 }

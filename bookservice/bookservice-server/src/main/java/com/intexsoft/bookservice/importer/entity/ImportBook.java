@@ -23,7 +23,8 @@ public class ImportBook {
     private BigDecimal price;
     private String publisherUUID;
     private List<String> authorsUUID;
-    private List<String> imagesName;
+    private String coverPath;
+    private List<String> pagesPath;
     @JsonSerialize(using = LocalDateSerializer.class)
     @JsonDeserialize(using = LocalDateDeserializer.class)
     private LocalDate publishDate;
@@ -93,13 +94,22 @@ public class ImportBook {
         this.authorsUUID = authorsUUID;
     }
 
-    @XmlElementWrapper(name = "imagesName")
-    @XmlElement(name = "imageName")
-    public List<String> getImagesName() {
-        return imagesName;
+    @XmlElementWrapper(name = "pagesPath")
+    @XmlElement(name = "pagePath")
+    public List<String> getPagesPath() {
+        return pagesPath;
     }
 
-    public void setImagesName(List<String> imagesName) {
-        this.imagesName = imagesName;
+    public void setPagesPath(List<String> pagesPath) {
+        this.pagesPath = pagesPath;
+    }
+
+    @XmlElement
+    public String getCoverPath() {
+        return coverPath;
+    }
+
+    public void setCoverPath(String coverPath) {
+        this.coverPath = coverPath;
     }
 }
