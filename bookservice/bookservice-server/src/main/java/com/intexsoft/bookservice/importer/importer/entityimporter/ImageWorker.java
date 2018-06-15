@@ -2,6 +2,7 @@ package com.intexsoft.bookservice.importer.importer.entityimporter;
 
 import com.intexsoft.bookservice.dao.entity.Book;
 import com.intexsoft.bookservice.dao.entity.BookImage;
+import com.intexsoft.bookservice.dao.entity.ImageType;
 import com.intexsoft.bookservice.service.api.ImageService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,7 +15,6 @@ import java.io.BufferedInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -69,9 +69,9 @@ public class ImageWorker {
         }
     }
 
-    public boolean deleteFolder(String imagesPath) throws IOException {
+    public boolean deleteFolder() throws IOException {
         try {
-            return FileSystemUtils.deleteRecursively(FileSystems.getDefault().getPath(imagesPath));
+            return FileSystemUtils.deleteRecursively(Paths.get(tempImagesPath));
         } catch (IOException e) {
             logger.error("IO Error: ", e);
             throw e;
@@ -95,19 +95,19 @@ public class ImageWorker {
             if (cover != null) {
                 imageService.updateImage(importCoverPath, cover);
             } else {
-                imageService.addImage(book, importCoverPath, TypeImage.cover.toString());
+                imageService.addImage(book, importCoverPath, ImageType.COVER);
             }
         }
     }
 
     public void processImages(Book book, List<String> importPagesPath) {
-        if (importPagesPath != null && !importPagesPath.isEmpty()) {
+        if (!importPagesPath.isEmpty() && importPagesPath != null) {
             try {
                 List<BookImage> bookPages = imageService.getBookPages(book);
                 if (!bookPages.isEmpty() && bookPages != null) {
                     deletePages(bookPages);
                     for (String importPagePath : importPagesPath) {
-                        imageService.addImage(book, importPagePath, TypeImage.page.toString());
+                        imageService.addImage(book, importPagePath, ImageType.PAGE);
                     }
                 }
             } catch (Exception ex) {

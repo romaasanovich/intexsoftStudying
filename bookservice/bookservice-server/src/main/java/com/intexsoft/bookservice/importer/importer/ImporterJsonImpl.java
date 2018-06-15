@@ -25,8 +25,8 @@ public class ImporterJsonImpl implements Importer {
     private Resource file;
 
     @Override
-    public TypeImport getType() {
-        return TypeImport.json;
+    public ImportType getType() {
+        return ImportType.JSON;
     }
 
     @Transactional
@@ -46,8 +46,6 @@ public class ImporterJsonImpl implements Importer {
             return true;
         } catch (IOException ex) {
             logger.error("Wrong Json Structure: ", ex);
-            return false;
-        } catch (Exception ex) {
             return false;
         }
     }

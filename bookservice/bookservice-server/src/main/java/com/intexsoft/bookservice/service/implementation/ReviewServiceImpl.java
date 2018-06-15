@@ -46,17 +46,17 @@ public class ReviewServiceImpl implements ReviewService {
     }
 
     @Override
-    public List<Review> getBookReview(Integer bookId) {
-        return reviewRepository.findBookReview(bookId.toString());
+    public List<Review> getBookReviews(Integer bookId) {
+        return reviewRepository.findBookReview(bookId);
     }
 
     @Override
-    public List<Review> getUserReview(Integer userId) {
-        return reviewRepository.findUserReview(userId.toString());
+    public List<Review> getUserReviews(Integer userId) {
+        return reviewRepository.findUserReview(userId);
     }
 
     private Double getRate(Book book) {
-        List<Review> reviews = getBookReview(book.getId());
+        List<Review> reviews = getBookReviews(book.getId());
         Double sumRate = 0.0;
         for (Review review : reviews) {
             sumRate += review.getRate();

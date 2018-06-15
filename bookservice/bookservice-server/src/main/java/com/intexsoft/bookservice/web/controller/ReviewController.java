@@ -30,13 +30,13 @@ public class ReviewController {
     @PreAuthorize("hasRole('ADMIN') OR hasRole('CUSTOMER')")
     @GetMapping(path = "/review/user/{userId}")
     public List<ReviewDto> getUserReviews(@PathVariable(name = "userId") Integer userId) {
-        return reviewDtoMapper.toDtoList(reviewService.getUserReview(userId));
+        return reviewDtoMapper.toDtoList(reviewService.getUserReviews(userId));
     }
 
     @PreAuthorize("hasRole('ADMIN') OR hasRole('CUSTOMER')")
     @GetMapping(path = "/review/{bookId}")
     public List<ReviewDto> getBookReviews(@PathVariable(name = "bookId") Integer bookId) {
-        return reviewDtoMapper.toDtoList(reviewService.getBookReview(bookId));
+        return reviewDtoMapper.toDtoList(reviewService.getBookReviews(bookId));
     }
 
     @PreAuthorize("hasRole('ADMIN') OR hasRole('CUSTOMER')")

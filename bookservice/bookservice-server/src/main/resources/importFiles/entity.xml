@@ -56,8 +56,8 @@
             <publisherUUID>d22dfea8-8b5a-4404-8c8d-1791b4aeb288</publisherUUID>
             <uuid>44470938-f5f6-4e90-aa8f-dc52804fca2d</uuid>
             <coverPath>images/books/LoTR/lord-of-the-rings-the-fellowship-of-the-king.jpg</coverPath>
-            <pagesPath>
-            </pagesPath>
+            <pagePaths>
+            </pagePaths>
         </book>
         <book>
             <authorsUUID>
@@ -72,8 +72,8 @@
             <publisherUUID>d22dfea8-8b5a-4404-8c8d-1791b4aeb288</publisherUUID>
             <uuid>8cb6e0c3-fb0d-4823-99b1-16c072f8178a</uuid>
             <coverPath>images/books/LoTR/Lord-of-the-rings-the-two-towers.jpg</coverPath>
-            <pagesPath>
-            </pagesPath>
+            <pagePaths>
+            </pagePaths>
         </book>
         <book>
             <authorsUUID>
@@ -89,8 +89,8 @@
             <publisherUUID>d22dfea8-8b5a-4404-8c8d-1791b4aeb288</publisherUUID>
             <uuid>64303062-6330-3264-2d38-3536362d3431</uuid>
             <coverPath>images/books/LoTR/return-the-king.jpg</coverPath>
-            <pagesPath>
-            </pagesPath>
+            <pagePaths>
+            </pagePaths>
         </book>
         <book>
             <authorsUUID>
@@ -109,8 +109,8 @@
             <publisherUUID>6e58eba7-bca7-4976-aa98-8f6ee1a3f928</publisherUUID>
             <uuid>c9e457d0-9013-4166-8502-a3c4b6d9956a</uuid>
             <coverPath>images/books/GoT/a-game-of-thrones.jpg</coverPath>
-            <pagesPath>
-            </pagesPath>
+            <pagePaths>
+            </pagePaths>
         </book>
         <book>
             <authorsUUID>
@@ -125,8 +125,8 @@
             <publisherUUID>8b5a0970-4b68-4fca-864c-0125a9958c6e</publisherUUID>
             <uuid>33640514-c274-42eb-83ee-06d789afa6de</uuid>
             <coverPath>images/books/HP/HP-philosopher-stone.jpg</coverPath>
-            <pagesPath>
-            </pagesPath>
+            <pagePaths>
+            </pagePaths>
         </book>
         <book>
             <authorsUUID>
@@ -142,8 +142,8 @@
             <publisherUUID>8b5a0970-4b68-4fca-864c-0125a9958c6e</publisherUUID>
             <uuid>8247f363-020c-49bc-bd15-486c9d71a2cd</uuid>
             <coverPath>images/books/HP/HP-prisoner-of-azkaban.jpg</coverPath>
-            <pagesPath>
-            </pagesPath>
+            <pagePaths>
+            </pagePaths>
         </book>
         <book>
             <authorsUUID>
@@ -168,8 +168,8 @@
             <publisherUUID>d22dfea8-8b5a-4404-8c8d-1791b4aeb288</publisherUUID>
             <uuid>64303062-6330-3264-2c38-3536362d3431</uuid>
             <coverPath>images/books/Metro/metro_2033.jpg</coverPath>
-            <pagesPath>
-            </pagesPath>
+            <pagePaths>
+            </pagePaths>
         </book>
     </books>
 </entities>

@@ -1,7 +1,7 @@
 package com.intexsoft.bookservice.web.controller;
 
 import com.intexsoft.bookservice.importer.executor.ImportExecutor;
-import com.intexsoft.bookservice.importer.importer.TypeImport;
+import com.intexsoft.bookservice.importer.importer.ImportType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,9 +23,9 @@ public class ImportController {
     private ImportExecutor importExecutor;
 
     @PostMapping(path = "/import/{type}")
-    public ResponseEntity importEntities(@PathVariable(name = "type") TypeImport typeImport) throws InterruptedException {
+    public ResponseEntity importEntities(@PathVariable(name = "type") ImportType importType) throws InterruptedException {
         try {
-            return (importExecutor.importEntities(typeImport)) ? new ResponseEntity(HttpStatus.OK) : new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+            return (importExecutor.importEntities(importType)) ? new ResponseEntity(HttpStatus.OK) : new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         } catch (NoSuchElementException ex) {
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         } catch (AccessDeniedException accDenEx) {

@@ -25,8 +25,8 @@ public class ImporterXmlImpl implements Importer {
     private Resource file;
 
     @Override
-    public TypeImport getType() {
-        return TypeImport.xml;
+    public ImportType getType() {
+        return ImportType.XML;
     }
 
     @Transactional
@@ -41,8 +41,6 @@ public class ImporterXmlImpl implements Importer {
             return false;
         } catch (JAXBException er) {
             logger.error("Wrong XML structure: ", er);
-            return false;
-        } catch (Exception ex) {
             return false;
         }
     }

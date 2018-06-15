@@ -25,6 +25,9 @@
         <org.slf4j.version>1.7.25</org.slf4j.version>
         <jsonImportPath>importFiles/entity.json</jsonImportPath>
         <xmlImportPath>importFiles/entity.xml</xmlImportPath>
+        <book.images.path></book.images.path>
+        <import.images.path></import.images.path>
+        <import.images.zip></import.images.zip>
     </properties>
 
     <profiles>
@@ -37,6 +40,9 @@
                 <mysql.password>1qaz1qaz</mysql.password>
                 <jsonImportPath>importFiles/entity.json</jsonImportPath>
                 <xmlImportPath>importFiles/entity.xml</xmlImportPath>
+                <book.images.path>/home/INTEXSOFT/roman.asanovich/bookservice-resources/images/books/</book.images.path>
+                <import.images.path>/home/INTEXSOFT/roman.asanovich/bookservice-resources/tempImage/</import.images.path>
+                <import.images.zip>/home/INTEXSOFT/roman.asanovich/bookservice-resources/images.zip</import.images.zip>
             </properties>
         </profile>
     </profiles>

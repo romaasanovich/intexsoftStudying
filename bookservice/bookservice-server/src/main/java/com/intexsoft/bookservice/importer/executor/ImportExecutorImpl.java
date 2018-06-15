@@ -1,7 +1,7 @@
 package com.intexsoft.bookservice.importer.executor;
 
+import com.intexsoft.bookservice.importer.importer.ImportType;
 import com.intexsoft.bookservice.importer.importer.Importer;
-import com.intexsoft.bookservice.importer.importer.TypeImport;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,14 +22,14 @@ public class ImportExecutorImpl implements ImportExecutor {
     private List<Importer> importers;
 
     @Override
-    public boolean importEntities(TypeImport typeImport) throws InterruptedException {
+    public boolean importEntities(ImportType importType) throws InterruptedException {
         if (lock.tryLock()) {
             logger.info("Thread locked the lock");
             try {
                 logger.info("Start import to db");
                 Thread.sleep(2500);
                 logger.info("Import is running");
-                Importer importService = importers.stream().filter((s) -> s.getType().equals(typeImport)).findFirst().get();
+                Importer importService = importers.stream().filter((s) -> s.getType().equals(importType)).findFirst().get();
                 Boolean isImport = importService.importToDb();
                 if (isImport.equals(true)) {
                     logger.info("Import is OK");

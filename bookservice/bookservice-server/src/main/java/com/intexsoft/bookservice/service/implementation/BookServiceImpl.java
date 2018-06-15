@@ -40,7 +40,7 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public void delete(Book book) {
-        for (Review review : reviewService.getBookReview(book.getId())) {
+        for (Review review : reviewService.getBookReviews(book.getId())) {
             reviewService.delete(review);
         }
         bookRepository.delete(book);

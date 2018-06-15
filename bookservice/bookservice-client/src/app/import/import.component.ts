@@ -9,7 +9,7 @@ import {ImportService} from './import.service';
 })
 export class ImportComponent {
 
-    typeImport: string[] = ['xml', 'json'];
+    importType: string[] = ['XML', 'JSON'];
     selImport: string;
 
     constructor(private router: Router, private importService: ImportService) {

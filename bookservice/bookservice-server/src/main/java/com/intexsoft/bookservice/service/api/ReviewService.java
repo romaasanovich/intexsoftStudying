@@ -15,9 +15,9 @@ public interface ReviewService {
 
     Optional<Review> getReviewByID(Integer id);
 
-    List<Review> getBookReview(Integer bookId);
+    List<Review> getBookReviews(Integer bookId);
 
-    List<Review> getUserReview(Integer userId);
+    List<Review> getUserReviews(Integer userId);
 
 
 }

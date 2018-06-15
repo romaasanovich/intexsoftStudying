@@ -2,7 +2,7 @@ package com.intexsoft.bookservice.importer.importer;
 
 public interface Importer {
 
-    TypeImport getType();
+    ImportType getType();
 
     boolean importToDb();
 }

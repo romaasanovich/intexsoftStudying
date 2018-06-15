@@ -2,6 +2,7 @@ package com.intexsoft.bookservice.service.implementation;
 
 import com.intexsoft.bookservice.dao.entity.Book;
 import com.intexsoft.bookservice.dao.entity.BookImage;
+import com.intexsoft.bookservice.dao.entity.ImageType;
 import com.intexsoft.bookservice.dao.repository.ImageRepository;
 import com.intexsoft.bookservice.service.api.ImageService;
 import org.slf4j.Logger;
@@ -46,7 +47,8 @@ public class ImageServiceImpl implements ImageService {
             } else {
                 Book book = bookImage.getBook();
                 imageRepository.delete(bookImage);
-                addImage(book, importPath, bookImage.getTypeImage());
+                ImageType imageType = ImageType.valueOf(bookImage.getImageType());
+                addImage(book, importPath, imageType);
             }
         } catch (IOException ex) {
             logger.error("Error with files or file path:", ex);
@@ -54,16 +56,18 @@ public class ImageServiceImpl implements ImageService {
     }
 
     @Override
-    public void addImage(Book book, String imagePath, String typeImage) {
+    public void addImage(Book book, String imagePath, ImageType imageType) {
         try {
             Path sourcePath = Paths.get(importImagesPath + imagePath);
             BookImage bookImage = new BookImage();
             bookImage.setBook(book);
-            bookImage.setTypeImage(typeImage);
+            bookImage.setImageType(imageType);
             bookImage.setImageName(sourcePath.getFileName().toString());
             Path targetPath = generateImagePath(bookImage);
-            Files.createDirectories(targetPath.getParent());
-            Files.copy(sourcePath, targetPath);
+            if (!Files.exists(targetPath)) {
+                Files.createDirectories(targetPath.getParent());
+                Files.copy(sourcePath, targetPath);
+            }
             imageRepository.save(bookImage);
         } catch (IOException ex) {
             logger.error("Error with files or file path:", ex);
@@ -73,17 +77,17 @@ public class ImageServiceImpl implements ImageService {
 
     @Override
     public BookImage getBookCover(Book book) {
-        return imageRepository.getBookCover(book.getId().toString());
+        return imageRepository.getBookCover(book.getId());
     }
 
     @Override
     public List<BookImage> getBookPages(Book book) {
-        return imageRepository.getBookImages(book.getId().toString());
+        return imageRepository.getBookImages(book.getId());
     }
 
     @Override
     public Resource getCover(Integer bookId) {
-        BookImage bookImage = imageRepository.getBookCover(bookId.toString());
+        BookImage bookImage = imageRepository.getBookCover(bookId);
         return (bookImage == null) ? null : applicationContext.getResource("file:" + generateImagePath(bookImage).toString());
     }
 

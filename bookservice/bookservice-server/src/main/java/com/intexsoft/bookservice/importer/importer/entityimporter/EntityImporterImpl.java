@@ -10,22 +10,15 @@ import com.intexsoft.bookservice.importer.entity.repository.ImportEntityReposito
 import com.intexsoft.bookservice.service.api.AuthorService;
 import com.intexsoft.bookservice.service.api.BookService;
 import com.intexsoft.bookservice.service.api.PublisherService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 @Component
 public class EntityImporterImpl implements EntityImporter {
-
-    private static final Logger logger = LoggerFactory.getLogger("log");
-
-    @Value("${import.images.path}")
-    private String importImagesPath;
 
     @Autowired
     private PublisherService publisherService;
@@ -40,7 +33,7 @@ public class EntityImporterImpl implements EntityImporter {
     private ImageWorker imageWorker;
 
     @Override
-    public void importEntities(ImportEntityRepository entityRepository) throws Exception {
+    public void importEntities(ImportEntityRepository entityRepository) throws IOException {
         List<ImportBook> books = entityRepository.getBooks();
         List<ImportAuthor> authors = entityRepository.getAuthors();
         List<ImportPublisher> publishers = entityRepository.getPublishers();
@@ -76,7 +69,7 @@ public class EntityImporterImpl implements EntityImporter {
     }
 
 
-    private void importBooksToDB(List<ImportBook> books) throws Exception {
+    private void importBooksToDB(List<ImportBook> books) throws IOException {
         try {
             imageWorker.unzipImages();
             for (ImportBook importBook : books) {
@@ -100,12 +93,12 @@ public class EntityImporterImpl implements EntityImporter {
                         break;
                     }
                 }
-                imageWorker.processCover(book, importBook.getCoverPath());
-                imageWorker.processImages(book, importBook.getPagesPath());
                 bookService.add(book);
+                imageWorker.processCover(book, importBook.getCoverPath());
+                imageWorker.processImages(book, importBook.getPagePaths());
             }
         } finally {
-            imageWorker.deleteFolder(importImagesPath);
+            imageWorker.deleteFolder();
         }
 
     }

@@ -11,8 +11,8 @@ public class BookImage {
     private Integer id;
     @Column(name = "imageName")
     private String imageName;
-    @Column(name = "typeImage")
-    private String typeImage;
+    @Column(name = "imageType")
+    private String imageType;
     @ManyToOne
     @JoinColumn(name = "bookId")
     private Book book;
@@ -44,11 +44,11 @@ public class BookImage {
         this.book = book;
     }
 
-    public String getTypeImage() {
-        return typeImage;
+    public String getImageType() {
+        return imageType;
     }
 
-    public void setTypeImage(String typeImage) {
-        this.typeImage = typeImage;
+    public void setImageType(ImageType imageType) {
+        this.imageType = imageType.name();
     }
 }

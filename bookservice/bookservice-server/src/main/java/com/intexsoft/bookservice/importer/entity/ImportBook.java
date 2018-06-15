@@ -24,7 +24,7 @@ public class ImportBook {
     private String publisherUUID;
     private List<String> authorsUUID;
     private String coverPath;
-    private List<String> pagesPath;
+    private List<String> pagePaths;
     @JsonSerialize(using = LocalDateSerializer.class)
     @JsonDeserialize(using = LocalDateDeserializer.class)
     private LocalDate publishDate;
@@ -94,14 +94,14 @@ public class ImportBook {
         this.authorsUUID = authorsUUID;
     }
 
-    @XmlElementWrapper(name = "pagesPath")
+    @XmlElementWrapper(name = "pagePaths")
     @XmlElement(name = "pagePath")
-    public List<String> getPagesPath() {
-        return pagesPath;
+    public List<String> getPagePaths() {
+        return pagePaths;
     }
 
-    public void setPagesPath(List<String> pagesPath) {
-        this.pagesPath = pagesPath;
+    public void setPagePaths(List<String> pagePaths) {
+        this.pagePaths = pagePaths;
     }
 
     @XmlElement

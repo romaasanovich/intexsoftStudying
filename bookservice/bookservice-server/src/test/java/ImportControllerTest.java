@@ -1,9 +1,9 @@
 import com.intexsoft.bookservice.importer.executor.ImportExecutor;
 import com.intexsoft.bookservice.importer.executor.ImportExecutorImpl;
+import com.intexsoft.bookservice.importer.importer.ImportType;
 import com.intexsoft.bookservice.importer.importer.Importer;
 import com.intexsoft.bookservice.importer.importer.ImporterJsonImpl;
 import com.intexsoft.bookservice.importer.importer.ImporterXmlImpl;
-import com.intexsoft.bookservice.importer.importer.TypeImport;
 import com.intexsoft.bookservice.web.controller.ImportController;
 import org.junit.Before;
 import org.junit.Test;
@@ -39,8 +39,8 @@ public class ImportControllerTest {
     @Before
     public void init() {
         MockitoAnnotations.initMocks(this);
-        when(importerJson.getType()).thenReturn(TypeImport.json);
-        when(importerXml.getType()).thenReturn(TypeImport.xml);
+        when(importerJson.getType()).thenReturn(ImportType.JSON);
+        when(importerXml.getType()).thenReturn(ImportType.XML);
         List<Importer> importers = Arrays.asList(importerXml, importerJson);
         importExecutor.setLock(reentrantLock);
         importExecutor.setImporters(importers);
@@ -56,7 +56,7 @@ public class ImportControllerTest {
         Thread t1 = new Thread(() -> {
             when(importerJson.importToDb()).thenReturn(true);
             try {
-                mockMvc.perform(post("/api/import/json"))
+                mockMvc.perform(post("/api/import/JSON"))
                         .andExpect(status().isOk());
             } catch (Exception e) {
                 return;
@@ -65,7 +65,7 @@ public class ImportControllerTest {
         Thread t2 = new Thread(() -> {
             when(importerXml.importToDb()).thenReturn(true);
             try {
-                mockMvc.perform(post("/api/import/xml"))
+                mockMvc.perform(post("/api/import/XML"))
                         .andExpect(status().is4xxClientError());
             } catch (Exception e) {
                 return;
