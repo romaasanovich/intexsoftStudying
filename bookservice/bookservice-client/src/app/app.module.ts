@@ -25,6 +25,7 @@ import {FormsModule} from '@angular/forms';
 import {BookReviewComponent} from './book-review/book-review.component';
 import {BookReviewService} from './book-review/book-review.service';
 import {AddReviewComponent} from './add-review/add-review.component';
+import {BookDetailsComponent} from './book-details/book-details.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import {AddReviewComponent} from './add-review/add-review.component';
         AddBookComponent,
         ImportComponent,
         BookReviewComponent,
-        AddReviewComponent
+        AddReviewComponent,
+        BookDetailsComponent
     ],
     imports: [
         BrowserModule,

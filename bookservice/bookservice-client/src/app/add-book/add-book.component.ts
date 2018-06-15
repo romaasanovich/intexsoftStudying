@@ -1,12 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-
-import {Book} from '../entity/book.model';
 import {BookService} from '../book/book.service';
 import {AuthorService} from '../author/author.service';
 import {PublisherService} from '../publisher/publisher.service';
 import {Publisher} from '../entity/publisher.model';
 import {Author} from '../entity/author.model';
+import {AddBook} from '../entity/add.book.model';
 
 @Component({
     selector: 'app-add-book',
@@ -15,19 +14,19 @@ import {Author} from '../entity/author.model';
 })
 export class AddBookComponent implements OnInit {
 
-    book: Book = new Book();
+    book: AddBook = new AddBook();
     publishers: Publisher[];
     authors: Author[];
     selDate: Date;
 
 
     constructor(private router: Router, private bookService: BookService, private  authorService: AuthorService,
-                private  publService: PublisherService) {
+                private  publisherService: PublisherService) {
     }
 
 
     ngOnInit() {
-        this.publService.getPublishers()
+        this.publisherService.getPublishers()
             .subscribe(data => {
                 this.publishers = data;
             });

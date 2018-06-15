@@ -1,0 +1,23 @@
+table {
+    width: auto;
+}
+
+.mat-header-cell {
+    padding-left: 15px;
+}
+
+.mat-cell {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.description {
+    width: 450px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+img {
+    width: 230px;
+    height: 350px;
+}

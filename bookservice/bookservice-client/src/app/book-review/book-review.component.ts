@@ -3,7 +3,6 @@ import {BookService} from '../book/book.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BookReviewService} from './book-review.service';
 import {Review} from '../entity/review.model';
-import {Book} from '../entity/book.model';
 
 @Component({
     selector: 'app-book-review',
@@ -13,7 +12,6 @@ import {Book} from '../entity/book.model';
 export class BookReviewComponent implements OnInit {
     reviews: Review[];
     selBookId: string;
-    selBook: Book;
     displayedColumns = ['user', 'review', 'rate'];
 
 

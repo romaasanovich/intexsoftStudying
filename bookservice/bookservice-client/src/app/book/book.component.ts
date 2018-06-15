@@ -15,7 +15,7 @@ import {AppSettings} from '../../../app.settings';
 export class BookComponent implements OnInit {
 
     books: Book[] = [];
-    displayedColumns = ['image', 'name', 'price', 'publisher', 'publishDate', 'authors', 'rate', 'delete'];
+    displayedColumns = ['image', 'name', 'price', 'publisher', 'authors', 'rate', 'delete'];
     URL = AppSettings.URL;
 
 
@@ -40,6 +40,12 @@ export class BookComponent implements OnInit {
                         alert('You have no permissions !!!');
                     }
                 });
+    }
+
+    goToBookDetails(id) {
+        this.router.navigate(['/bookDetail'], {
+            queryParams: {bookId: id}
+        });
     }
 
     goToReview(id) {
