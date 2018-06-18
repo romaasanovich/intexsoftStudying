@@ -3,6 +3,7 @@ import {BookService} from '../book/book.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BookDetails} from '../entity/book.details.model';
 import {AppSettings} from '../../../app.settings';
+import {ImageService} from './image.service';
 
 @Component({
     selector: 'app-book-details',
@@ -16,14 +17,19 @@ export class BookDetailsComponent implements OnInit {
     displayedColumns = ['image', 'price', 'description', 'authors', 'publisher', 'publishDate', 'rate'];
     URL = AppSettings.URL;
     id = this.route.snapshot.queryParams.bookId;
+    imageUrls: string[] = [];
 
-    constructor(private router: Router, private bookService: BookService, private route: ActivatedRoute) {
+    constructor(private router: Router, private bookService: BookService, private route: ActivatedRoute,
+                private imageService: ImageService) {
     }
 
     ngOnInit() {
         this.bookService.getById(this.id).subscribe(data => {
-            this.bookDetails = data;
-            this.books = Array.of(this.bookDetails);
+            this.imageService.getImages(this.id).subscribe(images => {
+                this.imageUrls = images;
+                this.bookDetails = data;
+                this.books = Array.of(this.bookDetails);
+            });
         });
     }
 

@@ -1,14 +1,16 @@
 <div>
-
     <h2>{{bookDetails.name}}</h2>
 
     <table mat-table [dataSource]="books" class="mat-elevation-z8">
 
-
         <ng-container matColumnDef="image">
             <th mat-header-cell *matHeaderCellDef></th>
             <td mat-cell *matCellDef="let element">
-                <img src="{{URL}}/image/book/{{element.id}}">
+                <div class="images">
+                    <div *ngFor="let image of imageUrls">
+                        <img src="{{image}}">
+                    </div>
+                </div>
             </td>
         </ng-container>
 
@@ -24,7 +26,7 @@
 
         <ng-container matColumnDef="authors">
             <th mat-header-cell *matHeaderCellDef> Authors</th>
-            <td mat-cell *matCellDef="let element"> {{element.authors.toString()}}</td>
+            <td mat-cell *matCellDef="let element"> {{element.authors.join(', ')}}</td>
         </ng-container>
 
         <ng-container matColumnDef="publisher">

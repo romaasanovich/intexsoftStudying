@@ -3,7 +3,7 @@
 
     <div>
         <mat-form-field class="example-form-field">
-            <input matInput type="text" placeholder="Review" [(ngModel)]="review.review"/>
+            <textarea matInput type="text" placeholder="Review" [(ngModel)]="review.review"></textarea>
             <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
                 <mat-icon>close</mat-icon>
             </button>

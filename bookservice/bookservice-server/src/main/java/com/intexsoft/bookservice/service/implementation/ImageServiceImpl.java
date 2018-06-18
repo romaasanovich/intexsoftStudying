@@ -17,12 +17,14 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class ImageServiceImpl implements ImageService {
 
     private static final Logger logger = LoggerFactory.getLogger("log");
+    private static final String BASE_URL = "http://localhost:8080/bookservice/api/";
 
     @Value("${book.images.path}")
     private String imagesPath;
@@ -74,7 +76,6 @@ public class ImageServiceImpl implements ImageService {
         }
     }
 
-
     @Override
     public BookImage getBookCover(Book book) {
         return imageRepository.getBookCover(book.getId());
@@ -86,13 +87,42 @@ public class ImageServiceImpl implements ImageService {
     }
 
     @Override
+    public Resource getBookPage(Integer bookId, Integer imageId) {
+        BookImage image = imageRepository.getBookImage(bookId, imageId);
+        return (image == null) ? null : applicationContext.getResource("file:" + generateImagePath(image).toString());
+    }
+
+    @Override
     public Resource getCover(Integer bookId) {
         BookImage bookImage = imageRepository.getBookCover(bookId);
         return (bookImage == null) ? null : applicationContext.getResource("file:" + generateImagePath(bookImage).toString());
     }
 
+    @Override
+    public List<String> getBookImageUrls(Integer bookId) {
+        List<String> imageUrls = new ArrayList<>();
+        BookImage bookCover = imageRepository.getBookCover(bookId);
+        if (bookCover != null) {
+            imageUrls.add(generateBookImageUrl(bookCover));
+        }
+        List<BookImage> bookPages = imageRepository.getBookPages(bookId);
+        if (!bookPages.isEmpty()) {
+            for (BookImage bookPage : bookPages) {
+                imageUrls.add(generateBookImageUrl(bookPage));
+            }
+        }
+        return imageUrls;
+    }
+
+
     public Path generateImagePath(BookImage bookImage) {
         return Paths.get(imagesPath + bookImage.getBook().getUuid() + "/" + bookImage.getImageName());
     }
 
+    private String generateBookImageUrl(BookImage bookImage) {
+        String bookId = bookImage.getBook().getId().toString();
+        String pageId = bookImage.getId().toString();
+        String url = BASE_URL + "image/book/page/" + bookId + "/" + pageId;
+        return url;
+    }
 }

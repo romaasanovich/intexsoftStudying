@@ -20,6 +20,8 @@ public interface ImageRepository extends JpaRepository<BookImage, Integer> {
     @Query(value = "SELECT * FROM bookImage WHERE bookId=?1 AND imageType='PAGE'", nativeQuery = true)
     List<BookImage> getBookPages(Integer bookId);
 
+    @Query(value = "SELECT * FROM bookImage WHERE bookImage.id=?2 AND bookId=?1", nativeQuery = true)
+    BookImage getBookImage(Integer bookId, Integer ImageId);
 
 }
 

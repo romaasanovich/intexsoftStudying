@@ -21,3 +21,8 @@ img {
     width: 230px;
     height: 350px;
 }
+
+.images {
+    max-height: 350px;
+    overflow: auto;
+}

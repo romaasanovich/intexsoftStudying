@@ -18,7 +18,11 @@ public interface ImageService {
 
     List<BookImage> getBookPages(Book book);
 
+    Resource getBookPage(Integer bookId, Integer pageId);
+
     Resource getCover(Integer bookId);
+
+    List<String> getBookImageUrls(Integer bookId);
 
     Path generateImagePath(BookImage bookPage);
 }

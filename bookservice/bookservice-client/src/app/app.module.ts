@@ -26,6 +26,7 @@ import {BookReviewComponent} from './book-review/book-review.component';
 import {BookReviewService} from './book-review/book-review.service';
 import {AddReviewComponent} from './add-review/add-review.component';
 import {BookDetailsComponent} from './book-details/book-details.component';
+import {ImageService} from './book-details/image.service';
 
 
 @NgModule({
@@ -54,9 +55,9 @@ import {BookDetailsComponent} from './book-details/book-details.component';
         BrowserAnimationsModule,
         MatDatepickerModule,
         MatNativeDateModule,
-        MatSelectModule
+        MatSelectModule,
     ],
-    providers: [BookService, PublisherService, AuthorService, ImportService, BookReviewService],
+    providers: [BookService, PublisherService, AuthorService, ImportService, BookReviewService, ImageService],
     bootstrap: [AppComponent]
 })
 export class AppModule {

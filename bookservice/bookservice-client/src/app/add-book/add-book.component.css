@@ -9,3 +9,8 @@ label {
 .form-group {
     line-height: 1.5;
 }
+
+textarea {
+    height: 230px;
+    width: 350px;
+}

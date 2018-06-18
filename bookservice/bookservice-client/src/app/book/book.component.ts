@@ -3,8 +3,8 @@ import {Router} from '@angular/router';
 
 import {Book} from '../entity/book.model';
 import {BookService} from './book.service';
-import {BookReviewService} from '../book-review/book-review.service';
 import {AppSettings} from '../../../app.settings';
+import {ImageService} from '../book-details/image.service';
 
 @Component({
     selector: 'app-book',
@@ -19,7 +19,7 @@ export class BookComponent implements OnInit {
     URL = AppSettings.URL;
 
 
-    constructor(private router: Router, private bookService: BookService, private bookReview: BookReviewService) {
+    constructor(private router: Router, private bookService: BookService, private imageService: ImageService) {
 
     }
 

@@ -41,7 +41,8 @@
                 <jsonImportPath>importFiles/entity.json</jsonImportPath>
                 <xmlImportPath>importFiles/entity.xml</xmlImportPath>
                 <book.images.path>/home/INTEXSOFT/roman.asanovich/bookservice-resources/images/books/</book.images.path>
-                <import.images.path>/home/INTEXSOFT/roman.asanovich/bookservice-resources/tempImage/</import.images.path>
+                <import.images.path>/home/INTEXSOFT/roman.asanovich/bookservice-resources/tempImage/
+                </import.images.path>
                 <import.images.zip>/home/INTEXSOFT/roman.asanovich/bookservice-resources/images.zip</import.images.zip>
             </properties>
         </profile>
