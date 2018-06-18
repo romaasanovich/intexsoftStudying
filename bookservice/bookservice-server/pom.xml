@@ -28,6 +28,7 @@
         <book.images.path></book.images.path>
         <import.images.path></import.images.path>
         <import.images.zip></import.images.zip>
+        <import.scheduling></import.scheduling>
     </properties>
 
     <profiles>
@@ -44,6 +45,7 @@
                 <import.images.path>/home/INTEXSOFT/roman.asanovich/bookservice-resources/tempImage/
                 </import.images.path>
                 <import.images.zip>/home/INTEXSOFT/roman.asanovich/bookservice-resources/images.zip</import.images.zip>
+                <import.scheduling>0 * * * * *</import.scheduling>
             </properties>
         </profile>
     </profiles>

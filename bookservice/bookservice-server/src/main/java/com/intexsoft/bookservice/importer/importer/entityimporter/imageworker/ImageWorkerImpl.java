@@ -1,8 +1,10 @@
-package com.intexsoft.bookservice.importer.importer.entityimporter;
+package com.intexsoft.bookservice.importer.importer.entityimporter.imageworker;
 
 import com.intexsoft.bookservice.dao.entity.Book;
 import com.intexsoft.bookservice.dao.entity.BookImage;
 import com.intexsoft.bookservice.dao.entity.ImageType;
+import com.intexsoft.bookservice.importer.entity.ImportBook;
+import com.intexsoft.bookservice.service.api.BookService;
 import com.intexsoft.bookservice.service.api.ImageService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,12 +26,15 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
 @Component
-public class ImageWorker {
+public class ImageWorkerImpl implements ImageWorker {
 
     private static final Logger logger = LoggerFactory.getLogger("log");
 
     @Autowired
     private ImageService imageService;
+
+    @Autowired
+    private BookService bookService;
 
     @Value("${import.images.zip}")
     private String zipPath;
@@ -40,8 +45,23 @@ public class ImageWorker {
     @Value("${book.images.path}")
     private String imagesPath;
 
+    @Override
+    public void importImages(List<ImportBook> books) throws IOException {
+        try {
+            unzipImages();
+            for (ImportBook importBook : books) {
+                String uuid = importBook.getUuid();
+                Book book = bookService.getByUUID(uuid);
+                processCover(book, importBook.getCoverPath());
+                processImages(book, importBook.getPagePaths());
+            }
+        } finally {
+            deleteFolder();
+        }
+    }
 
-    public void unzipImages() throws IOException {
+
+    private void unzipImages() throws IOException {
         try (ZipFile file = new ZipFile(zipPath)) {
             Enumeration<? extends ZipEntry> entries = file.entries();
             String uncompressedDirectory = tempImagesPath;
@@ -69,7 +89,7 @@ public class ImageWorker {
         }
     }
 
-    public boolean deleteFolder() throws IOException {
+    private boolean deleteFolder() throws IOException {
         try {
             return FileSystemUtils.deleteRecursively(Paths.get(tempImagesPath));
         } catch (IOException e) {
@@ -89,7 +109,7 @@ public class ImageWorker {
     }
 
 
-    public void processCover(Book book, String importCoverPath) {
+    private void processCover(Book book, String importCoverPath) {
         if (importCoverPath != null) {
             BookImage cover = imageService.getBookCover(book);
             if (cover != null) {
@@ -100,11 +120,11 @@ public class ImageWorker {
         }
     }
 
-    public void processImages(Book book, List<String> importPagesPath) {
-        if (!importPagesPath.isEmpty() && importPagesPath != null) {
+    private void processImages(Book book, List<String> importPagesPath) {
+        if (!importPagesPath.isEmpty()) {
             try {
                 List<BookImage> bookPages = imageService.getBookPages(book);
-                if (!bookPages.isEmpty() && bookPages != null) {
+                if (!bookPages.isEmpty()) {
                     deletePages(bookPages);
                     for (String importPagePath : importPagesPath) {
                         imageService.addImage(book, importPagePath, ImageType.PAGE);

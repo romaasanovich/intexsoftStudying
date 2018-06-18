@@ -7,6 +7,7 @@ import com.intexsoft.bookservice.importer.entity.ImportAuthor;
 import com.intexsoft.bookservice.importer.entity.ImportBook;
 import com.intexsoft.bookservice.importer.entity.ImportPublisher;
 import com.intexsoft.bookservice.importer.entity.repository.ImportEntityRepository;
+import com.intexsoft.bookservice.importer.importer.entityimporter.imageworker.ImageWorker;
 import com.intexsoft.bookservice.service.api.AuthorService;
 import com.intexsoft.bookservice.service.api.BookService;
 import com.intexsoft.bookservice.service.api.PublisherService;
@@ -70,37 +71,30 @@ public class EntityImporterImpl implements EntityImporter {
 
 
     private void importBooksToDB(List<ImportBook> books) throws IOException {
-        try {
-            imageWorker.unzipImages();
-            for (ImportBook importBook : books) {
-                String uuid = importBook.getUuid();
-                Book book = bookService.getByUUID(uuid);
-                if (book == null) {
-                    book = new Book();
-                    book.setUuid(importBook.getUuid());
-                }
-                book.setName(importBook.getName());
-                book.setDescription(importBook.getDescription());
-                book.setPrice(importBook.getPrice());
-                book.setPublishDate(importBook.getPublishDate());
-                book.setPublisher(publisherService.getByUUID(importBook.getPublisherUUID()));
-                book.setAuthors(getAuthors(importBook.getAuthorsUUID()));
-                if (book.getPublisher() == null) {
+        for (ImportBook importBook : books) {
+            String uuid = importBook.getUuid();
+            Book book = bookService.getByUUID(uuid);
+            if (book == null) {
+                book = new Book();
+                book.setUuid(importBook.getUuid());
+            }
+            book.setName(importBook.getName());
+            book.setDescription(importBook.getDescription());
+            book.setPrice(importBook.getPrice());
+            book.setPublishDate(importBook.getPublishDate());
+            book.setPublisher(publisherService.getByUUID(importBook.getPublisherUUID()));
+            book.setAuthors(getAuthors(importBook.getAuthorsUUID()));
+            if (book.getPublisher() == null) {
+                break;
+            }
+            for (Author author : book.getAuthors()) {
+                if (author == null) {
                     break;
                 }
-                for (Author author : book.getAuthors()) {
-                    if (author == null) {
-                        break;
-                    }
-                }
-                bookService.add(book);
-                imageWorker.processCover(book, importBook.getCoverPath());
-                imageWorker.processImages(book, importBook.getPagePaths());
             }
-        } finally {
-            imageWorker.deleteFolder();
+            bookService.add(book);
         }
-
+        imageWorker.importImages(books);
     }
 
     private List<Author> getAuthors(List<String> uuids) {

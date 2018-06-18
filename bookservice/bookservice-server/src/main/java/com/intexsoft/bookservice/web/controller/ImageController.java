@@ -18,7 +18,7 @@ public class ImageController {
 
     @PreAuthorize("hasRole('ADMIN') OR hasRole('CUSTOMER')")
     @ResponseBody
-    @GetMapping(path = "/image/book/cover/{bookId}", produces = MediaType.IMAGE_JPEG_VALUE)
+    @GetMapping(path = "/image/book/{bookId}/cover", produces = MediaType.IMAGE_JPEG_VALUE)
     public Resource getBookCover(@PathVariable Integer bookId) {
         return imageService.getCover(bookId);
     }

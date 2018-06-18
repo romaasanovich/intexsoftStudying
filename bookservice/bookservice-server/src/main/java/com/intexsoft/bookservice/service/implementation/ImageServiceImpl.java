@@ -49,7 +49,7 @@ public class ImageServiceImpl implements ImageService {
             } else {
                 Book book = bookImage.getBook();
                 imageRepository.delete(bookImage);
-                ImageType imageType = ImageType.valueOf(bookImage.getImageType());
+                ImageType imageType = bookImage.getImageType();
                 addImage(book, importPath, imageType);
             }
         } catch (IOException ex) {

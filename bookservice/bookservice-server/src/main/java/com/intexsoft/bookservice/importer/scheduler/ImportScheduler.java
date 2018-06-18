@@ -10,10 +10,11 @@ import org.springframework.scheduling.annotation.Scheduled;
 public class ImportScheduler {
 
     private static final Logger logger = LoggerFactory.getLogger("log");
-    @Autowired
-    ImportExecutor importExecutor;
 
-    @Scheduled(cron = "0 * * * * *")
+    @Autowired
+    private ImportExecutor importExecutor;
+
+    @Scheduled(cron = "${import.scheduling}")
     public void importJson() {
         try {
             logger.info("Scheduled import");
