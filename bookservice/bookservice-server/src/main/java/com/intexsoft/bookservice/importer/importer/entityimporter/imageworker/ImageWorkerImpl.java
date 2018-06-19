@@ -52,8 +52,8 @@ public class ImageWorkerImpl implements ImageWorker {
             for (ImportBook importBook : books) {
                 String uuid = importBook.getUuid();
                 Book book = bookService.getByUUID(uuid);
-                processCover(book, importBook.getCoverPath());
                 processImages(book, importBook.getPagePaths());
+                processCover(book, importBook.getCoverPath());
             }
         } finally {
             deleteFolder();
@@ -101,7 +101,9 @@ public class ImageWorkerImpl implements ImageWorker {
     private void deletePages(List<BookImage> bookPages) {
         for (BookImage bookPage : bookPages) {
             try {
-                Files.deleteIfExists(imageService.generateImagePath(bookPage));
+                if (Files.deleteIfExists(imageService.generateImagePath(bookPage))) {
+                    imageService.delete(bookPage);
+                }
             } catch (IOException e) {
                 logger.error("IO Error: ", e);
             }
@@ -126,9 +128,9 @@ public class ImageWorkerImpl implements ImageWorker {
                 List<BookImage> bookPages = imageService.getBookPages(book);
                 if (!bookPages.isEmpty()) {
                     deletePages(bookPages);
-                    for (String importPagePath : importPagesPath) {
-                        imageService.addImage(book, importPagePath, ImageType.PAGE);
-                    }
+                }
+                for (String importPagePath : importPagesPath) {
+                    imageService.addImage(book, importPagePath, ImageType.PAGE);
                 }
             } catch (Exception ex) {
                 logger.error("Error with files or file path:", ex);

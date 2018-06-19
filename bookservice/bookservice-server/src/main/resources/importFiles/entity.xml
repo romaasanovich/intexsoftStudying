@@ -57,6 +57,7 @@
             <uuid>44470938-f5f6-4e90-aa8f-dc52804fca2d</uuid>
             <coverPath>images/books/LoTR/lord-of-the-rings-the-fellowship-of-the-king.jpg</coverPath>
             <pagePaths>
+                <pagePath>images/books/LoTR/the-fellowship-1.jpg</pagePath>
             </pagePaths>
         </book>
         <book>
@@ -90,6 +91,7 @@
             <uuid>64303062-6330-3264-2d38-3536362d3431</uuid>
             <coverPath>images/books/LoTR/return-the-king.jpg</coverPath>
             <pagePaths>
+                <pagePath>images/books/LoTR/return-the-king-1.jpg</pagePath>
             </pagePaths>
         </book>
         <book>
