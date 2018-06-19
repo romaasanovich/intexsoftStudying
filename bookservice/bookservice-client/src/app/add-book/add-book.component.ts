@@ -3,9 +3,9 @@ import {Router} from '@angular/router';
 import {BookService} from '../book/book.service';
 import {AuthorService} from '../author/author.service';
 import {PublisherService} from '../publisher/publisher.service';
-import {Publisher} from '../entity/publisher.model';
-import {Author} from '../entity/author.model';
-import {AddBook} from '../entity/add.book.model';
+import {Publisher} from '../entity/publisher/publisher.model';
+import {Author} from '../entity/author/author.model';
+import {AddBook} from '../entity/book/add.book.model';
 
 @Component({
     selector: 'app-add-book',
@@ -26,13 +26,13 @@ export class AddBookComponent implements OnInit {
 
 
     ngOnInit() {
-        this.publisherService.getPublishers()
+        this.publisherService.getPublishers(0, 1000)
             .subscribe(data => {
-                this.publishers = data;
+                this.publishers = data.content;
             });
-        this.authorService.getAuthors()
+        this.authorService.getAuthors(0, 1000)
             .subscribe(data => {
-                this.authors = data;
+                this.authors = data.content;
             });
     }
 

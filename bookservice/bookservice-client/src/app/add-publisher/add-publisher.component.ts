@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {Publisher} from '../entity/publisher.model';
+import {Publisher} from '../entity/publisher/publisher.model';
 import {Router} from '@angular/router';
 import {PublisherService} from '../publisher/publisher.service';
 

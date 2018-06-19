@@ -1,13 +1,13 @@
 package com.intexsoft.bookservice.service.api;
 
 import com.intexsoft.bookservice.dao.entity.Publisher;
+import org.springframework.data.domain.Page;
 
-import java.util.List;
 import java.util.Optional;
 
 public interface PublisherService {
 
-    List<Publisher> getAllPublishers();
+    Page<Publisher> getPublishers(int page, int size);
 
     Optional<Publisher> getPublisherByID(Integer id);
 

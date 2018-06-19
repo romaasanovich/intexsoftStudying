@@ -4,10 +4,11 @@ import com.intexsoft.bookservice.dao.entity.Author;
 import com.intexsoft.bookservice.dao.repository.AuthorRepository;
 import com.intexsoft.bookservice.service.api.AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -18,8 +19,8 @@ public class AuthorServiceImpl implements AuthorService {
     private AuthorRepository authorRepository;
 
     @Override
-    public List<Author> getAllAuthors() {
-        return authorRepository.findAll();
+    public Page<Author> getAuthors(int page, int size) {
+        return authorRepository.findAll(PageRequest.of(page, size));
     }
 
     @Override

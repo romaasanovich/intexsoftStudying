@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BookReviewService} from '../book-review/book-review.service';
 import {Review} from '../entity/review.model';
-import {Book} from '../entity/book.model';
+import {Book} from '../entity/book/book.model';
 
 @Component({
     selector: 'app-add-review',

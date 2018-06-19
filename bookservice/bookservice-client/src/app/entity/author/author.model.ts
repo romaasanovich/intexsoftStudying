@@ -4,3 +4,4 @@ export class Author {
     bio: string;
     birthDay: string;
 }
+

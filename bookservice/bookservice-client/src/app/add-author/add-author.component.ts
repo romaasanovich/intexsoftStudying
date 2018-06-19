@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {Router} from '@angular/router';
-import {Author} from '../entity/author.model';
+import {Author} from '../entity/author/author.model';
 import {AuthorService} from '../author/author.service';
 
 @Component({

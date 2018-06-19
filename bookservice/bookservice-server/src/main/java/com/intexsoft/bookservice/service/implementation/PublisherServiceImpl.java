@@ -4,10 +4,11 @@ import com.intexsoft.bookservice.dao.entity.Publisher;
 import com.intexsoft.bookservice.dao.repository.PublisherRepository;
 import com.intexsoft.bookservice.service.api.PublisherService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -17,8 +18,8 @@ public class PublisherServiceImpl implements PublisherService {
     private PublisherRepository publisherRepository;
 
     @Override
-    public List<Publisher> getAllPublishers() {
-        return publisherRepository.findAll();
+    public Page<Publisher> getPublishers(int page, int size) {
+        return publisherRepository.findAll(PageRequest.of(page, size));
     }
 
     @Override

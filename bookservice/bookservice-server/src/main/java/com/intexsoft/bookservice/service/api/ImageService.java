@@ -25,4 +25,6 @@ public interface ImageService {
     List<String> getBookImageUrls(Integer bookId);
 
     Path generateImagePath(BookImage bookPage);
+
+    void delete(BookImage bookImage);
 }

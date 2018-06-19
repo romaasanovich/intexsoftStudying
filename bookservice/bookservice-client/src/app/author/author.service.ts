@@ -1,8 +1,9 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
-import {Author} from '../entity/author.model';
+import {Author} from '../entity/author/author.model';
 import {AppSettings} from '../../../app.settings';
+import {AuthorPageModel} from '../entity/author/author.page.model';
 
 
 const httpOptions = {
@@ -15,8 +16,8 @@ export class AuthorService {
     constructor(private http: HttpClient) {
     }
 
-    public getAuthors() {
-        return this.http.get<Author[]>(`${AppSettings.URL}/authors`);
+    public getAuthors(page, size) {
+        return this.http.get<AuthorPageModel>(`${AppSettings.URL}/authors/${page}/${size}`);
     }
 
     public addAuthor(author) {

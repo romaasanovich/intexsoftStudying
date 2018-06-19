@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 
-import {Book} from '../entity/book.model';
+import {Book} from '../entity/book/book.model';
 import {BookService} from './book.service';
 import {AppSettings} from '../../../app.settings';
-import {ImageService} from '../book-details/image.service';
+import {MatTableDataSource, PageEvent} from '@angular/material';
 
 @Component({
     selector: 'app-book',
@@ -14,32 +14,47 @@ import {ImageService} from '../book-details/image.service';
 
 export class BookComponent implements OnInit {
 
-    books: Book[] = [];
+    currentPage = 0;
+    pageSize = 5;
+    pageSizeOptions = [5, 10, 25];
+    books;
+    dataLength: number;
     displayedColumns = ['image', 'name', 'price', 'publisher', 'authors', 'rate', 'delete'];
     URL = AppSettings.URL;
 
 
-    constructor(private router: Router, private bookService: BookService, private imageService: ImageService) {
+    constructor(private router: Router, private bookService: BookService) {
 
     }
 
     ngOnInit() {
-        this.bookService.getBooks()
+        this.bookService.getBooks(this.currentPage, this.pageSize)
             .subscribe(data => {
-                this.books = data;
+                this.books = new MatTableDataSource<Book>(data.content);
+                this.dataLength = data.totalElements;
             });
     }
 
     deleteBook(book: Book): void {
         this.bookService.deleteBook(book)
-            .subscribe(data => {
+            .subscribe(() => {
                     this.books = this.books.filter(u => u !== book);
+                    this.dataLength -= 1;
                 },
                 (error: Response) => {
                     if (error.status === 403) {
                         alert('You have no permissions !!!');
                     }
                 });
+    }
+
+    getBooks(event?: PageEvent) {
+        this.bookService.getBooks(event.pageIndex, event.pageSize)
+            .subscribe(data => {
+                this.books = data.content;
+                this.dataLength = data.totalElements;
+            });
+        return event;
     }
 
     goToBookDetails(id) {

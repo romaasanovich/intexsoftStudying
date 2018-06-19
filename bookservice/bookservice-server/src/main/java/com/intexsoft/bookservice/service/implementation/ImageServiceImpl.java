@@ -83,7 +83,7 @@ public class ImageServiceImpl implements ImageService {
 
     @Override
     public List<BookImage> getBookPages(Book book) {
-        return imageRepository.getBookImages(book.getId());
+        return imageRepository.getBookPages(book.getId());
     }
 
     @Override
@@ -117,6 +117,11 @@ public class ImageServiceImpl implements ImageService {
 
     public Path generateImagePath(BookImage bookImage) {
         return Paths.get(imagesPath + bookImage.getBook().getUuid() + "/" + bookImage.getImageName());
+    }
+
+    @Override
+    public void delete(BookImage bookImage) {
+        imageRepository.delete(bookImage);
     }
 
     private String generateBookImageUrl(BookImage bookImage) {

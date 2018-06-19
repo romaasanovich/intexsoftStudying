@@ -1,5 +1,5 @@
-import {Publisher} from './publisher.model';
-import {Author} from './author.model';
+import {Publisher} from '../publisher/publisher.model';
+import {Author} from '../author/author.model';
 
 export class AddBook {
     id: number;

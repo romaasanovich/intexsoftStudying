@@ -1,10 +1,11 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
-import {Book} from '../entity/book.model';
+import {Book} from '../entity/book/book.model';
 import {AppSettings} from '../../../app.settings';
-import {BookDetails} from '../entity/book.details.model';
-import {AddBook} from '../entity/add.book.model';
+import {BookDetails} from '../entity/book/book.details.model';
+import {AddBook} from '../entity/book/add.book.model';
+import {BookPageModel} from '../entity/book/book.page.model';
 
 
 const httpOptions = {
@@ -17,8 +18,8 @@ export class BookService {
     constructor(private http: HttpClient) {
     }
 
-    public getBooks() {
-        return this.http.get<Book[]>(`${AppSettings.URL}/books`);
+    public getBooks(page, size) {
+        return this.http.get<BookPageModel>(`${AppSettings.URL}/books/${page}/${size}`);
     }
 
     public addBook(book: AddBook) {

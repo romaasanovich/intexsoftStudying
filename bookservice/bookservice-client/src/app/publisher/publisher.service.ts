@@ -1,8 +1,9 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
-import {Publisher} from '../entity/publisher.model';
+import {Publisher} from '../entity/publisher/publisher.model';
 import {AppSettings} from '../../../app.settings';
+import {PublisherPageModel} from '../entity/publisher/publisher.page.model';
 
 
 const httpOptions = {
@@ -20,8 +21,8 @@ export class PublisherService {
         return this.http.post(`${AppSettings.URL}/publisher`, publisher);
     }
 
-    public getPublishers() {
-        return this.http.get<Publisher[]>(`${AppSettings.URL}/publishers`);
+    public getPublishers(page, size) {
+        return this.http.get<PublisherPageModel>(`${AppSettings.URL}/publishers/${page}/${size}`);
     }
 
     public deletePublisher(publisher: Publisher) {

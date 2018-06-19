@@ -6,10 +6,11 @@ import com.intexsoft.bookservice.dao.repository.BookRepository;
 import com.intexsoft.bookservice.service.api.BookService;
 import com.intexsoft.bookservice.service.api.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 import java.util.Optional;
 
 
@@ -24,8 +25,8 @@ public class BookServiceImpl implements BookService {
     private ReviewService reviewService;
 
     @Override
-    public List<Book> getAllBooks() {
-        return bookRepository.findAll();
+    public Page<Book> getBooks(int page, int size) {
+        return bookRepository.findAll(PageRequest.of(page, size));
     }
 
     @Override

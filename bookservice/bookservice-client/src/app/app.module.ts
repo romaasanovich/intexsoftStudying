@@ -27,6 +27,7 @@ import {BookReviewService} from './book-review/book-review.service';
 import {AddReviewComponent} from './add-review/add-review.component';
 import {BookDetailsComponent} from './book-details/book-details.component';
 import {ImageService} from './book-details/image.service';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 
 @NgModule({
@@ -56,6 +57,7 @@ import {ImageService} from './book-details/image.service';
         MatDatepickerModule,
         MatNativeDateModule,
         MatSelectModule,
+        MatPaginatorModule
     ],
     providers: [BookService, PublisherService, AuthorService, ImportService, BookReviewService, ImageService],
     bootstrap: [AppComponent]

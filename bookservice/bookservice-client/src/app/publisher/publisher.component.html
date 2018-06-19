@@ -1,5 +1,4 @@
-<div>
-
+<div class="mat-elevation-z8">
     <table mat-table [dataSource]="publishers" class="mat-elevation-z8">
 
         <ng-container matColumnDef="id">
@@ -23,4 +22,9 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
+
+    <mat-paginator [length]="dataLength"
+                   [pageSize]="pageSize"
+                   [pageSizeOptions]="pageSizeOptions" showFirstLastButtons
+                   (page)="pageEvent = getPublishers($event)"></mat-paginator>
 </div>
