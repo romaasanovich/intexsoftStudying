@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -46,12 +47,12 @@ public class PublisherControllerTest {
         publishers.get(0).setName("publisher1");
         publishers.get(1).setName("publisher2");
         publishers.get(2).setName("publisher3");
-        when(publisherService.getAllPublishers()).thenReturn(null);
-        when(publisherDtoMapper.toDtoList(null)).thenReturn(publishers);
-        mockMvc.perform(get("/api/publishers")
+        when(publisherService.getPublishers(1, 3)).thenReturn(null);
+        when(publisherDtoMapper.toPageDto(null)).thenReturn(new PageImpl<>(publishers));
+        mockMvc.perform(get("/api/publishers/0/2")
                 .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE).content(Converter.fromListToJson(publishers)))
                 .andExpect(status().isOk());
-        verify(publisherDtoMapper, times(1)).toDtoList(null);
+        verify(publisherDtoMapper, times(1)).toPageDto(null);
         verifyNoMoreInteractions(publisherDtoMapper);
     }
 
