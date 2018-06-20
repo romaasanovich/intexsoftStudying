@@ -6,6 +6,8 @@ import com.intexsoft.bookservice.dao.repository.ReviewRepository;
 import com.intexsoft.bookservice.service.api.BookService;
 import com.intexsoft.bookservice.service.api.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -46,17 +48,22 @@ public class ReviewServiceImpl implements ReviewService {
     }
 
     @Override
-    public List<Review> getBookReviews(Integer bookId) {
-        return reviewRepository.findBookReview(bookId);
+    public Page<Review> getBookReviews(Integer bookId, Pageable pageable) {
+        return reviewRepository.findBookReviews(bookId, pageable);
     }
 
     @Override
-    public List<Review> getUserReviews(Integer userId) {
-        return reviewRepository.findUserReview(userId);
+    public Page<Review> getUserReviews(Integer userId, Pageable pageable) {
+        return reviewRepository.findUserReviews(userId, pageable);
+    }
+
+    @Override
+    public List<Review> getAllBookreviews(Integer bookId) {
+        return reviewRepository.findAllBookReviews(bookId);
     }
 
     private Double getRate(Book book) {
-        List<Review> reviews = getBookReviews(book.getId());
+        List<Review> reviews = reviewRepository.findAllBookReviews(book.getId());
         Double sumRate = 0.0;
         for (Review review : reviews) {
             sumRate += review.getRate();

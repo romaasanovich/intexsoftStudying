@@ -5,7 +5,7 @@ import com.intexsoft.bookservice.dao.repository.PublisherRepository;
 import com.intexsoft.bookservice.service.api.PublisherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,8 +18,8 @@ public class PublisherServiceImpl implements PublisherService {
     private PublisherRepository publisherRepository;
 
     @Override
-    public Page<Publisher> getPublishers(int page, int size) {
-        return publisherRepository.findAll(PageRequest.of(page, size));
+    public Page<Publisher> getPublishers(Pageable pageable) {
+        return publisherRepository.findAll(pageable);
     }
 
     @Override

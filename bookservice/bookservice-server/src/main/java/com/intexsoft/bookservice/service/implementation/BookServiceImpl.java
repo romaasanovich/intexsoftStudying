@@ -7,7 +7,7 @@ import com.intexsoft.bookservice.service.api.BookService;
 import com.intexsoft.bookservice.service.api.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,8 +25,8 @@ public class BookServiceImpl implements BookService {
     private ReviewService reviewService;
 
     @Override
-    public Page<Book> getBooks(int page, int size) {
-        return bookRepository.findAll(PageRequest.of(page, size));
+    public Page<Book> getBooks(Pageable pageable) {
+        return bookRepository.findAll(pageable);
     }
 
     @Override
@@ -41,7 +41,7 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public void delete(Book book) {
-        for (Review review : reviewService.getBookReviews(book.getId())) {
+        for (Review review : reviewService.getAllBookreviews(book.getId())) {
             reviewService.delete(review);
         }
         bookRepository.delete(book);

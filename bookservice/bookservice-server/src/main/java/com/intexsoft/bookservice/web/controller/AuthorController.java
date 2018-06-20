@@ -6,6 +6,7 @@ import com.intexsoft.bookservice.web.dto.entity.AuthorDto;
 import com.intexsoft.bookservice.web.dto.mapper.AuthorDtoMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,9 +23,9 @@ public class AuthorController {
     private AuthorDtoMapper authorDtoMapper;
 
     @PreAuthorize("hasRole('ADMIN') OR hasRole('CUSTOMER')")
-    @GetMapping(path = "/authors/{page}/{size}")
-    Page<AuthorDto> getAuthors(@PathVariable(name = "size") int size, @PathVariable(name = "page") int page) {
-        return authorDtoMapper.toPageDto(authorService.getAuthors(page, size));
+    @GetMapping(path = "/authors")
+    Page<AuthorDto> getAuthors(Pageable pageable) {
+        return authorDtoMapper.toPageDto(authorService.getAuthors(pageable));
     }
 
     @PreAuthorize("hasRole('ADMIN')")

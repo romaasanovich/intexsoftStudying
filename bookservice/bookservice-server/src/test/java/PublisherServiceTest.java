@@ -5,6 +5,7 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 
 import java.util.Arrays;
 import java.util.List;
@@ -31,9 +32,9 @@ public class PublisherServiceTest {
         publishers.get(0).setName("publisher1");
         publishers.get(1).setName("publisher2");
 
-        when(publisherService.getPublishers(0, 2)).thenReturn(new PageImpl<>(publishers));
+        when(publisherService.getPublishers(PageRequest.of(0, 2))).thenReturn(new PageImpl<>(publishers));
 
-        int count = (int) publisherService.getPublishers(0, 2).getTotalElements();
+        int count = (int) publisherService.getPublishers(PageRequest.of(0, 2)).getTotalElements();
 
         assertEquals(count, 2);
     }

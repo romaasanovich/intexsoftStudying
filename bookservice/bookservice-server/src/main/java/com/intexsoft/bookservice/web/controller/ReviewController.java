@@ -7,12 +7,13 @@ import com.intexsoft.bookservice.service.api.UserService;
 import com.intexsoft.bookservice.web.dto.entity.ReviewDto;
 import com.intexsoft.bookservice.web.dto.mapper.ReviewDtoMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @RestController
 @RequestMapping("/api")
@@ -29,14 +30,14 @@ public class ReviewController {
 
     @PreAuthorize("hasRole('ADMIN') OR hasRole('CUSTOMER')")
     @GetMapping(path = "/review/user/{userId}")
-    public List<ReviewDto> getUserReviews(@PathVariable(name = "userId") Integer userId) {
-        return reviewDtoMapper.toDtoList(reviewService.getUserReviews(userId));
+    public Page<ReviewDto> getUserReviews(@PathVariable(name = "userId") Integer userId, Pageable pageable) {
+        return reviewDtoMapper.toPageDto(reviewService.getUserReviews(userId, pageable));
     }
 
     @PreAuthorize("hasRole('ADMIN') OR hasRole('CUSTOMER')")
-    @GetMapping(path = "/review/{bookId}")
-    public List<ReviewDto> getBookReviews(@PathVariable(name = "bookId") Integer bookId) {
-        return reviewDtoMapper.toDtoList(reviewService.getBookReviews(bookId));
+    @GetMapping(path = "/reviews/{bookId}")
+    public Page<ReviewDto> getBookReviews(@PathVariable(name = "bookId") Integer bookId, Pageable pageable) {
+        return reviewDtoMapper.toPageDto(reviewService.getBookReviews(bookId, pageable));
     }
 
     @PreAuthorize("hasRole('ADMIN') OR hasRole('CUSTOMER')")

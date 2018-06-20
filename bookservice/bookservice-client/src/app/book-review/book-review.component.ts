@@ -2,7 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {BookService} from '../book/book.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BookReviewService} from './book-review.service';
-import {Review} from '../entity/review.model';
+import {MatTableDataSource, PageEvent} from '@angular/material';
+import {Review} from '../entity/review/review.model';
 
 @Component({
     selector: 'app-book-review',
@@ -10,7 +11,11 @@ import {Review} from '../entity/review.model';
     styleUrls: ['./book-review.component.css']
 })
 export class BookReviewComponent implements OnInit {
-    reviews: Review[];
+    currentPage = 0;
+    pageSize = 5;
+    pageSizeOptions = [5, 10, 25];
+    dataLength: number;
+    reviews;
     selBookId: string;
     displayedColumns = ['user', 'review', 'rate'];
 
@@ -20,10 +25,20 @@ export class BookReviewComponent implements OnInit {
 
     ngOnInit() {
         this.selBookId = this.route.snapshot.queryParams.bookId;
-        this.bookReviewService.getBookReviews(this.selBookId)
-            .subscribe(reviews => {
-                this.reviews = reviews;
+        this.bookReviewService.getBookReviews(this.selBookId, this.currentPage, this.pageSize)
+            .subscribe(data => {
+                this.reviews = new MatTableDataSource<Review>(data.content);
+                this.dataLength = data.totalElements;
             });
+    }
+
+    getReviews(event?: PageEvent) {
+        this.bookReviewService.getBookReviews(this.selBookId, event.pageIndex, event.pageSize)
+            .subscribe(data => {
+                this.reviews = data.content;
+                this.dataLength = data.totalElements;
+            });
+        return event;
     }
 
     goToAddReview() {

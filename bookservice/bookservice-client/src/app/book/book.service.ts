@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 
 import {Book} from '../entity/book/book.model';
 import {AppSettings} from '../../../app.settings';
@@ -8,10 +8,6 @@ import {AddBook} from '../entity/book/add.book.model';
 import {BookPageModel} from '../entity/book/book.page.model';
 
 
-const httpOptions = {
-    headers: new HttpHeaders({'Content-Type': 'application/json'})
-};
-
 @Injectable()
 export class BookService {
 
@@ -19,7 +15,10 @@ export class BookService {
     }
 
     public getBooks(page, size) {
-        return this.http.get<BookPageModel>(`${AppSettings.URL}/books/${page}/${size}`);
+        const params = new HttpParams()
+            .set('page', page)
+            .set('size', size);
+        return this.http.get<BookPageModel>(`${AppSettings.URL}/books`, {params});
     }
 
     public addBook(book: AddBook) {

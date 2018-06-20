@@ -17,7 +17,7 @@ export class AddPublisherComponent {
     }
 
     addPublisher(): void {
-        this.publisherService.addPubl(this.publisher).subscribe(data => {
+        this.publisherService.addPublisher(this.publisher).subscribe(data => {
                 alert('Publisher created successfully.');
             },
             (error: Response) => {

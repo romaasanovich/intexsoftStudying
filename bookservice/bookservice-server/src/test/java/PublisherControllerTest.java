@@ -8,6 +8,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -37,6 +39,7 @@ public class PublisherControllerTest {
         MockitoAnnotations.initMocks(this);
         mockMvc = MockMvcBuilders
                 .standaloneSetup(publisherController)
+                .setCustomArgumentResolvers(new PageableHandlerMethodArgumentResolver())
                 .build();
     }
 
@@ -47,9 +50,9 @@ public class PublisherControllerTest {
         publishers.get(0).setName("publisher1");
         publishers.get(1).setName("publisher2");
         publishers.get(2).setName("publisher3");
-        when(publisherService.getPublishers(1, 3)).thenReturn(null);
+        when(publisherService.getPublishers(PageRequest.of(0, 2))).thenReturn(null);
         when(publisherDtoMapper.toPageDto(null)).thenReturn(new PageImpl<>(publishers));
-        mockMvc.perform(get("/api/publishers/0/2")
+        mockMvc.perform(get("/api/publishers/?page=0&size=2")
                 .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE).content(Converter.fromListToJson(publishers)))
                 .andExpect(status().isOk());
         verify(publisherDtoMapper, times(1)).toPageDto(null);

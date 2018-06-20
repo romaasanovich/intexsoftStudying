@@ -8,6 +8,7 @@ import com.intexsoft.bookservice.web.dto.mapper.book.BookDetailsDtoMapper;
 import com.intexsoft.bookservice.web.dto.mapper.book.BookDtoMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,9 +29,9 @@ public class BookController {
     private BookDetailsDtoMapper bookDetailsDtoMapper;
 
     @PreAuthorize("hasRole('ADMIN') OR hasRole('CUSTOMER')")
-    @GetMapping(path = "/books/{page}/{size}")
-    public Page<BookDto> getBooks(@PathVariable(name = "page") int page, @PathVariable(name = "size") int size) {
-        return bookDtoMapper.toPageDto(bookService.getBooks(page, size));
+    @GetMapping(path = "/books")
+    public Page<BookDto> getBooks(Pageable pageable) {
+        return bookDtoMapper.toPageDto(bookService.getBooks(pageable));
     }
 
     @PreAuthorize("hasRole('ADMIN') OR hasRole('CUSTOMER')")

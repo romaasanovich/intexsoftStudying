@@ -5,7 +5,7 @@ import com.intexsoft.bookservice.dao.repository.AuthorRepository;
 import com.intexsoft.bookservice.service.api.AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,8 +19,8 @@ public class AuthorServiceImpl implements AuthorService {
     private AuthorRepository authorRepository;
 
     @Override
-    public Page<Author> getAuthors(int page, int size) {
-        return authorRepository.findAll(PageRequest.of(page, size));
+    public Page<Author> getAuthors(Pageable pageable) {
+        return authorRepository.findAll(pageable);
     }
 
     @Override
