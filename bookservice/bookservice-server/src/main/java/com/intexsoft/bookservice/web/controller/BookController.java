@@ -9,9 +9,11 @@ import com.intexsoft.bookservice.web.dto.mapper.book.BookDtoMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.lang.Nullable;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -55,5 +57,18 @@ public class BookController {
         bookService.delete(book);
     }
 
+    @GetMapping(path = "/books/bestsellers")
+    public List<Book> getBestSellers(@Nullable @RequestParam(name = "fromRate") Double fromRate,
+                                     @Nullable @RequestParam(name = "publisherId", defaultValue = "-1") Integer publisherId,
+                                     @Nullable @RequestParam(name = "authorId", defaultValue = "-1") Integer authorId) {
+        return bookService.getBestsellers(fromRate, publisherId, authorId);
+    }
 
+    @GetMapping(path = "/books/price")
+    public List<Book> getBooksByPriceInterval(@Nullable @RequestParam(name = "minPrice") Double minPrice,
+                                              @Nullable @RequestParam(name = "maxPrice") Double maxPrice,
+                                              @Nullable @RequestParam(name = "publisherId", defaultValue = "-1") Integer publisherId,
+                                              @Nullable @RequestParam(name = "authorId", defaultValue = "-1") Integer authorId) {
+        return bookService.getByPriceInterval(minPrice, maxPrice, publisherId, authorId);
+    }
 }
