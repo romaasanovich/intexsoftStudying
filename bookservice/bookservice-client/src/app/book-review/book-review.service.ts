@@ -1,13 +1,9 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {Review} from '../entity/review/review.model';
 import {AppSettings} from '../../../app.settings';
 import {ReviewPageModel} from '../entity/review/review.page.model';
 
-
-const httpOptions = {
-    headers: new HttpHeaders({'Content-Type': 'application/json'})
-};
 
 @Injectable()
 export class BookReviewService {

@@ -1,14 +1,10 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 
 import {Author} from '../entity/author/author.model';
 import {AppSettings} from '../../../app.settings';
 import {AuthorPageModel} from '../entity/author/author.page.model';
 
-
-const httpOptions = {
-    headers: new HttpHeaders({'Content-Type': 'application/json'})
-};
 
 @Injectable()
 export class AuthorService {

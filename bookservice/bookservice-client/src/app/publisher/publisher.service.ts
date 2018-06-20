@@ -1,14 +1,9 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 
 import {Publisher} from '../entity/publisher/publisher.model';
 import {AppSettings} from '../../../app.settings';
 import {PublisherPageModel} from '../entity/publisher/publisher.page.model';
-
-
-const httpOptions = {
-    headers: new HttpHeaders({'Content-Type': 'application/json'})
-};
 
 @Injectable()
 export class PublisherService {
