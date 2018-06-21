@@ -57,18 +57,34 @@ public class BookController {
         bookService.delete(book);
     }
 
-    @GetMapping(path = "/books/bestsellers")
-    public List<Book> getBestSellers(@Nullable @RequestParam(name = "fromRate") Double fromRate,
-                                     @Nullable @RequestParam(name = "publisherId", defaultValue = "-1") Integer publisherId,
-                                     @Nullable @RequestParam(name = "authorId", defaultValue = "-1") Integer authorId) {
-        return bookService.getBestsellers(fromRate, publisherId, authorId);
+    @GetMapping(path = "/books/bestsellers/crb")
+    public List<Book> getBestSellersCrB(@Nullable @RequestParam(name = "fromRate") Double fromRate,
+                                        @Nullable @RequestParam(name = "publisherId", defaultValue = "-1") Integer publisherId,
+                                        @Nullable @RequestParam(name = "authorId", defaultValue = "-1") Integer authorId) {
+        return bookService.getBestsellersCriteriaBuilder(fromRate, publisherId, authorId);
     }
 
-    @GetMapping(path = "/books/price")
-    public List<Book> getBooksByPriceInterval(@Nullable @RequestParam(name = "minPrice") Double minPrice,
-                                              @Nullable @RequestParam(name = "maxPrice") Double maxPrice,
-                                              @Nullable @RequestParam(name = "publisherId", defaultValue = "-1") Integer publisherId,
-                                              @Nullable @RequestParam(name = "authorId", defaultValue = "-1") Integer authorId) {
-        return bookService.getByPriceInterval(minPrice, maxPrice, publisherId, authorId);
+    @GetMapping(path = "/books/price/crb")
+    public List<Book> getBooksByPriceIntervalCrB(@Nullable @RequestParam(name = "minPrice") Double minPrice,
+                                                 @Nullable @RequestParam(name = "maxPrice") Double maxPrice,
+                                                 @Nullable @RequestParam(name = "publisherId", defaultValue = "-1") Integer publisherId,
+                                                 @Nullable @RequestParam(name = "authorId", defaultValue = "-1") Integer authorId) {
+        return bookService.getByPriceIntervalCriteriaBuilder(minPrice, maxPrice, publisherId, authorId);
     }
+
+    @GetMapping(path = "/books/bestsellers/spec")
+    public List<Book> getBestSellersSpec(@Nullable @RequestParam(name = "fromRate") Double fromRate,
+                                         @Nullable @RequestParam(name = "publisherId", defaultValue = "-1") Integer publisherId,
+                                         @Nullable @RequestParam(name = "authorId", defaultValue = "-1") Integer authorId) {
+        return bookService.getBestsellersSpecification(fromRate, publisherId, authorId);
+    }
+
+    @GetMapping(path = "/books/price/spec")
+    public List<Book> getBooksByPriceIntervalSpec(@Nullable @RequestParam(name = "minPrice") Double minPrice,
+                                                  @Nullable @RequestParam(name = "maxPrice") Double maxPrice,
+                                                  @Nullable @RequestParam(name = "publisherId", defaultValue = "-1") Integer publisherId,
+                                                  @Nullable @RequestParam(name = "authorId", defaultValue = "-1") Integer authorId) {
+        return bookService.getByPriceIntervalSpecification(minPrice, maxPrice, publisherId, authorId);
+    }
+
 }

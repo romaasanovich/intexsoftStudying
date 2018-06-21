@@ -5,7 +5,6 @@ import com.intexsoft.bookservice.dao.entity.Book;
 import com.intexsoft.bookservice.dao.entity.Publisher;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -22,7 +21,7 @@ public class BookRepositoryCriteriaBuilderImpl implements BookRepositoryCriteria
     EntityManager entityManager;
 
     @Override
-    public List<Book> getBestSellers(Double fromRate, Publisher publisher, Author author) {
+    public List<Book> getBestSellersCriteriaBuilder(Double fromRate, Publisher publisher, Author author) {
         Session session = entityManager.unwrap(Session.class);
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Book> query = criteriaBuilder.createQuery(Book.class);
@@ -44,7 +43,7 @@ public class BookRepositoryCriteriaBuilderImpl implements BookRepositoryCriteria
     }
 
     @Override
-    public List<Book> getBooksByPriceInterval(Double minPrice, Double maxPrice, Publisher publisher, Author author) {
+    public List<Book> getBooksByPriceIntervalCriteriaBuilder(Double minPrice, Double maxPrice, Publisher publisher, Author author) {
         Session session = entityManager.unwrap(Session.class);
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Book> query = criteriaBuilder.createQuery(Book.class);

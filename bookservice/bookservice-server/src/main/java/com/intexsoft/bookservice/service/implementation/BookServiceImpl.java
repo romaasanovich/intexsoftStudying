@@ -5,6 +5,7 @@ import com.intexsoft.bookservice.dao.entity.Book;
 import com.intexsoft.bookservice.dao.entity.Publisher;
 import com.intexsoft.bookservice.dao.entity.Review;
 import com.intexsoft.bookservice.dao.repository.BookRepository;
+import com.intexsoft.bookservice.dao.repository.customrepositories.specification.BookSpecifications;
 import com.intexsoft.bookservice.service.api.AuthorService;
 import com.intexsoft.bookservice.service.api.BookService;
 import com.intexsoft.bookservice.service.api.PublisherService;
@@ -64,18 +65,33 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public List<Book> getBestsellers(Double fromRate, Integer publisherId, Integer authorId) {
+    public List<Book> getBestsellersCriteriaBuilder(Double fromRate, Integer publisherId, Integer authorId) {
         Publisher publisher = publisherService.getPublisherByID(publisherId).orElse(null);
         Author author = authorService.getAuthorByID(authorId).orElse(null);
-        return bookRepository.getBestSellers(fromRate, publisher, author);
+        return bookRepository.getBestSellersCriteriaBuilder(fromRate, publisher, author);
 
     }
 
     @Override
-    public List<Book> getByPriceInterval(Double minPrice, Double maxPrice, Integer publisherId, Integer authorId) {
+    public List<Book> getByPriceIntervalCriteriaBuilder(Double minPrice, Double maxPrice, Integer publisherId, Integer authorId) {
         Publisher publisher = publisherService.getPublisherByID(publisherId).orElse(null);
         Author author = authorService.getAuthorByID(authorId).orElse(null);
-        return bookRepository.getBooksByPriceInterval(minPrice, maxPrice, publisher, author);
+        return bookRepository.getBooksByPriceIntervalCriteriaBuilder(minPrice, maxPrice, publisher, author);
     }
 
+    @Override
+    public List<Book> getBestsellersSpecification(Double fromRate, Integer publisherId, Integer authorId) {
+        Publisher publisher = publisherService.getPublisherByID(publisherId).orElse(null);
+        Author author = authorService.getAuthorByID(authorId).orElse(null);
+        return bookRepository.findAll(BookSpecifications.fromRate(fromRate, publisher, author));
+    }
+
+    @Override
+    public List<Book> getByPriceIntervalSpecification(Double minPrice, Double maxPrice, Integer publisherId, Integer authorId) {
+        Publisher publisher = publisherService.getPublisherByID(publisherId).orElse(null);
+        Author author = authorService.getAuthorByID(authorId).orElse(null);
+        return bookRepository.findAll(BookSpecifications.getBooksByPriceInterval(minPrice, maxPrice, publisher, author));
+    }
 }
+
+

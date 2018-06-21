@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface BookRepositoryCriteriaBuilder {
 
-    List<Book> getBestSellers(Double fromRate, Publisher publisher, Author author);
+    List<Book> getBestSellersCriteriaBuilder(Double fromRate, Publisher publisher, Author author);
 
-    List<Book> getBooksByPriceInterval(Double minPrice, Double maxPrice, Publisher publisher, Author author);
+    List<Book> getBooksByPriceIntervalCriteriaBuilder(Double minPrice, Double maxPrice, Publisher publisher, Author author);
 }

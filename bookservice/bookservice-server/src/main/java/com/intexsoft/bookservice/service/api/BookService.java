@@ -19,8 +19,12 @@ public interface BookService {
 
     Book getByUUID(String UUID);
 
-    List<Book> getBestsellers(Double fromRate, Integer publisherId, Integer authorId);
+    List<Book> getBestsellersCriteriaBuilder(Double fromRate, Integer publisherId, Integer authorId);
 
-    List<Book> getByPriceInterval(Double minPrice, Double maxPrice, Integer publisherId, Integer authorId);
+    List<Book> getByPriceIntervalCriteriaBuilder(Double minPrice, Double maxPrice, Integer publisherId, Integer authorId);
+
+    List<Book> getBestsellersSpecification(Double fromRate, Integer publisherId, Integer authorId);
+
+    List<Book> getByPriceIntervalSpecification(Double minPrice, Double maxPrice, Integer publisherId, Integer authorId);
 
 }
