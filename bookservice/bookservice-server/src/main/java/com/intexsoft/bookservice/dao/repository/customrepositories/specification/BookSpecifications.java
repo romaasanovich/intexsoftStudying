@@ -5,10 +5,7 @@ import com.intexsoft.bookservice.dao.entity.Book;
 import com.intexsoft.bookservice.dao.entity.Publisher;
 import org.springframework.data.jpa.domain.Specification;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
+import javax.persistence.criteria.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +20,8 @@ public class BookSpecifications {
                     restrictions.add(criteriaBuilder.equal(root.get("publisher"), publisher));
                 }
                 if (author != null) {
-                    restrictions.add(criteriaBuilder.equal(root.get("author"), author));
+                    Join<Book, Author> authors = root.join("authors");
+                    restrictions.add(criteriaBuilder.equal(authors.get("id"), author.getId()));
                 }
                 if (fromRate != null) {
                     restrictions.add(criteriaBuilder.greaterThanOrEqualTo(root.get("rate"), fromRate));
@@ -49,7 +47,8 @@ public class BookSpecifications {
                     restrictions.add(criteriaBuilder.equal(root.get("publisher"), publisher));
                 }
                 if (author != null) {
-                    restrictions.add(criteriaBuilder.equal(root.get("author"), author));
+                    Join<Book, Author> authors = root.join("authors");
+                    restrictions.add(criteriaBuilder.equal(authors.get("id"), author.getId()));
                 }
                 Predicate[] arrayRestrictions = restrictions.toArray(new Predicate[0]);
                 return criteriaBuilder.and(arrayRestrictions);

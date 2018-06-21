@@ -2,13 +2,12 @@ package utils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.intexsoft.bookservice.web.dto.entity.PublisherDto;
 
 import java.util.List;
 
-public class Converter {
+public class Converter<T> {
 
-    public static String fromListToJson(List<PublisherDto> entities) {
+    public String fromListToJson(List<T> entities) {
         ObjectMapper mapper = new ObjectMapper();
         String jsonLine = "";
         try {

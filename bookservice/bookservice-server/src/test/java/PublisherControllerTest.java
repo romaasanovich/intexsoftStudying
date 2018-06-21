@@ -45,6 +45,7 @@ public class PublisherControllerTest {
 
     @Test
     public void getPublishers_Controller() throws Exception {
+        Converter<PublisherDto> converter = new Converter<>();
         List<PublisherDto> publishers = Arrays.asList(new PublisherDto(),
                 new PublisherDto(), new PublisherDto());
         publishers.get(0).setName("publisher1");
@@ -53,7 +54,7 @@ public class PublisherControllerTest {
         when(publisherService.getPublishers(PageRequest.of(0, 2))).thenReturn(null);
         when(publisherDtoMapper.toPageDto(null)).thenReturn(new PageImpl<>(publishers));
         mockMvc.perform(get("/api/publishers/?page=0&size=2")
-                .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE).content(Converter.fromListToJson(publishers)))
+                .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE).content(converter.fromListToJson(publishers)))
                 .andExpect(status().isOk());
         verify(publisherDtoMapper, times(1)).toPageDto(null);
         verifyNoMoreInteractions(publisherDtoMapper);
