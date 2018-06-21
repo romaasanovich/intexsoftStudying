@@ -27,4 +27,8 @@ public interface BookService {
 
     List<Book> getByPriceIntervalSpecification(Double minPrice, Double maxPrice, Integer publisherId, Integer authorId);
 
+    List<Book> getBestsellersQueryDsl(Double fromRate, Integer publisherId, Integer authorId);
+
+    List<Book> getByPriceIntervalQueryDsl(Double minPrice, Double maxPrice, Integer publisherId, Integer authorId);
+
 }

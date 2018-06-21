@@ -114,6 +114,23 @@
                 </executions>
             </plugin>
 
+            <plugin>
+                <groupId>com.mysema.maven</groupId>
+                <artifactId>maven-apt-plugin</artifactId>
+                <version>1.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>process</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>target/generated-sources/java</outputDirectory>
+                            <processor>com.querydsl.apt.jpa.JPAAnnotationProcessor</processor>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
         </plugins>
 
     </build>
@@ -186,6 +203,17 @@
             <version>2.9.5</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.querydsl</groupId>
+            <artifactId>querydsl-apt</artifactId>
+            <version>4.2.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.querydsl</groupId>
+            <artifactId>querydsl-jpa</artifactId>
+            <version>4.2.1</version>
+        </dependency>
 
         <!--Test dependencies-->
 

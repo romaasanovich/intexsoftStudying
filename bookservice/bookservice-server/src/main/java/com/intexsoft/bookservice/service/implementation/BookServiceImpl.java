@@ -5,6 +5,7 @@ import com.intexsoft.bookservice.dao.entity.Book;
 import com.intexsoft.bookservice.dao.entity.Publisher;
 import com.intexsoft.bookservice.dao.entity.Review;
 import com.intexsoft.bookservice.dao.repository.BookRepository;
+import com.intexsoft.bookservice.dao.repository.customrepositories.querydsl.BookQueryDsl;
 import com.intexsoft.bookservice.dao.repository.customrepositories.specification.BookSpecifications;
 import com.intexsoft.bookservice.service.api.AuthorService;
 import com.intexsoft.bookservice.service.api.BookService;
@@ -83,7 +84,7 @@ public class BookServiceImpl implements BookService {
     public List<Book> getBestsellersSpecification(Double fromRate, Integer publisherId, Integer authorId) {
         Publisher publisher = publisherService.getPublisherByID(publisherId).orElse(null);
         Author author = authorService.getAuthorByID(authorId).orElse(null);
-        return bookRepository.findAll(BookSpecifications.fromRate(fromRate, publisher, author));
+        return bookRepository.findAll(BookSpecifications.getBestsellers(fromRate, publisher, author));
     }
 
     @Override
@@ -91,6 +92,20 @@ public class BookServiceImpl implements BookService {
         Publisher publisher = publisherService.getPublisherByID(publisherId).orElse(null);
         Author author = authorService.getAuthorByID(authorId).orElse(null);
         return bookRepository.findAll(BookSpecifications.getBooksByPriceInterval(minPrice, maxPrice, publisher, author));
+    }
+
+    @Override
+    public List<Book> getBestsellersQueryDsl(Double fromRate, Integer publisherId, Integer authorId) {
+        Publisher publisher = publisherService.getPublisherByID(publisherId).orElse(null);
+        Author author = authorService.getAuthorByID(authorId).orElse(null);
+        return (List<Book>) bookRepository.findAll(BookQueryDsl.getBestsellers(fromRate, publisher, author));
+    }
+
+    @Override
+    public List<Book> getByPriceIntervalQueryDsl(Double minPrice, Double maxPrice, Integer publisherId, Integer authorId) {
+        Publisher publisher = publisherService.getPublisherByID(publisherId).orElse(null);
+        Author author = authorService.getAuthorByID(authorId).orElse(null);
+        return (List<Book>) bookRepository.findAll(BookQueryDsl.getBooksByPriceInterval(minPrice, maxPrice, publisher, author));
     }
 }
 

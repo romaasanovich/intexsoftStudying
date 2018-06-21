@@ -14,7 +14,7 @@ import java.util.List;
 
 public class BookSpecifications {
 
-    public static Specification<Book> fromRate(Double fromRate, Publisher publisher, Author author) {
+    public static Specification<Book> getBestsellers(Double fromRate, Publisher publisher, Author author) {
         return new Specification<Book>() {
             @Override
             public Predicate toPredicate(Root<Book> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
@@ -26,7 +26,7 @@ public class BookSpecifications {
                     restrictions.add(criteriaBuilder.equal(root.get("author"), author));
                 }
                 if (fromRate != null) {
-                    restrictions.add(criteriaBuilder.greaterThan(root.get("rate"), fromRate));
+                    restrictions.add(criteriaBuilder.greaterThanOrEqualTo(root.get("rate"), fromRate));
                 }
                 Predicate[] arrayRestrictions = restrictions.toArray(new Predicate[0]);
                 return criteriaBuilder.and(arrayRestrictions);

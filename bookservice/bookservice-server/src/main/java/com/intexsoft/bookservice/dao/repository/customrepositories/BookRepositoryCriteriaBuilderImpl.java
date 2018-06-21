@@ -18,7 +18,7 @@ import java.util.List;
 public class BookRepositoryCriteriaBuilderImpl implements BookRepositoryCriteriaBuilder {
 
     @PersistenceContext
-    EntityManager entityManager;
+    private EntityManager entityManager;
 
     @Override
     public List<Book> getBestSellersCriteriaBuilder(Double fromRate, Publisher publisher, Author author) {
@@ -34,7 +34,7 @@ public class BookRepositoryCriteriaBuilderImpl implements BookRepositoryCriteria
             restrictions.add(criteriaBuilder.equal(root.get("author"), author));
         }
         if (fromRate != null) {
-            restrictions.add(criteriaBuilder.greaterThan(root.get("rate"), fromRate));
+            restrictions.add(criteriaBuilder.greaterThanOrEqualTo(root.get("rate"), fromRate));
         }
         Predicate[] arrayRestrictions = restrictions.toArray(new Predicate[0]);
         query.where(criteriaBuilder.and(arrayRestrictions));

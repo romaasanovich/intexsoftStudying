@@ -4,7 +4,6 @@ import org.flywaydb.core.Flyway;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.*;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.data.web.config.EnableSpringDataWebSupport;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
@@ -18,7 +17,6 @@ import javax.sql.DataSource;
 
 @Configuration
 @EnableScheduling
-@EnableSpringDataWebSupport
 @PropertySource("classpath:projectProperty.properties")
 @EnableJpaRepositories("com.intexsoft.bookservice.dao.repository")
 @EnableTransactionManagement

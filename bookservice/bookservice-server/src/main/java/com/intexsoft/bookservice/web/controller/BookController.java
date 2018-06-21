@@ -87,4 +87,19 @@ public class BookController {
         return bookService.getByPriceIntervalSpecification(minPrice, maxPrice, publisherId, authorId);
     }
 
+    @GetMapping(path = "/books/bestsellers/dsl")
+    public List<Book> getBestSellersDsl(@Nullable @RequestParam(name = "fromRate") Double fromRate,
+                                        @Nullable @RequestParam(name = "publisherId", defaultValue = "-1") Integer publisherId,
+                                        @Nullable @RequestParam(name = "authorId", defaultValue = "-1") Integer authorId) {
+        return bookService.getBestsellersQueryDsl(fromRate, publisherId, authorId);
+    }
+
+    @GetMapping(path = "/books/price/dsl")
+    public List<Book> getBooksByPriceIntervalDsl(@Nullable @RequestParam(name = "minPrice") Double minPrice,
+                                                 @Nullable @RequestParam(name = "maxPrice") Double maxPrice,
+                                                 @Nullable @RequestParam(name = "publisherId", defaultValue = "-1") Integer publisherId,
+                                                 @Nullable @RequestParam(name = "authorId", defaultValue = "-1") Integer authorId) {
+        return bookService.getByPriceIntervalQueryDsl(minPrice, maxPrice, publisherId, authorId);
+    }
+
 }
