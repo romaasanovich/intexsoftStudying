@@ -1,0 +1,58 @@
+<div class="col-md-6">
+    <h2 class="text-center">Registration</h2>
+    <div>
+        <mat-form-field class="example-form-field">
+            <input matInput type="text" placeholder="Name" [(ngModel)]="user.name"/>
+            <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field class="example-form-field">
+            <input matInput type="text" placeholder="Surname" [(ngModel)]="user.surname"/>
+            <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field class="example-form-field">
+            <input matInput type="text" placeholder="e-mail" [(ngModel)]="user.email"/>
+            <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field>
+            <input matInput [matDatepicker]="picker" placeholder="Birth Day" [(ngModel)]="selDate">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field>
+            <mat-select placeholder="Male" [(ngModel)]="user.male" name="importType">
+                <mat-option *ngFor="let element of males" [value]="element">
+                    {{ element }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field>
+            <input matInput placeholder="Login" [(ngModel)]="user.username">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field>
+            <input matInput placeholder="Password" [(ngModel)]="user.password" [type]="hide ? 'password' : 'text'">
+            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+        </mat-form-field>
+    </div>
+    <div>
+        <button mat-raised-button (click)="addAuthor()" color="primary">Add Author</button>
+    </div>
+
+</div>
