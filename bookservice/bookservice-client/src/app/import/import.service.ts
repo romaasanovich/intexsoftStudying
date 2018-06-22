@@ -9,6 +9,6 @@ export class ImportService {
     }
 
     public import(type: string) {
-        return this.http.post(`${AppSettings.URL}/import/${type}`, type);
+        return this.http.post(`${AppSettings.API_URL}/import/${type}`, type);
     }
 }

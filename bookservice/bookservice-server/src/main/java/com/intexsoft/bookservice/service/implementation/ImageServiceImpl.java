@@ -2,7 +2,7 @@ package com.intexsoft.bookservice.service.implementation;
 
 import com.intexsoft.bookservice.dao.entity.Book;
 import com.intexsoft.bookservice.dao.entity.BookImage;
-import com.intexsoft.bookservice.dao.entity.ImageType;
+import com.intexsoft.bookservice.dao.entity.enums.ImageType;
 import com.intexsoft.bookservice.dao.repository.ImageRepository;
 import com.intexsoft.bookservice.service.api.ImageService;
 import org.slf4j.Logger;

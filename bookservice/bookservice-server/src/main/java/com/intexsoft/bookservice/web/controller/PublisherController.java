@@ -22,7 +22,6 @@ public class PublisherController {
     @Autowired
     private PublisherDtoMapper publisherDtoMapper;
 
-    @PreAuthorize("hasRole('ADMIN') OR hasRole('CUSTOMER')")
     @GetMapping(path = "/publishers")
     public Page<PublisherDto> getPublishers(Pageable pageable) {
         return publisherDtoMapper.toPageDto(publisherService.getPublishers(pageable));

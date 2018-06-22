@@ -1,5 +1,7 @@
 package com.intexsoft.bookservice.dao.entity;
 
+import com.intexsoft.bookservice.dao.entity.enums.ImageType;
+
 import javax.persistence.*;
 
 @Entity

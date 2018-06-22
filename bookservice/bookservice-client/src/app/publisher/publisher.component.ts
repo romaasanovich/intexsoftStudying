@@ -23,7 +23,7 @@ export class PublisherComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.publisherService.getPublishers(this.currentPage, this.pageSize - 1)
+        this.publisherService.getPublishers(this.currentPage, this.pageSize)
             .subscribe(data => {
                 this.publishers = data.content;
                 this.dataLength = data.totalElements;

@@ -15,7 +15,7 @@ import {AddAuthorComponent} from './add-author/add-author.component';
 import {AddBookComponent} from './add-book/add-book.component';
 import {ImportComponent} from './import/import.component';
 import {ImportService} from './import/import.service';
-import {MatIconModule, MatNativeDateModule, MatTableModule} from '@angular/material';
+import {MatCardModule, MatIconModule, MatNativeDateModule, MatTableModule} from '@angular/material';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -28,6 +28,10 @@ import {AddReviewComponent} from './add-review/add-review.component';
 import {BookDetailsComponent} from './book-details/book-details.component';
 import {ImageService} from './book-details/image.service';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {LoginComponent} from './login/login.component';
+import {AuthentificationService} from './login/authentification.service';
+import {LogoutComponent} from './logout/logout.component';
+import {RegistrationComponent} from './registration/registration.component';
 
 
 @NgModule({
@@ -42,7 +46,10 @@ import {MatPaginatorModule} from '@angular/material/paginator';
         ImportComponent,
         BookReviewComponent,
         AddReviewComponent,
-        BookDetailsComponent
+        BookDetailsComponent,
+        LoginComponent,
+        LogoutComponent,
+        RegistrationComponent
     ],
     imports: [
         BrowserModule,
@@ -57,9 +64,10 @@ import {MatPaginatorModule} from '@angular/material/paginator';
         MatDatepickerModule,
         MatNativeDateModule,
         MatSelectModule,
-        MatPaginatorModule
+        MatPaginatorModule,
+        MatCardModule
     ],
-    providers: [BookService, PublisherService, AuthorService, ImportService, BookReviewService, ImageService],
+    providers: [BookService, PublisherService, AuthorService, ImportService, BookReviewService, ImageService, AuthentificationService],
     bootstrap: [AppComponent]
 })
 export class AppModule {

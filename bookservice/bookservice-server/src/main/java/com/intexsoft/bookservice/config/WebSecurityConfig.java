@@ -44,15 +44,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.cors().and()
+        http.cors()
+                .and()
                 .authorizeRequests()
+                .antMatchers("/index.html", "/**/*.js", "/api/books/**", "/login", "/api/authors/**", "/api/publishers/**", "/api/images/**", "/api/image/**", "/api/reviews/**")
+                .permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .csrf().disable()
-                .formLogin().defaultSuccessUrl("/index.html")
+                .formLogin()
                 .and()
-                .httpBasic();
-        http.logout();
+                .logout()
+                .and()
+                .csrf().disable();
     }
 
     @Bean

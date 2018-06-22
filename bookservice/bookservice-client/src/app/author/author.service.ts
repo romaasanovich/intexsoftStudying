@@ -16,14 +16,14 @@ export class AuthorService {
         const params = new HttpParams()
             .set('page', page)
             .set('size', size);
-        return this.http.get<AuthorPageModel>(`${AppSettings.URL}/authors`, {params});
+        return this.http.get<AuthorPageModel>(`${AppSettings.API_URL}/authors`, {params});
     }
 
     public addAuthor(author) {
-        return this.http.post(`${AppSettings.URL}/author`, author);
+        return this.http.post(`${AppSettings.API_URL}/author`, author);
     }
 
     public deleteAuthor(author: Author) {
-        return this.http.delete(`${AppSettings.URL}/author/${author.id.toString()}`);
+        return this.http.delete(`${AppSettings.API_URL}/author/${author.id.toString()}`);
     }
 }

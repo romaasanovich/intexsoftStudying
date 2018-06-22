@@ -30,13 +30,11 @@ public class BookController {
     @Autowired
     private BookDetailsDtoMapper bookDetailsDtoMapper;
 
-    @PreAuthorize("hasRole('ADMIN') OR hasRole('CUSTOMER')")
     @GetMapping(path = "/books")
     public Page<BookDto> getBooks(Pageable pageable) {
         return bookDtoMapper.toPageDto(bookService.getBooks(pageable));
     }
 
-    @PreAuthorize("hasRole('ADMIN') OR hasRole('CUSTOMER')")
     @GetMapping(path = "/books/{id}")
     public BookDetailsDto getBookById(@PathVariable(name = "id") Integer id) {
         Optional<Book> book = bookService.getBookByID(id);

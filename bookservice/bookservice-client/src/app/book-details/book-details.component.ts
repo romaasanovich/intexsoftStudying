@@ -15,7 +15,7 @@ export class BookDetailsComponent implements OnInit {
     bookDetails: BookDetails = new BookDetails();
     books: BookDetails[] = [];
     displayedColumns = ['image', 'price', 'description', 'authors', 'publisher', 'publishDate', 'rate'];
-    URL = AppSettings.URL;
+    URL = AppSettings.API_URL;
     id = this.route.snapshot.queryParams.bookId;
     imageUrls: string[] = [];
 

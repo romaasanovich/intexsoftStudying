@@ -10,7 +10,7 @@ export class ImageService {
     }
 
     public getImages(bookId) {
-        return this.http.get<string[]>(`${AppSettings.URL}/images/${bookId}`);
+        return this.http.get<string[]>(`${AppSettings.API_URL}/images/${bookId}`);
     }
 
 }

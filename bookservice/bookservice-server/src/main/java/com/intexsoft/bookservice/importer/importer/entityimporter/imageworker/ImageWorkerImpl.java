@@ -2,7 +2,7 @@ package com.intexsoft.bookservice.importer.importer.entityimporter.imageworker;
 
 import com.intexsoft.bookservice.dao.entity.Book;
 import com.intexsoft.bookservice.dao.entity.BookImage;
-import com.intexsoft.bookservice.dao.entity.ImageType;
+import com.intexsoft.bookservice.dao.entity.enums.ImageType;
 import com.intexsoft.bookservice.importer.entity.ImportBook;
 import com.intexsoft.bookservice.service.api.BookService;
 import com.intexsoft.bookservice.service.api.ImageService;

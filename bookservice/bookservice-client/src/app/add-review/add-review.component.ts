@@ -20,7 +20,9 @@ export class AddReviewComponent {
 
     addReview() {
         this.review.book.id = this.route.snapshot.queryParams.bookId;
-        this.bookRevService.addReview(this.review).subscribe(data => alert('Review created successfully!!!'));
+        this.bookRevService.addReview(this.review).subscribe(data => {
+            alert('Review created successfully!!!');
+        });
     }
 
 }

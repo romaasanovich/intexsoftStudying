@@ -18,18 +18,18 @@ export class BookService {
         const params = new HttpParams()
             .set('page', page)
             .set('size', size);
-        return this.http.get<BookPageModel>(`${AppSettings.URL}/books`, {params});
+        return this.http.get<BookPageModel>(`${AppSettings.API_URL}/books`, {params});
     }
 
     public addBook(book: AddBook) {
-        return this.http.post<BookDetails>(`${AppSettings.URL}/book`, book);
+        return this.http.post<BookDetails>(`${AppSettings.API_URL}/book`, book);
     }
 
     public deleteBook(book: Book) {
-        return this.http.delete(`${AppSettings.URL}/book/${book.id.toString()}`);
+        return this.http.delete(`${AppSettings.API_URL}/book/${book.id.toString()}`);
     }
 
     public getById(id: string) {
-        return this.http.get<BookDetails>(`${AppSettings.URL}/books/${id}`);
+        return this.http.get<BookDetails>(`${AppSettings.API_URL}/books/${id}`);
     }
 }

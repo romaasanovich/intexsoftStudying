@@ -20,7 +20,7 @@ export class BookComponent implements OnInit {
     books;
     dataLength: number;
     displayedColumns = ['image', 'name', 'price', 'publisher', 'authors', 'rate', 'delete'];
-    URL = AppSettings.URL;
+    URL = AppSettings.API_URL;
 
 
     constructor(private router: Router, private bookService: BookService) {

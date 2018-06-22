@@ -22,7 +22,6 @@ public class AuthorController {
     @Autowired
     private AuthorDtoMapper authorDtoMapper;
 
-    @PreAuthorize("hasRole('ADMIN') OR hasRole('CUSTOMER')")
     @GetMapping(path = "/authors")
     Page<AuthorDto> getAuthors(Pageable pageable) {
         return authorDtoMapper.toPageDto(authorService.getAuthors(pageable));

@@ -15,14 +15,14 @@ export class BookReviewService {
         const params = new HttpParams()
             .set('page', page)
             .set('size', size);
-        return this.http.get<ReviewPageModel>(`${AppSettings.URL}/reviews/${id}`, {params});
+        return this.http.get<ReviewPageModel>(`${AppSettings.API_URL}/reviews/${id}`, {params});
     }
 
     public addReview(review: Review) {
-        return this.http.post(`${AppSettings.URL}/review/`, review);
+        return this.http.post(`${AppSettings.API_URL}/review/`, review);
     }
 
     public delReview(review: Review) {
-        return this.http.delete(`${AppSettings.URL}/review/${review.id.toString()}`);
+        return this.http.delete(`${AppSettings.API_URL}/review/${review.id.toString()}`);
     }
 }

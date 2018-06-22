@@ -15,15 +15,15 @@ export class PublisherService {
         const params = new HttpParams()
             .set('page', page)
             .set('size', size);
-        return this.http.get<PublisherPageModel>(`${AppSettings.URL}/publishers/`, {params});
+        return this.http.get<PublisherPageModel>(`${AppSettings.API_URL}/publishers`, {params});
     }
 
     public addPublisher(publisher) {
-        return this.http.post(`${AppSettings.URL}/publisher`, publisher);
+        return this.http.post(`${AppSettings.API_URL}/publisher`, publisher);
     }
 
     public deletePublisher(publisher: Publisher) {
-        return this.http.delete(`${AppSettings.URL}/publisher/${publisher.id.toString()}`);
+        return this.http.delete(`${AppSettings.API_URL}/publisher/${publisher.id.toString()}`);
     }
 
 }

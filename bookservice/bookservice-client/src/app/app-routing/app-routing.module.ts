@@ -10,6 +10,9 @@ import {ImportComponent} from '../import/import.component';
 import {BookReviewComponent} from '../book-review/book-review.component';
 import {AddReviewComponent} from '../add-review/add-review.component';
 import {BookDetailsComponent} from '../book-details/book-details.component';
+import {LoginComponent} from '../login/login.component';
+import {LogoutComponent} from '../logout/logout.component';
+import {RegistrationComponent} from '../registration/registration.component';
 
 
 const routes: Routes = [
@@ -22,7 +25,10 @@ const routes: Routes = [
     {path: 'import', component: ImportComponent},
     {path: 'reviews', component: BookReviewComponent},
     {path: 'add-review', component: AddReviewComponent},
-    {path: 'bookDetail', component: BookDetailsComponent}
+    {path: 'bookDetail', component: BookDetailsComponent},
+    {path: 'login', component: LoginComponent},
+    {path: 'logout', component: LogoutComponent},
+    {path: 'registration', component: RegistrationComponent}
 ];
 
 @NgModule({

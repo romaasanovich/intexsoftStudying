@@ -1,21 +1,30 @@
 package com.intexsoft.bookservice.dao.entity;
 
+import com.intexsoft.bookservice.dao.entity.enums.UserMale;
+
 import javax.persistence.*;
 
 
 @Entity
 @Table(name = "user")
 public class User {
+    @Enumerated(EnumType.STRING)
+    @Column(name = "male")
+    UserMale userMale;
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Column(name = "email", length = 45)
+    private String email;
     @Column(name = "login", length = 45)
     private String username;
     @Column(name = "password", length = 100)
     private String password;
-    @Column(name = "email", length = 45)
-    private String email;
+    @Column(name = "name", length = 45)
+    private String name;
+    @Column(name = "surname", length = 45)
+    private String surname;
     @Column(name = "role", length = 45)
     private String role;
 
@@ -60,5 +69,29 @@ public class User {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public UserMale getUserMale() {
+        return userMale;
+    }
+
+    public void setUserMale(UserMale userMale) {
+        this.userMale = userMale;
     }
 }
