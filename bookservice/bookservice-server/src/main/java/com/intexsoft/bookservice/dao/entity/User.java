@@ -1,6 +1,7 @@
 package com.intexsoft.bookservice.dao.entity;
 
 import com.intexsoft.bookservice.dao.entity.enums.UserMale;
+import com.intexsoft.bookservice.dao.entity.enums.UserRole;
 
 import javax.persistence.*;
 
@@ -8,9 +9,10 @@ import javax.persistence.*;
 @Entity
 @Table(name = "user")
 public class User {
+
     @Enumerated(EnumType.STRING)
     @Column(name = "male")
-    UserMale userMale;
+    UserMale male;
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,8 +27,9 @@ public class User {
     private String name;
     @Column(name = "surname", length = 45)
     private String surname;
+    @Enumerated(EnumType.STRING)
     @Column(name = "role", length = 45)
-    private String role;
+    private UserRole role;
 
     public User() {
     }
@@ -63,14 +66,6 @@ public class User {
         this.email = email;
     }
 
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
     public String getName() {
         return name;
     }
@@ -87,11 +82,20 @@ public class User {
         this.surname = surname;
     }
 
-    public UserMale getUserMale() {
-        return userMale;
+
+    public UserMale getMale() {
+        return male;
     }
 
-    public void setUserMale(UserMale userMale) {
-        this.userMale = userMale;
+    public void setMale(UserMale male) {
+        this.male = male;
+    }
+
+    public UserRole getRole() {
+        return role;
+    }
+
+    public void setRole(UserRole role) {
+        this.role = role;
     }
 }

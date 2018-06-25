@@ -58,8 +58,8 @@ public class CustomRepositoriesTest {
     @Test
     public void getByPriceInterval_DslAndSpec_minValueNull_correct() {
         Converter<Book> converter = new Converter<>();
-        List<Book> dslBooks = bookService.getByPriceIntervalQueryDsl(null, 50.0, 3, 3);
-        List<Book> specBooks = bookService.getByPriceIntervalSpecification(null, 50.0, 3, 3);
+        List<Book> dslBooks = bookService.getByPriceIntervalQueryDsl(null, 50.0, 2, 2);
+        List<Book> specBooks = bookService.getByPriceIntervalSpecification(null, 50.0, 2, 2);
         String dslBookJson = converter.fromListToJson(dslBooks);
         String specBookJson = converter.fromListToJson(specBooks);
         assertEquals(dslBookJson, specBookJson);
@@ -85,7 +85,5 @@ public class CustomRepositoriesTest {
         String crBookJson = converter.fromListToJson(crBooks);
         String specBookJson = converter.fromListToJson(specBooks);
         assertEquals(crBookJson, specBookJson);
-
     }
-
 }
