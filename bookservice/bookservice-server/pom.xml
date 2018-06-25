@@ -29,6 +29,10 @@
         <import.images.path></import.images.path>
         <import.images.zip></import.images.zip>
         <import.scheduling></import.scheduling>
+        <email.username></email.username>
+        <email.password></email.password>
+        <email.host></email.host>
+        <email.port></email.port>
     </properties>
 
     <profiles>
@@ -46,6 +50,10 @@
                 </import.images.path>
                 <import.images.zip>/home/INTEXSOFT/roman.asanovich/bookservice-resources/images.zip</import.images.zip>
                 <import.scheduling>0 * * * * *</import.scheduling>
+                <email.username>asanovich.roma</email.username>
+                <email.password>Thae9iel</email.password>
+                <email.host>smtp.gmail.com</email.host>
+                <email.port>465</email.port>
             </properties>
         </profile>
     </profiles>
@@ -214,6 +222,13 @@
             <artifactId>querydsl-jpa</artifactId>
             <version>4.2.1</version>
         </dependency>
+
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+            <version>1.4.7</version>
+        </dependency>
+
 
         <!--Test dependencies-->
 
