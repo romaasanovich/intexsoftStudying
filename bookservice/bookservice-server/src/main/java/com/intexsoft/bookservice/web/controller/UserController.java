@@ -21,6 +21,11 @@ public class UserController {
         userService.addUser(user);
     }
 
+    @PostMapping(path = "/user/activate")
+    public void activateUser(@RequestParam(name = "userId") Integer userId, @RequestParam(name = "token") String token){
+        userService.activate(userId,token);
+    }
+
     @PostMapping(path = "/user/edit")
     public void editUser(@RequestBody User user) {
         userService.editUser(user);

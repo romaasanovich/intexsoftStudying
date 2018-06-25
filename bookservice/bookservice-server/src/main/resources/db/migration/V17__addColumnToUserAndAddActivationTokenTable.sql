@@ -1,0 +1,11 @@
+CREATE TABLE activationToken (
+  id INT NOT NULL AUTO_INCREMENT,
+  token VARCHAR(45) NOT NULL,
+  userId INT NOT NULL,
+  registrationTime DATETIME NOT NULL,
+  PRIMARY KEY (id));
+
+ALTER TABLE user 
+ADD COLUMN isActivated TINYINT NOT NULL AFTER role;
+
+

@@ -4,5 +4,5 @@ import com.intexsoft.bookservice.dao.entity.User;
 
 public interface EmailService {
 
-    void sendMessage(User user);
+    void sendMessage(User user, String token);
 }

@@ -10,4 +10,6 @@ public interface UserService {
     void editUser(User user);
 
     boolean changePassword(User user, String oldPassword, String newPassword);
+
+    boolean activate(Integer userId, String token);
 }
