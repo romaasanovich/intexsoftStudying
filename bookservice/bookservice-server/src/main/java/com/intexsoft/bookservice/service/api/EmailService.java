@@ -1,6 +1,8 @@
 package com.intexsoft.bookservice.service.api;
 
+import com.intexsoft.bookservice.dao.entity.User;
+
 public interface EmailService {
 
-    void sendMessage(String toEmail);
+    void sendMessage(User user);
 }

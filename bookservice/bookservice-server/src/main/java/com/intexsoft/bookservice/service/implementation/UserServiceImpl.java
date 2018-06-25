@@ -29,7 +29,7 @@ public class UserServiceImpl implements UserService {
         user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
         user.setRole(UserRole.ROLE_CUSTOMER);
         userRepository.save(user);
-        emailService.sendMessage();
+        emailService.sendMessage(user);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.intexsoft.bookservice.service.implementation;
 
+import com.intexsoft.bookservice.dao.entity.User;
 import com.intexsoft.bookservice.service.api.EmailService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -47,18 +48,28 @@ public class EmailServiceImpl implements EmailService {
     }
 
     @Override
-    public void sendMessage(String toEmail) {
+    public void sendMessage(User user) {
         try {
             Message message = new MimeMessage(getSession());
             message.setFrom(new InternetAddress(username + "@gmail.com"));
-            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toEmail));
-            message.setSubject("Test Subject");
-            message.setText("Test message!!!");
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(user.getEmail()));
+            message.setSubject("Registration on Book Service");
+            message.setText(generateMessage(user));
             Transport.send(message);
         } catch (MessagingException e) {
-            logger.error("Error with sending messageon e-mail:", e);
+            logger.error("Error with sending message on e-mail:", e);
         }
     }
 
+    private String generateMessage(User user) {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("Dear ");
+        stringBuilder.append(user.getName());
+        stringBuilder.append(", ");
+        stringBuilder.append("You are registered on book service with login: ");
+        stringBuilder.append(user.getUsername());
+        stringBuilder.append("!");
+        return stringBuilder.toString();
+    }
 
 }
