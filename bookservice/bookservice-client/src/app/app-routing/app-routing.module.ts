@@ -14,6 +14,7 @@ import {LoginComponent} from '../login/login.component';
 import {LogoutComponent} from '../logout/logout.component';
 import {RegistrationComponent} from '../registration/registration.component';
 import {EditProfileComponent} from '../edit-profile/edit-profile.component';
+import {ChangePasswordComponent} from '../change-password/change-password.component';
 
 
 const routes: Routes = [
@@ -30,7 +31,9 @@ const routes: Routes = [
     {path: 'login', component: LoginComponent},
     {path: 'logout', component: LogoutComponent},
     {path: 'registration', component: RegistrationComponent},
-    {path: 'edit', component: EditProfileComponent}
+    {path: 'edit', component: EditProfileComponent},
+    {path: 'password', component: ChangePasswordComponent}
+
 ];
 
 @NgModule({

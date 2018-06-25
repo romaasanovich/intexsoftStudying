@@ -25,5 +25,7 @@ export class LoginComponent implements OnInit {
         }, error => {
             alert('Wrong username or password. Try again!!!');
         });
+        this.router.navigate([AppComponent]);
+
     }
 }

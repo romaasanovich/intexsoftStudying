@@ -45,8 +45,6 @@
             <input matInput placeholder="Login" [(ngModel)]="user.username">
         </mat-form-field>
     </div>
-    <div>
-        <button mat-raised-button (click)="editUser()" color="primary">Edit</button>
-    </div>
-
+    <button mat-raised-button (click)="editUser()" color="primary">Edit</button>
+    <button mat-raised-button (click)="goToChangePassword()" color="primary">Change Password</button>
 </div>

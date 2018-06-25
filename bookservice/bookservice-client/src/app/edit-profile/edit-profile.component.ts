@@ -26,11 +26,15 @@ export class EditProfileComponent implements OnInit {
 
     editUser() {
         this.user.birthday = this.selDate.toLocaleDateString();
-        this.userService.saveUser(this.user).subscribe(() => {
-                alert('Your profile are edited!');
+        this.userService.editUser(this.user).subscribe(() => {
+                alert('Your profile is edited!');
             },
             () => {
                 alert('You have an error, check input fields!');
             });
+    }
+
+    goToChangePassword() {
+        this.router.navigate(['/password']);
     }
 }

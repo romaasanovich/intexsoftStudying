@@ -25,4 +25,21 @@ public class UserServiceImpl implements UserService {
         user.setRole(UserRole.ROLE_CUSTOMER);
         userRepository.save(user);
     }
+
+    @Override
+    public void editUser(User user) {
+        userRepository.save(user);
+    }
+
+    @Override
+    public boolean changePassword(User user, String oldPassword, String newPassword) {
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        if (encoder.matches(oldPassword, user.getPassword())) {
+            user.setPassword(encoder.encode(newPassword));
+            userRepository.save(user);
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

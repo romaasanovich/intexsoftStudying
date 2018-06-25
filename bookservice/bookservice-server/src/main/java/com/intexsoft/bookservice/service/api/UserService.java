@@ -6,4 +6,8 @@ public interface UserService {
     User getByUsername(String username);
 
     void addUser(User user);
+
+    void editUser(User user);
+
+    boolean changePassword(User user, String oldPassword, String newPassword);
 }

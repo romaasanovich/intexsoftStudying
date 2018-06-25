@@ -34,6 +34,7 @@ import {LogoutComponent} from './logout/logout.component';
 import {RegistrationComponent} from './registration/registration.component';
 import {UserService} from './registration/user.service';
 import {EditProfileComponent} from './edit-profile/edit-profile.component';
+import {ChangePasswordComponent} from './change-password/change-password.component';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import {EditProfileComponent} from './edit-profile/edit-profile.component';
         LoginComponent,
         LogoutComponent,
         RegistrationComponent,
-        EditProfileComponent
+        EditProfileComponent,
+        ChangePasswordComponent
     ],
     imports: [
         BrowserModule,
