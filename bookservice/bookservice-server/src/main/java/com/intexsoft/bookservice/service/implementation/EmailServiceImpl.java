@@ -1,6 +1,5 @@
 package com.intexsoft.bookservice.service.implementation;
 
-import com.intexsoft.bookservice.dao.entity.User;
 import com.intexsoft.bookservice.service.api.EmailService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,7 +15,6 @@ import java.util.Properties;
 public class EmailServiceImpl implements EmailService {
 
     private static final Logger logger = LoggerFactory.getLogger("log");
-    private static final String URL = "http://localhost:8080/bookservice/api/user/activate?";
 
     @Value("${email.username}")
     private String username;
@@ -49,27 +47,18 @@ public class EmailServiceImpl implements EmailService {
     }
 
     @Override
-    public void sendMessage(User user, String token) {
+    public void sendMessage(String toEmail, String subject, String emailMessage) {
         try {
             Message message = new MimeMessage(getSession());
             message.setFrom(new InternetAddress(username + "@gmail.com"));
-            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(user.getEmail()));
-            message.setSubject("Registration on Book Service");
-            message.setText(generateMessage(user, token));
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toEmail));
+            message.setSubject(subject);
+            ((MimeMessage) message).setText(emailMessage, "UTF-8", "html");
             Transport.send(message);
         } catch (MessagingException e) {
-            logger.error("Error with sending message on e-mail:", e);
+            logger.error("Error with sending e-mail message: ", e);
         }
     }
 
-    private String generateMessage(User user, String token) {
-        return "Dear " + user.getName() + ", " + "You are registered on book service with login: "
-                + user.getUsername() + "!" + "\n"
-                + "To activate your account go to link: " + generateLink(user, token);
-    }
-
-    private String generateLink(User user, String token) {
-        return URL + "userId=" + user.getId() + "&token=" + token;
-    }
 
 }

@@ -9,6 +9,9 @@ import javax.persistence.*;
 @Entity
 @Table(name = "user")
 public class User {
+    @Enumerated(EnumType.STRING)
+    @Column(name = "male")
+    UserMale male;
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,9 +26,6 @@ public class User {
     private String name;
     @Column(name = "surname", length = 45)
     private String surname;
-    @Enumerated(EnumType.STRING)
-    @Column(name = "male")
-    UserMale male;
     @Enumerated(EnumType.STRING)
     @Column(name = "role", length = 45)
     private UserRole role;

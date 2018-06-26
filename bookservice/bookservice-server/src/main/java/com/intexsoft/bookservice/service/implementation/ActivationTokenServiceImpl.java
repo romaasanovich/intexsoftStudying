@@ -6,6 +6,7 @@ import com.intexsoft.bookservice.dao.repository.ActivationTokenRepository;
 import com.intexsoft.bookservice.service.api.ActivationTokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 
@@ -31,11 +32,13 @@ public class ActivationTokenServiceImpl implements ActivationTokenService {
         return activationTokenRepository.getByUserId(userId);
     }
 
+    @Transactional
     @Override
     public void deleteByUserId(Integer userId) {
         activationTokenRepository.delete(getByUserId(userId));
     }
 
+    @Transactional
     @Override
     public void add(ActivationToken activationToken) {
         activationTokenRepository.save(activationToken);

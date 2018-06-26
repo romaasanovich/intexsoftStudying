@@ -12,6 +12,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 
 import javax.sql.DataSource;
 
@@ -21,7 +22,8 @@ import javax.sql.DataSource;
 @EnableJpaRepositories("com.intexsoft.bookservice.dao.repository")
 @EnableTransactionManagement
 @ComponentScans(value = {@ComponentScan("com.intexsoft.bookservice.dao.repository"),
-        @ComponentScan("com.intexsoft.bookservice.service"), @ComponentScan("com.intexsoft.bookservice.service.api"), @ComponentScan("com.intexsoft.bookservice.importer"), @ComponentScan("com.intexsoft.bookservice.web.dto")})
+        @ComponentScan("com.intexsoft.bookservice.service"), @ComponentScan("com.intexsoft.bookservice.service.api"),
+        @ComponentScan("com.intexsoft.bookservice.importer"), @ComponentScan("com.intexsoft.bookservice.web.dto")})
 public class AppConfig {
     @Value("${mysql.driverClassName}")
     String driver;
@@ -68,4 +70,11 @@ public class AppConfig {
         return flyway;
     }
 
+    @Bean
+    public FreeMarkerConfigurer freemarkerConfig() {
+        FreeMarkerConfigurer freeMarkerConfigurer = new FreeMarkerConfigurer();
+        freeMarkerConfigurer.setDefaultEncoding("UTF-8");
+        freeMarkerConfigurer.setTemplateLoaderPath("classpath:template/");
+        return freeMarkerConfigurer;
+    }
 }
