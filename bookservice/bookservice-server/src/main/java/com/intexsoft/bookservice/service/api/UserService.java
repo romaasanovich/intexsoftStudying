@@ -2,6 +2,7 @@ package com.intexsoft.bookservice.service.api;
 
 import com.intexsoft.bookservice.dao.entity.User;
 import freemarker.template.TemplateException;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
 
@@ -14,5 +15,10 @@ public interface UserService {
 
     boolean changePassword(User user, String oldPassword, String newPassword);
 
+    @Transactional
+    boolean restorePass(User user, String password);
+
     boolean activate(Integer userId, String token);
+
+    int sendRestoreCode(User user) throws IOException, TemplateException;
 }

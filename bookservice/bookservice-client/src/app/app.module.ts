@@ -35,6 +35,8 @@ import {RegistrationComponent} from './registration/registration.component';
 import {UserService} from './registration/user.service';
 import {EditProfileComponent} from './edit-profile/edit-profile.component';
 import {ChangePasswordComponent} from './change-password/change-password.component';
+import {ForgotPassComponent} from './forgot-pass/forgot-pass.component';
+import {ForgotPassService} from './forgot-pass/forgot-pass.service';
 
 
 @NgModule({
@@ -54,7 +56,8 @@ import {ChangePasswordComponent} from './change-password/change-password.compone
         LogoutComponent,
         RegistrationComponent,
         EditProfileComponent,
-        ChangePasswordComponent
+        ChangePasswordComponent,
+        ForgotPassComponent
     ],
     imports: [
         BrowserModule,
@@ -72,7 +75,7 @@ import {ChangePasswordComponent} from './change-password/change-password.compone
         MatPaginatorModule,
         MatCardModule
     ],
-    providers: [BookService, PublisherService, AuthorService, ImportService, BookReviewService, ImageService, AuthentificationService, UserService],
+    providers: [BookService, PublisherService, AuthorService, ImportService, BookReviewService, ImageService, AuthentificationService, UserService, ForgotPassService],
     bootstrap: [AppComponent]
 })
 export class AppModule {

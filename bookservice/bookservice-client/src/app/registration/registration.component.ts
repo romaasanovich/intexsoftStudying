@@ -21,7 +21,7 @@ export class RegistrationComponent {
     addUser() {
         this.user.birthday = this.selDate.toLocaleDateString();
         this.userService.addUser(this.user).subscribe(() => {
-                alert('Your profile are registered! Please log in!');
+                alert('Your profile are registered! Please activate your account (link on your e-mail) and log in!');
             },
             error => alert('You have an error, check input fields!'));
     }

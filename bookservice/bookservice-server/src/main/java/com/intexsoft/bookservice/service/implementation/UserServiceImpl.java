@@ -23,6 +23,7 @@ import java.text.MessageFormat;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 import java.util.UUID;
 
 @Service
@@ -84,6 +85,19 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
+    public boolean restorePass(User user, String password) {
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        if (user != null && !password.isEmpty()) {
+            user.setPassword(encoder.encode(password));
+            userRepository.save(user);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    @Transactional
     public boolean activate(Integer userId, String token) {
         User user = userRepository.findById(userId).orElse(null);
         if (user != null && !user.getActivated() && activationTokenService.isNotExpired(user)) {
@@ -98,6 +112,19 @@ public class UserServiceImpl implements UserService {
         } else {
             return false;
         }
+    }
+
+    @Override
+    public int sendRestoreCode(User user) throws IOException, TemplateException {
+        Template template = appConfig.freemarkerConfig().getConfiguration().getTemplate("restorePass.ftl");
+        Map<String, Object> root = new HashMap<>();
+        root.put("recipient", user);
+        int code = new Random().nextInt(90000) + 10000;
+        root.put("code", code);
+        String subject = "Restore Password!!!";
+        String emailMessage = FreeMarkerTemplateUtils.processTemplateIntoString(template, root);
+        emailService.sendMessage(user.getEmail(), subject, emailMessage);
+        return code;
     }
 
     private void sendRegistrationMessage(User user, String token) throws IOException, TemplateException {

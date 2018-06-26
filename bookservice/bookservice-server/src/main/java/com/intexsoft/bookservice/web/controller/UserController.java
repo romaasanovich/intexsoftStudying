@@ -30,7 +30,7 @@ public class UserController {
         }
     }
 
-    @PostMapping(path = "/user/activate")
+    @GetMapping(path = "/user/activate")
     public void activateUser(@RequestParam(name = "userId") Integer userId, @RequestParam(name = "token") String token) {
         userService.activate(userId, token);
     }
@@ -53,6 +53,26 @@ public class UserController {
         String currentPrincipalName = authentication.getName();
         User user = userService.getByUsername(currentPrincipalName);
         if (userService.changePassword(user, oldPassword, newPassword)) {
+            return new ResponseEntity(HttpStatus.OK);
+        } else {
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @PostMapping(path = "/user/password/restore/code")
+    public Integer sendRestoreCode(@RequestParam(name = "username") String username) {
+        User user = userService.getByUsername(username);
+        try {
+            return userService.sendRestoreCode(user);
+        } catch (TemplateException | IOException e) {
+            return -1;
+        }
+    }
+
+    @PostMapping(path = "/user/password/restore")
+    public ResponseEntity restorePassword(@RequestParam(name = "password") String password, @RequestParam(name = "username") String username) {
+        User user = userService.getByUsername(username);
+        if (userService.restorePass(user, password)) {
             return new ResponseEntity(HttpStatus.OK);
         } else {
             return new ResponseEntity(HttpStatus.BAD_REQUEST);

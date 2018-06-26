@@ -48,7 +48,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers("/index.html", "/**/*.js", "/api/books/**", "/registration", "/login",
-                        "/api/authors/**", "/api/publishers/**", "/api/images/**", "/api/image/**", "/api/reviews/**", "/api/user/register", "/api/user/activate", "/")
+                        "/api/authors/**", "/api/publishers/**", "/api/images/**", "/api/image/**", "/api/reviews/**",
+                        "/api/user/register", "/api/user/activate", "/api/user/password/restore/**", "/")
                 .permitAll()
                 .anyRequest().authenticated()
                 .and()
