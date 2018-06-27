@@ -67,6 +67,8 @@ public class AppConfig {
         flyway.setBaselineOnMigrate(true);
         flyway.setLocations("db/migration");
         flyway.setDataSource(dataSource());
+        flyway.setPlaceholderPrefix("&?");
+        flyway.setPlaceholderSuffix("?");
         return flyway;
     }
 

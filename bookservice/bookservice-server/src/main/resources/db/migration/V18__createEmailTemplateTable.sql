@@ -1,0 +1,5 @@
+CREATE TABLE emailTemplate (
+  id INT NOT NULL AUTO_INCREMENT,
+  ftlCode VARCHAR(1500) NOT NULL,
+  templateType VARCHAR(45) NOT NULL,
+  PRIMARY KEY (id));

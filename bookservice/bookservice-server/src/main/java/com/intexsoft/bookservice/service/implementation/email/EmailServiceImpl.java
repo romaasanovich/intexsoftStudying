@@ -1,4 +1,4 @@
-package com.intexsoft.bookservice.service.implementation;
+package com.intexsoft.bookservice.service.implementation.email;
 
 import com.intexsoft.bookservice.service.api.EmailService;
 import org.slf4j.Logger;
@@ -47,13 +47,13 @@ public class EmailServiceImpl implements EmailService {
     }
 
     @Override
-    public void sendMessage(String toEmail, String subject, String emailMessage) {
+    public void sendMessage(EmailWrapper emailWrapper) {
         try {
             Message message = new MimeMessage(getSession());
             message.setFrom(new InternetAddress(username + "@gmail.com"));
-            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toEmail));
-            message.setSubject(subject);
-            ((MimeMessage) message).setText(emailMessage, "UTF-8", "html");
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(emailWrapper.getToEmail()));
+            message.setSubject(emailWrapper.getSubject());
+            ((MimeMessage) message).setText(emailWrapper.getEmailBody(), "UTF-8", "html");
             Transport.send(message);
         } catch (MessagingException e) {
             logger.error("Error with sending e-mail message: ", e);

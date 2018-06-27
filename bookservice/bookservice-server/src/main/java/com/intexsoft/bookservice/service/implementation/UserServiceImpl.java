@@ -3,11 +3,14 @@ package com.intexsoft.bookservice.service.implementation;
 import com.intexsoft.bookservice.config.AppConfig;
 import com.intexsoft.bookservice.dao.entity.ActivationToken;
 import com.intexsoft.bookservice.dao.entity.User;
+import com.intexsoft.bookservice.dao.entity.enums.TemplateType;
 import com.intexsoft.bookservice.dao.entity.enums.UserRole;
 import com.intexsoft.bookservice.dao.repository.UserRepository;
 import com.intexsoft.bookservice.service.api.ActivationTokenService;
 import com.intexsoft.bookservice.service.api.EmailService;
+import com.intexsoft.bookservice.service.api.EmailTemplateService;
 import com.intexsoft.bookservice.service.api.UserService;
+import com.intexsoft.bookservice.service.implementation.email.EmailWrapper;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import org.slf4j.Logger;
@@ -19,6 +22,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
 
 import java.io.IOException;
+import java.io.StringReader;
 import java.text.MessageFormat;
 import java.time.LocalDateTime;
 import java.util.HashMap;
@@ -40,6 +44,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private EmailService emailService;
+
+    @Autowired
+    private EmailTemplateService emailTemplateService;
 
     @Autowired
     private ActivationTokenService activationTokenService;
@@ -116,25 +123,33 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public int sendRestoreCode(User user) throws IOException, TemplateException {
-        Template template = appConfig.freemarkerConfig().getConfiguration().getTemplate("restorePass.ftl");
+        String templateCode = emailTemplateService.getByTemplateType(TemplateType.RESTORE_PASSWORD).getFtlCode();
+        Template template = new Template("restorePass", new StringReader(templateCode), appConfig.freemarkerConfig().getConfiguration());
         Map<String, Object> root = new HashMap<>();
         root.put("recipient", user);
         int code = new Random().nextInt(90000) + 10000;
         root.put("code", code);
-        String subject = "Restore Password!!!";
         String emailMessage = FreeMarkerTemplateUtils.processTemplateIntoString(template, root);
-        emailService.sendMessage(user.getEmail(), subject, emailMessage);
+        EmailWrapper emailWrapper = new EmailWrapper();
+        emailWrapper.setToEmail(user.getEmail());
+        emailWrapper.setSubject("Restore Password!!!");
+        emailWrapper.setEmailBody(emailMessage);
+        emailService.sendMessage(emailWrapper);
         return code;
     }
 
     private void sendRegistrationMessage(User user, String token) throws IOException, TemplateException {
-        Template template = appConfig.freemarkerConfig().getConfiguration().getTemplate("registration.ftl");
+        String templateCode = emailTemplateService.getByTemplateType(TemplateType.REGISTRATION).getFtlCode();
+        Template template = new Template("registration", new StringReader(templateCode), appConfig.freemarkerConfig().getConfiguration());
         Map<String, Object> root = new HashMap<>();
         root.put("recipient", user);
         root.put("link", generateLink(user, token));
-        String subject = "Registration on Book Service!!!";
         String emailMessage = FreeMarkerTemplateUtils.processTemplateIntoString(template, root);
-        emailService.sendMessage(user.getEmail(), subject, emailMessage);
+        EmailWrapper emailWrapper = new EmailWrapper();
+        emailWrapper.setToEmail(user.getEmail());
+        emailWrapper.setSubject("Registration on Book Service!!!");
+        emailWrapper.setEmailBody(emailMessage);
+        emailService.sendMessage(emailWrapper);
     }
 
     private String generateLink(User user, String token) {
