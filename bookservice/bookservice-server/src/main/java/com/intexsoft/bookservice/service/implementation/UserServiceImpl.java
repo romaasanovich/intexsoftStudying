@@ -14,8 +14,6 @@ import com.intexsoft.bookservice.service.api.UserService;
 import com.intexsoft.bookservice.service.implementation.email.EmailWrapper;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -34,7 +32,6 @@ import java.util.UUID;
 @Service
 public class UserServiceImpl implements UserService {
 
-    private static final Logger logger = LoggerFactory.getLogger("log");
     private static final String URL = "http://localhost:8080/bookservice/api/user/activate?";
 
     @Autowired

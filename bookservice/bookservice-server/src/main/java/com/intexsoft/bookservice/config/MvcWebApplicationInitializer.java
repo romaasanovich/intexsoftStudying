@@ -1,6 +1,7 @@
 package com.intexsoft.bookservice.config;
 
 
+import com.intexsoft.bookservice.config.security.WebSecurityConfig;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class MvcWebApplicationInitializer

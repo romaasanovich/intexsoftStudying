@@ -1,7 +1,8 @@
-package com.intexsoft.bookservice.config;
+package com.intexsoft.bookservice.config.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -18,10 +19,20 @@ import java.util.Arrays;
 
 @Configuration
 @EnableWebSecurity
+@ComponentScan("com.intexsoft.bookservice.config.security")
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private UserDetailsService userDetailsService;
+
+    @Autowired
+    private RestAuthenticationEntryPoint restAuthenticationEntryPoint;
+
+    @Autowired
+    private AuthenticationSuccessHandler authenticationSuccessHandler;
+
+    @Autowired
+    private AuthenticationFailureHandler authenticationFailureHandler;
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
@@ -44,7 +55,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.cors()
+        http.csrf().disable()
+                .exceptionHandling()
+                .authenticationEntryPoint(restAuthenticationEntryPoint)
                 .and()
                 .authorizeRequests()
                 .antMatchers("/index.html", "/**/*.js", "/api/books/**", "/registration", "/login",
@@ -53,11 +66,21 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .formLogin().defaultSuccessUrl("/api/books")
+                .formLogin()
+                .successHandler(authenticationSuccessHandler)
+                .failureHandler(authenticationFailureHandler)
                 .and()
-                .logout()
-                .and()
-                .csrf().disable();
+                .logout();
+    }
+
+    @Bean
+    public AuthenticationSuccessHandler mySuccessHandler() {
+        return new AuthenticationSuccessHandler();
+    }
+
+    @Bean
+    public AuthenticationFailureHandler myFailureHandler() {
+        return new AuthenticationFailureHandler();
     }
 
     @Bean
