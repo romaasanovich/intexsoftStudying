@@ -20,8 +20,11 @@ export class EditProfileComponent implements OnInit {
 
     ngOnInit() {
         this.userService.getUser().subscribe(user => {
-            this.user = user;
-        });
+                this.user = user;
+            },
+            error => {
+                alert('Please log in!!!');
+            });
     }
 
     editUser() {

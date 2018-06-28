@@ -1,13 +1,13 @@
 import {Component} from '@angular/core';
 import {Router} from '@angular/router';
-import {ForgotPassService} from './forgot-pass.service';
+import {ForgetPassService} from './forget-pass.service';
 
 @Component({
     selector: 'app-forgot-pass',
-    templateUrl: './forgot-pass.component.html',
-    styleUrls: ['./forgot-pass.component.css']
+    templateUrl: './forget-pass-code.component.html',
+    styleUrls: ['./forget-pass-code.component.css']
 })
-export class ForgotPassComponent {
+export class ForgetPassCodeComponent {
 
     activationCode: number;
     username: string;
@@ -15,16 +15,16 @@ export class ForgotPassComponent {
     newPassword: string;
     hide = true;
 
-    constructor(private router: Router, private forgotPassService: ForgotPassService) {
+    constructor(private router: Router, private forgetPassService: ForgetPassService) {
     }
 
     sendCode() {
-        this.forgotPassService.sendCode(this.username.toString()).subscribe(data => {
+        this.forgetPassService.sendCode(this.username.toString()).subscribe(data => {
                 this.activationCode = data;
                 if (this.activationCode === -1) {
                     alert('Error. Try again!!!');
                 } else {
-                    alert('Activation code send to your e-mail');
+                    alert('Restore code send to your e-mail');
                 }
             },
             error => {
@@ -35,7 +35,7 @@ export class ForgotPassComponent {
 
     restorePassword() {
         if (Number(this.inputCode) === this.activationCode) {
-            this.forgotPassService.restorePass(this.newPassword, this.username).subscribe(() => {
+            this.forgetPassService.restorePass(this.newPassword, this.username).subscribe(() => {
                     alert('Your password is restored!');
                 },
                 () => {

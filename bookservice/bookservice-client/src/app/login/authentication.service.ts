@@ -5,7 +5,7 @@ import {AppSettings} from '../../../app.settings';
 
 
 @Injectable()
-export class AuthentificationService {
+export class AuthenticationService {
 
     options = {
         headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')

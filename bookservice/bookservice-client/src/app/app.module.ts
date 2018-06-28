@@ -15,7 +15,7 @@ import {AddAuthorComponent} from './add-author/add-author.component';
 import {AddBookComponent} from './add-book/add-book.component';
 import {ImportComponent} from './import/import.component';
 import {ImportService} from './import/import.service';
-import {MatCardModule, MatIconModule, MatNativeDateModule, MatTableModule} from '@angular/material';
+import {MatCardModule, MatDialogModule, MatIconModule, MatNativeDateModule, MatTableModule} from '@angular/material';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -29,14 +29,16 @@ import {BookDetailsComponent} from './book-details/book-details.component';
 import {ImageService} from './book-details/image.service';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {LoginComponent} from './login/login.component';
-import {AuthentificationService} from './login/authentification.service';
+import {AuthenticationService} from './login/authentication.service';
 import {LogoutComponent} from './logout/logout.component';
 import {RegistrationComponent} from './registration/registration.component';
 import {UserService} from './registration/user.service';
 import {EditProfileComponent} from './edit-profile/edit-profile.component';
 import {ChangePasswordComponent} from './change-password/change-password.component';
-import {ForgotPassComponent} from './forgot-pass/forgot-pass.component';
-import {ForgotPassService} from './forgot-pass/forgot-pass.service';
+import {ForgetPassCodeComponent} from './forget-pass-code/forget-pass-code.component';
+import {ForgetPassService} from './forget-pass-code/forget-pass.service';
+import {ForgetPassLinkComponent} from './forget-pass-link/forget-pass-link.component';
+import {ActivationExpiredDialogComponent} from './activation-expired-dialog/activation-expired-dialog.component';
 
 
 @NgModule({
@@ -57,7 +59,9 @@ import {ForgotPassService} from './forgot-pass/forgot-pass.service';
         RegistrationComponent,
         EditProfileComponent,
         ChangePasswordComponent,
-        ForgotPassComponent
+        ForgetPassCodeComponent,
+        ForgetPassLinkComponent,
+        ActivationExpiredDialogComponent
     ],
     imports: [
         BrowserModule,
@@ -73,9 +77,13 @@ import {ForgotPassService} from './forgot-pass/forgot-pass.service';
         MatNativeDateModule,
         MatSelectModule,
         MatPaginatorModule,
-        MatCardModule
+        MatCardModule,
+        MatDialogModule
     ],
-    providers: [BookService, PublisherService, AuthorService, ImportService, BookReviewService, ImageService, AuthentificationService, UserService, ForgotPassService],
+    entryComponents: [
+        ActivationExpiredDialogComponent
+    ],
+    providers: [BookService, PublisherService, AuthorService, ImportService, BookReviewService, ImageService, AuthenticationService, UserService, ForgetPassService],
     bootstrap: [AppComponent]
 })
 export class AppModule {

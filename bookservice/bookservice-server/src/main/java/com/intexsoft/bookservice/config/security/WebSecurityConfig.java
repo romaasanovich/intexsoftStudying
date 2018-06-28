@@ -34,6 +34,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private AuthenticationFailureHandler authenticationFailureHandler;
 
+    @Autowired
+    private LogoutSuccessUrlHandler logoutSuccessUrlHandler;
+
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -62,7 +65,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/index.html", "/**/*.js", "/api/books/**", "/registration", "/login",
                         "/api/authors/**", "/api/publishers/**", "/api/images/**", "/api/image/**", "/api/reviews/**",
-                        "/api/user/register", "/api/user/activate", "/api/user/password/restore/**", "/")
+                        "/api/user/register", "/api/user/activate", "/api/user/password/restore/**", "/",
+                        "/api/user/reactivate", "/api/user/delete")
                 .permitAll()
                 .anyRequest().authenticated()
                 .and()
@@ -70,7 +74,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .successHandler(authenticationSuccessHandler)
                 .failureHandler(authenticationFailureHandler)
                 .and()
-                .logout();
+                .logout().logoutSuccessHandler(logoutSuccessUrlHandler);
     }
 
     @Bean
@@ -81,6 +85,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public AuthenticationFailureHandler myFailureHandler() {
         return new AuthenticationFailureHandler();
+    }
+
+    @Bean
+    public LogoutSuccessUrlHandler myLogoutSuccessHandler() {
+        return new LogoutSuccessUrlHandler();
     }
 
     @Bean

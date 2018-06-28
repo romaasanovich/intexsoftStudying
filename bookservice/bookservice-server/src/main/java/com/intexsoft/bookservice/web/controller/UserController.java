@@ -30,14 +30,37 @@ public class UserController {
         }
     }
 
-    @GetMapping(path = "/user/activate")
-    public void activateUser(@RequestParam(name = "userId") Integer userId, @RequestParam(name = "token") String token) {
-        userService.activate(userId, token);
+    @PostMapping(path = "/user/activate")
+    public boolean activateUser(@RequestParam(name = "userId") Integer userId, @RequestParam(name = "token") String token) {
+        return userService.activate(userId, token);
     }
 
     @PostMapping(path = "/user/edit")
     public void editUser(@RequestBody User user) {
         userService.editUser(user);
+    }
+
+    @PostMapping(path = "/user/delete")
+    public ResponseEntity deletedUser(@RequestParam(name = "userId") Integer userId) {
+        User user = userService.getById(userId);
+        if (user != null) {
+            userService.deleteDisabledUser(user);
+            return new ResponseEntity(HttpStatus.OK);
+        } else {
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+
+        }
+    }
+
+    @PostMapping(path = "/user/reactivate")
+    public ResponseEntity reactivateUser(@RequestParam(name = "userId") Integer userId) {
+        try {
+            User user = userService.getById(userId);
+            userService.sendReactivateMessage(user);
+            return new ResponseEntity(HttpStatus.OK);
+        } catch (IOException | TemplateException e) {
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @GetMapping(path = "/user")
@@ -66,6 +89,17 @@ public class UserController {
             return userService.sendRestoreCode(user);
         } catch (TemplateException | IOException e) {
             return -1;
+        }
+    }
+
+    @PostMapping(path = "/user/password/restore/link")
+    public ResponseEntity sendRestoreLink(@RequestParam(name = "username") String username) {
+        User user = userService.getByUsername(username);
+        try {
+            userService.sendRestoreLink(user);
+            return new ResponseEntity(HttpStatus.OK);
+        } catch (TemplateException | IOException e) {
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
     }
 

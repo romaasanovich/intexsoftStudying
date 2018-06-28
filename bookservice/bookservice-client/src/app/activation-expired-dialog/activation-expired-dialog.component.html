@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>Activation expired!!!</h1>
+<div mat-dialog-content>
+    <p>Choose what to do:</p>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onNoClick(data.userId)">Delete account</button>
+    <button mat-button [mat-dialog-close]="data.userId" cdkFocusInitial>Send activation email</button>
+</div>

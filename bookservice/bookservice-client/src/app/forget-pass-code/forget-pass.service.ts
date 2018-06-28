@@ -4,7 +4,7 @@ import {AppSettings} from '../../../app.settings';
 
 
 @Injectable()
-export class ForgotPassService {
+export class ForgetPassService {
 
     constructor(private http: HttpClient) {
     }
@@ -13,6 +13,12 @@ export class ForgotPassService {
         const params = new HttpParams()
             .set('username', username);
         return this.http.post<number>(`${AppSettings.API_URL}/user/password/restore/code`, params);
+    }
+
+    public sendLink(username: string) {
+        const params = new HttpParams()
+            .set('username', username);
+        return this.http.post(`${AppSettings.API_URL}/user/password/restore/link`, params);
     }
 
     public restorePass(newPassword, username) {

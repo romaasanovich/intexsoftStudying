@@ -19,14 +19,16 @@ public class AuthenticationFailureHandler extends SimpleUrlAuthenticationFailure
             throws IOException {
         if (exception.getClass().isAssignableFrom(
                 BadCredentialsException.class)) {
+            response.setHeader("error", "Wrong Username Or Password !!!");
             response.sendError(HttpStatus.UNAUTHORIZED.value(), "Wrong Username Or Password !!!");
         } else if (exception.getClass().isAssignableFrom(
                 UsernameNotFoundException.class)) {
+            response.setHeader("error", "Wrong Username Or Password !!!");
             response.sendError(HttpStatus.UNAUTHORIZED.value(), "Wrong Username Or Password !!!");
         } else if (exception.getClass().isAssignableFrom(
                 DisabledException.class)) {
+            response.setHeader("error", "Your account not activated!!! Please activate your account.");
             response.sendError(HttpStatus.UNAUTHORIZED.value(), "Your account not activated !!!");
         }
     }
-
 }
