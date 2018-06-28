@@ -21,7 +21,9 @@ export class AddPublisherComponent {
                 alert('Publisher created successfully.');
             },
             (error: Response) => {
-                if (error.status === 403) {
+                if (error.status === 401) {
+                    alert('Please log in!!!');
+                } else if (error.status === 403) {
                     alert('You have no permissions !!!');
                 }
             });

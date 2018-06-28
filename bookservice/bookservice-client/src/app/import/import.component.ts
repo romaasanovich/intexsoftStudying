@@ -24,11 +24,11 @@ export class ImportComponent {
                 (error: Response) => {
                     if (error.status === 404) {
                         alert('Import is already running!!!');
-                    }
-                    if (error.status === 500) {
+                    } else if (error.status === 500) {
                         alert('Import is have an error!!!');
-                    }
-                    if (error.status === 403) {
+                    } else if (error.status === 401) {
+                        alert('Please log in!!!');
+                    } else if (error.status === 403) {
                         alert('You have no permissions !!!');
                     }
                 });
