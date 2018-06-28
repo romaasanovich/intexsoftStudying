@@ -42,7 +42,9 @@ export class BookComponent implements OnInit {
                     this.dataLength -= 1;
                 },
                 (error: Response) => {
-                    if (error.status === 403) {
+                    if (error.status === 401) {
+                        alert('Please log in!!!');
+                    } else if (error.status === 403) {
                         alert('You have no permissions !!!');
                     }
                 });

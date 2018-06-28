@@ -23,7 +23,7 @@ export class AuthorComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.authorService.getAuthors(this.currentPage, this.pageSize - 1)
+        this.authorService.getAuthors(this.currentPage, this.pageSize)
             .subscribe(data => {
                 this.authors = new MatTableDataSource<Author>(data.content);
                 this.dataLength = data.totalElements;
@@ -39,7 +39,9 @@ export class AuthorComponent implements OnInit {
 
                 },
                 (error: Response) => {
-                    if (error.status === 403) {
+                    if (error.status === 401) {
+                        alert('Please log in!!!');
+                    } else if (error.status === 403) {
                         alert('You have no permissions !!!');
                     }
                 });
