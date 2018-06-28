@@ -130,7 +130,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public int sendRestoreCode(User user) throws IOException, TemplateException {
         EmailTemplate emailTemplate = emailTemplateService.getByTemplateType(TemplateType.RESTORE_PASSWORD_CODE);
-        Template template = new Template("restorePass", new StringReader(emailTemplate.getEmailBody()), appConfig.freemarkerConfig().getConfiguration());
+        Template template = new Template("restorePass", new StringReader(emailTemplate.getBody()), appConfig.freemarkerConfig().getConfiguration());
         Map<String, Object> root = new HashMap<>();
         root.put("recipient", user);
         int code = new Random().nextInt(90000) + 10000;
@@ -138,7 +138,7 @@ public class UserServiceImpl implements UserService {
         String emailMessage = FreeMarkerTemplateUtils.processTemplateIntoString(template, root);
         EmailWrapper emailWrapper = new EmailWrapper();
         emailWrapper.setToEmail(user.getEmail());
-        emailWrapper.setSubject(emailTemplate.getEmailSubject());
+        emailWrapper.setSubject(emailTemplate.getSubject());
         emailWrapper.setEmailBody(emailMessage);
         emailService.sendMessage(emailWrapper);
         return code;
@@ -147,14 +147,14 @@ public class UserServiceImpl implements UserService {
     @Override
     public void sendRestoreLink(User user) throws IOException, TemplateException {
         EmailTemplate emailTemplate = emailTemplateService.getByTemplateType(TemplateType.RESTORE_PASSWORD_LINK);
-        Template template = new Template("restorePass", new StringReader(emailTemplate.getEmailBody()), appConfig.freemarkerConfig().getConfiguration());
+        Template template = new Template("restorePass", new StringReader(emailTemplate.getBody()), appConfig.freemarkerConfig().getConfiguration());
         Map<String, Object> root = new HashMap<>();
         root.put("recipient", user);
         root.put("link", generateRestorePasswordLink(user));
         String emailMessage = FreeMarkerTemplateUtils.processTemplateIntoString(template, root);
         EmailWrapper emailWrapper = new EmailWrapper();
         emailWrapper.setToEmail(user.getEmail());
-        emailWrapper.setSubject(emailTemplate.getEmailSubject());
+        emailWrapper.setSubject(emailTemplate.getSubject());
         emailWrapper.setEmailBody(emailMessage);
         emailService.sendMessage(emailWrapper);
     }
@@ -168,28 +168,28 @@ public class UserServiceImpl implements UserService {
         activationToken.setRegistrationTime(LocalDateTime.now());
         activationTokenService.add(activationToken);
         EmailTemplate emailTemplate = emailTemplateService.getByTemplateType(TemplateType.REACTIVATE);
-        Template template = new Template("reactivate", new StringReader(emailTemplate.getEmailBody()), appConfig.freemarkerConfig().getConfiguration());
+        Template template = new Template("reactivate", new StringReader(emailTemplate.getBody()), appConfig.freemarkerConfig().getConfiguration());
         Map<String, Object> root = new HashMap<>();
         root.put("recipient", user);
         root.put("link", generateActivationLink(user, token));
         String emailMessage = FreeMarkerTemplateUtils.processTemplateIntoString(template, root);
         EmailWrapper emailWrapper = new EmailWrapper();
         emailWrapper.setToEmail(user.getEmail());
-        emailWrapper.setSubject(emailTemplate.getEmailSubject());
+        emailWrapper.setSubject(emailTemplate.getSubject());
         emailWrapper.setEmailBody(emailMessage);
         emailService.sendMessage(emailWrapper);
     }
 
     private void sendRegistrationMessage(User user, String token) throws IOException, TemplateException {
         EmailTemplate emailTemplate = emailTemplateService.getByTemplateType(TemplateType.REGISTRATION);
-        Template template = new Template("registration", new StringReader(emailTemplate.getEmailBody()), appConfig.freemarkerConfig().getConfiguration());
+        Template template = new Template("registration", new StringReader(emailTemplate.getBody()), appConfig.freemarkerConfig().getConfiguration());
         Map<String, Object> root = new HashMap<>();
         root.put("recipient", user);
         root.put("link", generateActivationLink(user, token));
         String emailMessage = FreeMarkerTemplateUtils.processTemplateIntoString(template, root);
         EmailWrapper emailWrapper = new EmailWrapper();
         emailWrapper.setToEmail(user.getEmail());
-        emailWrapper.setSubject(emailTemplate.getEmailSubject());
+        emailWrapper.setSubject(emailTemplate.getSubject());
         emailWrapper.setEmailBody(emailMessage);
         emailService.sendMessage(emailWrapper);
     }

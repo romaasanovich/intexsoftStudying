@@ -12,9 +12,9 @@ public class EmailTemplate {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(name = "emailSubject")
-    private String emailSubject;
+    private String subject;
     @Column(name = "emailBody")
-    private String emailBody;
+    private String body;
     @Enumerated(EnumType.STRING)
     @Column(name = "templateType")
     private TemplateType templateType;
@@ -27,12 +27,12 @@ public class EmailTemplate {
         this.id = id;
     }
 
-    public String getEmailBody() {
-        return emailBody;
+    public String getBody() {
+        return body;
     }
 
-    public void setEmailBody(String emailBody) {
-        this.emailBody = emailBody;
+    public void setBody(String body) {
+        this.body = body;
     }
 
     public TemplateType getTemplateType() {
@@ -43,11 +43,11 @@ public class EmailTemplate {
         this.templateType = templateType;
     }
 
-    public String getEmailSubject() {
-        return emailSubject;
+    public String getSubject() {
+        return subject;
     }
 
-    public void setEmailSubject(String emailSubject) {
-        this.emailSubject = emailSubject;
+    public void setSubject(String subject) {
+        this.subject = subject;
     }
 }
