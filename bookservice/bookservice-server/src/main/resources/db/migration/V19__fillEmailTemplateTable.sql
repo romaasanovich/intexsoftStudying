@@ -1,4 +1,4 @@
-INSERT INTO emailTemplate (body,subject, templateType) VALUES ('<html>
+INSERT INTO emailTemplate (emailBody, emailSubject, templateType) VALUES ('<html>
 <head>
 </head>
 <body>
@@ -7,7 +7,7 @@ INSERT INTO emailTemplate (body,subject, templateType) VALUES ('<html>
 <p> To activate your account go to link: ${link}</p>
 </body>
 </html>', 'Registration on Book Service!!!', 'REGISTRATION');
-INSERT INTO emailTemplate (body, subject, templateType) VALUES ('<html>
+INSERT INTO emailTemplate (emailBody, emailSubject, templateType) VALUES ('<html>
 <head>
 </head>
 <body>
@@ -15,4 +15,4 @@ INSERT INTO emailTemplate (body, subject, templateType) VALUES ('<html>
 <p>Dear ${recipient.name}, to restore your password input this code in special field:</p>
 <h3>${code}</h3>
 </body>
-</html>', 'Restore Password!!!', 'RESTORE_PASSWORD');
+</html>', 'Restore Password!!!', 'RESTORE_PASSWORD_CODE');

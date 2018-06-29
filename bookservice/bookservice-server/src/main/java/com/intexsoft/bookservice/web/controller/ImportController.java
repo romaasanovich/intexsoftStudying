@@ -16,12 +16,12 @@ import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("/api")
-@PreAuthorize("hasRole('ADMIN')")
 public class ImportController {
 
     @Autowired
     private ImportExecutor importExecutor;
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping(path = "/import/{type}")
     public ResponseEntity importEntities(@PathVariable(name = "type") ImportType importType) throws InterruptedException {
         try {

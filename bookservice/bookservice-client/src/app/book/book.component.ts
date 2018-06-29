@@ -5,6 +5,7 @@ import {Book} from '../entity/book/book.model';
 import {BookService} from './book.service';
 import {AppSettings} from '../../../app.settings';
 import {MatTableDataSource, PageEvent} from '@angular/material';
+import {CartService} from '../cart/cart.service';
 
 @Component({
     selector: 'app-book',
@@ -19,11 +20,10 @@ export class BookComponent implements OnInit {
     pageSizeOptions = [5, 10, 25];
     books;
     dataLength: number;
-    displayedColumns = ['image', 'name', 'price', 'publisher', 'authors', 'rate', 'delete'];
+    displayedColumns = ['image', 'name', 'price', 'publisher', 'authors', 'rate', 'delete', 'addToCart'];
     URL = AppSettings.API_URL;
 
-
-    constructor(private router: Router, private bookService: BookService) {
+    constructor(private router: Router, private bookService: BookService, private cartService: CartService) {
 
     }
 
@@ -48,6 +48,10 @@ export class BookComponent implements OnInit {
                         alert('You have no permissions !!!');
                     }
                 });
+    }
+
+    addBookToCart(bookId) {
+        this.cartService.addBookToCart(bookId);
     }
 
     getBooks(event?: PageEvent) {

@@ -39,6 +39,11 @@ import {ForgetPassCodeComponent} from './forget-pass-code/forget-pass-code.compo
 import {ForgetPassService} from './forget-pass-code/forget-pass.service';
 import {ForgetPassLinkComponent} from './forget-pass-link/forget-pass-link.component';
 import {ActivationExpiredDialogComponent} from './activation-expired-dialog/activation-expired-dialog.component';
+import {CartComponent} from './cart/cart.component';
+import {Cart} from './entity/cart.model';
+import {CartService} from './cart/cart.service';
+import {OrderComponent} from './order/order.component';
+import {OrderService} from './order/order.service';
 
 
 @NgModule({
@@ -61,7 +66,9 @@ import {ActivationExpiredDialogComponent} from './activation-expired-dialog/acti
         ChangePasswordComponent,
         ForgetPassCodeComponent,
         ForgetPassLinkComponent,
-        ActivationExpiredDialogComponent
+        ActivationExpiredDialogComponent,
+        CartComponent,
+        OrderComponent
     ],
     imports: [
         BrowserModule,
@@ -83,7 +90,7 @@ import {ActivationExpiredDialogComponent} from './activation-expired-dialog/acti
     entryComponents: [
         ActivationExpiredDialogComponent
     ],
-    providers: [BookService, PublisherService, AuthorService, ImportService, BookReviewService, ImageService, AuthenticationService, UserService, ForgetPassService],
+    providers: [BookService, PublisherService, AuthorService, ImportService, BookReviewService, ImageService, AuthenticationService, UserService, ForgetPassService, CartService, Cart, OrderService],
     bootstrap: [AppComponent]
 })
 export class AppModule {

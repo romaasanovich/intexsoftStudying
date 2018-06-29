@@ -17,6 +17,7 @@ import {EditProfileComponent} from '../edit-profile/edit-profile.component';
 import {ChangePasswordComponent} from '../change-password/change-password.component';
 import {ForgetPassCodeComponent} from '../forget-pass-code/forget-pass-code.component';
 import {ForgetPassLinkComponent} from '../forget-pass-link/forget-pass-link.component';
+import {CartComponent} from '../cart/cart.component';
 
 
 const routes: Routes = [
@@ -36,7 +37,8 @@ const routes: Routes = [
     {path: 'edit', component: EditProfileComponent},
     {path: 'password', component: ChangePasswordComponent},
     {path: 'restore/code', component: ForgetPassCodeComponent},
-    {path: 'restore/link', component: ForgetPassLinkComponent}
+    {path: 'restore/link', component: ForgetPassLinkComponent},
+    {path: 'cart', component: CartComponent}
 
 ];
 

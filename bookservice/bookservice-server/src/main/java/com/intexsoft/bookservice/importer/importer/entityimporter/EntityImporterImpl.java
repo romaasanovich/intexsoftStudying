@@ -15,8 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class EntityImporterImpl implements EntityImporter {
@@ -83,7 +83,7 @@ public class EntityImporterImpl implements EntityImporter {
             book.setPrice(importBook.getPrice());
             book.setPublishDate(importBook.getPublishDate());
             book.setPublisher(publisherService.getByUUID(importBook.getPublisherUUID()));
-            book.setAuthors(getAuthors(importBook.getAuthorsUUID()));
+            book.setAuthors(importBook.getAuthorsUUID().stream().map(this::getAuthorByUUID).collect(Collectors.toList()));
             if (book.getPublisher() == null) {
                 break;
             }
@@ -97,13 +97,7 @@ public class EntityImporterImpl implements EntityImporter {
         imageWorker.importImages(books);
     }
 
-    private List<Author> getAuthors(List<String> uuids) {
-        List<Author> authors = new ArrayList<>();
-        for (String uuid : uuids) {
-            authors.add(authorService.getByUUID(uuid));
-        }
-        return authors;
+    private Author getAuthorByUUID(String UUID) {
+        return authorService.getByUUID(UUID);
     }
-
-
 }

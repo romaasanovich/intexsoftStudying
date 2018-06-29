@@ -13,12 +13,13 @@ import com.intexsoft.bookservice.service.api.PublisherService;
 import com.intexsoft.bookservice.service.api.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -43,8 +44,8 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public Optional<Book> getBookByID(Integer id) {
-        return bookRepository.findById(id);
+    public Book getBookById(Integer id) {
+        return bookRepository.findById(id).orElse(null);
     }
 
     @Override

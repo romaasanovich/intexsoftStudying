@@ -32,4 +32,5 @@ export class BookService {
     public getById(id: string) {
         return this.http.get<BookDetails>(`${AppSettings.API_URL}/books/${id}`);
     }
+
 }

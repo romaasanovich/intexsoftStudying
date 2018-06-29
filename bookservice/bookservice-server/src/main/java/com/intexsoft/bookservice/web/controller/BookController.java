@@ -14,7 +14,6 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 @RestController
@@ -37,8 +36,8 @@ public class BookController {
 
     @GetMapping(path = "/books/{id}")
     public BookDetailsDto getBookById(@PathVariable(name = "id") Integer id) {
-        Optional<Book> book = bookService.getBookByID(id);
-        return bookDetailsDtoMapper.toDto(book.get());
+        Book book = bookService.getBookById(id);
+        return bookDetailsDtoMapper.toDto(book);
     }
 
     @PreAuthorize("hasRole('ADMIN')")
@@ -51,9 +50,10 @@ public class BookController {
     @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping(path = "/book/{id}")
     public void deleteBook(@PathVariable(name = "id") Integer id) {
-        Book book = bookService.getBookByID(id).get();
+        Book book = bookService.getBookById(id);
         bookService.delete(book);
     }
+
 
     @GetMapping(path = "/books/bestsellers/crb")
     public List<Book> getBestSellersCrB(@Nullable @RequestParam(name = "fromRate") Double fromRate,

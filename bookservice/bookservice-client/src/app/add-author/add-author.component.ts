@@ -24,7 +24,7 @@ export class AddAuthorComponent {
             },
             (error: Response) => {
                 if (error.status === 401) {
-                    alert('Please log in!!!')
+                    alert('Please log in!!!');
                 } else if (error.status === 403) {
                     alert('You have no permissions !!!');
                 }
