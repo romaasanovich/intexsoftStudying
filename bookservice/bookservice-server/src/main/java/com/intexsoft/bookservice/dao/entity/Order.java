@@ -16,11 +16,10 @@ public class Order {
     @ManyToOne
     @JoinColumn(name = "userId")
     private User user;
-    @ElementCollection
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "bookOrder",
-            joinColumns = {@JoinColumn(name = "bookId")},
-            inverseJoinColumns = {@JoinColumn(name = "userId")})
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "order_book",
+            joinColumns = {@JoinColumn(name = "orderId")},
+            inverseJoinColumns = {@JoinColumn(name = "bookId")})
     private List<Book> books;
     @Column(name = "orderTime")
     private LocalDateTime orderTime;
